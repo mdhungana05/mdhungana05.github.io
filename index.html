@@ -3,87 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>मनोज ढुङ्गाना | आधिकारिक वेबसाइट</title>
+    <title>Manoj Dhungana "Pagal Biswas" | Portfolio</title>
+    <!-- Font Awesome Icons र Google Fonts -->
     <link rel="stylesheet" href="https://cloudflare.com">
+    <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; }
-        nav { background: #1a252f; padding: 15px 0; text-align: center; position: sticky; top: 0; z-index: 100; }
-        nav a { color: #fff; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 18px; transition: 0.3s; }
-        nav a:hover { color: #3498db; }
-        .hero { background: linear-gradient(135deg, #2c3e50, #2980b9); color: white; padding: 60px 20px; text-align: center; }
-        .hero img { width: 200px; height: 200px; border-radius: 50%; border: 5px solid #fff; object-fit: cover; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        .hero h1 { font-size: 32px; margin-bottom: 10px; }
-        .hero p { font-style: italic; color: #ecf0f1; font-size: 18px; max-width: 600px; margin: 0 auto 20px; }
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
-        .main-content, .sidebar { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        h2 { border-bottom: 3px solid #2980b9; padding-bottom: 8px; margin-bottom: 20px; color: #2c3e50; }
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-        .stat-card { background: #eef2f7; padding: 15px; text-align: center; border-radius: 6px; border-left: 4px solid #2980b9; }
-        .stat-card h3 { font-size: 24px; color: #2980b9; }
-        footer { background: #1a252f; color: white; text-align: center; padding: 40px 20px; margin-top: 60px; }
-        .footer-links a { color: #ecf0f1; font-size: 22px; margin: 0 10px; transition: 0.3s; inline-block; }
-        .footer-links a:hover { color: #3498db; transform: translateY(-3px); }
-        .contact-info { margin-bottom: 20px; font-size: 16px; color: #bdc3c7; }
-        .contact-info a { color: #3498db; text-decoration: none; }
-        @media(max-width: 768px) { .container { grid-template-columns: 1fr; } }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background-color: #f4f6f9; color: #333; line-height: 1.6; padding-bottom: 60px; }
+        
+        /* Header & Profile Section */
+        .header-bg { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); height: 200px; }
+        .profile-container { max-width: 1000px; margin: -100px auto 0 auto; padding: 0 20px; text-align: center; }
+        .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 5px solid #fff; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.2); background: #fff; }
+        h1 { font-size: 32px; margin-top: 15px; color: #1e3c72; }
+        .tagline { font-size: 16px; color: #666; font-style: italic; margin-bottom: 25px; }
+
+        /* Navigation Tabs */
+        .tabs-menu { display: flex; justify-content: center; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 30px; overflow-x: auto; }
+        .tab-btn { padding: 15px 25px; border: none; background: none; font-size: 16px; font-weight: 500; color: #555; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s; white-space: nowrap; }
+        .tab-btn i { margin-right: 8px; }
+        .tab-btn:hover, .tab-btn.active { color: #007bff; border-bottom-color: #007bff; background-color: #fcfdfe; }
+
+        /* Main Content Grid */
+        .content-box { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .tab-content { display: none; background: #fff; padding: 35px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Sub-Filters for Literature (साहित्य) */
+        .filter-menu { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .filter-btn { padding: 8px 18px; border: 1px solid #ddd; border-radius: 20px; background: #fff; cursor: pointer; transition: all 0.2s; font-size: 14px; }
+        .filter-btn.active, .filter-btn:hover { background: #007bff; color: #fff; border-color: #007bff; }
+
+        /* Literature Cards */
+        .work-item { display: none; border-left: 4px solid #007bff; padding: 15px 20px; background: #f8f9fa; margin-bottom: 20px; border-radius: 0 8px 8px 0; }
+        .work-item.show { display: block; }
+        .work-meta { font-size: 13px; color: #888; margin-bottom: 5px; font-weight: bold; }
+        .work-title { font-size: 20px; color: #222; margin-bottom: 10px; }
+        .work-text { color: #555; white-space: pre-line; text-align: justify; font-size: 15px; }
+
+        /* General Styling Elements */
+        ul { list-style-position: inside; margin-left: 10px; }
+        li { margin-bottom: 8px; }
+        h3 { color: #1e3c72; margin-bottom: 15px; border-bottom: 2px solid #f4f6f9; padding-bottom: 8px; margin-top: 20px; }
+        .info-list p { margin-bottom: 10px; font-size: 16px; }
+        .info-list strong { color: #1e3c72; }
+
+        /* Travel Section placeholders */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .photo-placeholder { background: #eef2f5; border: 2px dashed #cbd5e1; border-radius: 8px; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #94a3b8; }
+        .photo-placeholder i { font-size: 32px; margin-bottom: 8px; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-bg { height: 150px; }
+            .profile-img { width: 130px; height: 160px; margin-top: -20px; }
+            .tab-content { padding: 20px; }
+            h1 { font-size: 24px; }
+        }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html">गृहपृष्ठ</a>
-        <a href="sahitya.html">साहित्य सिर्जना</a>
-        <a href="experience.html">व्यावसायिक यात्रा</a>
-    </nav>
+    <!-- Top Banner -->
+    <div class="header-bg"></div>
 
-    <div class="hero">
-        <img src="manoj.jpg" alt="Manoj Dhungana">
+    <!-- Profile Header -->
+    <div class="profile-container">
+        <!-- यहाँ तपाईँको फोटो 'manoj.jpg' स्वतः लोड हुनेछ -->
+        <img src="manoj.jpg" alt="Manoj Dhungana" class="profile-img" onerror="this.src='https://unsplash.com'">
         <h1>मनोज ढुङ्गाना "पागल विश्वास"</h1>
-        <p>"ऊ पागल अवश्य छ तर विश्वास राख, उसको पागलपनमा सत्यता छ !"</p>
+        <div class="tagline">"ऊ पागल अवश्य छ तर विश्वास राख, उसको पागलपनमा सत्यता छ !"</div>
+        
+        <!-- Navigation Menu -->
+        <div class="tabs-menu">
+            <button class="tab-btn active" onclick="openTab(event, 'parichaya')"><i class="fa-solid rel fa-user"></i>परिचय</button>
+            <button class="tab-btn" onclick="openTab(event, 'sahitya')"><i class="fa-solid fa-pen-nib"></i>साहित्य सिर्जना</button>
+            <button class="tab-btn" onclick="openTab(event, 'byabasayik')"><i class="fa-solid fa-briefcase"></i>व्यवसायिक पाटो</button>
+            <button class="tab-btn" onclick="openTab(event, 'yatra')"><i class="fa-solid fa-camera-retro"></i>यात्रा सुख</button>
+        </div>
     </div>
 
-    <div class="container">
-        <div class="main-content">
-            <h2>व्यक्तित्व परिचय</h2>
-            <p style="text-align: justify; margin-bottom: 15px;">
-                साहित्य सिर्जना आमा जस्तै ममतामयी र चण्डी-दुर्गा जस्तै शक्तिशाली प्रकृतिको मिश्रण हो। वि.सं. २०४८ देखि प्रेम मार्गबाट सुरु भएको मेरो यो साहित्यिक यात्रा आज कथा, कविता, उपन्यास, र गजलका रूपमा प्रस्फुटित भएको छ। समय र परिस्थितिको चक्रव्यूहमा कहिले "विश्वास", कहिले "मनु शर्मा", त कहिले "एम डी दि ग्रेट" का नामबाट सिर्जित रचनाहरूलाई एकत्रित गर्ने उद्देश्यका साथ यो वेब-पोर्टल खडा गरिएको हो।
-            </p>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <h3>८२ पटक</h3>
-                    <p>नियमित स्वैच्छिक रक्तदान</p>
-                </div>
-                <div class="stat-card">
-                    <h3>३० वर्ष</h3>
-                    <p>Unilever Nepal Limited मा व्यावसायिक अनुभव</p>
-                </div>
+    <!-- Main Content Area -->
+    <div class="content-box">
+
+        <!-- TAB १: परिचय (About Me) -->
+        <div id="parichaya" class="tab-content active">
+            <h3>व्यक्तिगत विवरण</h3>
+            <div class="info-list">
+                <p><strong>पूरा नाम:</strong> मनोज ढुङ्गाना</p>
+                <p><strong>साहित्यिक उपनाम:</strong> "पागल विश्वास", मनु शर्मा, एम डी दि ग्रेट</p>
+                <p><strong>जन्म मिति:</strong> वि.सं. २०३१ वैशाख २६ गते (ई.सं. ९ मई १९७४)</p>
+                <p><strong>स्थायी ठेगाना:</strong> “मनोरस वाटिका” श्रद्धा नगर, बासुदेव मार्ग, हेटौँडा-४, मकवानपुर</p>
+                <p><strong>सम्पर्क इमेल:</strong> info@mdhungana.com.np / mdhungana05@gmail.com</p>
+                <p><strong>सम्पर्क नम्बर:</strong> ९८५५०६८५५४</p>
             </div>
-        </div>
-        <div class="sidebar">
-            <h2>प्रकाशित कृतिहरू</h2>
-            <ul style="list-style-type: square; padding-left: 20px;">
-                <li style="margin-bottom: 10px;"><strong>नारी संघर्ष (२०५०):</strong> पहिलो औपन्यासिक सिर्जना</li>
-                <li style="margin-bottom: 10px;"><strong>म र काठमाडौँ (२०६९):</strong> युवा कथा संग्रह</li>
-                <li style="margin-bottom: 10px;"><strong>हैसियत ३ (२०७३):</strong> संयुक्त गजल संग्रह</li>
+
+            <h3>सामाजिक संलग्नता (आजीवन तथा संस्थापक सदस्य)</h3>
+            <ul>
+                <li>हेटौँडा बजार लायन्स क्लब (संस्थापक अध्यक्ष)</li>
+                <li>हेटौँडा बजार लियो क्लब (सल्लाहकार)</li>
+                <li>मातृभूमि साहित्य समाज, हेटौँडा मकवानपुर (सचिब)</li>
+                <li>नेपाल स्रष्टा समाज, काठमाण्डौ</li>
+                <li>नेपाल रेडक्रस सोसाइटी, हेटौँडा-४</li>
+                <li>नेपाल अर्बुद रोग निवारण संस्था, मकवानपुर</li>
+                <li>नियमित रक्तदाता (हालसम्म ७७ औँ पटक रक्तदान)</li>
             </ul>
         </div>
-    </div>
 
-    <footer>
-        <div class="contact-info">
-            <p><i class="fas fa-envelope"></i> सम्पर्क: <a href="mailto:info@mdhungana.com.np">info@mdhungana.com.np</a></p>
-        </div>
-        <div class="footer-links">
-            <a href="https://www.facebook.com/manoj.dhungana" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.facebook.com/volunteer.mdhungana/" target="_blank"><i class="fas fa-flag"></i></a>
-            <a href="https://www.facebook.com/MaRaKathamandau/" target="_blank"><i class="fas fa-book-open"></i></a>
-            <a href="https://www.facebook.com/NariSangharsh/" target="_blank"><i class="fas fa-female"></i></a>
-            <a href="https://www.linkedin.com/in/manoj-dhungana-886b2920/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://x.com/mdhungana" target="_blank"><i class="fab fa-twitter"></i></a>
-        </div>
-        <p style="margin-top:20px; font-size:13px; color:#7f8c8d;">&copy; 2026 Manoj Dhungana. All Rights Reserved.</p>
-    </footer>
+        <!-- TAB २: साहित्य सिर्जना (नयाँ माथि, पुरानो तल र विधा फिल्टर) -->
+        <div id="sahitya" class="tab-content">
+            <!-- विधा अनुसार छान्न मिल्ने बटनहरू -->
+            <div class="filter-menu">
+                <button class="filter-btn active" onclick="filterSelection('all')">सबै रचनाहरू</button>
+                <button class="filter-btn" onclick="filterSelection('kabita')">कविता (Poems)</button>
+                <button class="filter-btn" onclick="filterSelection('gajal')">गजल (Poetry)</button>
+                <button class="filter-btn" onclick="filterSelection('katha')">कथा (Story)</button>
+            </div>
 
-</body>
-</html>
+            <!-- रचनाहरूको सूची (मिति अनुसार नयाँ माथि, पुरानो तल) -->
+            <div class="works-list">
+                
+                <!-- १. उपहार (कविता) - २०७६ -->
+                <div class="work-item kabita">
+                    <div class="work-meta"><i class="fa-regular fa-calendar-days"></i> वि.सं. २०७६ चैत १३ (नयाँ)</div>
+                    <div class="work-title">उपहार (कविता)</div>
+                    <div class="work-text">오늘 खुलेर भनिदेउ प्रिय, के चाहन्छौ तिमी ?
+                    कवितामा उपहार या उपहारमा कविता, चाहना तिम्रै, रोजाइ तिम्रै ।
+                    मेरो कविता तिम्रो जन्मदिनको उपहार, सुन्दरतालाइ निखार्ने समाजसँग लड्ने हतियार...</div>
+                </div>
+
+                <!-- २. मान्छे (कविता) - २०७३ -->
+                <div class="work-item kabita">
+                    <div class="work-meta"><i class="fa-regular fa-calendar-days"></i> वि.सं. २०७३ जेष्ठ १३</div>
+                    <div class="work-title">मान्छे (कविता)</div>
+                    <div class="work-text">हाँसी रहेछ मान्छे, बाँची रहेछ मान्छे ।
+                    अधुरा सबै काम, थाँती रहेछ मान्छे ।
+                    धन सम्पत्ती यहाँ, साँची रहेछ मान्छे ।
+                    कात्राेमा खल्ती हाल्न, जाँची रहेछ मान्छे ।
+                    आफैले आफैलाई, ढाँटी रहेछ मान्छे ।</div>
+                </div>
+
+                <!-- ३. मेराे देश (कविता) - २०७३ -->
+                <div class="work-item kabita">
+                    <div class="work-meta"><i class="fa-regular fa-calendar-days"></i> वि.सं. २०७३ जेष्ठ १२</div>
+                    <div class="work-title">मेराे देश (कविता)</div>
+                    <div class="work-text">मलाइ भन्न मन लाग्छ- नेपाल मेरो देश, సगरमाथा र बुद्धको देश।
+                    मेरो पहिचानको देश, मेरो स्वाभिमानको देश।
+                    बुद्धका उपदेश र शान्ति सन्देश विश्व भरी छरपस्टिएकै कारण पनि ज्ञानीहरुको मन मन्दिरमा आज पनि बुद्ध ज्यूँदा छन्।</div>
+                </div>
+
+                <!-- ४. हैसियत ३ / नमानेसि के लाग्छ र (गजल) - २०७२ -->
+                <div class="work-item gajal">
+                    <div class="work-meta"><i class="fa-regular fa-calendar-days"></i> वि.सं. २०७२ चैत्र १३</div>
+                    <div class="work-title">नमानेसि के लाग्छ र (गजल)</div>
+                    <div class="work-text">भागी जाऊँ भनेकै हो, नमानेसि के लाग्छ र ।
+                    माग्न आऊँ ? भनेकै हो, नमानेसि के लाग्छ र ।।
+                    तिम्रा बा लाई र्ज्वाँइ, मलाई चाहिया संगीनी ।
