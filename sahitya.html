@@ -3,86 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>साहित्यिक संगालो | मनोज ढुङ्गाना</title>
+    <title>मनोज ढुङ्गाना "पागल विश्वास" | साहित्य सिर्जना</title>
     <link rel="stylesheet" href="https://cloudflare.com">
+    <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f7f6; color: #333; }
-        nav { background: #1a252f; padding: 15px 0; text-align: center; position: sticky; top: 0; z-index: 100; }
-        nav a { color: #fff; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 18px; }
-        nav a:hover { color: #3498db; }
-        .header { background: #2c3e50; color: white; text-align: center; padding: 40px 20px; }
-        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
-        .section-box { background: white; padding: 25px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        h2 { color: #2980b9; margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 5px; }
-        .poem-text { font-style: italic; color: #444; background: #fdfefe; padding: 15px; border-left: 3px solid #f39c12; margin-bottom: 15px; }
-        footer { background: #1a252f; color: white; text-align: center; padding: 40px 20px; }
-        .footer-links a { color: #ecf0f1; font-size: 22px; margin: 0 10px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background-color: #f4f6f9; color: #333; line-height: 1.8; }
+        .header-bg { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); height: 150px; }
+        .nav-container { max-width: 1000px; margin: -50px auto 20px auto; padding: 0 20px; text-align: center; }
+        .back-link { display: inline-block; background: #fff; padding: 12px 25px; border-radius: 8px; color: #1e3c72; text-decoration: none; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: all 0.3s; }
+        .back-link:hover { background: #1e3c72; color: #fff; transform: translateY(-2px); }
+        .content-box { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .main-card { background: #fff; padding: 35px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 50px; }
+        h1 { color: #1e3c72; margin-bottom: 25px; border-bottom: 2px solid #f4f6f9; padding-bottom: 10px; font-size: 28px; }
+        .filter-menu { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .filter-btn { padding: 8px 18px; border: 1px solid #ddd; border-radius: 20px; background: #fff; cursor: pointer; transition: all 0.2s; font-size: 14px; font-weight: 500; }
+        .filter-btn.active, .filter-btn:hover { background: #007bff; color: #fff; border-color: #007bff; }
+        .work-item { display: none; border-left: 4px solid #007bff; padding: 25px; background: #f8f9fa; margin-bottom: 25px; border-radius: 0 8px 8px 0; }
+        .work-item.show { display: block; }
+        .work-meta { font-size: 13px; color: #888; margin-bottom: 8px; font-weight: bold; }
+        .work-title { font-size: 22px; color: #1e3c72; margin-bottom: 15px; border-bottom: 1px dashed #ddd; padding-bottom: 5px; }
+        .work-text { color: #444; white-space: pre-line; text-align: justify; font-size: 16px; }
+        footer { background-color: #1e3c72; color: #ffffff; text-align: center; padding: 25px; margin-top: 60px; }
+        footer p { font-size: 13px; opacity: 0.8; }
+        @media (max-width: 768px) { .main-card { padding: 20px; } }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html">गृहपृष्ठ</a>
-        <a href="sahitya.html">साहित्य सिर्जना</a>
-        <a href="experience.html">व्यावसायिक यात्रा</a>
-    </nav>
+    <div class="header-bg"></div>
 
-    <div class="header">
-        <h1>मेरो पागलपनमा सत्यता छ</h1>
-        <p>कविता, गजल, कथा र उपन्यासहरूको अनलाइन भण्डार</p>
+    <div class="nav-container">
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> मुख्य गृहपृष्ठमा फर्किनुहोस्</a>
     </div>
 
-    <div class="container">
-        <!-- विधा १: कविता -->
-        <div class="section-box">
-            <h2>📜 कविता (Poems)</h2>
-            <h3>१. पागल विश्वास (वि.सं. २०५०)</h3>
-            <div class="poem-text">
-                "उसले कल्पेकाे छ त्यो मिलन बिन्दु,<br>
-                कयौ पटक उसले अन्तरमनबाट चन्द्रमालाई अँगालेको छ...<br>
-                चोखो प्रेम गर्नु पागलपन हो भने हो म पागल हुँ!"
+    <div class="content-box">
+        <div class="main-card">
+            <h1>साहित्य सिर्जना संग्रह</h1>
+            
+            <div class="filter-menu">
+                <button class="filter-btn active" onclick="filterSelection('all')">सबै रचनाहरू</button>
+                <button class="filter-btn" onclick="filterSelection('kabita')">कविता</button>
+                <button class="filter-btn" onclick="filterSelection('gajal')">गजल</button>
+                <button class="filter-btn" onclick="filterSelection('katha')">कथा</button>
             </div>
-            <h3>२. म मेरी आमा अनि मातृभुमि (वि.सं. २०६६)</h3>
-            <div class="poem-text">
-                "म जन्मेको ठाउं मेरो मातृभूमि, लाग्छ स्वर्ग नै हो मेरो जन्मभूमि!<br>
-                भूमि प्यारो मेरो हेटौडा शहरको, मित्रता अटुट यो जन्मस्थलको!"
-            </div>
-        </div>
 
-        <!-- विधा २: गजल -->
-        <div class="section-box">
-            <h2>✍️ गजल (Poetry)</h2>
-            <h3>१. प्रियसीको नजरमा (वि.सं. २०६९)</h3>
-            <div class="poem-text">
-                "प्रियसीको नजरमा कसिंगर बन्छौ किन?<br>
-                चोखो माया गर्छौ भने पथ्थर बन्छौ किन?"
-            </div>
-            <h3>२. आज भोलि मधुसाला (वि.सं. २०७१)</h3>
-            <div class="poem-text">
-                "आज भोलि मधुसाला धाउन थालेको छु।<br>
-                दुइ प्याकमै खुसी म पाउन थालेको छु।"
-            </div>
-        </div>
+            <div id="literature-container">
+                <!-- १. उपहार (कविता) -->
+                <div class="work-item kabita">
+                    <div class="work-meta"><i class="fa-regular fa-calendar-days"></i> वि.सं. २०७६ चैत १३</div>
+                    <div class="work-title">उपहार (कविता)</div>
+                    <div class="work-text">मेरो कविता, उपहार तिम्रो जन्मदिनको। आज खुलेर भनिदेउ प्रिय, के चाहन्छौ तिमी? कवितामा उपहार या उपहारमा कविता, चाहना तिम्रै, रोजाइ तिम्रै।
+                    चुनौतीहरुको सामना गर्न म सधैँ तिम्रो साथमा छु, जन्मदिनको खुसियाली मनाउ। मेरो कविता तिम्रो जन्मदिनको उपहार, सुन्दरतालाइ निखार्ने, समाजसँग लड्ने हतियार, तिमी जे छौ उत्कृष्ट छौ प्रिय, तिम्रो जन्म उत्सवको भब्य शुभकामना।</div>
+                </div>
 
-        <!-- विधा ३: कथा र स्तम्भहरू -->
-        <div class="section-box">
-            <h2>📚 कथा र साप्ताहिक स्तम्भ</h2>
-            <p><strong>नजुरेको पोई (कथा - २०६९):</strong> 'म र काठमाण्डौ' कथा संग्रहमा प्रकाशित पहिलो कथा, जसले अस्ट्रेलियाको पीआर र आन्तरिक चञ्चलताको मर्म छुन्छ।</p>
-            <br>
-            <p><strong>फ्राइडे कर्नर (समृद्ध समाज दैनिक):</strong> २०६९ देखि २०७२ सम्म निरन्तर राष्ट्रिय दैनिकमा उठाइएका सामाजिक मुद्दाहरू, जस्तै "प्रेम, सेक्स र भ्यालेन्टाइन" तथा "नखाएको विष"।</p>
+                <!-- २. मान्छे (कविता) -->
+                <div class="work-item kabita">
+                    <div class="work-meta"><i class="fa-regular fa-calendar-days"></i> वि.सं. २०७३ जेष्ठ १३</div>
+                    <div class="work-title">मान्छे (कविता)</div>
+                    <div class="work-text">हाँसी रहेछ मान्छे, बाँची रहेछ मान्छे। अधुरा सबै काम, थाँती रहेछ मान्छे। धन सम्पत्ती यहाँ, साँची रहेछ मान्छे। कात्राेमा खल्ती हाल्न, जाँची रहेछ मान्छे। आफैले आफैलाई, ढाँटी रहेछ मान्छे।</div>
+                </div>
+
+                <!-- ३. नमानेसि के लाग्छ र (गजल) -->
+                <div class="work-item gajal">
+                    <div class="work-meta"><i class="fa-regular fa-calendar-days"></i> वि.सं. २०७२ चैत्र १३</div>
+                    <div class="work-title">नमानेसि के लाग्छ र (गजल)</div>
+                    <div class="work-text">भागी जाऊँ भनेकै हो, नमानेसि के लाग्छ र। माग्न आऊँ? भनेकै हो, नमानेसि के लाग्छ र ।।
+                    तिम्रा बा लाई र्ज्वाँइ, मलाई चाहिया संगीनी। रानी सरी राख्छु भने, नमानेसि के लाग्छ र ।।
+                    साथ मात्र देउ प्रिय जोइटिंग्रे भइदिन्छु। गुलामी नै गर्छु भन्दा नमानेसि के लाग्छ र ।।</div>
+                </div>
+
+                <!-- ४. सुहाग रात (कथा) -->
+                <div class="work-item katha">
+                    <div class="work-meta"><i class="fa-regular fa-calendar-days"></i> वि.सं. २०६९</div>
+                    <div class="work-title">सुहाग रात (कथा संस्मरण)</div>
+                    <div class="work-text">कार्यालयमा हाकीम साबको गालि, अनि भान्सामा डढेको तरकारी, मेरो दैनिकी खलबलिएको भान परिरहेको थियो मलाई। मन एकातिर, तन अर्कोतिर दौडने भएपछि सायद यस्तै हुँदो हो, मन भरि अनेक तर्कनाका छालहरु आउँछन्।
+                    म्यादी बटालियनमा साँझ बिहान हुने क्रियाकलापमा बिनोद प्रति म अलिकति आकर्षित चाहिँ भएकै हो, साथीभाइहरुले ख्याल ठठ्ठामा हाम्रो नाम एक अर्कामा जोडिदिएर जिस्काउन थाले, यो मौकामा बिनोदले कतिखेर मेरो मन चोर्यो थाहै पाइन।
+                    अचानक बाबुआमा सँझिए, हाम्रो संस्कार सम्झिएँ र बिनोदको अँगालोबाट आफूलाई छुटाउँदै भने- जे सुकै गर बिनोद, म तिम्रो लागि हुँ, तिमी मेरो लागि, म तिमीलाई धेरै माया गर्छु तर म मेरो सँस्कार पनि छोड्न सक्दिन, मेरो जे जति छ सबै तिम्रै हो तर हक चाहिँ बिहे पछि मात्र।</div>
+                </div>
+            </div>
         </div>
     </div>
 
     <footer>
-        <p><i class="fas fa-envelope"></i> सम्पर्क: <a href="mailto:info@mdhungana.com.np" style="color:#3498db; text-decoration:none;">info@mdhungana.com.np</a></p>
-        <div class="footer-links" style="margin-top:15px;">
-            <!-- सबै सोसल लिङ्कहरू यहाँ सुरक्षित छन् -->
-            <a href="https://facebook.com" style="color:white;"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/in/manoj-dhungana-886b2920/" style="color:white;"><i class="fab fa-linkedin"></i></a>
-        </div>
+        <p>&copy; 2026 मनोज ढुङ्गाना । सर्वाधिकार सुरक्षित।</p>
     </footer>
 
+    <script>
+        filterSelection("all");
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("work-item");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+                x[i].classList.remove("show");
+                if (x[i].className.indexOf(c) > -1) x[i].classList.add("show");
+            }
+            var btns = document.getElementsByClassName("filter-btn");
+            for (i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("active");
+            }
+            evt = window.event || arguments.callee.caller.arguments[0];
+            if(evt) evt.target.classList.add("active");
+        }
+    </script>
 </body>
 </html>
-
