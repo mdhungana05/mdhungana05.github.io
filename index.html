@@ -3,27 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manoj Dhungana | Portfolio</title>
+    <title>Manoj Dhungana "Pagal Biswas" | Portfolio</title>
     <link rel="stylesheet" href="https://cloudflare.com">
+    <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
         body { background-color: #f4f6f9; color: #333; line-height: 1.8; }
-        .header-bg { background: linear-gradient(135deg, #1e3c72, #2a5298); height: 180px; }
-        .profile-container { max-width: 900px; margin: -80px auto 30px auto; text-align: center; padding: 0 20px; }
-        .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid #fff; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        h1 { font-size: 28px; color: #1e3c72; margin-top: 10px; }
-        .tagline { font-size: 15px; color: #666; font-style: italic; margin-bottom: 20px; }
-        .tabs-menu { display: flex; justify-content: center; background: #fff; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 25px; }
-        .tab-btn { padding: 12px 20px; border: none; background: none; font-size: 15px; cursor: pointer; color: #555; border-bottom: 3px solid transparent; }
-        .tab-btn.active { color: #007bff; border-bottom-color: #007bff; font-weight: bold; }
-        .content-box { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-        .tab-content { display: none; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 40px; }
+        .header-bg { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); height: 200px; }
+        .profile-container { max-width: 1000px; margin: -100px auto 0 auto; padding: 0 20px; text-align: center; }
+        .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 5px solid #fff; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.2); background: #fff; }
+        h1 { font-size: 32px; margin-top: 15px; color: #1e3c72; }
+        .tagline { font-size: 16px; color: #666; font-style: italic; margin-bottom: 25px; }
+        .tabs-menu { display: flex; justify-content: center; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 30px; overflow-x: auto; }
+        .tab-btn { padding: 15px 25px; border: none; background: none; font-size: 16px; font-weight: 500; color: #555; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s; white-space: nowrap; }
+        .tab-btn i { margin-right: 8px; }
+        .tab-btn:hover, .tab-btn.active { color: #007bff; border-bottom-color: #007bff; background-color: #fcfdfe; }
+        .content-box { max-width: 1000px; margin: 0 auto; padding: 0 20px; min-height: 400px; }
+        .tab-content { display: none; background: #fff; padding: 35px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 50px; }
         .tab-content.active { display: block; }
-        .work-item { border-left: 4px solid #007bff; padding: 15px; background: #f8f9fa; margin-bottom: 15px; border-radius: 0 6px 6px 0; }
-        .work-title { font-size: 18px; color: #1e3c72; margin-bottom: 5px; font-weight: bold; }
-        footer { background-color: #1e3c72; color: #fff; text-align: center; padding: 25px; margin-top: 40px; }
-        .footer-social a { color: #fff; font-size: 20px; margin: 0 10px; text-decoration: none; }
-        .visitor-counter { display: inline-block; background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 4px; font-size: 13px; margin-bottom: 10px; }
+        .work-item { border-left: 4px solid #007bff; padding: 25px; background: #f8f9fa; margin-bottom: 25px; border-radius: 0 8px 8px 0; }
+        .work-meta { font-size: 13px; color: #888; margin-bottom: 8px; font-weight: bold; }
+        .work-title { font-size: 22px; color: #1e3c72; margin-bottom: 15px; border-bottom: 1px dashed #ddd; padding-bottom: 5px; }
+        .work-text { color: #444; white-space: pre-line; text-align: justify; font-size: 16px; }
+        ul { list-style-position: inside; margin-left: 10px; }
+        li { margin-bottom: 8px; }
+        h3 { color: #1e3c72; margin-bottom: 15px; border-bottom: 2px solid #f4f6f9; padding-bottom: 8px; margin-top: 20px; }
+        .info-list p { margin-bottom: 10px; font-size: 16px; }
+        .info-list strong { color: #1e3c72; }
+        footer { background-color: #1e3c72; color: #ffffff; text-align: center; padding: 35px 20px; margin-top: 60px; }
+        .footer-social { margin-bottom: 15px; }
+        .footer-social a { color: #ffffff; font-size: 22px; margin: 0 12px; text-decoration: none; transition: color 0.3s; }
+        .footer-social a:hover { color: #007bff; }
+        .visitor-counter { display: inline-block; background: rgba(255, 255, 255, 0.1); padding: 5px 15px; border-radius: 4px; font-size: 14px; margin-bottom: 15px; border: 1px solid rgba(255, 255, 255, 0.2); font-weight: 500; }
+        footer p { font-size: 13px; opacity: 0.8; }
+        @media (max-width: 768px) { .tab-content { padding: 20px; } h1 { font-size: 24px; } }
     </style>
 </head>
 <body>
@@ -31,80 +44,106 @@
     <div class="header-bg"></div>
 
     <div class="profile-container">
-        <img src="manoj.jpg" alt="Manoj" class="profile-img" onerror="this.src='https://unsplash.com'">
+        <img src="manoj.jpg" alt="Manoj Dhungana" class="profile-img" onerror="this.src='https://unsplash.com'">
         <h1>मनोज ढुङ्गाना "पागल विश्वास"</h1>
         <div class="tagline">"ऊ पागल अवश्य छ तर विश्वास राख, उसको पागलपनमा सत्यता छ !"</div>
         
         <div class="tabs-menu">
-            <button class="tab-btn active" onclick="openTab(event, 'p1')">परिचय</button>
-            <button class="tab-btn" onclick="openTab(event, 'p2')">साहित्य सिर्जना</button>
-            <button class="tab-btn" onclick="openTab(event, 'p3')">व्यवसायिक पाटो</button>
-            <button class="tab-btn" onclick="openTab(event, 'p4')">यात्रा सुख</button>
+            <button class="tab-btn active" onclick="openTab(event, 'parichaya')"><i class="fa-solid fa-user"></i>परिचय</button>
+            <button class="tab-btn" onclick="openTab(event, 'sahitya')"><i class="fa-solid fa-pen-nib"></i>साहित्य</button>
+            <button class="tab-btn" onclick="openTab(event, 'byabasayik')"><i class="fa-solid fa-briefcase"></i>व्यवसायिक पाटो</button>
+            <button class="tab-btn" onclick="openTab(event, 'yatra')"><i class="fa-solid fa-camera-retro"></i>यात्रा</button>
         </div>
     </div>
 
     <div class="content-box">
-        <!-- ट्याब १: परिचय -->
-        <div id="p1" class="tab-content active">
-            <h3>व्यक्तिगत विवरण</h3><br>
-            <p><strong>पूरा नाम:</strong> मनोज ढुङ्गाना</p>
-            <p><strong>उपनाम:</strong> "पागल विश्वास"</p>
-            <p><strong>ठेगाना:</strong> हेटौँडा-४, मकवानपुर</p>
-            <p><strong>इमेल:</strong> info@mdhungana.com.np</p>
-            <br>
-            <h3>सामाजिक संलग्नता</h3>
-            <p>• हेटौँडा बजार लायन्स क्लब (संस्थापक अध्यक्ष)</p>
-            <p>• मातृभूमि साहित्य समाज, मकवानपुर </p>
-            <p>• नियमित ८२ औँ पटक रक्तदान</p>
+        <!-- TAB १: परिचय (पूर्ण विवरण) -->
+        <div id="parichaya" class="tab-content active">
+            <h3>व्यक्तिगत विवरण</h3>
+            <div class="info-list">
+                <p><strong>पूरा नाम:</strong> मनोज ढुङ्गाना</p>
+                <p><strong>साहित्यिक उपनाम:</strong> "पागल विश्वास"</p>
+                <p><strong>जन्म मिति:</strong> वि.सं. २०३१ वैशाख २६ गते (ई.सं. ९ मई १९७४, बिहीबार)</p>
+                <p><strong>जन्म स्थान:</strong> हेटौँडा अस्पताल, मकवानपुर</p>
+                <p><strong>स्थायी ठेगाना:</strong> “मनोरस वाटिका” श्रद्धा नगर, बासुदेव मार्ग, हेटौँडा-४, मकवानपुर</p>
+                <p><strong>माता/पिता:</strong> स्व. राधादेवी ढुङ्गाना / स्व. कृष्णप्रसाद ढुङ्गाना</p>
+                <p><strong>सम्पर्क इमेल:</strong> info@mdhungana.com.np</p>
+                <p><strong>सम्पर्क नम्बर:</strong> ९८५५०६८५५४</p>
+            </div>
+
+            <h3>सामाजिक संलग्नता (आजीवन तथा संस्थापक सदस्य)</h3>
+            <ul>
+                <li>हेटौँडा बजार लायन्स क्लब (संस्थापक अध्यक्ष)</li>
+                <li>हेटौँडा बजार लियो क्लब (सल्लाहकार)</li>
+                <li>मकवानपुर हेटौँडा लायन्स क्लब (संस्थापक सदस्य)</li>
+                <li>नेपाल अर्बुद रोग निवारण संस्था, मकवानपुर</li>
+                <li>मातृभूमि साहित्य समाज, हेटौँडा, मकवानपुर</li>
+                <li>नेपाल स्रष्टा समाज, काठमाडौँ</li>
+                <li>नेपाल रेडक्रस सोसाइटी, हेटौँडा-४</li>
+                <li>सामुदायिक सेवा समिति, हेटौँडा-९</li>
+                <li>सहिद स्मारक विकास समिति, हेटौँडा-११</li>
+                <li>नेपाल भारत मैत्री संघ, मकवानपुर</li>
+                <li>नेपाल लायन्स फाउन्डेसन, काठमाडौँ</li>
+                <li>हाम्रो मझेरी साहित्य प्रतिष्ठान, चितवन</li>
+                <li><strong>विशेष सेवा:</strong> नियमित रक्तदाता (हालसम्म ८२ औँ पटक रक्तदान)</li>
+            </ul>
+
+            <h3>प्रकाशित कृति तथा सम्पादन</h3>
+            <ul>
+                <li><strong>"नारी संघर्ष"</strong> (उपन्यास) | २०५० | पहिलो संस्करण (१००० थान)</li>
+                <li><strong>"म र काठमाडौँ"</strong> (कथा संग्रह) | २०६९ | पहिलो संस्करण (२००० थान)</li>
+                <li><strong>"हैसियत ३"</strong> (संयुक्त गजल संग्रह) | २०७३</li>
+                <li><strong>सम्पादन:</strong> 'स्पन्दन' त्रैमासिक साहित्यिक पत्रिका (६ अंक, २०६३-२०६५), मकवानपुरका लायन्स क्लबहरूको वार्षिक स्मारिका (२०६६-२०७२), 'पदमा-बोध' (स्मृति खण्ड काव्य २०७२), 'कागलाई बेल' (कविता संग्रह २०७२)।</li>
+                <li><strong>स्तम्भकार:</strong> <em>नमस्कार दैनिक</em>मा २०५१ देखि "पागलपनको विश्लेषण" साप्ताहिक स्तम्भ, <em>समृद्ध समाज राष्ट्रिय दैनिक</em>मा २०६७ देखि २०७२ सम्म "फ्राइडे कर्नर" स्तम्भकार।</li>
+            </ul>
+
+            <h3>पुरस्कार, सम्मान तथा पदक</h3>
+            <ul>
+                <li>विद्यालय स्तरीय साहित्य गोष्ठी (कविता) मा प्रथम (२०४९)</li>
+                <li>जि.वि.स. मकवानपुरबाट 'आदर्श दम्पती सम्मान' (२०६४)</li>
+                <li>हेटौँडा जेसीजको अन्तर जेसिज वक्तृत्वकलामा प्रथम (२०६६)</li>
+                <li>युनिलिभर नेपाल लि. बाट '30 Years Good Service Award' (२०८३)</li>
+                <li>लायन्स क्लब्स इन्टरनेशनल (३२५ वि२, नेपाल) बाट: सिनर्जी अवार्ड, आउटस्ट्यान्डिङ प्रेसिडेन्ट अवार्ड, चिफ कोर्डिनेटर अवार्ड, जोन चेयरपर्सन अवार्ड, लियो एडभाइजर अवार्ड।</li>
+                <li><strong>अन्तर्राष्ट्रिय सम्मान:</strong> मेम्बरशिप ग्रोथ पिन (२०१०-११, USA), लायन्स क्लब एक्सटेन्सन अवार्ड (२०१२, USA), क्लब प्रेसिडेन्ट एक्सिलेन्स अवार्ड (२०१२-१३, USA), लियो क्लब एक्सटेन्सन Award (२०१४, USA), इन्टरनेशनल लिडरशिप अवार्ड (२०१५, USA), बंगलादेश नेपाल फ्रेन्डशिप सोसाइटीबाट सम्मानित (२०१६)।</li>
+            </ul>
         </div>
 
-        <!-- ट्याब २: साहित्य -->
-        <div id="p2" class="tab-content">
-            <div class="work-item">
-                <div class="work-title">उपहार (कविता) - २०७६</div>
-                <p>मेरो कविता, उपहार तिम्रो जन्मदिनको। आज खुलेर भनिदेउ प्रिय, के चाहन्छौ तिमी? कवितामा उपहार या उपहारमा कविता, चाहना तिम्रै, रोजाइ तिम्रै। चुनौतीहरुका सामना गर्न म सधैँ तिम्रो साथमा छु, जन्मदिनको खुसियाली मनाу।</p>
-            </div>
-            <div class="work-item">
-                <div class="work-title">मान्छे (कविता) - २०७३</div>
-                <p>हाँसी रहेछ मान्छे, बाँची रहेछ मान्छे। अधुरा सबै काम, थाँती रहेछ मान्छे। धन सम्पत्ती यहाँ, साँची रहेछ मान्छे।</p>
-            </div>
-            <div class="work-item">
-                <div class="work-title">नमानेसि के लाग्छ र (गजल) - २०७२</div>
-                <p>भागी जाऊँ भनेकै हो, नमानेसि के लाग्छ र। माग्न आऊँ? भनेकै हो, नमानेसि के लाग्छ र। रानी सरी राख्छु भने, नमानेसि के लाग्छ र।</p>
-            </div>
-            <div class="work-item">
-                <div class="work-title">सुहाग रात (कथा) - २०६९</div>
-                <p>कार्यालयमा हाकीम साबको गालि, मेरो दैनिकी खलबलिएको भान परिरहेको थियो मलाई। म्यादी बटालियनमा बिनोद प्रति म आकर्षित भएकै हो। जे सुकै गर बिनोद, हक चाहिँ बिहे पछि मात्र।</p>
-            </div>
+        <!-- TAB ३: व्यवसायिक पाटो -->
+        <div id="byabasayik" class="tab-content">
+            <h3>Professional Management Profile</h3>
+            <p style="text-align: justify; margin-bottom: 20px;">
+                <strong>FMCG (Fast-Moving Consumer Goods)</strong> तथा व्यवस्थापनको क्षेत्रमा लामो अनुभव । बहुराष्ट्रिय कम्पनी <strong>युनिलिभर नेपाल लिमिटेड</strong> मा ३० वर्ष भन्दा लामो समय उत्कृष्ट सेवा प्रदान गरेको अनुभव मसँग छ। बजार व्यवस्थापन, ब्रान्डिङ, टिम परिचालन र आधुनिक व्यापारिक रणनीतिको प्रयोग गरी व्यवसायलाई नाफामूलक बनाउनु मेरो मुख्य सबल पक्ष हो।
+            </p>
+            <h3>मुख्य व्यावसायिक सिपहरु</h3>
+            <ul>
+                <li>FMCG व्यवसाय संचालन तथा प्रबन्धन रणनीति</li>
+                <li>संस्थागत नेतृत्व र टिम परिचालन (Leadership & Team Management)</li>
+                <li>साहित्यिक, सामाजिक तथा व्यवसायिक पुस्तकहरूको आवरण चित्र तथा प्रतिक चिन्ह (Logo) सिर्जना</li>
+                <li>नेपाल-भारत मैत्री र अन्तर्राष्ट्रिय संस्था लायन्स क्लब मार्फत सामाजिक नेतृत्व</li>
+            </ul>
         </div>
 
-        <!-- ट्याब ३: व्यवसायिक पाटो -->
-        <div id="p3" class="tab-content">
-            <h3>Professional Profile</h3><br>
-            <p>FMCG (Fast-Moving Consumer Goods) क्षेत्रमा लामो अनुभव । बहुराष्ट्रिय कम्पनी युनिलिभर नेपाल लिमिटेडमा ३० वर्ष भन्दा लामो समय उत्कृष्ट सेवा प्रदान गरेको अनुभव मसँग छ। बजार व्यवस्थापन र टिम परिचालन मेरो मुख्य पक्ष हो।</p>
-        </div>
-
-        <!-- ट्याब ४: यात्रा सुख -->
-        <div id="p4" class="tab-content">
-            <h3>भ्रमण गरिएका स्थानहरू</h3><br>
-            <p>• हुम्ला भ्रमण यात्रा</p>
-            <p>• चितवन संस्मरण</p>
-            <p>• काठमाडौँ उपत्यका यात्रा</p>
+        <!-- TAB ४: यात्रा -->
+        <div id="yatra" class="tab-content">
+            <h3>भ्रमण गरिएका मुख्य स्थानहरू</h3>
+            <p>प्राकृतिक तथा सांस्कृतिक ठाउँहरूको भ्रमण गरिएका मुख्य ठाउँहरूका सुन्दर तस्बिरहरू</p>
         </div>
     </div>
 
+    <!-- 🌐 FOOTER SECTION (एक्टिभ सामाजिक सम्पर्क लिङ्कहरू र काउन्टर) -->
     <footer>
         <div class="visitor-counter">
-            <i class="fa-solid fa-users"></i> Number of Visitors till now: <span id="count">29999</span>
+            <i class="fa-solid fa-users"></i> कुल भिजिटर संख्या: <span id="count">२९९९९</span>
         </div>
         <div class="footer-social">
-            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            <a href="mailto:info@mdhungana.com.np"><i class="fas fa-envelope"></i></a>
+            <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:info@mdhungana.com.np" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
-        <p style="margin-top:10px; font-size:12px;">&copy; 2026 मनोज ढुङ्गाना। सुरक्षित।</p>
+        <p>&copy; 2026 मनोज ढुङ्गाना "पागल विश्वास"। सर्वाधिकार सुरक्षित।</p>
     </footer>
 
+    <!-- जाभास्क्रिप्ट (ट्याब र काउन्टर व्यवस्थापन) -->
     <script>
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
@@ -121,9 +160,10 @@
         }
 
         document.addEventListener("DOMContentLoaded", function() {
+            var initialCount = 29999;
             var currentCount = localStorage.getItem("site_visitors");
             if (currentCount === null) {
-                currentCount = 30000;
+                currentCount = initialCount + 1;
             } else {
                 currentCount = parseInt(currentCount) + 1;
             }
