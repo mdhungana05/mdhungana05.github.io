@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manoj Dhungana "Pagal Biswas" | Portfolio</title>
+    <title>मनोज ढुङ्गाना "पागल विश्वास" | गृहपृष्ठ</title>
     <link rel="stylesheet" href="https://cloudflare.com">
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
@@ -14,29 +14,30 @@
         .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 5px solid #fff; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.2); background: #fff; }
         h1 { font-size: 32px; margin-top: 15px; color: #1e3c72; }
         .tagline { font-size: 16px; color: #666; font-style: italic; margin-bottom: 25px; }
+        
         .tabs-menu { display: flex; justify-content: center; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 30px; overflow-x: auto; }
-        .tab-btn { padding: 15px 25px; border: none; background: none; font-size: 16px; font-weight: 500; color: #555; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s; white-space: nowrap; }
-        .tab-btn i { margin-right: 8px; }
-        .tab-btn:hover, .tab-btn.active { color: #007bff; border-bottom-color: #007bff; background-color: #fcfdfe; }
-        .content-box { max-width: 1000px; margin: 0 auto; padding: 0 20px; min-height: 400px; }
+        .tab-btn, .tab-link { padding: 15px 25px; border: none; background: none; font-size: 16px; font-weight: 500; color: #555; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s; white-space: nowrap; text-decoration: none; display: inline-block; }
+        .tab-btn i, .tab-link i { margin-right: 8px; }
+        .tab-btn:hover, .tab-btn.active, .tab-link:hover { color: #007bff; border-bottom-color: #007bff; background-color: #fcfdfe; }
+        
+        .content-box { max-width: 1000px; margin: 0 auto; padding: 0 20px; min-height: 350px; }
         .tab-content { display: none; background: #fff; padding: 35px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 50px; }
         .tab-content.active { display: block; }
-        .work-item { border-left: 4px solid #007bff; padding: 25px; background: #f8f9fa; margin-bottom: 25px; border-radius: 0 8px 8px 0; }
-        .work-meta { font-size: 13px; color: #888; margin-bottom: 8px; font-weight: bold; }
-        .work-title { font-size: 22px; color: #1e3c72; margin-bottom: 15px; border-bottom: 1px dashed #ddd; padding-bottom: 5px; }
-        .work-text { color: #444; white-space: pre-line; text-align: justify; font-size: 16px; }
+        
         ul { list-style-position: inside; margin-left: 10px; }
         li { margin-bottom: 8px; }
         h3 { color: #1e3c72; margin-bottom: 15px; border-bottom: 2px solid #f4f6f9; padding-bottom: 8px; margin-top: 20px; }
         .info-list p { margin-bottom: 10px; font-size: 16px; }
         .info-list strong { color: #1e3c72; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .photo-placeholder { background: #eef2f5; border: 2px dashed #cbd5e1; border-radius: 8px; height: 150px; display: flex; justify-content: center; align-items: center; color: #94a3b8; }
+        
         footer { background-color: #1e3c72; color: #ffffff; text-align: center; padding: 35px 20px; margin-top: 60px; }
         .footer-social { margin-bottom: 15px; }
         .footer-social a { color: #ffffff; font-size: 22px; margin: 0 12px; text-decoration: none; transition: color 0.3s; }
         .footer-social a:hover { color: #007bff; }
         .visitor-counter { display: inline-block; background: rgba(255, 255, 255, 0.1); padding: 5px 15px; border-radius: 4px; font-size: 14px; margin-bottom: 15px; border: 1px solid rgba(255, 255, 255, 0.2); font-weight: 500; }
         footer p { font-size: 13px; opacity: 0.8; }
-        @media (max-width: 768px) { .tab-content { padding: 20px; } h1 { font-size: 24px; } }
     </style>
 </head>
 <body>
@@ -50,14 +51,15 @@
         
         <div class="tabs-menu">
             <button class="tab-btn active" onclick="openTab(event, 'parichaya')"><i class="fa-solid fa-user"></i>परिचय</button>
-            <button class="tab-btn" onclick="openTab(event, 'sahitya')"><i class="fa-solid fa-pen-nib"></i>साहित्य</button>
+            <a href="sahitya.html" class="tab-link"><i class="fa-solid fa-pen-nib"></i>साहित्या</a>
             <button class="tab-btn" onclick="openTab(event, 'byabasayik')"><i class="fa-solid fa-briefcase"></i>व्यवसायिक पाटो</button>
             <button class="tab-btn" onclick="openTab(event, 'yatra')"><i class="fa-solid fa-camera-retro"></i>यात्रा</button>
         </div>
     </div>
 
     <div class="content-box">
-        <!-- TAB १: परिचय (पूर्ण विवरण) -->
+
+        <!-- TAB १: परिचय -->
         <div id="parichaya" class="tab-content active">
             <h3>व्यक्तिगत विवरण</h3>
             <div class="info-list">
@@ -93,8 +95,8 @@
                 <li><strong>"नारी संघर्ष"</strong> (उपन्यास) | २०५० | पहिलो संस्करण (१००० थान)</li>
                 <li><strong>"म र काठमाडौँ"</strong> (कथा संग्रह) | २०६९ | पहिलो संस्करण (२००० थान)</li>
                 <li><strong>"हैसियत ३"</strong> (संयुक्त गजल संग्रह) | २०७३</li>
-                <li><strong>सम्पादन:</strong> 'स्पन्दन' त्रैमासिक साहित्यिक पत्रिका (६ अंक, २०६३-२०६५), मकवानपुरका लायन्स क्लबहरूको वार्षिक स्मारिका (२०६६-२०७२), 'पदमा-बोध' (स्मृति खण्ड काव्य २०७२), 'कागलाई बेल' (कविता संग्रह २०७२)।</li>
-                <li><strong>स्तम्भकार:</strong> <em>नमस्कार दैनिक</em>मा २०५१ देखि "पागलपनको विश्लेषण" साप्ताहिक स्तम्भ, <em>समृद्ध समाज राष्ट्रिय दैनिक</em>मा २०६७ देखि २०७२ सम्म "फ्राइडे कर्नर" स्तम्भकार।</li>
+                <li><strong>सम्पादन:</strong> स्पन्दन त्रैमासिक साहित्यिक पत्रिका, पदमा-बोध (स्मृति खण्ड काव्य २०७२), कागलाई बेल (कविता संग्रह २०७२)।</li>
+                <li><strong>स्तम्भकार:</strong> नमस्कार दैनिकमा २०५१ देखि "पागलपनको विश्लेषण" साप्ताहिक स्तम्भ, समृद्ध समाज राष्ट्रिय दैनिकमा २०६७ देखि २०७२ सम्म "फ्राइडे कर्नर" स्तम्भकार।</li>
             </ul>
 
             <h3>पुरस्कार, सम्मान तथा पदक</h3>
@@ -102,35 +104,31 @@
                 <li>विद्यालय स्तरीय साहित्य गोष्ठी (कविता) मा प्रथम (२०४९)</li>
                 <li>जि.वि.स. मकवानपुरबाट 'आदर्श दम्पती सम्मान' (२०६४)</li>
                 <li>हेटौँडा जेसीजको अन्तर जेसिज वक्तृत्वकलामा प्रथम (२०६६)</li>
+                <li>युनिलिभर नेपाल लि. बाट '15 Years Good Service Award' (२०६८)</li>
                 <li>युनिलिभर नेपाल लि. बाट '30 Years Good Service Award' (२०८३)</li>
-                <li>लायन्स क्लब्स इन्टरनेशनल (३२५ वि२, नेपाल) बाट: सिनर्जी अवार्ड, आउटस्ट्यान्डिङ प्रेसिडेन्ट अवार्ड, चिफ कोर्डिनेटर अवार्ड, जोन चेयरपर्सन अवार्ड, लियो एडभाइजर अवार्ड।</li>
-                <li><strong>अन्तर्राष्ट्रिय सम्मान:</strong> मेम्बरशिप ग्रोथ पिन (२०१०-११, USA), लायन्स क्लब एक्सटेन्सन अवार्ड (२०१२, USA), क्लब प्रेसिडेन्ट एक्सिलेन्स अवार्ड (२०१२-१३, USA), लियो क्लब एक्सटेन्सन Award (२०१४, USA), इन्टरनेशनल लिडरशिप अवार्ड (२०१५, USA), बंगलादेश नेपाल फ्रेन्डशिप सोसाइटीबाट सम्मानित (२०१६)।</li>
+                <li><strong>अन्तर्राष्ट्रिय सम्मान:</strong> मेम्बरशिप ग्रोथ पिन (USA), लायन्स क्लब एक्सटेन्सन अवार्ड (USA), क्लब प्रेसिडेन्ट एक्सिलेन्स अवार्ड (USA), लियो क्लब एक्सटेन्सन Award (USA), इन्टरनेशनल लिडरशिप अवार्ड (USA), बंगलादेश नेपाल फ्रेन्डशिप सोसाइटीबाट सम्मानित (२०१६)।</li>
             </ul>
         </div>
 
         <!-- TAB ३: व्यवसायिक पाटो -->
         <div id="byabasayik" class="tab-content">
-            <h3>Professional Management Profile</h3>
+            <h3>Professional Profile</h3>
             <p style="text-align: justify; margin-bottom: 20px;">
-                <strong>FMCG (Fast-Moving Consumer Goods)</strong> तथा व्यवस्थापनको क्षेत्रमा लामो अनुभव । बहुराष्ट्रिय कम्पनी <strong>युनिलिभर नेपाल लिमिटेड</strong> मा ३० वर्ष भन्दा लामो समय उत्कृष्ट सेवा प्रदान गरेको अनुभव मसँग छ। बजार व्यवस्थापन, ब्रान्डिङ, टिम परिचालन र आधुनिक व्यापारिक रणनीतिको प्रयोग गरी व्यवसायलाई नाफामूलक बनाउनु मेरो मुख्य सबल पक्ष हो।
+                <strong>FMCG (Fast-Moving Consumer Goods)</strong> तथा व्यवस्थापन क्षेत्रमा लामो अनुभव भएको  बहुराष्ट्रिय कम्पनी <strong>युनिलिभर नेपाल लिमिटेडमा ३० वर्ष भन्दा लामो समय</strong> उत्कृष्ट सेवा प्रदान गरेको अनुभव मसँग छ। बजार व्यवस्थापन, ब्रान्डिङ, टिम परिचालन र आधुनिक व्यापारिक रणनीतिको प्रयोग गरी व्यवसायलाई नाफामूलक बनाउनु मेरो मुख्य सबल पक्ष हो।
             </p>
-            <h3>मुख्य व्यावसायिक सिपहरु</h3>
-            <ul>
-                <li>FMCG व्यवसाय संचालन तथा प्रबन्धन रणनीति</li>
-                <li>संस्थागत नेतृत्व र टिम परिचालन (Leadership & Team Management)</li>
-                <li>साहित्यिक, सामाजिक तथा व्यवसायिक पुस्तकहरूको आवरण चित्र तथा प्रतिक चिन्ह (Logo) सिर्जना</li>
-                <li>नेपाल-भारत मैत्री र अन्तर्राष्ट्रिय संस्था लायन्स क्लब मार्फत सामाजिक नेतृत्व</li>
-            </ul>
         </div>
 
         <!-- TAB ४: यात्रा -->
         <div id="yatra" class="tab-content">
             <h3>भ्रमण गरिएका मुख्य स्थानहरू</h3>
-            <p>प्राकृतिक तथा सांस्कृतिक ठाउँहरूको भ्रमण गरिएका मुख्य ठाउँहरूका सुन्दर तस्बिरहरू</p>
+            <div class="gallery-grid">
+                <div class="photo-placeholder">हुम्ला भ्रमण यात्रा</div>
+                <div class="photo-placeholder">चितवन संस्मरण</div>
+            </div>
         </div>
+
     </div>
 
-    <!-- 🌐 FOOTER SECTION (एक्टिभ सामाजिक सम्पर्क लिङ्कहरू र काउन्टर) -->
     <footer>
         <div class="visitor-counter">
             <i class="fa-solid fa-users"></i> कुल भिजिटर संख्या: <span id="count">२९९९९</span>
@@ -140,36 +138,17 @@
             <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             <a href="mailto:info@mdhungana.com.np" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
-        <p>&copy; 2026 मनोज ढुङ्गाना "पागल विश्वास"। सर्वाधिकार सुरक्षित।</p>
+        <p>&copy; 2026 मनोज ढुङ्गाना । सर्वाधिकार सुरक्षित।</p>
     </footer>
 
-    <!-- जाभास्क्रिप्ट (ट्याब र काउन्टर व्यवस्थापन) -->
     <script>
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
+            for (i = 0; i < tabcontent.length; i++) { tabcontent[i].style.display = "none"; }
             tablinks = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
+            for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
         }
 
-        document.addEventListener("DOMContentLoaded", function() {
-            var initialCount = 29999;
-            var currentCount = localStorage.getItem("site_visitors");
-            if (currentCount === null) {
-                currentCount = initialCount + 1;
-            } else {
-                currentCount = parseInt(currentCount) + 1;
-            }
-            localStorage.setItem("site_visitors", currentCount);
-            document.getElementById("count").innerText = currentCount;
-        });
-    </script>
-</body>
-</html>
