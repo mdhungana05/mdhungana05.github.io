@@ -3,18 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manoj Dhungana | Welcome</title>
+    <title>मनोज ढुङ्गाना | आधिकारिक वेबसाइट</title>
+    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f9; padding: 50px; }
-        h1 { color: #333; }
-        p { color: #666; font-size: 18px; }
-        .btn { background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; }
+        nav { background: #1a252f; padding: 15px 0; text-align: center; position: sticky; top: 0; z-index: 100; }
+        nav a { color: #fff; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 18px; transition: 0.3s; }
+        nav a:hover { color: #3498db; }
+        .hero { background: linear-gradient(135deg, #2c3e50, #2980b9); color: white; padding: 60px 20px; text-align: center; }
+        .hero img { width: 200px; height: 200px; border-radius: 50%; border: 5px solid #fff; object-fit: cover; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .hero h1 { font-size: 32px; margin-bottom: 10px; }
+        .hero p { font-style: italic; color: #ecf0f1; font-size: 18px; max-width: 600px; margin: 0 auto 20px; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .main-content, .sidebar { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        h2 { border-bottom: 3px solid #2980b9; padding-bottom: 8px; margin-bottom: 20px; color: #2c3e50; }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .stat-card { background: #eef2f7; padding: 15px; text-align: center; border-radius: 6px; border-left: 4px solid #2980b9; }
+        .stat-card h3 { font-size: 24px; color: #2980b9; }
+        footer { background: #1a252f; color: white; text-align: center; padding: 40px 20px; margin-top: 60px; }
+        .footer-links a { color: #ecf0f1; font-size: 22px; margin: 0 10px; transition: 0.3s; inline-block; }
+        .footer-links a:hover { color: #3498db; transform: translateY(-3px); }
+        .contact-info { margin-bottom: 20px; font-size: 16px; color: #bdc3c7; }
+        .contact-info a { color: #3498db; text-decoration: none; }
+        @media(max-width: 768px) { .container { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-    <h1>यहाँहरुलाई मनोज ढुंगानाको वेबसाइटमा स्वागत छ!</h1>
-    <p>यो वेबसाइट GitHub Pages र Cloudflare मार्फत सफलतापूर्वक होस्ट गरिएको छ।</p>
-    <br><br>
-    <a href="#" class="btn">थप जान्नुहोस्</a>
+
+    <nav>
+        <a href="index.html">गृहपृष्ठ</a>
+        <a href="sahitya.html">साहित्य सिर्जना</a>
+        <a href="experience.html">व्यावसायिक यात्रा</a>
+    </nav>
+
+    <div class="hero">
+        <img src="https://unsplash.com" alt="Manoj Dhungana">
+        <h1>मनोज ढुङ्गाना "पागल विश्वास"</h1>
+        <p>"ऊ पागल अवश्य छ तर विश्वास राख, उसको पागलपनमा सत्यता छ !"</p>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <h2>व्यक्तित्व परिचय</h2>
+            <p style="text-align: justify; margin-bottom: 15px;">
+                साहित्य सिर्जना आмага जस्तै ममतामयी र चण्डी-दुर्गा जस्तै शक्तिशाली प्रकृतिको मिश्रण हो। वि.सं. २०४८ देखि प्रेम मार्गबाट सुरु भएको मेरो यो साहित्यिक यात्रा आज कथा, कविता, उपन्यास, र गजलका रूपमा प्रस्फुटित भएको छ। समय र परिस्थितिको चक्रव्यूहमा कहिले "विश्वास", कहिले "मनु शर्मा", त कहिले "एम डी दि ग्रेट" का नामबाट सिर्जित रचनाहरूलाई एकत्रित गर्ने उद्देश्यका साथ यो वेब-पोर्टल खडा गरिएको हो।
+            </p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>७७ पटक</h3>
+                    <p>नियमित स्वैच्छिक रक्तदान</p>
+                </div>
+                <div class="stat-card">
+                    <h3>३० वर्ष</h3>
+                    <p>Unilever Nepal मा व्यावसायिक अनुभव</p>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <h2>प्रकाशित कृतिहरू</h2>
+            <ul style="list-style-type: square; padding-left: 20px;">
+                <li style="margin-bottom: 10px;"><strong>नारी संघर्ष (२०५०):</strong> पहिलो औपन्यासिक सिर्जना</li>
+                <li style="margin-bottom: 10px;"><strong>म र काठमाडौँ (२०६९):</strong> युवा कथा संग्रह</li>
+                <li style="margin-bottom: 10px;"><strong>हैसियत ३ (२०७३):</strong> संयुक्त गजल संग्रह</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> सम्पर्क: <a href="mailto:info@mdhungana.com.np">info@mdhungana.com.np</a></p>
+        </div>
+        <div class="footer-links">
+            <a href="https://www.facebook.com/manoj.dhungana" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.facebook.com/volunteer.mdhungana/" target="_blank"><i class="fas fa-flag"></i></a>
+            <a href="https://www.facebook.com/MaRaKathamandau/" target="_blank"><i class="fas fa-book-open"></i></a>
+            <a href="https://www.facebook.com/NariSangharsh/" target="_blank"><i class="fas fa-female"></i></a>
+            <a href="https://www.linkedin.com/in/manoj-dhungana-886b2920/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/mdhungana" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p style="margin-top:20px; font-size:13px; color:#7f8c8d;">&copy; 2026 Manoj Dhungana. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
