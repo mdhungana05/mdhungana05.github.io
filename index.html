@@ -11,7 +11,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
         body { background-color: #f4f6f9; color: #333; line-height: 1.6; padding-bottom: 60px; }
         
-        /* Header & Profile Section */
         .header-bg { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); height: 200px; }
         .profile-container { max-width: 1000px; margin: -100px auto 0 auto; padding: 0 20px; text-align: center; }
         .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 5px solid #fff; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.2); background: #fff; }
@@ -65,18 +64,11 @@
     </style>
 </head>
 <body>
-
-    <!-- Top Banner -->
     <div class="header-bg"></div>
-
-    <!-- Profile Header -->
     <div class="profile-container">
-        <!-- यहाँ तपाईँको फोटो 'manoj.jpg' स्वतः लोड हुनेछ -->
         <img src="manoj.jpg" alt="Manoj Dhungana" class="profile-img" onerror="this.src='https://unsplash.com'">
         <h1>मनोज ढुङ्गाना "पागल विश्वास"</h1>
         <div class="tagline">"ऊ पागल अवश्य छ तर विश्वास राख, उसको पागलपनमा सत्यता छ !"</div>
-        
-        <!-- Navigation Menu -->
         <div class="tabs-menu">
             <button class="tab-btn active" onclick="openTab(event, 'parichaya')"><i class="fa-solid rel fa-user"></i>परिचय</button>
             <button class="tab-btn" onclick="openTab(event, 'sahitya')"><i class="fa-solid fa-pen-nib"></i>साहित्य सिर्जना</button>
@@ -85,7 +77,6 @@
         </div>
     </div>
 
-    <!-- Main Content Area -->
     <div class="content-box">
 
         <!-- TAB १: परिचय (About Me) -->
