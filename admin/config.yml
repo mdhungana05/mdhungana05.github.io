@@ -6,13 +6,59 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
+  # १. साहित्य (गजल, कथा, कविता, लेख, मुक्तक Dropdown सहित)
   - name: "sahitya"
     label: "साहित्य"
     folder: "content/sahitya"
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "शीर्षक", name: "title", widget: "string"}
-      - {label: "विधा", name: "category", widget: "select", options: ["गजल", "कथा", "कविता", "लेख", "मुक्तक"]}
-      - {label: "मिति", name: "date", widget: "datetime"}
-      - {label: "पूरा सामाग्री", name: "body", widget: "markdown"}
+      - { label: "शीर्षक (Title)", name: "title", widget: "string" }
+      - { label: "विधा (Category)", name: "category", widget: "select", options: ["गजल", "कथा", "कविता", "लेख", "मुक्तक"] }
+      - { label: "मिति (Date)", name: "date", widget: "datetime" }
+      - { label: "विषयवस्तु (Content)", name: "body", widget: "markdown" }
+
+  # २. भ्रमण (नयाँ ठाउँको फोटो र जानकारी)
+  - name: "bhraman"
+    label: "भ्रमण"
+    folder: "content/bhraman"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "स्थानको नाम (Title)", name: "title", widget: "string" }
+      - { label: "तस्वीर (Photo)", name: "image", widget: "image" }
+      - { label: "मिति (Date)", name: "date", widget: "datetime" }
+      - { label: "विस्तृत विवरण (Details)", name: "body", widget: "markdown" }
+
+  # ३. व्यावसायिक (Professional Updates)
+  - name: "professional"
+    label: "व्यावसायिक"
+    folder: "content/professional"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "शीर्षक", name: "title", widget: "string" }
+      - { label: "मिति", name: "date", widget: "datetime" }
+      - { label: "विवरण", name: "body", widget: "markdown" }
+
+  # ४. परिचय र सम्पर्क (Single Pages)
+  - name: "pages"
+    label: "अन्य पृष्ठहरू (Pages)"
+    files:
+      - file: "content/pages/about.md"
+        label: "परिचय (Full Intro)"
+        name: "about"
+        fields:
+          - { label: "शीर्षक", name: "title", widget: "string", default: "मेरो परिचय" }
+          - { label: "तस्वीर", name: "profile_pic", widget: "image" }
+          - { label: "पूरा परिचय (Description)", name: "body", widget: "markdown" }
+      - file: "content/pages/contact.md"
+        label: "सम्पर्क (Social Links & Contact)"
+        name: "contact"
+        fields:
+          - { label: "शीर्षक", name: "title", widget: "string", default: "सम्पर्क" }
+          - { label: "इमेल (Email)", name: "email", widget: "string" }
+          - { label: "फोन (Phone)", name: "phone", widget: "string" }
+          - { label: "Facebook Link", name: "facebook", widget: "string" }
+          - { label: "LinkedIn Link", name: "linkedin", widget: "string" }
+          - { label: "YouTube / Other Link", name: "youtube", widget: "string" }
