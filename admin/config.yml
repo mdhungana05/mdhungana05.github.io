@@ -1,0 +1,18 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "sahitya"
+    label: "साहित्य"
+    folder: "content/sahitya"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "शीर्षक", name: "title", widget: "string"}
+      - {label: "विधा", name: "category", widget: "select", options: ["गजल", "कथा", "कविता", "लेख", "मुक्तक"]}
+      - {label: "मिति", name: "date", widget: "datetime"}
+      - {label: "पूरा सामाग्री", name: "body", widget: "markdown"}
