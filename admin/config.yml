@@ -6,7 +6,7 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
-  # १. साहित्य (गजल, कथा, कविता, लेख, मुक्तक Dropdown सहित)
+  # १. साहित्य (गजल, कथा, कविता, लेख, मुक्तक छुट्टाछुट्टै सेप्रेसन सहित)
   - name: "sahitya"
     label: "साहित्य"
     folder: "content/sahitya"
@@ -18,17 +18,17 @@ collections:
       - { label: "मिति (Date)", name: "date", widget: "datetime" }
       - { label: "विषयवस्तु (Content)", name: "body", widget: "markdown" }
 
-  # २. भ्रमण (नयाँ ठाउँको फोटो र जानकारी)
-  - name: "bhraman"
-    label: "भ्रमण"
-    folder: "content/bhraman"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "स्थानको नाम (Title)", name: "title", widget: "string" }
-      - { label: "तस्वीर (Photo)", name: "image", widget: "image" }
-      - { label: "मिति (Date)", name: "date", widget: "datetime" }
-      - { label: "विस्तृत विवरण (Details)", name: "body", widget: "markdown" }
+  # २. परिचय (Direct Page)
+  - name: "about"
+    label: "परिचय"
+    files:
+      - file: "content/pages/about.md"
+        label: "परिचय (Full Intro)"
+        name: "about"
+        fields:
+          - { label: "शीर्षक", name: "title", widget: "string", default: "मेरो परिचय" }
+          - { label: "तस्वीर", name: "profile_pic", widget: "image" }
+          - { label: "पूरा परिचय (Description)", name: "body", widget: "markdown" }
 
   # ३. व्यावसायिक (Professional Updates)
   - name: "professional"
@@ -41,19 +41,24 @@ collections:
       - { label: "मिति", name: "date", widget: "datetime" }
       - { label: "विवरण", name: "body", widget: "markdown" }
 
-  # ४. परिचय र सम्पर्क (Single Pages)
-  - name: "pages"
-    label: "अन्य पृष्ठहरू (Pages)"
+  # ४. भ्रमण (Travel)
+  - name: "bhraman"
+    label: "भ्रमण"
+    folder: "content/bhraman"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "स्थानको नाम (Title)", name: "title", widget: "string" }
+      - { label: "तस्वीर (Photo)", name: "image", widget: "image" }
+      - { label: "मिति (Date)", name: "date", widget: "datetime" }
+      - { label: "विस्तृत विवरण (Details)", name: "body", widget: "markdown" }
+
+  # ५. सम्पर्क (Direct Page)
+  - name: "contact"
+    label: "सम्पर्क"
     files:
-      - file: "content/pages/about.md"
-        label: "परिचय (Full Intro)"
-        name: "about"
-        fields:
-          - { label: "शीर्षक", name: "title", widget: "string", default: "मेरो परिचय" }
-          - { label: "तस्वीर", name: "profile_pic", widget: "image" }
-          - { label: "पूरा परिचय (Description)", name: "body", widget: "markdown" }
       - file: "content/pages/contact.md"
-        label: "सम्पर्क (Social Links & Contact)"
+        label: "सम्पर्क विवरण (Contact & Links)"
         name: "contact"
         fields:
           - { label: "शीर्षक", name: "title", widget: "string", default: "सम्पर्क" }
