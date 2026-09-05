@@ -3,48 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>मनोज ढुंगाना "पागल विश्वास" - Profile</title>
+    <title>मनोज ढुंगाना "पागल विश्वास" - Blog & Profile</title>
     <style>
+        :root {
+            --primary: #0366d6;
+            --bg: #f6f8fa;
+            --text: #24292e;
+            --border: #e1e4e8;
+            --card-bg: #ffffff;
+            --footer-bg: #1f2328;
+            --footer-text: #f0f6fc;
+        }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             line-height: 1.6;
-            color: #24292e;
-            background-color: #f6f8fa;
+            color: var(--text);
+            background-color: var(--bg);
             margin: 0;
-            padding: 20px;
+            padding: 20px 0 0 0;
         }
         .container {
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid #e1e4e8;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 0 20px;
         }
-        h1 {
-            color: #0366d6;
-            border-bottom: 2px solid #e1e4e8;
-            padding-bottom: 10px;
+        .profile-card, .section-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin-bottom: 25px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        h1, h2, h3 {
+            color: var(--text);
             margin-top: 0;
         }
+        h1 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
         h2 {
-            color: #24292e;
-            border-bottom: 1px solid #e1e4e8;
-            padding-bottom: 5px;
-            margin-top: 25px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            margin-top: 20px;
         }
-        .info-grid {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 15px;
-            margin-bottom: 20px;
+            margin: 15px 0;
         }
-        .info-card {
+        .grid-item {
             background: #f1f8ff;
-            padding: 12px 15px;
+            padding: 12px;
             border-radius: 6px;
-            border-left: 4px solid #0366d6;
+            border-left: 4px solid var(--primary);
+        }
+        .badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+        .cat-badge {
+            background: #6f42c1;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+        .post-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .post-card {
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 15px;
+            background: #fff;
+            transition: transform 0.2s;
+        }
+        .post-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            font-size: 0.85em;
+            color: #586069;
+            margin-top: 8px;
         }
         ul {
             padding-left: 20px;
@@ -52,71 +105,260 @@
         li {
             margin-bottom: 8px;
         }
-        .badge {
-            background-color: #28a745;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.85em;
-        }
-        .contact-info a {
-            color: #0366d6;
+        a {
+            color: var(--primary);
             text-decoration: none;
         }
-        .contact-info a:hover {
+        a:hover {
             text-decoration: underline;
+        }
+        
+        /* Footer Styling */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 40px 20px 20px 20px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+        .footer-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        .footer-section h3 {
+            color: #58a6ff;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        .footer-section a {
+            color: #8b949e;
+            transition: color 0.2s;
+        }
+        .footer-section a:hover {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+        .visitor-counter {
+            background-color: #21262d;
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-top: 10px;
+            border: 1px solid #30363d;
+        }
+        .visitor-count {
+            font-weight: bold;
+            color: #3fb950;
+            font-size: 1.1em;
+        }
+        .footer-bottom {
+            max-width: 900px;
+            margin: 30px auto 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid #30363d;
+            text-align: center;
+            color: #8b949e;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>मनोज ढुंगाना "पागल विश्वास"</h1>
-    <p><strong>अन्य नामहरू:</strong> विश्वास, मनु शर्मा, एम डी दि ग्रेट[cite: 1]</p>
 
-    <h2>व्यक्तिगत विवरण</h2>
-    <div class="info-grid">
-        <div class="info-card">
-            <strong>जन्म मिति:</strong> २०३१ बैशाख २६ (९ मई १९७४)[cite: 1]
+    <!-- Profile Header -->
+    <div class="profile-card">
+        <h1>मनोज ढुंगाना "पागल विश्वास"</h1>
+        <p><strong>उपनाम:</strong> विश्वास, मनु शर्मा, एम डी दि ग्रेट</p>
+        
+        <h2>व्यक्तिगत परिचय</h2>
+        <div class="grid">
+            <div class="grid-item"><strong>जन्म मिति:</strong> २०३१ बैशाख २६ (९ मई १९७४)</div>
+            <div class="grid-item"><strong>जन्मस्थान:</strong> हेटौडा अस्पताल, मकवानपुर</div>
+            <div class="grid-item"><strong>माता/पिता:</strong> स्व. राधादेवी / स्व. कृष्णप्रसाद ढुङ्गाना</div>
+            <div class="grid-item"><strong>ठेगाना:</strong> मनोरस वाटिका, हेटौडा-४</div>
         </div>
-        <div class="info-card">
-            <strong>जन्मस्थान:</strong> हेटौडा अस्पताल, मकवानपुर[cite: 1]
-        </div>
-        <div class="info-card">
-            <strong>माता/पिता:</strong> स्व. राधादेवी / स्व. कृष्णप्रसाद ढुङ्गाना[cite: 1]
-        </div>
-        <div class="info-card">
-            <strong>ठेगाना:</strong> मनोरस वाटिका, श्रद्धानगर, हेटौडा-४[cite: 1]
+
+        <h2>पेशा तथा सामाजिक सेवा</h2>
+        <ul>
+            <li><strong>पेशा:</strong> युनिलिभर नेपाल लि. मा १५ वर्षभन्दा बढी सेवा</li>
+            <li><strong>संस्थापक अध्यक्ष:</strong> हेटौडा बजार लायन्स क्लब</li>
+            <li><strong>रक्तदान:</strong> ७७ औं पटकसम्म रक्तदान <span class="badge">Donor</span></li>
+            <li><strong>सम्मान:</strong> लायन्स क्लब्स इन्टरनेशनल (USA) बाट विभिन्न अन्तराष्ट्रिय सम्मान</li>
+        </ul>
+
+        <h2>प्रकाशित कृतिहरू & स्तम्भ</h2>
+        <ul>
+            <li><strong>उपन्यास:</strong> नारी संघर्ष (२०५०)</li>
+            <li><strong>कथा संग्रह:</strong> म र काठमाडौँ (२०६९)</li>
+            <li><strong>गजल संग्रह:</strong> हैसियत ३ (२०७३)</li>
+            <li><strong>स्तम्भ:</strong> "पागलपनको विश्लेषण" (नमस्कार दैनिक) र "फ्राइडे कर्नर" (समृद्ध समाज दैनिक)</li>
+        </ul>
+    </div>
+
+    <!-- Blog Posts Section -->
+    <div class="section-card">
+        <h2>लेख तथा रचनाहरू (Posts)</h2>
+        <div class="post-list">
+
+            <div class="post-card">
+                <span class="cat-badge">Sahitiya</span>
+                <h3>उपहार</h3>
+                <p>गजल रचना</p>
+                <div class="post-meta">📅 २०८१ फागुन ०३</div>
+            </div>
+
+            <div class="post-card">
+                <span class="cat-badge">Sahitiya</span>
+                <h3>आज भोलि मधुसाला</h3>
+                <p>मधुसाला र जीवन दर्शनमा आधारित कविता</p>
+                <div class="post-meta">📅 २०८१ फागुन ०३</div>
+            </div>
+
+            <div class="post-card">
+                <span class="cat-badge">Sahitiya</span>
+                <h3>मान्छे</h3>
+                <p>मानवीय स्वभाव र प्रवृत्तिको चित्रण गरिएको कविता</p>
+                <div class="post-meta">📅 २०८१ फागुन ०३</div>
+            </div>
+
+            <div class="post-card">
+                <span class="cat-badge">Sahitiya</span>
+                <h3>मेराे देश</h3>
+                <p>देशभक्ति र राष्ट्रिय भाव व्यक्त गरिएको कविता</p>
+                <div class="post-meta">📅 २०८१ फागुन ०३</div>
+            </div>
+
+            <div class="post-card">
+                <span class="cat-badge">Sahitiya</span>
+                <h3>सुहाग रात</h3>
+                <p>सामाजिक तथा व्यक्तिगत विषयवस्तुमा आधारित कथा</p>
+                <div class="post-meta">📅 २०८१ फागुन ०३</div>
+            </div>
+
+            <div class="post-card">
+                <span class="cat-badge">Samaj</span>
+                <h3>मादक शुक्रवार</h3>
+                <p>समाज र शुक्रवारीय जीवनशैलीमाथिको संस्मरण/निबन्ध</p>
+                <div class="post-meta">📅 २०८१ फागुन ०३</div>
+            </div>
+
+            <div class="post-card">
+                <span class="cat-badge">Samaj</span>
+                <h3>अम्रिकने माया</h3>
+                <p>आधुनिक सम्बन्ध र देखावटी मायामाथिको सामाजिक व्यङ्ग्य</p>
+                <div class="post-meta">📅 २०८१ फागुन ०३</div>
+            </div>
+
+            <div class="post-card">
+                <span class="cat-badge">Sahitiya</span>
+                <h3>जन्मदिन</h3>
+                <p>जन्मदिनको अवसर र जीवनको यात्रामा आधारित रचना</p>
+                <div class="post-meta">📅 २०८१ फागुन ०३</div>
+            </div>
+
+            <div class="post-card">
+                <span class="cat-badge">Social Responsibility</span>
+                <h3>गुनी मान्छे</h3>
+                <p>समाजप्रति उत्तरदायी र गुणी व्यक्तिहरूको महत्त्वबारे लेख</p>
+                <div class="post-meta">📅 २०८१ फागुन ०३</div>
+            </div>
+
+            <div class="post-card">
+                <span class="cat-badge">Bharaman</span>
+                <h3>हेटौंडा देखि पोखरा सम्म</h3>
+                <p>यात्राको अनुभव र यात्रा संस्मरण</p>
+                <div class="post-meta">📅 २०८१ फागुन ०४</div>
+            </div>
+
+            <div class="post-card">
+                <span class="cat-badge">Bharaman</span>
+                <h3>काठमाडौँको अनुभव</h3>
+                <p>काठमाडौँ शहर र त्यहाँका अनुभवहरूबारे संस्मरण</p>
+                <div class="post-meta">📅 २०८१ फागुन ०४</div>
+            </div>
+
+            <div class="post-card">
+                <span class="cat-badge">Social Responsibility</span>
+                <h3>समाज र हामी</h3>
+                <p>सामाजिक दायित्व र नागरिक भूमिकामा आधारित लेख</p>
+                <div class="post-meta">📅 २०८१ फागुन ०४</div>
+            </div>
+
+            <div class="post-card">
+                <span class="cat-badge">Social Responsibility</span>
+                <h3>रक्तदानको महत्व</h3>
+                <p>रक्तदानको महत्त्व र जीवनदान सम्बन्धी चेतनामूलक सामग्री</p>
+                <div class="post-meta">📅 २०८१ फागुन ०४</div>
+            </div>
+
         </div>
     </div>
 
-    <h2>पेशा तथा सामाजिक सेवा</h2>
-    <ul>
-        <li><strong>पेशा:</strong> युनिलिभर नेपाल लि. मा ३० वर्षभन्दा बढी सेवा[cite: 1]</li>
-        <li><strong>सामाजिक कार्य:</strong> संस्थापक अध्यक्ष - हेटौडा बजार लायन्स क्लब[cite: 1]</li>
-        <li><strong>रक्तदान:</strong> नियमित रक्तदाता ( ८२ औं पटकसम्म रक्तदान) <span class="badge">Donor</span>[cite: 1]</li>
-        <li><strong>सम्मान:</strong> लायन्स क्लब्स इन्टरनेशनल (USA) बाट विभिन्न अन्तराष्ट्रिय लिडरशिप तथा प्रेसिडेन्ट एक्सिलेन्स अवार्ड[cite: 1]</li>
-    </ul>
-
-    <h2>प्रकाशित कृतिहरू</h2>
-    <ul>
-        <li><strong>नारी संघर्ष</strong> - उपन्यास (२०५०)[cite: 1]</li>
-        <li><strong>म र काठमाडौँ</strong> - कथा संग्रह (२०६९)[cite: 1]</li>
-        <li><strong>हैसियत ३</strong> - संयुक्त गजल संग्रह (२०७३)[cite: 1]</li>
-    </ul>
-
-    <h2>पत्रकारिता तथा स्तम्भकार</h2>
-    <ul>
-        <li>"पागलपनको विश्लेषण" - <em>नमस्कार दैनिक</em>[cite: 1]</li>
-        <li>"फ्राइडे कर्नर" - <em>समृद्ध समाज दैनिक</em>[cite: 1]</li>
-    </ul>
-
-    <h2>सम्पर्क</h2>
-    <p class="contact-info">
-        📧 <strong>ईमेल:</strong> <a href="mailto:mdhungana05@gmail.com">mdhungana05@gmail.com</a>[cite: 1]<br>
-        📞 <strong>फोन:</strong> ९८५५०६८५५४[cite: 1]
-    </p>
 </div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <!-- Contact & Social Links -->
+        <div class="footer-section">
+            <h3>सम्पर्क र सामाजिक सञ्जाल</h3>
+            <ul>
+                <li>📧 <strong>Contact:</strong> <a href="mailto:info@mdhungana.com.np">info@mdhungana.com.np</a></li>
+                <li>📘 <strong>Facebook Profile:</strong> <a href="https://www.facebook.com/manoj.dhungana" target="_blank">manoj.dhungana</a></li>
+                <li>🚩 <strong>Facebook Page:</strong> <a href="https://www.facebook.com/volunteer.mdhungana/" target="_blank">volunteer.mdhungana</a></li>
+                <li>💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/manoj-dhungana-886b2920/" target="_blank">Manoj Dhungana</a></li>
+                <li>🐦 <strong>Twitter (X):</strong> <a href="https://x.com/mdhungana" target="_blank">@mdhungana</a></li>
+            </ul>
+        </div>
+
+        <!-- Books & Visitor Counter -->
+        <div class="footer-section">
+            <h3>प्रकाशित पुस्तकहरू</h3>
+            <ul>
+                <li>📚 <strong>1st Book:</strong> <a href="https://www.facebook.com/NariSangharsh/" target="_blank">नारी संघर्ष (Nari Sangharsh)</a></li>
+                <li>📚 <strong>2nd Book:</strong> <a href="https://www.facebook.com/MaRaKathamandau/" target="_blank">म र काठमाडौँ (Ma Ra Kathamandau)</a></li>
+            </ul>
+
+            <h3>Visitor Counter</h3>
+            <div class="visitor-counter">
+                👁️ Number of Visitors: <span id="visitor-count" class="visitor-count">36009</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        &copy; 2026 mdhungana.com.np | All Rights Reserved
+    </div>
+</footer>
+
+<script>
+    // Visitor counter logic (increments by 1 on every page load/refresh)
+    (function() {
+        const baseCount = 36009;
+        let visits = localStorage.getItem('site_visits');
+        if (!visits) {
+            visits = 0;
+        }
+        visits = parseInt(visits) + 1;
+        localStorage.setItem('site_visits', visits);
+        
+        // Calculate total count
+        const totalCount = baseCount + visits - 1; 
+        document.getElementById('visitor-count').textContent = totalCount;
+    })();
+</script>
 
 </body>
 </html>
