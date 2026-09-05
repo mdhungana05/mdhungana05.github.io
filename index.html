@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>मनोज ढुंगाना "पागल विश्वास" - Blog & Profile</title>
+    <title>मनोज ढुङ्गाना - Blog & Profile</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Mukta:wght@500;700;800&display=swap');
+
         :root {
             --primary: #0366d6;
             --text: #24292e;
@@ -15,7 +17,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Mukta', 'Segoe UI', Tahoma, sans-serif;
             line-height: 1.6;
             color: var(--text);
             margin: 0;
@@ -23,57 +25,79 @@
             background-color: #f4f6f8;
         }
 
-        /* Top Decorative Name Header */
+        /* Top Hero Section */
         .top-hero-header {
-            background: linear-gradient(135deg, #0d3b66 0%, #001220 100%);
+            background: linear-gradient(135deg, #091e36 0%, #0f172a 100%);
             color: #ffffff;
             text-align: center;
             padding: 25px 15px 15px 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
+        /* Multi-color Text Texture for Nepali Name */
         .decorative-name-np {
-            font-size: 2.2em;
+            font-size: 2.5em;
             font-weight: 800;
             margin: 0;
-            background: linear-gradient(45deg, #f4d35e, #ee9b00, #ffffff);
+            background: linear-gradient(90deg, #ff4e50, #f9d423, #00c9ff, #92fe9d, #ff4e50);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 10px rgba(238, 155, 0, 0.3);
+            animation: rainbowGradient 6s ease infinite;
             letter-spacing: 1px;
         }
 
+        @keyframes rainbowGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Decorative Styling for English Name */
         .decorative-name-en {
-            font-size: 1.2em;
-            font-weight: 600;
-            margin-top: 5px;
-            color: #e0e1dd;
-            letter-spacing: 2px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.25em;
+            font-weight: 800;
+            margin-top: 4px;
+            color: #e2e8f0;
+            letter-spacing: 4px;
             text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
-        /* Live Date & Time Bar */
+        /* Live Dual Date (A.D. & B.S.) Bar */
         .date-time-bar {
-            font-size: 0.85em;
-            color: #a8dadc;
-            margin-top: 10px;
-            padding-top: 8px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: inline-block;
+            font-size: 0.9em;
+            color: #cbd5e1;
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        /* Navigation Header */
+        .date-box {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 3px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Navigation Bar */
         header {
             background: #ffffff;
             border-bottom: 2px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
         .nav-container {
-            max-width: 950px;
+            max-width: 1000px;
             margin: 0 auto;
             display: flex;
             justify-content: center;
@@ -96,18 +120,18 @@
 
         .nav-menu a {
             display: block;
-            padding: 12px 14px;
+            padding: 12px 13px;
             color: var(--text);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.95em;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
         }
 
         .nav-menu a:hover, .nav-menu a.active {
-            color: #ee9b00;
-            background-color: #f8f9fa;
+            color: #d97706;
+            background-color: #f8fafc;
         }
 
         /* Dropdown Menu */
@@ -117,8 +141,8 @@
             top: 100%;
             left: 0;
             background: #ffffff;
-            min-width: 130px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            min-width: 150px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
             border: 1px solid var(--border);
             border-radius: 0 0 6px 6px;
             list-style: none;
@@ -132,37 +156,35 @@
         .dropdown-menu a {
             padding: 8px 15px;
             color: var(--text);
+            font-size: 0.9em;
         }
 
         .dropdown-menu a:hover {
-            background: #eef2f5;
+            background: #f1f5f9;
+            color: #d97706;
         }
 
-        /* Layout Container */
+        /* Layout Container & Tab Background Colors */
         .container {
-            max-width: 950px;
+            max-width: 980px;
             margin: 0 auto;
             padding: 20px;
             min-height: 70vh;
         }
 
-        /* TAB SPECIFIC BACKGROUND COLORS */
         #home.active { background: linear-gradient(to bottom, #f0f7ff, #ffffff); border-radius: 12px; padding: 15px; }
         #about.active { background: linear-gradient(to bottom, #fdfbf7, #ffffff); border-radius: 12px; padding: 15px; }
         #sahitya.active { background: linear-gradient(to bottom, #f5f0ff, #ffffff); border-radius: 12px; padding: 15px; }
+        #kala.active { background: linear-gradient(to bottom, #fff7ed, #ffffff); border-radius: 12px; padding: 15px; }
         #professional.active { background: linear-gradient(to bottom, #f0fff4, #ffffff); border-radius: 12px; padding: 15px; }
         #bhraman.active { background: linear-gradient(to bottom, #fff0f5, #ffffff); border-radius: 12px; padding: 15px; }
+        #share.active { background: linear-gradient(to bottom, #f0fdf4, #ffffff); border-radius: 12px; padding: 15px; }
         #contact.active { background: linear-gradient(to bottom, #f0fcfd, #ffffff); border-radius: 12px; padding: 15px; }
 
-        .tab-content {
-            display: none;
-        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
 
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Welcome Section (Split Left / Right) */
+        /* Welcome Section */
         .welcome-section {
             display: flex;
             align-items: center;
@@ -171,51 +193,37 @@
             background: #ffffff;
             padding: 25px;
             border-radius: 12px;
-            border: 1px solid #e1e8ed;
+            border: 1px solid #e2e8f0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             margin-bottom: 25px;
         }
 
-        .welcome-text {
-            flex: 1;
-        }
-
+        .welcome-text { flex: 1; }
         .welcome-text h2 {
-            color: #0d3b66;
-            font-size: 1.8em;
+            color: #0f172a;
+            font-size: 1.7em;
             margin-top: 0;
-            border-bottom: 2px solid #ee9b00;
+            border-bottom: 3px solid #d97706;
             display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        .welcome-text p {
-            font-size: 1.05em;
-            color: #4a5568;
-            line-height: 1.7;
-        }
-
-        .welcome-photo {
-            flex-shrink: 0;
-            text-align: center;
+            padding-bottom: 4px;
         }
 
         .welcome-photo img {
-            width: 170px;
-            height: 170px;
+            width: 175px;
+            height: 175px;
             object-fit: cover;
             border-radius: 50%;
-            border: 4px solid #ee9b00;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border: 4px solid #d97706;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
-        /* Recent Updates Grid */
+        /* Recent Posts */
         .section-title {
-            color: #0d3b66;
+            color: #0f172a;
             border-bottom: 2px solid var(--border);
             padding-bottom: 8px;
             margin-bottom: 20px;
-            font-size: 1.4em;
+            font-size: 1.35em;
         }
 
         .recent-posts-grid {
@@ -229,8 +237,7 @@
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: all 0.25s ease;
             text-decoration: none;
             color: inherit;
             display: block;
@@ -239,11 +246,11 @@
         .recent-post-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-            border-color: #ee9b00;
+            border-color: #d97706;
         }
 
         .cat-tag {
-            background: #ee9b00;
+            background: #d97706;
             color: #ffffff;
             font-size: 0.75em;
             padding: 2px 8px;
@@ -253,18 +260,18 @@
 
         .recent-post-card h4 {
             margin: 10px 0 5px 0;
-            color: #0d3b66;
+            color: #0f172a;
         }
 
         .recent-post-card p {
             font-size: 0.88em;
-            color: #718096;
+            color: #64748b;
             margin: 0;
         }
 
         .post-date {
             font-size: 0.75em;
-            color: #a0aec0;
+            color: #94a3b8;
             margin-top: 8px;
         }
 
@@ -272,12 +279,12 @@
         footer {
             background-color: var(--footer-bg);
             color: var(--footer-text);
-            padding: 30px 20px 15px 20px;
+            padding: 25px 20px 15px 20px;
             margin-top: 40px;
         }
 
         .footer-container {
-            max-width: 950px;
+            max-width: 980px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -294,31 +301,34 @@
             color: #8b949e;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 650px) {
             .welcome-section {
                 flex-direction: column-reverse;
                 text-align: center;
             }
-            .decorative-name-np { font-size: 1.7em; }
+            .decorative-name-np { font-size: 1.9em; }
         }
     </style>
 </head>
 <body>
 
-<!-- Top Decorative Header with Name and Clock -->
+<!-- Top Hero Header -->
 <div class="top-hero-header">
-    <div class="decorative-name-np">मनोज ढुंगाना "पागल विश्वास"</div>
+    <div class="decorative-name-np">मनोज ढुङ्गाना</div>
     <div class="decorative-name-en">Manoj Dhungana</div>
-    <div class="date-time-bar" id="live-clock">
-        लोड हुँदैछ...
+    
+    <div class="date-time-bar">
+        <div class="date-box">📅 <strong>B.S.:</strong> <span id="bs-date">२०८३ भाद्र २१</span></div>
+        <div class="date-box">🗓️ <strong>A.D.:</strong> <span id="ad-date">Sep 06, 2026</span></div>
+        <div class="date-box">⏰ <span id="live-clock">--:--:--</span></div>
     </div>
 </div>
 
-<!-- Navigation Header -->
+<!-- Dynamic Navigation Tabs -->
 <header>
     <div class="nav-container">
         <ul class="nav-menu">
-            <li><a onclick="showTab('home')" id="btn-home" class="active">गृह पृष्ठ</a></li>
+            <li><a onclick="showTab('home')" id="btn-home" class="active">गृहपृष्ठ</a></li>
             <li><a onclick="showTab('about')" id="btn-about">परिचय</a></li>
             
             <li class="dropdown">
@@ -329,11 +339,15 @@
                     <li><a onclick="filterSahitya('कविता')">कविता</a></li>
                     <li><a onclick="filterSahitya('लेख')">लेख</a></li>
                     <li><a onclick="filterSahitya('मुक्तक')">मुक्तक</a></li>
+                    <li><a onclick="filterSahitya('यात्रा संस्मरण')">यात्रा संस्मरण</a></li>
+                    <li><a onclick="filterSahitya('समीक्षा')">समीक्षा</a></li>
                 </ul>
             </li>
 
+            <li><a onclick="showTab('kala')" id="btn-kala">कला</a></li>
             <li><a onclick="showTab('professional')" id="btn-professional">व्यावसायिक</a></li>
             <li><a onclick="showTab('bhraman')" id="btn-bhraman">भ्रमण</a></li>
+            <li><a onclick="showTab('share')" id="btn-share">शेयर बजार</a></li>
             <li><a onclick="showTab('contact')" id="btn-contact">सम्पर्क</a></li>
         </ul>
     </div>
@@ -341,23 +355,20 @@
 
 <div class="container">
 
-    <!-- १. गृह पृष्ठ (Home Tab) -->
+    <!-- १. गृहपृष्ठ (Home Tab) -->
     <div id="home" class="tab-content active">
-        
-        <!-- Swagat & Photo Section -->
         <div class="welcome-section">
             <div class="welcome-text">
                 <h2>यहाँलाई मेरो वेबसाइटमा हार्दिक स्वागत छ !</h2>
                 <p>
-                    नमस्ते! मेरा साहित्य सिर्जना, सामाजिक सेवा तथा जीवनका अनुभव र भावनाहरूलाई यहाँहरू माझ बाँड्ने उद्देश्यले यो डिजिटल मञ्च तयार पारेको छु, पढेर प्रतिकृया दिनुहोला । 
+                    नमस्ते! म मनोज ढुङ्गाना। मेरो यो व्यक्तिगत डिजिटल चौतारीमा स्वागत छ। यहाँ मेरा साहित्यिक सिर्जनाहरू, कला, शेयर बजार सम्बन्धी अनुभव, व्यावसायिक यात्रा तथा जीवनका विविध पक्षहरू समेटिएका छन्।
                 </p>
             </div>
             <div class="welcome-photo">
-                <img src="/images/profile.jpg" alt="Manoj Dhungana Namaste" onerror="this.src='https://via.placeholder.com/170?text=Namaste+Photo'">
+                <img src="/images/profile.jpg" alt="Manoj Dhungana Namaste" onerror="this.src='https://via.placeholder.com/175?text=Namaste+Photo'">
             </div>
         </div>
 
-        <!-- Recent 6 Posts Section -->
         <div class="section-card">
             <h3 class="section-title">ताजा अपडेट (Recent Updates)</h3>
             <div class="recent-posts-grid">
@@ -366,76 +377,86 @@
                     <span class="cat-tag">गजल</span>
                     <h4>उपहार</h4>
                     <p>गजल रचना र जीवन भावना...</p>
-                    <div class="post-date">📅 २०८१ फागुन ०३</div>
+                    <div class="post-date">📅 २०८३ भाद्र २०</div>
                 </a>
 
                 <a href="#" onclick="showTab('sahitya')" class="recent-post-card">
-                    <span class="cat-tag">कविता</span>
-                    <h4>आज भोलि मधुसाला</h4>
-                    <p>मधुसाला र जीवन दर्शनमा आधारित...</p>
-                    <div class="post-date">📅 २०८१ फागुन ०३</div>
+                    <span class="cat-tag">यात्रा संस्मरण</span>
+                    <h4>पोखराको सिरानमा</h4>
+                    <p>यात्रा र प्राकृतिक दृश्यको बयान...</p>
+                    <div class="post-date">📅 २०८३ भाद्र १५</div>
+                </a>
+
+                <a href="#" onclick="showTab('share')" class="recent-post-card">
+                    <span class="cat-tag">शेयर बजार</span>
+                    <h4>बजारको वर्तमान दिशा</h4>
+                    <p>शेयर बजार र लगानी रणनीति...</p>
+                    <div class="post-date">📅 २०८३ भाद्र १०</div>
+                </a>
+
+                <a href="#" onclick="showTab('kala')" class="recent-post-card">
+                    <span class="cat-tag">कला</span>
+                    <h4>डिजिटल सिर्जनाहरू</h4>
+                    <p>कला र रचनात्मक प्रस्तुति...</p>
+                    <div class="post-date">📅 २०८३ भाद्र ०५</div>
                 </a>
 
                 <a href="#" onclick="showTab('sahitya')" class="recent-post-card">
-                    <span class="cat-tag">कथा</span>
-                    <h4>सुहाग रात</h4>
-                    <p>सामाजिक परिवेशमा आधारित कथा...</p>
-                    <div class="post-date">📅 २०८१ फागुन ०३</div>
-                </a>
-
-                <a href="#" onclick="showTab('bhraman')" class="recent-post-card">
-                    <span class="cat-tag">भ्रमण</span>
-                    <h4>हेटौंडा देखि पोखरा सम्म</h4>
-                    <p>यात्राको मनमोहक अनुभव र संस्मरण...</p>
-                    <div class="post-date">📅 २०८१ फागुन ०४</div>
+                    <span class="cat-tag">समीक्षा</span>
+                    <h4>समसामयिक साहित्य समीक्षा</h4>
+                    <p>पुस्तक तथा रचना माथिको दृष्टि...</p>
+                    <div class="post-date">📅 २०८३ भाद्र ०१</div>
                 </a>
 
                 <a href="#" onclick="showTab('professional')" class="recent-post-card">
                     <span class="cat-tag">व्यावसायिक</span>
-                    <h4>रक्तदानको महत्व</h4>
-                    <p>८२ औं पटकको रक्तदान अनुभव...</p>
-                    <div class="post-date">📅 २०८१ फागुन ०४</div>
-                </a>
-
-                <a href="#" onclick="showTab('sahitya')" class="recent-post-card">
-                    <span class="cat-tag">लेख</span>
-                    <h4>मादक शुक्रवार</h4>
-                    <p>शुक्रवारीय जीवनशैलीमाथिको संस्मरण...</p>
-                    <div class="post-date">📅 २०८१ फागुन ०३</div>
+                    <h4>सामाजिक उत्तरदायित्व</h4>
+                    <p>८२ औं रक्तदान अनुभव र विचार...</p>
+                    <div class="post-date">📅 २०८३ साउन २५</div>
                 </a>
 
             </div>
         </div>
-
     </div>
 
-    <!-- २. परिचय (About Tab) -->
+    <!-- २. परिचय -->
     <div id="about" class="tab-content">
         <h2>व्यक्तिगत परिचय</h2>
-        <p><strong>उपनाम:</strong> विश्वास, मनु शर्मा, एम डी दि ग्रेट</p>
-        <p><strong>जन्म मिति:</strong> २०३१ बैशाख २६ (९ मई १९७४)</p>
-        <p><strong>ठेगाना:</strong> मनोरस वाटिका, हेटौडा-४</p>
+        <p><strong>उपनाम:</strong> पागल विश्वास, मनु शर्मा, एम डी दि ग्रेट</p>
+        <p><strong>ठेगाना:</strong> मनोरस वाटिका, हेटौँडा-४</p>
     </div>
 
-    <!-- ३. साहित्य (Sahitya Tab) -->
+    <!-- ३. साहित्य -->
     <div id="sahitya" class="tab-content">
         <h2 id="sahitya-title">साहित्यिक रचनाहरू</h2>
-        <p>यहाँ साहित्यका सबै विधाका पोष्टहरू देखिनेछन्।</p>
+        <p>गजल, कथा, कविता, लेख, मुक्तक, यात्रा संस्मरण तथा समीक्षा यहाँ समावेश गरिनेछन्।</p>
     </div>
 
-    <!-- ४. व्यावसायिक (Professional Tab) -->
+    <!-- ४. कला -->
+    <div id="kala" class="tab-content">
+        <h2>कला तथा सिर्जना</h2>
+        <p>विभिन्न कलात्मक डिजिटल प्रस्तुति तथा सिर्जनाहरू।</p>
+    </div>
+
+    <!-- ५. व्यावसायिक -->
     <div id="professional" class="tab-content">
-        <h2>व्यावसायिक अनुभव</h2>
-        <p>युनिलिभर नेपाल लि. मा ३० वर्षभन्दा बढीको सेवा तथा सामाजिक योगदान।</p>
+        <h2>व्यावसायिक यात्रा</h2>
+        <p>युनिलिभर नेपाल लि. मा ३० वर्षभन्दा बढीको सेवा तथा लायन्स क्लब सामाजिक योगदान।</p>
     </div>
 
-    <!-- ५. भ्रमण (Bhraman Tab) -->
+    <!-- ६. भ्रमण -->
     <div id="bhraman" class="tab-content">
-        <h2>भ्रमण तथा यात्रा संस्मरण</h2>
-        <p>देश विदेशका भ्रमण अनुभव र तस्वीरहरू।</p>
+        <h2>भ्रमण तथा अनुभव</h2>
+        <p>विभिन्न स्थानका भ्रमण संस्मरण तथा अनुभव।</p>
     </div>
 
-    <!-- ६. सम्पर्क (Contact Tab) -->
+    <!-- ७. शेयर बजार -->
+    <div id="share" class="tab-content">
+        <h2>शेयर बजार विश्लेषण</h2>
+        <p>नेपाली शेयर बजार, लगानी तथा वित्तीय साक्षरता सम्बन्धी विचार र विश्लेषण।</p>
+    </div>
+
+    <!-- ८. सम्पर्क -->
     <div id="contact" class="tab-content">
         <h2>सम्पर्क विवरण</h2>
         <p>📧 इमेल: info@mdhungana.com.np</p>
@@ -447,8 +468,8 @@
 <footer>
     <div class="footer-container">
         <div>
-            <strong>मनोज ढुंगाना "पागल विश्वास"</strong>
-            <p style="font-size: 0.85em; color: #a0aec0;">mdhungana.com.np</p>
+            <strong>मनोज ढुङ्गाना</strong>
+            <p style="font-size: 0.85em; color: #a0aec0; margin: 0;">mdhungana.com.np</p>
         </div>
         <div>
             👁️ Visitors: <span style="color: #3fb950; font-weight: bold;">36009</span>
@@ -460,7 +481,6 @@
 </footer>
 
 <script>
-    // Tab switching with dynamic background color change
     function showTab(tabId) {
         const contents = document.querySelectorAll('.tab-content');
         contents.forEach(c => c.classList.remove('active'));
@@ -479,23 +499,21 @@
         document.getElementById('sahitya-title').textContent = 'साहित्य: ' + cat;
     }
 
-    // Live Date and Time Script (BS & AD)
-    function updateDateTime() {
+    // Dynamic Live Clock & Date Update
+    function updateClock() {
         const now = new Date();
         
-        // AD Date & Time
-        const adOptions = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-        const adString = now.toLocaleDateString('en-US', adOptions);
+        // Live Time Format
+        const timeString = now.toLocaleTimeString('en-US');
+        document.getElementById('live-clock').textContent = timeString;
 
-        // Simple BS Date Calculation (Approx)
-        const npMonths = ["वैशाख", "ज्येष्ठ", "आषाढ", "श्रावण", "भाद्र", "आश्विन", "कार्तिक", "मंसिर", "पौष", "माघ", "फाल्गुन", "चैत्र"];
-        
-        document.getElementById('live-clock').innerHTML = 
-            `📅 <strong>A.D.:</strong> ${adString} &nbsp;|&nbsp; ⏱️ <strong>Dynamic Clock Active</strong>`;
+        // Dynamic AD Date
+        const adOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+        document.getElementById('ad-date').textContent = now.toLocaleDateString('en-US', adOptions);
     }
 
-    setInterval(updateDateTime, 1000);
-    updateDateTime();
+    setInterval(updateClock, 1000);
+    updateClock();
 </script>
 
 </body>
