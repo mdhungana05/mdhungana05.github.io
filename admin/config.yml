@@ -6,6 +6,19 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
+# ०. गृह पृष्ठ (Home Page Settings)
+  - name: "home"
+    label: "गृह पृष्ठ"
+    files:
+      - file: "content/pages/home.md"
+        label: "गृह पृष्ठ विवरण"
+        name: "home"
+        fields:
+          - { label: "मुख्य शीर्षक (Hero Title)", name: "hero_title", widget: "string", default: "नमस्कार, म मनोज ढुङ्गाना" }
+          - { label: "उप-शीर्षक (Sub Title / Tagline)", name: "hero_subtitle", widget: "string", default: "मेरो व्यक्तिगत ब्लग तथा साहित्य संगालो" }
+          - { label: "मुख्य तस्वीर (Banner Image)", name: "banner_image", widget: "image" }
+          - { label: "स्वागत सन्देश (Welcome Message)", name: "body", widget: "markdown" }
+          
   # १. साहित्य (गजल, कथा, कविता, लेख, मुक्तक छुट्टाछुट्टै सेप्रेसन सहित)
   - name: "sahitya"
     label: "साहित्य"
@@ -27,7 +40,7 @@ collections:
         name: "about"
         fields:
           - { label: "शीर्षक", name: "title", widget: "string", default: "मेरो परिचय" }
-          - { label: "तस्वीर", name: "profile_pic", widget: "image" }
+          - { label: "तस्वीर", name: "profile_pic", widget: "manoj.jpg" }
           - { label: "पूरा परिचय (Description)", name: "body", widget: "markdown" }
 
   # ३. व्यावसायिक (Professional Updates)
