@@ -454,6 +454,157 @@
     <div id="share" class="tab-content">
         <h2>शेयर बजार विश्लेषण</h2>
         <p>नेपाली शेयर बजार, लगानी तथा वित्तीय साक्षरता सम्बन्धी विचार र विश्लेषण।</p>
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OKMarkets - NEPSE Live Trading Simulation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 { margin: 0; font-size: 24px; }
+        .container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
+        .market-summary {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .nepse-index { font-size: 32px; font-weight: bold; }
+        .up { color: #10b981; }
+        .down { color: #ef4444; }
+        .market-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        h2 { margin-top: 0; border-bottom: 2px solid #f3f4f6; padding-bottom: 10px; font-size: 18px; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th, td { padding: 12px 8px; border-bottom: 1px solid #f3f4f6; }
+        th { background-color: #f9fafb; color: #6b7280; }
+        .btn {
+            background-color: #2563eb; color: white; border: none;
+            padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-right: 5px;
+        }
+        .btn:hover { background-color: #1d4ed8; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>OKMarkets - NEPSE Live</h1>
+    <div id="live-time">लोड हुँदैछ...</div>
+</header>
+
+<div class="container">
+    <div class="market-summary">
+        <div>
+            <div style="color: #6b7280; font-size: 14px;">NEPSE Index</div>
+            <div class="nepse-index up" id="nepse-index">२,४१५.५०</div>
+            <div id="nepse-change" class="up">+१२.५० (+०.५२%)</div>
+        </div>
+        <div style="text-align: right;">
+            <span style="color: #6b7280;">बजार स्थिति:</span> <strong style="color: #10b981;">खुला (OPEN)</strong>
+            <br>
+            <span style="color: #6b7280;">कारोबार रकम:</span> <span id="total-turnover">रु ४.५ अर्ब</span>
+        </div>
+    </div>
+
+    <div class="market-grid">
+        <div class="card">
+            <h2>लाइभ सेयर बजार (Stock Live)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>LTP (रु)</th>
+                        <th>Change</th>
+                        <th>% Change</th>
+                        <th>Volume</th>
+                    </tr>
+                </thead>
+                <tbody id="stock-table-body">
+                    <!-- JavaScript ले यहाँ डेटा भर्नेछ -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>बजार औजारहरू (Market Tools)</h2>
+            <p>तपाईंको सेयर कारोबार लागत गणना गर्नुहोस्।</p>
+            <button class="btn" onclick="alert('Share Calculator loaded.')">Share Calculator</button>
+            <button class="btn" onclick="alert('WACC Calculator loaded.')">WACC Calculator</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // लाइभ ब्याकइन्ड डेटा सिमुलेटर थ्रेड
+    const stocks = [
+        { symbol: 'NABIL', price: 620, change: 2.5 },
+        { symbol: 'GBIME', price: 245, change: -1.2 },
+        { symbol: 'HDL', price: 2150, change: 15.0 },
+        { symbol: 'NTC', price: 910, change: 0.0 },
+        { symbol: 'AHPC', price: 310, change: -4.5 }
+    ];
+
+    function updateLiveMarket() {
+        // नेपाली ढाँचामा समय अपडेट
+        const now = new Date();
+        document.getElementById('live-time').innerText = now.toLocaleString('ne-NP');
+
+        const tbody = document.getElementById('stock-table-body');
+        tbody.innerHTML = '';
+        let totalChange = 0;
+
+        // प्रत्येक सेयरको मूल्य लाइभ परिवर्तन गर्ने कलनविधि
+        stocks.forEach(stock => {
+            const fluctuation = (Math.random() - 0.5) * 4;
+            stock.change = parseFloat((stock.change + fluctuation).toFixed(2));
+            stock.price = parseFloat((stock.price + (fluctuation * 0.5)).toFixed(2));
+            
+            const changeClass = stock.change >= 0 ? 'up' : 'down';
+            const changeSign = stock.change >= 0 ? '+' : '';
+            totalChange += stock.change;
+
+            const row = `<tr>
+                <td><strong>${stock.symbol}</strong></td>
+                <td>${stock.price.toFixed(2)}</td>
+                <td class="${changeClass}">${changeSign}${stock.change}</td>
+                <td class="${changeClass}">${changeSign}${(stock.change / stock.price * 100).toFixed(2)}%</td>
+                <td>${Math.floor(Math.random() * 50000 + 1000)}</td>
+            </tr>`;
+            tbody.innerHTML += row;
+        });
+
+        // नेप्से इन्डेक्सको लाइभ हिसाब
+        const baseIndex = 2415.50 + totalChange;
+        document.getElementById('nepse-index').innerText = baseIndex.toFixed(2);
+    }
+
+    // हरेक ३ सेकेन्डमा ब्याकइन्ड डाटा अपडेट कल गर्ने
+    setInterval(updateLiveMarket, 3000);
+    updateLiveMarket(); // पहिलो पटक लोड हुँदा कल गर्ने
+</script>
+
+</body>
+</html>
+
     </div>
 
     <!-- ८. सम्पर्क -->
