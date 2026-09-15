@@ -34,7 +34,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
-        /* Multi-color Text Texture for Nepali Name */
         .decorative-name-np {
             font-size: 2.5em;
             font-weight: 800;
@@ -53,7 +52,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Decorative Styling for English Name */
         .decorative-name-en {
             font-family: 'Cinzel', serif;
             font-size: 1.25em;
@@ -65,7 +63,7 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
-        /* Live Dual Date (A.D. & B.S.) Bar */
+        /* Live Dual Date Bar */
         .date-time-bar {
             font-size: 0.9em;
             color: #cbd5e1;
@@ -215,6 +213,7 @@
             border-radius: 50%;
             border: 4px solid #d97706;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            background-color: #f1f5f9;
         }
 
         /* Recent Posts */
@@ -275,6 +274,45 @@
             margin-top: 8px;
         }
 
+        /* Contact Links Design */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            border-color: #d97706;
+        }
+
+        .contact-icon {
+            font-size: 1.8em;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f1f5f9;
+        }
+
         /* Footer */
         footer {
             background-color: var(--footer-bg);
@@ -318,8 +356,8 @@
     <div class="decorative-name-en">Manoj Dhungana</div>
     
     <div class="date-time-bar">
-        <div class="date-box">📅 <strong>B.S.:</strong> <span id="bs-date">२०८३ भाद्र २१</span></div>
-        <div class="date-box">🗓️ <strong>A.D.:</strong> <span id="ad-date">Sep 06, 2026</span></div>
+        <div class="date-box">📅 <strong>B.S.:</strong> <span id="bs-date">२०८३ भाद्र २९</span></div>
+        <div class="date-box">🗓️ <strong>A.D.:</strong> <span id="ad-date">Sep 15, 2026</span></div>
         <div class="date-box">⏰ <span id="live-clock">--:--:--</span></div>
     </div>
 </div>
@@ -365,7 +403,7 @@
                 </p>
             </div>
             <div class="welcome-photo">
-                <img src="/images/profile.jpg" alt="Manoj Dhungana Namaste" onerror="this.src='https://via.placeholder.com/175?text=Namaste+Photo'">
+                <img src="/images/profile.jpg" alt="Manoj Dhungana Namaste" onerror="this.src='https://api.iconify.design/noto:folded-hands.svg?width=120'; this.style.padding='25px';">
             </div>
         </div>
 
@@ -450,41 +488,86 @@
         <p>विभिन्न स्थानका भ्रमण संस्मरण तथा अनुभव।</p>
     </div>
 
-  <!-- ७. शेयर बजार (NEPSE Live Widget) -->
+    <!-- ७. शेयर बजार (Fixed NEPSE Live Hub) -->
     <div id="share" class="tab-content">
-        <h2>नेपाल स्टक एक्सचेञ्ज (NEPSE) - लाइभ मार्केट</h2>
-        <p>NEPSE को रियल-टाइम इन्डेक्स, बजारको ताजा अवस्था र चार्ट तल हेर्न सक्नुहुन्छ:</p>
+        <h2>नेपाल स्टक एक्सचेञ्ज (NEPSE) - लाइभ बजार</h2>
+        <p>नेपाली शेयर बजार, NEPSE सूचकाङ्क तथा लाइभ अपडेट हेर्न तल दिइएको बटन प्रयोग गर्नुहोस्:</p>
 
-        <!-- Live Status Bar -->
-        <div style="background: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #cbd5e1; margin-bottom: 20px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div style="background: #ffffff; padding: 25px; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.03); margin-top: 15px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
                 <div>
-                    <strong style="font-size: 1.1em; color: #0f172a;">कारोबार समय:</strong> 
-                    <span style="color: #16a34a; font-weight: bold;">आइतबार - बिहीबार (११:०० AM - ३:०० PM)</span>
+                    <h3 style="margin: 0 0 5px 0; color: #0f172a;">📈 NEPSE Official Live Portal</h3>
+                    <p style="margin: 0; color: #64748b; font-size: 0.95em;">कारोबार समय: आइतबार - बिहीबार (११:०० AM - ३:०० PM)</p>
                 </div>
-                <a href="https://www.nepalstock.com/" target="_blank" style="background: #0d3b66; color: #fff; padding: 6px 15px; border-radius: 5px; text-decoration: none; font-size: 0.9em; font-weight: bold;">
-                    NEPSE Official Site ↗
+                <a href="https://www.nepalstock.com/" target="_blank" style="background: linear-gradient(135deg, #0f172a, #1e293b); color: #fff; padding: 12px 22px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1em; box-shadow: 0 3px 8px rgba(0,0,0,0.15);">
+                    NEPSE वेबसाइट खोल्नुहोस् ↗
                 </a>
             </div>
         </div>
-
-        <!-- TradingView NEPSE Live Chart -->
-        <div style="height: 500px; width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid #cbd5e1;">
-            <iframe 
-                src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_widget&symbol=NEPSE&interval=D&hidesidetoolbar=0&symboledit=1&saveimage=1&toolbarbg=f1f3f6&studies=[]&theme=light&style=1&timezone=Asia%2FKathmandu" 
-                width="100%" 
-                height="100%" 
-                frameborder="0" 
-                allowtransparency="true" 
-                scrolling="no">
-            </iframe>
-        </div>
     </div>
 
-    <!-- ८. सम्पर्क -->
+    <!-- ८. सम्पर्क (Updated Links with Symbolic Logos & New Window) -->
     <div id="contact" class="tab-content">
-        <h2>सम्पर्क विवरण</h2>
-        <p>📧 इमेल: info@mdhungana.com.np</p>
+        <h2>सम्पर्क तथा सामाजिक सञ्जाल</h2>
+        <p>मॉसँग जोडिनका लागि तल दिइएका लिङ्कहरूमा क्लिक गर्न सक्नुहुन्छ:</p>
+
+        <div class="contact-grid">
+            <a href="https://www.facebook.com/manoj.dhungana" target="_blank" class="contact-card">
+                <div class="contact-icon" style="color: #1877f2;">📘</div>
+                <div>
+                    <strong style="display: block; color: #0f172a;">Facebook Profile</strong>
+                    <span style="font-size: 0.85em; color: #64748b;">@manoj.dhungana</span>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/volunteer.mdhungana/" target="_blank" class="contact-card">
+                <div class="contact-icon" style="color: #1877f2;">🚩</div>
+                <div>
+                    <strong style="display: block; color: #0f172a;">Facebook Page</strong>
+                    <span style="font-size: 0.85em; color: #64748b;">@volunteer.mdhungana</span>
+                </div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/manoj-dhungana-886b2920/" target="_blank" class="contact-card">
+                <div class="contact-icon" style="color: #0a66c2;">💼</div>
+                <div>
+                    <strong style="display: block; color: #0f172a;">LinkedIn Profile</strong>
+                    <span style="font-size: 0.85em; color: #64748b;">Manoj Dhungana</span>
+                </div>
+            </a>
+
+            <a href="https://x.com/mdhungana" target="_blank" class="contact-card">
+                <div class="contact-icon" style="color: #000000;">🐦</div>
+                <div>
+                    <strong style="display: block; color: #0f172a;">X (Twitter)</strong>
+                    <span style="font-size: 0.85em; color: #64748b;">@mdhungana</span>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/mdhungana05/" target="_blank" class="contact-card">
+                <div class="contact-icon" style="color: #e4405f;">📸</div>
+                <div>
+                    <strong style="display: block; color: #0f172a;">Instagram</strong>
+                    <span style="font-size: 0.85em; color: #64748b;">@mdhungana05</span>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/MaRaKathamandau/" target="_blank" class="contact-card">
+                <div class="contact-icon" style="color: #d97706;">📚</div>
+                <div>
+                    <strong style="display: block; color: #0f172a;">म र काठमाडौँ (पुस्तक)</strong>
+                    <span style="font-size: 0.85em; color: #64748b;">Facebook Page</span>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/NariSangharsh/" target="_blank" class="contact-card">
+                <div class="contact-icon" style="color: #d97706;">📖</div>
+                <div>
+                    <strong style="display: block; color: #0f172a;">नारी संघर्ष (उपन्यास)</strong>
+                    <span style="font-size: 0.85em; color: #64748b;">Facebook Page</span>
+                </div>
+            </a>
+        </div>
     </div>
 
 </div>
@@ -497,7 +580,7 @@
             <p style="font-size: 0.85em; color: #a0aec0; margin: 0;">mdhungana.com.np</p>
         </div>
         <div>
-            👁️ Visitors: <span style="color: #3fb950; font-weight: bold;">36009</span>
+            👁️ Visitors: <span id="visitor-count" style="color: #3fb950; font-weight: bold;">36009</span>
         </div>
     </div>
     <div class="footer-bottom">
@@ -527,18 +610,29 @@
     // Dynamic Live Clock & Date Update
     function updateClock() {
         const now = new Date();
-        
-        // Live Time Format
         const timeString = now.toLocaleTimeString('en-US');
         document.getElementById('live-clock').textContent = timeString;
 
-        // Dynamic AD Date
         const adOptions = { year: 'numeric', month: 'short', day: 'numeric' };
         document.getElementById('ad-date').textContent = now.toLocaleDateString('en-US', adOptions);
     }
 
     setInterval(updateClock, 1000);
     updateClock();
+
+    // Visitor Counter Logic (Increments on page load/refresh)
+    (function() {
+        const baseCount = 36009;
+        let visits = localStorage.getItem('site_visits');
+        if (!visits) {
+            visits = 0;
+        }
+        visits = parseInt(visits) + 1;
+        localStorage.setItem('site_visits', visits);
+        
+        const totalCount = baseCount + visits - 1; 
+        document.getElementById('visitor-count').textContent = totalCount;
+    })();
 </script>
 
 </body>
