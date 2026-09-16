@@ -590,100 +590,37 @@
     </div>
 
     <!-- ६. भ्रमण -->
-  <!-- ६. भ्रमण (Travel Tab) -->
+  <!-- भ्रमण (Travel Tab) -->
 <div id="bhraman" class="tab-content">
 
-    <!-- CSS स्टाइल (साइज र डिजाइन मिलाउन) -->
-    <style>
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 20px 0;
-        }
-
-        .gallery-card {
-            background: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e2e8f0;
-        }
-
-        .gallery-img-box {
-            position: relative;
-            width: 100%;
-            height: 220px; /* फोटोको Standard उचाइ */
-            overflow: hidden;
-        }
-
-        .gallery-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* फोटो नतन्किने गरी ट्याक्क मिलाउने */
-            object-position: center;
-        }
-
-        .gallery-tag {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(26, 54, 93, 0.85);
-            color: #ffffff;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .gallery-content {
-            padding: 18px;
-        }
-
-        .gallery-title {
-            margin: 0 0 8px 0;
-            font-size: 1.2rem;
-            color: #1a365d;
-        }
-
-        .gallery-caption {
-            font-size: 0.95rem;
-            color: #4a5568;
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
-        .gallery-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.82rem;
-            color: #718096;
-            border-top: 1px solid #edf2f7;
-            padding-top: 10px;
-        }
-    </style>
-
-    <!-- ग्यालरी फोटो कार्ड -->
-    <div class="gallery-container">
-        <div class="gallery-card">
-            <div class="gallery-img-box">
-                <img src="/image/maldives2024.jpg" alt="Visit Maldives" onerror="this.src='https://placehold.co/600x400?text=Photo+Not+Found'">
-                <span class="gallery-tag">भ्रमण</span>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 350px)); gap: 20px; padding: 20px 0; justify-content: center;">
+        
+        <!-- माल्दिभ्स फोटो कार्ड -->
+        <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
+            
+            <!-- फोटो रहने बक्स (Max Height: 200px) -->
+            <div style="position: relative; width: 100%; height: 200px; overflow: hidden;">
+                <img src="/image/maldives2024.jpg" alt="Visit Maldives" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='https://placehold.co/600x400?text=Photo+Not+Found'">
+                <span style="position: absolute; top: 12px; right: 12px; background: rgba(26, 54, 93, 0.85); color: #ffffff; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">भ्रमण</span>
             </div>
-            <div class="gallery-content">
-                <h3 class="gallery-title">Visit Maldives</h3>
-                <p class="gallery-caption">
+
+            <!-- क्याप्सन विवरण -->
+            <div style="padding: 18px;">
+                <h3 style="margin: 0 0 8px 0; font-size: 1.2rem; color: #1a365d;">Visit Maldives</h3>
+                <p style="font-size: 0.95rem; color: #4a5568; line-height: 1.6; margin-bottom: 12px;">
                     माल्दिभ्स भ्रमणका क्रममा खिचिएको मनमोहक दृश्य र स्मरणीय क्षण।
                 </p>
-                <div class="gallery-meta">
+                <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: #718096; border-top: 1px solid #edf2f7; padding-top: 10px;">
                     <span>📍 स्थान: Maldives</span>
                     <span>📅 मिति: 5th May 2024</span>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
+        </div>
+
+    </div>
+
+</div>
     <!-- ७. शेयर बजार (Fixed NEPSE Live Hub) -->
     <div id="share" class="tab-content">
         <h2>नेपाल स्टक एक्सचेञ्ज (NEPSE) - लाइभ बजार</h2>
@@ -718,7 +655,6 @@
                     <span style="font-size: 0.85em; color: #64748b;">Manoj Dhungana</span>
                 </div>
             </a>
-
             <a href="https://www.facebook.com/manoj.dhungana" target="_blank" class="contact-card">
                 <div class="contact-icon" style="color: #1877f2;">📘</div>
                 <div>
@@ -726,7 +662,6 @@
                     <span style="font-size: 0.85em; color: #64748b;">@manoj.dhungana</span>
                 </div>
             </a>
-
             <a href="https://www.facebook.com/volunteer.mdhungana/" target="_blank" class="contact-card">
                 <div class="contact-icon" style="color: #1877f2;">🚩</div>
                 <div>
@@ -734,7 +669,6 @@
                     <span style="font-size: 0.85em; color: #64748b;">@volunteer.mdhungana</span>
                 </div>
             </a>
-
             <a href="https://x.com/mdhungana" target="_blank" class="contact-card">
                 <div class="contact-icon" style="color: #000000;">🐦</div>
                 <div>
@@ -742,7 +676,6 @@
                     <span style="font-size: 0.85em; color: #64748b;">@mdhungana</span>
                 </div>
             </a>
-
             <a href="https://www.instagram.com/mdhungana05/" target="_blank" class="contact-card">
                 <div class="contact-icon" style="color: #e4405f;">📸</div>
                 <div>
@@ -750,7 +683,6 @@
                     <span style="font-size: 0.85em; color: #64748b;">@mdhungana05</span>
                 </div>
             </a>
-
             <a href="https://www.facebook.com/MaRaKathamandau/" target="_blank" class="contact-card">
                 <div class="contact-icon" style="color: #d97706;">📚</div>
                 <div>
@@ -758,7 +690,6 @@
                     <span style="font-size: 0.85em; color: #64748b;">Facebook Page</span>
                 </div>
             </a>
-
             <a href="https://www.facebook.com/NariSangharsh/" target="_blank" class="contact-card">
                 <div class="contact-icon" style="color: #d97706;">📖</div>
                 <div>
