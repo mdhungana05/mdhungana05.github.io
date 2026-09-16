@@ -590,67 +590,99 @@
     </div>
 
     <!-- ६. भ्रमण -->
-    <div id="bhraman" class="tab-content">
-</div>
-        <h2>भ्रमण अनुभव</h2>
-        <p>विभिन्न स्थानका भ्रमण संस्मरण तथा अनुभव।</p>
-    </div>
-    
-<div class="gallery-container">
+  <!-- ६. भ्रमण (Travel Tab) -->
+<div id="bhraman" class="tab-content">
 
-    <div class="gallery-card">
-        <div class="gallery-img-box">
-  /* १. फोटो अट्ने बक्सको उचाइ (Box Height) निश्चित गर्ने */
-.gallery-img-box {
-    position: relative;
-    width: 100%;
-    height: 220px; /* तपाईंलाई चाहिए अनुसार २०० देखि २५० सम्म राख्न सक्नुहुन्छ */
-    overflow: hidden;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-}
+    <!-- CSS स्टाइल (साइज र डिजाइन मिलाउन) -->
+    <style>
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
+        }
 
-/* २. फोटोलाई तन्किन वा दोब्रिन नदिई चिटिक्क पार्ने */
-.gallery-img-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* यसले फोटोको Aspect Ratio नबिगारी फ्रेममा ट्याक्क मिलाउँछ */
-    object-position: center; /* फोटोको बिचको भाग देखाउँछ */
-}
-            <img src="/images/maldives2024.jpg" alt="Visit Maldives" style="width: 100%; height: 220px; object-fit: cover; object-position: center;" onerror="this.src='https://placehold.co/600x400?text=Photo+Not+Found'">
-            <span class="gallery-tag">भ्रमण</span>
-        </div>
-        <div class="gallery-content">
-            <h3 class="gallery-title">Visit Maldives</h3>
-            <p class="gallery-caption">
-                माल्दिभ्स भ्रमणका क्रममा खिचिएको मनमोहक दृश्य र स्मरणीय क्षण।
-            </p>
-            <div class="gallery-meta">
-                <span>📍 स्थान: Maldives</span>
-                <span>📅 मिति: 5th May 2024</span>
+        .gallery-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .gallery-img-box {
+            position: relative;
+            width: 100%;
+            height: 220px; /* फोटोको Standard उचाइ */
+            overflow: hidden;
+        }
+
+        .gallery-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* फोटो नतन्किने गरी ट्याक्क मिलाउने */
+            object-position: center;
+        }
+
+        .gallery-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(26, 54, 93, 0.85);
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .gallery-content {
+            padding: 18px;
+        }
+
+        .gallery-title {
+            margin: 0 0 8px 0;
+            font-size: 1.2rem;
+            color: #1a365d;
+        }
+
+        .gallery-caption {
+            font-size: 0.95rem;
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .gallery-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            color: #718096;
+            border-top: 1px solid #edf2f7;
+            padding-top: 10px;
+        }
+    </style>
+
+    <!-- ग्यालरी फोटो कार्ड -->
+    <div class="gallery-container">
+        <div class="gallery-card">
+            <div class="gallery-img-box">
+                <img src="/image/maldives2024.jpg" alt="Visit Maldives" onerror="this.src='https://placehold.co/600x400?text=Photo+Not+Found'">
+                <span class="gallery-tag">भ्रमण</span>
+            </div>
+            <div class="gallery-content">
+                <h3 class="gallery-title">Visit Maldives</h3>
+                <p class="gallery-caption">
+                    माल्दिभ्स भ्रमणका क्रममा खिचिएको मनमोहक दृश्य र स्मरणीय क्षण।
+                </p>
+                <div class="gallery-meta">
+                    <span>📍 स्थान: Maldives</span>
+                    <span>📅 मिति: 5th May 2024</span>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
-    <!-- फोटो कार्ड २ -->
-    <div class="gallery-card">
-        <div class="gallery-img-box">
-            <img src="/images/travel1.jpg" alt="भ्रमण स्थान" onerror="this.src='https://placehold.co/600x400?text=Photo+Not+Found'">
-            <span class="gallery-tag">भ्रमण</span>
-        </div>
-        <div class="gallery-content">
-            <h3 class="gallery-title">पोखरा फेवाताल यात्रा</h3>
-            <p class="gallery-caption">
-                साँझको समयमा फेवातालमा माछापुच्छ्रे छायाँको मनमोहक दृश्य अवलोकन गर्दाका केही अविस्मरणीय क्षणहरू।
-            </p>
-            <div class="gallery-meta">
-                <span>📍 स्थान: पोखरा, कास्की</span>
-                <span>📅 मिति: २०८०/१०/१५</span>
-            </div>
-        </div>
-    </div>
-
 
     <!-- ७. शेयर बजार (Fixed NEPSE Live Hub) -->
     <div id="share" class="tab-content">
