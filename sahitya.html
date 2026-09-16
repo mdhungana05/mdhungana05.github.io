@@ -1,3 +1,700 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<file id="sahitya.html" name="sahitya.html" type="text/html">
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>साहित्यिक संग्रह - मनोज ढुङ्गाना</title>
+    <style>
+        :root {
+            --primary-color: #8b0000;
+            --secondary-color: #4a0e17;
+            --bg-color: #fcf9f2;
+            --card-bg: #ffffff;
+            --text-color: #2c2c2c;
+            --text-muted: #666666;
+            --border-color: #e0d8c3;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: 'Kalimati', 'Mangal', 'Mukta', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.4rem;
+            font-weight: 700;
+        }
+
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .stats {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+
+        .card-header {
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            color: var(--primary-color);
+            margin: 0 0 0.4rem 0;
+            font-weight: 700;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .badge {
+            background-color: #f0e6d2;
+            color: var(--secondary-color);
+            padding: 0.1rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .card-body {
+            font-size: 1rem;
+            white-space: pre-line;
+            max-height: 280px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-body::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .card-body::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            background: var(--secondary-color);
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 600px) {
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+            .controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>मनोज ढुङ्गानाको साहित्यिक संग्रह</h1>
+        <p>ऊ पागल अवश्य छ तर विश्वास राख, उसको पागलपनमा सत्यता छ !</p>
+    </header>
+
+    <div class="container">
+        <div class="controls">
+            <div class="category-filter" id="categoryFilter">
+                <button class="filter-btn active" onclick="filterCategory('all')">सबै रचनाहरू</button>
+                <button class="filter-btn" onclick="filterCategory('कविता (Poems)')">कविता</button>
+                <button class="filter-btn" onclick="filterCategory('गजल (Poetry)')">गजल</button>
+                <button class="filter-btn" onclick="filterCategory('कथा (Story)')">कथा</button>
+                <button class="filter-btn" onclick="filterCategory('आलेख (Article)')">आलेख</button>
+                <button class="filter-btn" onclick="filterCategory('साप्ताहिक स्तम्भ')">साप्ताहिक स्तम्भ</button>
+                <button class="filter-btn" onclick="filterCategory('उपन्यास (Novel)')">उपन्यास</button>
+            </div>
+            <div class="stats" id="postStats">कुल रचना: २४</div>
+        </div>
+
+        <div class="posts-grid" id="postsContainer">
+
+            <!-- Card 1 -->
+            <article class="card" data-category="कविता (Poems)">
+                <div class="card-header">
+                    <h2 class="card-title">म मेरी आमा अनि मातृभुमि</h2>
+                    <div class="card-meta">
+                        <span>मिती: २५ अप्रिल २००९</span>
+                        <span class="badge">कविता (Poems)</span>
+                    </div>
+                </div>
+                <div class="card-body">म जन्मेको ठाउं मेरो मातृभूमि 
+लाग्छ स्वर्ग नै हो मेरो जन्मभूमि !
+
+ईश्वर हुन मेरा ति वाबु आमा
+गर्व साथ भन्छु ति हुन् महान !
+
+वकालत गरे संधै मेरा लागि
+लाखौ दुःख खेपे मात्र मेरा लागि !
+
+ग्वाला झै सधै पछि लाग्नु पर्ने 
+छलिएला भनि सधै जतन गर्ने !
+
+मेरी आमा हुन मेरो सारै जाती
+रोए-कराए गर्थिन् दया म माथी !
+
+मातृत्वको न्यानो अंगालो सजाइ
+तृप्त पार्थिन् सधैं म वालकलाई !
+
+भूमि प्यारो मेरो हेटौडा शहरको 
+मित्रता अटुट यो जन्मस्थलको !
+
+प्रगती होस सधै मेरो जन्मभुमि 
+तिम्रा लागि जीवन दिन्छु जुनीजुनी !
+
+१२ बैसाख, २०६६</div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="card" data-category="कविता (Poems)">
+                <div class="card-header">
+                    <h2 class="card-title">लोग्ने मान्छे</h2>
+                    <div class="card-meta">
+                        <span>मिती: २५ जनवरी २०११</span>
+                        <span class="badge">कविता (Poems)</span>
+                    </div>
+                </div>
+                <div class="card-body">मनका राजा मानीकन, तीमीसंग भागि आएँ,
+बा आमाले दिन्नन् भनि, तीम्रो साथ लागि आएँ
+दुइ चुट्कि सिन्दुर मैले, सधै तिम्रा लागि लाएँ
+तिम्रो श्रृष्टि रच्ने निहुमा, मैले कस्तो भाग्य पाएँ ?
+
+चोखोमाया जुनी भरि, गरिरहन्छु भन्थ्यौ पहिले,
+साना साना उत्सबहरु, सम्झिन्थ्यौ जहिले,
+जन्मदिन तिम्रो प्रियसीको, संझनै छाड्यौ अहिले,
+म भन्दा नि माया गर्ने, अर्कि को छ अहिले ?
+
+कल्पनाको संसारमा, घुमाउन लान्थ्यौ,
+भुन्टे पेटमा हुँदाखेरी, सबै कुरा मान्थ्यौ,
+मेरो श्रृष्टि चलाउने, भुन्टेनै हो भन्थ्यौ,
+आज थला पर्दाखेरी, भनेको के मान्थ्यौ ?
+
+अर्कैको पछि लाग्छौ अरे, भन्छन साथीभाई,
+उनीलाई नै पोस्छौ अरे, खाजा नखाइनखाइ,
+डाह गर्नेहरु हाँस्छन, काखी बजाईबजाई
+म मा के कमी देख्यौ भन्द्यौ न मलाई ?
+
+मेरो माया उस्को सामु, फिका लाग्छ भने भन,
+बैसका मेरा सारा पल, हिसाब गरि गरि गन
+लोग्ने मान्छे असन्तोषी, सम्झाउं कसरी मन ?
+तीम्री कान्छी सधै भरि भैरहन्छे त यौवन ?
+
+संगै बाच्ने मर्ने कसम, अधुरो भो मनको,
+तिम्ले दिएको पिडा लिइ, बाच्नु न मर्नुभो
+अजम्बरी यौवन हैन, तिर्सनाहो मनको ।
+अबुझ भयौ अर्धांगिनी गहनाहो जीवनको ।</div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="card" data-category="कविता (Poems)">
+                <div class="card-header">
+                    <h2 class="card-title">मायालुको सम्झनामा</h2>
+                    <div class="card-meta">
+                        <span>मिती: २८ मार्च १९९२</span>
+                        <span class="badge">कविता (Poems)</span>
+                    </div>
+                </div>
+                <div class="card-body">जीवनका अनमोल कथाहरुको, सम्झनाले सताउन छोडेन !
+मुटुमा लागेका ब्यथाहरुको उपाय पत्ता लाग्न सकेन !!
+
+त्यसैले म गाउदैछु कविता, मुटुमा लागेका कथाहरुको !
+अनि बताउदै छु एक दुर्दशा, अभागी कर्म यो विश्वासको !!
+
+ढुकढुकीहरु मेरा मुटुको, दिन प्रतिदिनको बेदना !
+टाढा बाट मायालु नजरको, नविर्सने सम्झना !!
+
+आशुंले भिजेका परेलीहरुको, महशुस गर्दैछु एक्लोपना !
+लामो यात्रा यो जिंदगीको, आशुं शिवाय केहि पाउन सकिन !!
+
+प्रत्येक नजरमा प्यार मायालुको, तर माया भने पाउन सकिन !
+यो बेदना उज्ज्वल भविष्यको, सहारा मैले पाउन सकिन !!
+
+ढुकढुकी यो पबित्र प्रेमको, जोगाएर राख्न सकिन !
+त्यसैले पठाएँ पत्र सौगातको, जवाफ मैले पाउन सकिन !!
+
+मनको आत्मिय भावनाको, मिचेर मैले हिड्न सकिन !
+थिएन अभिनय सुन्दरताको, प्रेम मैले तोड्न सकिन !!
+
+पूजा गरें प्रेमकी देवीको, वरदान मैले पाउन सकिन !
+कमजोरी थियो गरिबीको, मायालु भनि बोलाउन सकिन !!
+
+मेरो जीवनको पहिलो कविता : १५ चैत्र २०४८, शनिवार</div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="card" data-category="गजल (Poetry)">
+                <div class="card-header">
+                    <h2 class="card-title">प्रियसीको नजरमा</h2>
+                    <div class="card-meta">
+                        <span>मिती: ०८ सेप्टेम्बर २०१२</span>
+                        <span class="badge">गजल (Poetry)</span>
+                    </div>
+                </div>
+                <div class="card-body">प्रियसीको नजरमा कसिंगर बन्छौ किन ?
+चोखो माया गर्छौ भने पथ्थर बन्छौ किन ?
+
+संबिधान जस्तै तिमि पत्तो छैन कहिल्यै
+प्यासमा मात्र मिलनको दिन गन्छौ किन ?
+
+हरेक पटक पूर्व पश्चीम लामो यात्रा गर्नु पर्ने
+हेटौडा मै घरजम गर्न इन्कार भन्छौ किन ?
+
+तिम्रो लागि हरेक पल साँची रहिन उनले
+याद माथि झन् याद बढाऊछौ  किन ?
+
+तिम्रै श्रीमती बन्ने रहर गरेकी छिन् उनले
+एक चुट्की सिन्दुर जाबो दिन्न भन्छौ किन ?
+
+२०६९ भाद्र २३ गते हेटौडा बजार लायन्स क्लबले आयोजना गरेको युवा गजलकार सुश्री विमला कार्की सुसं  को एकल गजल सन्ध्यामा वाचित गजलहरु सुन्दा सुन्दै लेखिएको प्रतिक्रिया गजलबाट :-)</div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="card" data-category="आलेख (Article)">
+                <div class="card-header">
+                    <h2 class="card-title">लोकतंत्रमा युवा सरोकार</h2>
+                    <div class="card-meta">
+                        <span>मिती: ३१ डिसेम्बर २००८</span>
+                        <span class="badge">आलेख (Article)</span>
+                    </div>
+                </div>
+                <div class="card-body">जीवनको अपरिहार्यताको रुपमा परिचीत रोजगार, जसमा कयौ नेपाली युवा पीढिहरु गांजिएकाछन् । हरेक वर्ष आफना बिश्वबिद्यालयको शिक्षा सकिएर निस्किएका दक्ष जन शक्तिहरुको करिब बीस प्रतिसत समूहले आफ्नै व्यवसाय तथा उद्योग संचालन गरि सफलता हातपार्ने सोच राखेका हुन्छन भने बांकी असी पतिसतका समूहहरु कुनै पनि क्षेत्रमा श्रृजीत अवसरहरुमा आफ्नो योग्यताको परिक्षा दिंदै खुला पतिस्पर्धा गर्न हरेक दिन पत्रिकामा देखिने “रोजगारीको अवसर” भित्र आफ्नो भाग्य खोजीरहेका पाईन्छ चाहे स्वदेशी रोजगार होस वा बिदेशी ।...</div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header">
+                    <h2 class="card-title">हाम्रो संस्कार र बिदेशी नक्कल</h2>
+                    <div class="card-meta">
+                        <span>मिती: ०१ नोभेम्बर २०१४</span>
+                        <span class="badge">साप्ताहिक स्तम्भ</span>
+                    </div>
+                </div>
+                <div class="card-body">“बाबु म तेरी दिदी, शुभ दिपावलीको धेरैधेरै शुभकामना, अनि टिका लगाउने निम्तो दिन फोन गरेको, मेरै घरमा टिका लगाउँला, जसरी पनि काग तिहार कै दिन आइज है ?” एकादशीका दिन दिदीले आफ्नो भाइलाई यमपन्चक कै दिन देखिको निम्तो गरिन् । बर्ष दिनमा एक चोटी आउने दाजुभाई र दिदीबहिनी बिचको आत्मिय सम्बन्धलाइ गाढा बनाउने चार्डको रुपमा मनाइने दिपावलीमा आफ्नो भाइको प्रतिक्षामा बसेकि दिदी काग तिहार देखि नै बाटो हेरीरहेकी थिइन् । भाइलाइ यो मनपर्छ, त्यो मनपर्छ भनेर संझदै किनमेल गर्न थालिन्...</div>
+            </article>
+
+            <!-- Card 7 -->
+            <article class="card" data-category="कथा (Story)">
+                <div class="card-header">
+                    <h2 class="card-title">नजुरेको पोई</h2>
+                    <div class="card-meta">
+                        <span>मिती: ०१ अक्टोबर २०१२</span>
+                        <span class="badge">कथा (Story)</span>
+                    </div>
+                </div>
+                <div class="card-body">“भान्जी हजुर तयार हुनुभो त ?” माइजूको आवाजमा म झस्किएँ ।
+“किन र माइजू, कहाँ जाने ?”
+“बजार जाने होईन, म त तयार छु, हजुरको केही ल्याउनु छ कि?”
+“म त अस्ति भर्खर गएकै हो नि माइजू, हजुर मात्रै जानु न ।”
+...
+रचना मितिः १५ आश्विन २०६९, म र काठमाण्डाै, कथा संग्रह २०६९ मा प्रकाशित पहिलाे कथा</div>
+            </article>
+
+            <!-- Card 8 -->
+            <article class="card" data-category="कविता (Poems)">
+                <div class="card-header">
+                    <h2 class="card-title">प्रजातन्त्र</h2>
+                    <div class="card-meta">
+                        <span>मिती: २३ सेप्टेम्बर १९९२</span>
+                        <span class="badge">कविता (Poems)</span>
+                    </div>
+                </div>
+                <div class="card-body">हे क्रान्तिका ज्वालामुखी युवक हाे
+तिम्राे हाम्राे दाइजाे आज हराएकाे छ ।
+दिदीकाे सिउँदाे पुछिएर पार्काे दाइजाे,
+दाजुकाे जिन्दगी रितयाएर पाएकाे दाइजाे,
+निर्दाेष सानाे भाइ गुमाएर पाएकाे दाइजाे,
+बहुदलिय प्रजातन्त्र नै हाम्राे दाइजाे ।
+
+रचानाकाल: २०४९ आश्विन ७ गते</div>
+            </article>
+
+            <!-- Card 9 -->
+            <article class="card" data-category="कविता (Poems)">
+                <div class="card-header">
+                    <h2 class="card-title">अस्तीत्व</h2>
+                    <div class="card-meta">
+                        <span>मिती: २६ अक्टोबर २०१०</span>
+                        <span class="badge">कविता (Poems)</span>
+                    </div>
+                </div>
+                <div class="card-body">गणतन्त्र, लोकतन्त्र मेरो अतित होईन,
+तथापी मलाई लाग्यो आज परिवर्तन प्यारो ।
+
+स्वतन्त्र बोल्न नपाईने राणा शासन होइन,
+भोको पेटमै पनि बोल्न पाइने लोकतन्त्र प्यारो।
+
+रचना मिति : २७ जेष्ठ, २०६७</div>
+            </article>
+
+            <!-- Card 10 -->
+            <article class="card" data-category="आलेख (Article)">
+                <div class="card-header">
+                    <h2 class="card-title">नयाँ राष्ट्रिय गान र नयाँ नेपाल</h2>
+                    <div class="card-meta">
+                        <span>मिती: १५ नोभेम्बर २००९</span>
+                        <span class="badge">आलेख (Article)</span>
+                    </div>
+                </div>
+                <div class="card-body">सयाैं थुंगा फुलका हामी, एउटै माला नेपाली,
+सार्वभौम भई फैलिएका, मेची–महाकाली ।
+प्रकृतिका कोटी–कोटी सम्पदाको आँचल,
+वीरहरुका रगतले स्वतन्त्र र अटल ।
+
+हेटाैंडा जेसीज २००९ काे वार्षिक स्मारीकामा प्रकािशत</div>
+            </article>
+
+            <!-- Card 11 -->
+            <article class="card" data-category="आलेख (Article)">
+                <div class="card-header">
+                    <h2 class="card-title">आधि हक लाग्छ भनि</h2>
+                    <div class="card-meta">
+                        <span>मिती: ०१ डिसेम्बर २०१०</span>
+                        <span class="badge">आलेख (Article)</span>
+                    </div>
+                </div>
+                <div class="card-body">आधि हक लाग्छ भनि जिस्की रहन्थीन साली
+पत्याइदिने कोहि थिएन बिचरी थि काली
+
+सालीको मन राखिदिन डेटिङ्ग जान थालें
+बानी पारिन् सालीले नै रहिछिन दिल वाली
+
+२०६७ मंसिर</div>
+            </article>
+
+            <!-- Card 12 -->
+            <article class="card" data-category="कविता (Poems)">
+                <div class="card-header">
+                    <h2 class="card-title">पागल विश्वास</h2>
+                    <div class="card-meta">
+                        <span>मिती: ०८ मे १९९३</span>
+                        <span class="badge">कविता (Poems)</span>
+                    </div>
+                </div>
+                <div class="card-body">सर्सर्ती हेर्दा
+असामान्य लाग्ने
+तर सामान्य परिचय बोकेको
+उन्नाइस बर्षे एउटा तरुण ।
+
+चोखो प्रेम गर्नु पागलपन हो भने
+हो म पागल हुँ
+मलाई मेरो प्रेममा बिश्वास छ
+त्यसैले दुनियाँको पर्वाह छैन मलाई
+तर विश्वास राख,
+मेरो पागलपनमा सत्यता छ ।
+
+शनिबार, बैसाख २६, २०५०</div>
+            </article>
+
+            <!-- Card 13 -->
+            <article class="card" data-category="कविता (Poems)">
+                <div class="card-header">
+                    <h2 class="card-title">पटमुर्ख</h2>
+                    <div class="card-meta">
+                        <span>मिती: १० जनवरी १९९६</span>
+                        <span class="badge">कविता (Poems)</span>
+                    </div>
+                </div>
+                <div class="card-body">दुइ छाक मिठो ख्वाएर
+एक सरो राम्रो लगाइदिने ठेक्का
+सुर्योदय संगै हरेक बिहानीमा शुरु भएर
+साझ अबेर सम्म निरन्तरता
+मेरो दैनिकी...
+
+२६ पौष २०५२, बुधबार</div>
+            </article>
+
+            <!-- Card 14 -->
+            <article class="card" data-category="गजल (Poetry)">
+                <div class="card-header">
+                    <h2 class="card-title">साली</h2>
+                    <div class="card-meta">
+                        <span>मिती: २३ नोभेम्बर २०१०</span>
+                        <span class="badge">गजल (Poetry)</span>
+                    </div>
+                </div>
+                <div class="card-body">आधी हक लाग्छ भन्दै, जिस्किरहन्थिन् साली ।
+मान्छे हिस्सी परेकी थिइ, तर अलि काली ।।
+सालीको मन राख्नै पर्याै, डेटिंग् जान थालें ।
+बानी पारिन् उनीले नै, रहिछिन् दिल वाली ।।
+
+७ मंसिर २०६७</div>
+            </article>
+
+            <!-- Card 15 -->
+            <article class="card" data-category="उपन्यास (Novel)">
+                <div class="card-header">
+                    <h2 class="card-title">नारी संघर्ष (part one)</h2>
+                    <div class="card-meta">
+                        <span>मिती: १९ सेप्टेम्बर १९९३</span>
+                        <span class="badge">उपन्यास (Novel)</span>
+                    </div>
+                </div>
+                <div class="card-body">मेरो नजरमा नहेरि देउ तिमी
+नागिन रुपि ती आँखाहरुले I
+झुटो प्रेम गरेर नफसाउ तिमी
+केवल शब्दका झाकाहरुले I
+
+वातावरण सुनसान, अध्यारा ती औँसीको रात, साथीको घरबाट पार्टी खाएर आफ्नो घर तर्फ अघिबढ्दै थिए । अकस्मात च्याँ......च्याँ ........ मेरो नाममा ठोक्कीयो दायाँतर्फ नजर घुमाएँ ...</div>
+            </article>
+
+            <!-- Card 16 -->
+            <article class="card" data-category="आलेख (Article)">
+                <div class="card-header">
+                    <h2 class="card-title">बदनाम हुदैछु म तिम्रै कारणले</h2>
+                    <div class="card-meta">
+                        <span>मिती: २४ अक्टोबर २०१२</span>
+                        <span class="badge">आलेख (Article)</span>
+                    </div>
+                </div>
+                <div class="card-body">भनिन्छ संसारमा सबैभन्दा चोखो उमेरमा लाएको माया प्रीति हो रे, तर आज भोली मायाप्रीति विद्यालय र विश्व विद्यालयका अल्लारे नानी बाबुहरूको कब्जामा पर्न थालेपछि उतिबेलाको परिभाषा बदनाम हुदै गएको छ | यसमा प्रमुख भूमिका निभाएको छ पश्चिमी संस्कृति तथा मल्टिमिडीया मोबाइलले |...</div>
+            </article>
+
+            <!-- Card 17 -->
+            <article class="card" data-category="आलेख (Article)">
+                <div class="card-header">
+                    <h2 class="card-title">सामाजिक सेवामा हाम्रो भूमिका</h2>
+                    <div class="card-meta">
+                        <span>मिती: १८ अप्रिल २०१३</span>
+                        <span class="badge">आलेख (Article)</span>
+                    </div>
+                </div>
+                <div class="card-body">सरकारी कार्यालय प्रांगणमा भव्यताका साथ सम्मानित हुदै थिइन् एउटी महिला “समाजसेवी” को रूपमा । पहिले कहिल्यै नदेखेको यो अनुहार मेरा लागि नौलो थियो । आफ्नै स्थानिय क्षेत्रमा एक महिला यसरि सम्मान थापिरहँदा स्थानिय नागरिकको हैसियतले उनको बारेमा जान्न चाहेँ ।...</div>
+            </article>
+
+            <!-- Card 18 -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header">
+                    <h2 class="card-title">असुरक्षित घेरामा नारीहरु (२)</h2>
+                    <div class="card-meta">
+                        <span>मिती: २५ जनवरी २०१३</span>
+                        <span class="badge">साप्ताहिक स्तम्भ</span>
+                    </div>
+                </div>
+                <div class="card-body">आज भोलि हरेक दिन, हरेक सञ्चार माध्यममा छापिने तथा प्रसारणहुने क्रम बढ्दो छ महिला हिंसाका कुरा, त्यसमाथि पनि बलात्कार । फरक छ त केवल व्यक्ति, स्थान, समय र परिवेश तर समाचारको मुल तत्व नारी अस्मिता नै भएकोछ ।...</div>
+            </article>
+
+            <!-- Card 19 -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header">
+                    <h2 class="card-title">फेरिएको हेटौंडा र महाधिवेशन (३)</h2>
+                    <div class="card-meta">
+                        <span>मिती: ०१ फेब्रुअरी २०१३</span>
+                        <span class="badge">साप्ताहिक स्तम्भ</span>
+                    </div>
+                </div>
+                <div class="card-body">उसै त हेटौंडा “हरित नगरी”, झन यतिखेर हेटौंडालाई नवदुलही झैँ सुन्दर र मनमोहक बनाउन लागिपरेकाछन् एकृकित माओवादीका कमरेडहरु । यहाँहरुले पनि याद गर्नु भएकै होला प्राय सबै सडकहरु रंगिन तुल व्यानर तथा पोलहरुमा झण्डाहरु तथा ठाउँ ठाउँमा स्वागत व्यानरले सजिएकाछन् ।...</div>
+            </article>
+
+            <!-- Card 20 -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header">
+                    <h2 class="card-title">दुर्घटनाको न्युनिकरणमा तपाईको भूमिका (४)</h2>
+                    <div class="card-meta">
+                        <span>मिती: ०८ फेब्रुअरी २०१३</span>
+                        <span class="badge">साप्ताहिक स्तम्भ</span>
+                    </div>
+                </div>
+                <div class="card-body">आदरणीय पाठक वृन्द, आजको श्रृंखलामा यहाँहरुको दिनचर्या भित्रका कुराहरु चर्चा गर्दैछु जसले यहाँको जिम्मेवारी र दैनिक गर्नुपर्ने भागदौडका केहि अंशहरु समेट्ने विश्वास लिएकोछु । कहिल्यै यहाँहरुले अनुमान गर्र्नुभएको छ, यहाँले आप्mनो दैनिकि पुरा गर्न कति किलोमिटर र कस्ता यात्राहरु गर्दैहुनुहुन्छ ?...</div>
+            </article>
+
+            <!-- Card 21 -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header">
+                    <h2 class="card-title">नखाएको विष (५)</h2>
+                    <div class="card-meta">
+                        <span>मिती: १५ फेब्रुअरी २०१३</span>
+                        <span class="badge">साप्ताहिक स्तम्भ</span>
+                    </div>
+                </div>
+                <div class="card-body">पाठकहरूलाई अर्को श्रृंखलाको फ्राईडे कर्नरमा के लेख्ने होला भनेर सोचिरहेको थिएँ, मेरा एक आत्मिय मित्र टुप्लुक्क आईपुगेर मलाई बधाई दिन थाले, पहिले त मैले थाहै पाईन के को बधाई पाएँ भनेर, पछि थाहा भो, मेरो युवा कथा संग्रह “म र काठमाण्डौ” प्रकाशित भएको र समृद्ध समाजमा फ्राइडे कर्नरमा नियमित झुल्किएको भनेर पो बधाई दिएका रहेछन् ।...</div>
+            </article>
+
+            <!-- Card 22 -->
+            <article class="card" data-category="गजल (Poetry)">
+                <div class="card-header">
+                    <h2 class="card-title">एउटा हुरी जिन्दगीको</h2>
+                    <div class="card-meta">
+                        <span>मिती: १४ मार्च २०१३</span>
+                        <span class="badge">गजल (Poetry)</span>
+                    </div>
+                </div>
+                <div class="card-body">एउटा हुरी जिन्दगीको भुल्न सकिएन
+जिवनमा उनको सामु खुल्न सकिएन ।
+
+मन भरि उनीलाइ सजाउँदै हिंडे पनि
+मौका मिल्दा उनी सँग डुल्न सकिएन ।
+
+जाउँ न घुम्न शहर भनि अफर नआ हैन
+गोजी रित्तो हुँदा अघि बढ्न सकिएन ।</div>
+            </article>
+
+            <!-- Card 23 -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header">
+                    <h2 class="card-title">प्रेम, सेक्स र भ्यालेन्टाइन (६)</h2>
+                    <div class="card-meta">
+                        <span>मिती: २२ फेब्रुअरी २०१३</span>
+                        <span class="badge">साप्ताहिक स्तम्भ</span>
+                    </div>
+                </div>
+                <div class="card-body">यस पटक १४ फेबु्रअरीको प्रणय दिवस (भ्यालेन्टाइन डे) विगतमा भन्दा पृथक रहयो मेरा लागि । बिहानै परिवारबाट बिछोडिएँ, अफिसियल मिटींगमा सहभागिता जनाउन काठमाण्डौ । जहाँ प्रेम दिवसको अवसरमा हरेक गिफ़्ट्सप, रेष्टुरेन्ट, होटल, लज, मल, सिनेमाघर, साइवर, डान्सबार तथा स्कुल, कलेजहरु समेत यो उत्सवको स्वागत तथा सत्कारका लागि दुलहि झैँ सजाइएको थियो ।...</div>
+            </article>
+
+            <!-- Card 24 -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header">
+                    <h2 class="card-title">मेरो देशमा मैले पाएको कुरा (७)</h2>
+                    <div class="card-meta">
+                        <span>मिती: ०१ मार्च २०१३</span>
+                        <span class="badge">साप्ताहिक स्तम्भ</span>
+                    </div>
+                </div>
+                <div class="card-body">देशले रगत माँगे मलाई वलि चढाउनु, रूँदिनन् मेरि आमा हुँ म नेपालको छोरो, देश प्रेमको यो गितका हरफहरू सापटी लिएर यहाँहरूको फ्राइडे कर्नरमा सजाइरहँदा नेपाल एकिकरण तथा राणाहरूको चंगुलबाट देश फुत्काउन लड्नेहरू देखि गणतन्त्र स्थापनाका लागि आपूmलाई वलिमा चढाउने सबै ज्ञात अज्ञात सहिदहरू र तिनको कल्पना भित्रको नयाँ नेपाल यतिखेर मेरो मन मस्तिष्कमा छाईरहेकोछ ।...</div>
+            </article>
+
+            <!-- Card 25 -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header">
+                    <h2 class="card-title">समानता र स्वतन्त्रता (८)</h2>
+                    <div class="card-meta">
+                        <span>मिती: ०८ मार्च २०१३</span>
+                        <span class="badge">साप्ताहिक स्तम्भ</span>
+                    </div>
+                </div>
+                <div class="card-body">नारी, जसलाई समाजको आधा आकाशका रुपमा हामी मान्दछौ । ईतिहाँसलाई केलाएर हेर्दा नारीहरु धेरै पिछडिएको पाइन्छ । बंशावलीहरुमा पिताको थरले प्रश्रय पाउनु, सानो उमेरमा बिवाह, आफ्नो जन्म घर छोडेर जानुपर्ने परिपाटीहरुले पनि नेपाल पितृ प्रधान देश भएको र नारीको स्थान दोश्रो नम्बरमा रहेको प्रष्ट पारेकोछ ।...</div>
+            </article>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; मनोज ढुङ्गाना | सर्वाधिकार सुरक्षित | mdhungana.com.np</p>
+    </footer>
+
+    <script>
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            let visibleCount = 0;
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if (category === 'all' || cardCat.includes(category)) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            document.getElementById('postStats').innerText = `देखाइएको रचना: ${visibleCount}`;
+        }
+    </script>
+</body>
+</html>
+</file>
 <!DOCTYPE html>
 <html lang="ne">
 <head>
