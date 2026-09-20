@@ -147,5 +147,32 @@
     }
     setInterval(updateClock, 1000); updateClock();
 </script>
+    <script>
+// पुराना डाटाहरूलाई विन्डो भित्र सही रूपमा देखाउने जाभास्क्रिप्ट इन्जिन
+function showTab(tabId) {
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(c => {
+        c.style.display = 'none'; // पुराना कोठाहरू लुकाउने
+    });
+
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(l => l.classList.remove('active'));
+
+    const targetTab = document.getElementById(tabId);
+    if(targetTab) {
+        targetTab.style.display = 'block'; // नयाँ कोठा सही रूपमा देखाउने
+    }
+    
+    if(document.getElementById('btn-' + tabId)){
+        document.getElementById('btn-' + tabId).classList.add('active');
+    }
+}
+parent.showTab = showTab;
+
+function filterSahitya(cat) {
+    showTab('sahitya');
+    document.getElementById('sahitya-title').textContent = 'साहित्य: ' + cat;
+}
+</script>
 </body>
 </html>
