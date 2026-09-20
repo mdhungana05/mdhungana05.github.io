@@ -570,9 +570,9 @@
 </section>
 
     </div>
-
 <!-- ३. साहित्य -->
 <div id="sahitya" class="tab-content">
+
     <div class="sahitya-section-header">
         <h2>मनोज ढुङ्गानाको साहित्यिक संग्रह</h2>
         <p>उपन्यास, कथा, लेख, कविता, गजल, मुक्तक, यात्रा संस्मरण तथा समीक्षा</p>
@@ -583,6 +583,7 @@
     </div>
 
     <div id="sahitya-content"></div>
+
 </div>
     <!-- ४. कला -->
     <div id="kala" class="tab-content">
@@ -677,29 +678,90 @@
 </footer>
 
 <script>
-    function showTab(tabId) {
-        // साहित्य ट्याब थिच्दा सिधै अर्को पेजमा लैजाने
-        if (tabId === 'sahitya') {
-            window.location.href = 'sahitya.html';
-            return;
-        }
-        
-        const contents = document.querySelectorAll('.tab-content');
-        contents.forEach(c => c.classList.remove('active'));
+let sahityaLoaded = false;
 
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        navLinks.forEach(l => l.classList.remove('active'));
+function showTab(tabId) {
 
-        document.getElementById(tabId).classList.add('active');
-        if(document.getElementById('btn-' + tabId)){
-            document.getElementById('btn-' + tabId).classList.add('active');
-        }
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(c => c.classList.remove('active'));
+
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(l => l.classList.remove('active'));
+
+    const selectedTab = document.getElementById(tabId);
+
+    if (selectedTab) {
+        selectedTab.classList.add('active');
     }
 
-    function filterSahitya(cat) {
-        window.location.href = 'sahitya.html';
+    const selectedButton = document.getElementById('btn-' + tabId);
+
+    if (selectedButton) {
+        selectedButton.classList.add('active');
     }
 
+    /* साहित्यलाई यही page मा load गर्ने */
+    if (tabId === 'sahitya' && !sahityaLoaded) {
+        loadSahitya();
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+
+async function loadSahitya() {
+
+    const loading = document.getElementById('sahitya-loading');
+    const content = document.getElementById('sahitya-content');
+
+    try {
+
+        const response = await fetch('sahitya.html');
+
+        if (!response.ok) {
+            throw new Error('Sahitya page could not be loaded.');
+        }
+
+        const html = await response.text();
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        const posts = doc.querySelector('#postsContainer');
+
+        if (posts) {
+
+            const postsGrid = posts.cloneNode(true);
+
+            content.appendChild(postsGrid);
+
+            const cards = content.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                card.style.maxHeight = 'none';
+            });
+        }
+
+        loading.style.display = 'none';
+
+        sahityaLoaded = true;
+
+    } catch (error) {
+
+        loading.innerHTML =
+            'साहित्यिक रचनाहरू लोड गर्न समस्या भयो। कृपया पुनः प्रयास गर्नुहोस्।';
+
+        console.error(error);
+    }
+}
+
+
+function filterSahitya(cat) {
+    loadSahitya();
+}
     function updateClock() {
         const now = new Date();
         document.getElementById('live-clock').textContent = now.toLocaleTimeString('en-US');
