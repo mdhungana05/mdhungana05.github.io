@@ -372,8 +372,22 @@
 /* Maximum 2 columns */
 #sahitya-content .posts-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: 20px;
+}
+
+#sahitya-content .card {
+    width: 100%;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+#sahitya-content .card-body {
+    max-height: none !important;
+    overflow: visible !important;
+    white-space: pre-line !important;
+    line-height: 1.9;
 }
 
 /* Full article visible */
@@ -391,13 +405,6 @@
 }
 
 /* Mobile - single column */
-@media (max-width: 700px) {
-
-    #sahitya-content .posts-grid {
-        grid-template-columns: 1fr;
-    }
-
-}
     </style>
 </head>
 <body>
@@ -624,11 +631,6 @@
     </div>
 <!-- ३. साहित्य -->
 <div id="sahitya" class="tab-content">
-
-    <div class="sahitya-section-header">
-        <h2>मनोज ढुङ्गानाको साहित्यिक संग्रह</h2>
-        <p>उपन्यास, कथा, लेख, कविता, गजल, मुक्तक, यात्रा संस्मरण तथा समीक्षा</p>
-    </div>
 
     <div id="sahitya-loading" style="text-align:center; padding:30px;">
         साहित्यिक रचनाहरू लोड हुँदैछ...
