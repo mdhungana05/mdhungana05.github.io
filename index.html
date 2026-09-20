@@ -886,10 +886,10 @@ function filterSahityaCategory(category, clickedButton) {
 }
 function filterSahitya(category) {
 
-    // पहिले साहित्य tab खोल्ने
+    // पहिले साहित्य section खोल्ने
     showTab('sahitya');
 
-    // साहित्य load भइसकेपछि filter गर्ने
+    // साहित्य load हुन केही समय दिने
     setTimeout(function() {
 
         const content =
@@ -897,24 +897,48 @@ function filterSahitya(category) {
 
         if (!content) return;
 
-        const buttons =
-            content.querySelectorAll('.filter-btn');
+        const cards =
+            content.querySelectorAll('#postsContainer .card');
 
-        let matchedButton = null;
+        let visibleCount = 0;
 
-        buttons.forEach(button => {
+        cards.forEach(card => {
 
-            const text = button.textContent.trim();
+            const cardCategory =
+                card.getAttribute('data-category') || '';
 
+            const categoryText =
+                cardCategory.trim().toLowerCase();
+
+            const selectedCategory =
+                category.trim().toLowerCase();
+
+            // Category मिल्यो भने देखाउने
             if (
-                (category === 'गजल' && text === 'गजल') ||
-                (category === 'कथा' && text === 'कथा') ||
-                (category === 'कविता' && text === 'कविता')
+                categoryText.includes(selectedCategory)
             ) {
-                matchedButton = button;
+
+                card.style.display = 'flex';
+                visibleCount++;
+
+            } else {
+
+                card.style.display = 'none';
+
             }
 
         });
+
+        console.log(
+            'Selected category:',
+            category,
+            'Visible:',
+            visibleCount
+        );
+
+    }, 500);
+}
+    });
 
         /*
          * sahitya.html को वास्तविक category
