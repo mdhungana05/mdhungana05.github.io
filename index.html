@@ -430,13 +430,12 @@
             <li class="dropdown">
                 <a onclick="showTab('sahitya')" id="btn-sahitya">साहित्य ▾</a>
                 <ul class="dropdown-menu">
-                    <li><a onclick="filterSahitya('गजल')">गजल</a></li>
-                    <li><a onclick="filterSahitya('कथा')">कथा</a></li>
-                    <li><a onclick="filterSahitya('कविता')">कविता</a></li>
-                    <li><a onclick="filterSahitya('लेख')">लेख</a></li>
-                    <li><a onclick="filterSahitya('मुक्तक')">मुक्तक</a></li>
-                    <li><a onclick="filterSahitya('यात्रा संस्मरण')">यात्रा संस्मरण</a></li>
-                    <li><a onclick="filterSahitya('समीक्षा')">समीक्षा</a></li>
+<li><a onclick="filterSahitya('कविता (Poems)')">कविता</a></li>
+<li><a onclick="filterSahitya('गजल (Poetry)')">गजल</a></li>
+<li><a onclick="filterSahitya('कथा (Story)')">कथा</a></li>
+<li><a onclick="filterSahitya('आलेख (Article)')">आलेख</a></li>
+<li><a onclick="filterSahitya('साप्ताहिक स्तम्भ')">साप्ताहिक स्तम्भ</a></li>
+<li><a onclick="filterSahitya('उपन्यास (Novel)')">उपन्यास</a></li>
                 </ul>
             </li>
 
@@ -886,10 +885,10 @@ function filterSahityaCategory(category, clickedButton) {
 }
 function filterSahitya(category) {
 
-    // पहिले साहित्य section खोल्ने
+    // साहित्य section खोल्ने
     showTab('sahitya');
 
-    // साहित्य load हुन केही समय दिने
+    // साहित्य load भएपछि category filter गर्ने
     setTimeout(function() {
 
         const content =
@@ -907,15 +906,8 @@ function filterSahitya(category) {
             const cardCategory =
                 card.getAttribute('data-category') || '';
 
-            const categoryText =
-                cardCategory.trim().toLowerCase();
-
-            const selectedCategory =
-                category.trim().toLowerCase();
-
-            // Category मिल्यो भने देखाउने
             if (
-                categoryText.includes(selectedCategory)
+                cardCategory.trim() === category.trim()
             ) {
 
                 card.style.display = 'flex';
@@ -929,42 +921,13 @@ function filterSahitya(category) {
 
         });
 
-        console.log(
-            'Selected category:',
-            category,
-            'Visible:',
-            visibleCount
-        );
+        const stats =
+            content.querySelector('#postStats');
 
-    }, 500);
-}
-    });
-
-        /*
-         * sahitya.html को वास्तविक category
-         */
-        let realCategory = category;
-
-        if (category === 'गजल') {
-            realCategory = 'गजल (Poetry)';
+        if (stats) {
+            stats.textContent =
+                `देखाइएको रचना: ${visibleCount}`;
         }
-
-        if (category === 'कथा') {
-            realCategory = 'कथा (Story)';
-        }
-
-        if (category === 'कविता') {
-            realCategory = 'कविता (Poems)';
-        }
-
-        if (category === 'लेख') {
-            realCategory = 'आलेख (Article)';
-        }
-
-        filterSahityaCategory(
-            realCategory,
-            matchedButton
-        );
 
     }, 500);
 }
