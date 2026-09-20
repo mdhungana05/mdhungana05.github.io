@@ -6,345 +6,146 @@
     <title>मनोज ढुङ्गाना - Blog & Profile</title>
     <style>
         @import url('https://googleapis.com');
-
-        :root {
-            --primary: #0366d6;
-            --text: #24292e;
-            --border: #e1e4e8;
-            --card-bg: #ffffff;
-            --footer-bg: #1f2328;
-            --footer-text: #f0f6fc;
-        }
-
-        body {
-            font-family: 'Mukta', 'Segoe UI', Tahoma, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            background-color: #f4f6f8;
-        }
-
-        .top-hero-header {
-            background: linear-gradient(135deg, #091e36 0%, #0f172a 100%);
-            color: #ffffff;
-            text-align: center;
-            padding: 25px 15px 15px 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        .decorative-name-np {
-            font-size: 2.5em;
-            font-weight: 800;
-            margin: 0;
-            background: linear-gradient(90deg, #ff4e50, #f9d423, #00c9ff, #92fe9d, #ff4e50);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: rainbowGradient 6s ease infinite;
-            letter-spacing: 1px;
-        }
-
-        @keyframes rainbowGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .decorative-name-en {
-            font-family: 'Cinzel', serif;
-            font-size: 1.25em;
-            font-weight: 800;
-            margin-top: 4px;
-            color: #e2e8f0;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.2);
-        }
-
-        .date-time-bar {
-            font-size: 0.9em;
-            color: #cbd5e1;
-            margin-top: 12px;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255,255,255,0.15);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .date-box {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 3px 12px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        header {
-            background: #ffffff;
-            border-bottom: 2px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-
-        .nav-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 10px;
-        }
-
-        .nav-menu {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .nav-menu > li {
-            position: relative;
-        }
-
-        .nav-menu a {
-            display: block;
-            padding: 12px 13px;
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95em;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-
-        .nav-menu a:hover, .nav-menu a.active {
-            color: #d97706;
-            background-color: #f8fafc;
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: #ffffff;
-            min-width: 150px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-            border: 1px solid var(--border);
-            border-radius: 0 0 6px 6px;
-            list-style: none;
-            padding: 5px 0;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-
-        .dropdown-menu a {
-            padding: 8px 15px;
-            color: var(--text);
-            font-size: 0.9em;
-        }
-
-        .dropdown-menu a:hover {
-            background: #f1f5f9;
-            color: #d97706;
-        }
-
-        .container {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 20px;
-            min-height: 70vh;
-        }
-
-        .tab-content {
-            display: none;
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 25px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-            margin-bottom: 20px;
-        }
+        body { font-family: 'Mukta', sans-serif; line-height: 1.6; color: #24292e; margin: 0; padding: 0; background: #f4f6f8; }
+        .top-hero-header { background: linear-gradient(135deg, #091e36, #0f172a); color: #fff; text-align: center; padding: 25px; }
+        .decorative-name-np { font-size: 2.5em; font-weight: 800; color: #ff4e50; }
+        .date-time-bar { color: #cbd5e1; margin-top: 10px; font-size: 0.9em; }
+        header { background: #fff; border-bottom: 2px solid #e1e4e8; position: sticky; top: 0; z-index: 1000; }
+        .nav-menu { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; }
+        .nav-menu a { display: block; padding: 12px 15px; color: #24292e; text-decoration: none; font-weight: bold; cursor: pointer; }
+        .nav-menu a:hover, .nav-menu a.active { color: #d97706; background: #f8fafc; }
+        .container { max-width: 940px; margin: 0 auto; padding: 20px; }
+        .tab-content { display: none; background: #fff; border-radius: 12px; padding: 25px; border: 1px solid #e2e8f0; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
         .tab-content.active { display: block; }
-
-        #home.active { background: linear-gradient(to bottom, #f0f7ff, #ffffff); }
-        #about.active { background: linear-gradient(to bottom, #fdfbf7, #ffffff); }
-        #sahitya.active { background: linear-gradient(to bottom, #f5f0ff, #ffffff); }
-        #kala.active { background: linear-gradient(to bottom, #fff7ed, #ffffff); }
-        #professional.active { background: linear-gradient(to bottom, #f0fff4, #ffffff); }
-        #bhraman.active { background: linear-gradient(to bottom, #fff0f5, #ffffff); }
-        #share.active { background: linear-gradient(to bottom, #f0fdf4, #ffffff); }
-        #contact.active { background: linear-gradient(to bottom, #f0fcfd, #ffffff); }
-
-        .welcome-section {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            margin-bottom: 25px;
-        }
-
-        .welcome-text { flex: 1; }
-        .welcome-text h2 {
-            color: #0f172a;
-            font-size: 1.7em;
-            margin-top: 0;
-            border-bottom: 3px solid #d97706;
-            display: inline-block;
-            padding-bottom: 4px;
-        }
-
-        .welcome-photo img {
-            width: 175px;
-            height: 175px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #d97706;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            background-color: #f1f5f9;
-        }
-
-        .section-title {
-            color: #0f172a;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 8px;
-            margin-bottom: 20px;
-            font-size: 1.35em;
-            margin-top: 0;
-        }
-
-        .recent-posts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 15px;
-        }
-
-        .recent-post-card {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 15px;
-            transition: all 0.25s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .recent-post-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-            border-color: #d97706;
-        }
-
-        .cat-tag {
-            background: #d97706;
-            color: #ffffff;
-            font-size: 0.75em;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-
-        .recent-post-card h4 {
-            margin: 10px 0 5px 0;
-            color: #0f172a;
-        }
-
-        .recent-post-card p {
-            font-size: 0.88em;
-            color: #64748b;
-            margin: 0;
-        }
-
-        .post-date {
-            font-size: 0.75em;
-            color: #94a3b8;
-            margin-top: 8px;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .contact-card-modern {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            padding: 15px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            color: #24292e;
-            font-weight: bold;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.02);
-            transition: 0.3s;
-        }
-
-        .contact-card-modern:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-        }
-
-        .contact-btn-tag {
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: bold;
-        }
-
-        footer {
-            background-color: var(--footer-bg);
-            color: var(--footer-text);
-            padding: 25px 20px 15px 20px;
-            margin-top: 40px;
-        }
-
-        .footer-container {
-            max-width: 980px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #30363d;
-            font-size: 0.85em;
-            color: #8b949e;
-        }
-
-        @media (max-width: 650px) {
-            .welcome-section {
-                flex-direction: column-reverse;
-                text-align: center;
-            }
-            .decorative-name-np { font-size: 1.9em; }
-        }
+        .contact-grid, .sahitya-grid, .bhraman-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .contact-card { display: flex; justify-content: space-between; align-items: center; background: #fff; border: 1px solid #e2e8f0; padding: 15px 20px; border-radius: 30px; text-decoration: none; color: #24292e; font-weight: bold; }
+        .contact-card:hover { border-color: #d97706; transform: translateY(-2px); }
+        footer { background: #1f2328; color: #f0f6fc; text-align: center; padding: 20px; margin-top: 40px; font-size: 0.9em; }
     </style>
 </head>
 <body>
 
 <div class="top-hero-header">
     <div class="decorative-name-np">मनोज ढुङ्गाना</div>
+    <div class="date-time-bar">📅 B.S.: २०८३ भाद्र २९ | ⏰ <span id="live-clock">--:--:--</span></div>
+</div>
+
+<header>
+    <div class="nav-container">
+        <ul class="nav-menu">
+            <li><a onclick="showTab('home')" class="active">गृहपृष्ठ</a></li>
+            <li><a onclick="showTab('about')">परिचय</a></li>
+            <li><a onclick="showTab('sahitya')">साहित्य</a></li>
+            <li><a onclick="showTab('kala')">कला</a></li>
+            <li><a onclick="showTab('professional')">Profession</a></li>
+            <li><a onclick="showTab('bhraman')">भ्रमण</a></li>
+            <li><a onclick="showTab('share')">शेयर बजार</a></li>
+            <li><a onclick="showTab('contact')">सम्पर्क</a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="container">
+    <!-- १. गृहपृष्ठ -->
+    <div id="home" class="tab-content active">
+        <h2>नमस्ते ! म मनोज ढुङ्गाना ।</h2>
+        <p>मेरो व्यक्तिगत डिजिटल चौतारीमा स्वागत छ। यहाँ मेरा साहित्यिक सिर्जनाहरू, कला, शेयर बजार, व्यावसायिक अनुभव, यात्रा तथा जीवनका विविध पक्षहरू समेटेको छु।</p>
+    </div>
+
+    <!-- २. परिचय -->
+    <div id="about" class="tab-content">
+        <h2>व्यक्तिगत परिचय</h2>
+        <p><strong>नाम:</strong> मनोज ढुंगाना (पागल विश्वास)</p>
+        <p><strong>ठेगाना:</strong> हेटौँडा-४, मकवानपुर</p>
+        <p><strong>जन्म :</strong> वि.सं. २०३१ बैशाख २६ गते</p>
+        <p><strong>रक्तदान :</strong> नियमित रक्तदाता - हालसम्म ८२ औँ पटक रक्तदान सम्पन्न ।</p>
+    </div>
+
+    <!-- ३. साहित्य -->
+    <div id="sahitya" class="tab-content">
+        <h2>साहित्यिक रचनाहरू</h2>
+        <div class="sahitya-grid">
+            <div style="border: 1px solid #e0d8c3; padding: 15px; border-radius: 8px;">
+                <h4 style="color:#8b0000; margin:0 0 10px 0;">म मेरी आमा अनि मातृभुमि (कविता)</h4>
+                <p style="font-size:0.95em; white-space:pre-line;">म जन्मेको ठाउं मेरो मातृभूमि, लाग्छ स्वर्ग नै हो मेरो जन्मभूमि !
+                मेरी आमा हुन मेरो सारै जाती, रोए-कराए गर्थिन् दया म माथी !</p>
+            </div>
+            <div style="border: 1px solid #e0d8c3; padding: 15px; border-radius: 8px;">
+                <h4 style="color:#8b0000; margin:0 0 10px 0;">सुहाग रात (कथा संस्मरण)</h4>
+                <p style="font-size:0.95em;">बाङ्गलादेश र म्यादी बटालियनका क्रियाकलापभित्र बिनोद र मेरो बीच आकर्षण, बाबुआमा र हाम्रो संस्कार सम्झिएर विवाह अघि मर्यादा राखेको मर्मस्पर्शी कथा।</p>
+            </div>
+            <div style="border: 1px solid #e0d8c3; padding: 15px; border-radius: 8px;">
+                <h4 style="color:#8b0000; margin:0 0 10px 0;">नारी संघर्ष (उपन्यास)</h4>
+                <p style="font-size:0.95em;">झुटो प्रेमको जाल, सुनसान औंसीको रात र समाजको कठोर यथार्थमा नारी अस्मिता जोगाउन संघर्षशील जीवनको कथा।</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ४. कला -->
+    <div id="kala" class="tab-content">
+        <h2>कला तथा सिर्जना</h2>
+        <p>• <strong>बुक कभर डिजाइन:</strong> थुप्रै साहित्यिक तथा सामाजिक पुस्तकहरूको आवरण चित्र सिर्जना।</p>
+        <p>• <strong>लोगो सिर्जना:</strong> विभिन्न सामाजिक संस्थाहरू तथा स्मारिकाहरूका लागि पहिचानमूलक प्रतिक चिन्ह निर्माण।</p>
+    </div>
+
+    <!-- ५. व्यावसायिक -->
+    <div id="professional" class="tab-content">
+        <h2>व्यावसायिक यात्रा (Professional)</h2>
+        <p><strong>General Manager</strong> - Rashmi Signatures (हाल कार्यरत)</p>
+        <p><strong>Unilever Nepal Limited (३०+ वर्षको अनुभव):</strong><br>Territory Sales Officer, Procurement Supervisor, Production In-charge, HR In-charge, र Logistics In-charge को रूपमा सफल नेतृत्व।</p>
+    </div>
+
+    <!-- ६. भ्रमण -->
+    <div id="bhraman" class="tab-content">
+        <h2>भ्रमण संस्मरण</h2>
+        <div class="bhraman-grid">
+            <div style="border:1px solid #e2e8f0; padding:15px; border-radius:8px;">
+                <h4>📍 Visit Bangladesh (Dhaka)</h4>
+                <p>संसद् भवन तथा मोतीझिल व्यावसायिक क्षेत्रको अवलोकन भ्रमण (जुन २०१६)।</p>
+            </div>
+            <div style="border:1px solid #e2e8f0; padding:15px; border-radius:8px;">
+                <h4>📍 Visit UAE (Dubai)</h4>
+                <p>बुर्ज खलिफाबाट आधुनिक सहरको दृश्यावलोकन तथा दुबई बीचको यात्रा (जनवरी २०२०)।</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ७. शेयर बजार -->
+    <div id="share" class="tab-content">
+        <h2>NEPSE - लाइभ बजार</h2>
+        <p>कारोबार समय: आइतबार - बिहीबार (११:०० AM - ३:०० PM)</p>
+        <a href="https://nepalstock.com" target="_blank" style="display:inline-block; background:#0f172a; color:#fff; padding:10px 20px; text-decoration:none; border-radius:6px; font-weight:bold;">NEPSE वेबसाइट खोल्नुहोस् ↗</a>
+    </div>
+
+    <!-- ८. सम्पर्क -->
+    <div id="contact" class="tab-content">
+        <h2>सम्पर्क तथा सामाजिक सञ्जाल</h2>
+        <div class="contact-grid">
+            <a href="mailto:info@mdhungana.com.np" class="contact-card"><span>📧 इमेल</span><span style="color:#d97706;">Mail ↗</span></a>
+            <a href="https://linkedin.com" target="_blank" class="contact-card"><span>💼 LinkedIn</span><span style="color:#0a66c2;">Connect ↗</span></a>
+            <a href="https://facebook.com" target="_blank" class="contact-card"><span>📘 Facebook</span><span style="color:#1877f2;">Follow ↗</span></a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 mdhungana.com.np | All Rights Reserved | 👁️ Visitors: <span id="visitor-count">36009</span></p>
+</footer>
+
+<script>
+    function showTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.style.display = 'none');
+        const links = document.querySelectorAll('.nav-menu a');
+        links.forEach(l => l.classList.remove('active'));
+        
+        document.getElementById(tabId).style.display = 'block';
+        event.target.classList.add('active');
+    }
+    function updateClock() {
+        document.getElementById('live-clock').textContent = new Date().toLocaleTimeString('en-US');
+    }
+    setInterval(updateClock, 1000); updateClock();
+</script>
+</body>
+</html>
