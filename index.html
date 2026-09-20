@@ -371,40 +371,39 @@
 
 /* Maximum 2 columns */
 #sahitya-content .posts-grid {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
     gap: 20px;
 }
 
 #sahitya-content .card {
-    width: 100%;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
     height: auto !important;
     max-height: none !important;
     overflow: visible !important;
 }
 
 #sahitya-content .card-body {
+    display: block !important;
+    width: 100% !important;
     max-height: none !important;
     overflow: visible !important;
     white-space: pre-line !important;
     line-height: 1.9;
+    margin-top: 15px !important;
 }
 
-/* Full article visible */
-#sahitya-content .card {
-    height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
+#sahitya-content .card h2,
+#sahitya-content .card h3,
+#sahitya-content .card h4,
+#sahitya-content .card .card-title {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 15px !important;
 }
-
-#sahitya-content .card-body {
-    max-height: none !important;
-    overflow: visible !important;
-    white-space: pre-line !important;
-    line-height: 1.9;
-}
-
-/* Mobile - single column */
+        /* Mobile - single column */
     </style>
 </head>
 <body>
@@ -785,7 +784,6 @@ async function loadSahitya() {
         const doc = parser.parseFromString(html, 'text/html');
 
         // Category buttons भएको section
-        const controls = doc.querySelector('.controls');
 
         // सबै साहित्यिक cards भएको section
         const posts = doc.querySelector('#postsContainer');
@@ -795,42 +793,14 @@ async function loadSahitya() {
         }
 
         // Category buttons राख्ने
-        if (controls) {
+     const posts = doc.querySelector('#postsContainer');
 
-            const controlsClone = controls.cloneNode(true);
+if (!posts) {
+    throw new Error('postsContainer not found.');
+}
 
-            const buttons =
-                controlsClone.querySelectorAll('.filter-btn');
-
-            buttons.forEach(button => {
-
-                const onclickValue =
-                    button.getAttribute('onclick') || '';
-
-                const match =
-                    onclickValue.match(
-                        /filterCategory\(['"](.+?)['"]\)/
-                    );
-
-                const category =
-                    match ? match[1] : 'all';
-
-                button.removeAttribute('onclick');
-
-                button.addEventListener('click', function () {
-
-                    filterSahityaCategory(
-                        category,
-                        button
-                    );
-
-                });
-
-            });
-
-            content.appendChild(controlsClone);
-        }
-
+const postsClone = posts.cloneNode(true);
+content.appendChild(postsClone);
 
         // साहित्यिक रचनाहरू राख्ने
         const postsClone = posts.cloneNode(true);
