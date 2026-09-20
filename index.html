@@ -151,6 +151,10 @@
             display: block;
         }
 
+        .dropdown.open .dropdown-menu {
+            display: block;
+        }
+
         .dropdown-menu a {
             padding: 8px 15px;
             color: var(--text);
@@ -266,6 +270,14 @@
             font-size: 0.88em;
             color: #64748b;
             margin: 0;
+        }
+
+        .see-more {
+            display: inline-block;
+            margin-top: 12px;
+            color: #b45309;
+            font-size: 0.86em;
+            font-weight: 800;
         }
 
         .post-date {
@@ -403,6 +415,108 @@
     width: 100% !important;
     margin-bottom: 15px !important;
 }
+
+        /* Kala upload grid */
+        .art-grid,
+        .travel-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        .art-card,
+        .travel-card,
+        .profession-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+        }
+
+        .art-card label {
+            display: block;
+            font-weight: 800;
+            color: #9a3412;
+            margin-bottom: 8px;
+        }
+
+        .art-card input[type="file"] {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            background: #fff7ed;
+            font-family: inherit;
+        }
+
+        .art-preview {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        .art-card textarea {
+            display: block;
+            width: 100%;
+            min-height: 80px;
+            margin-top: 10px;
+            padding: 10px;
+            resize: vertical;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font: inherit;
+        }
+
+        .travel-card img {
+            display: block;
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #f1f5f9;
+        }
+
+        .travel-card h4 {
+            margin: 12px 0 4px;
+            color: #1a365d;
+        }
+
+        .travel-card p {
+            margin: 0;
+            color: #4a5568;
+        }
+
+        .travel-date {
+            display: block;
+            margin-top: 8px;
+            color: #64748b;
+            font-size: 0.88em;
+            font-weight: 700;
+        }
+
+        .profession-card h3,
+        .profession-card h4 {
+            color: #0b3c5d;
+        }
+
+        .profession-card li {
+            margin-bottom: 7px;
+        }
+
+        @media (max-width: 650px) {
+            .art-grid,
+            .travel-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Mobile - single column */
     </style>
 </head>
@@ -428,14 +542,14 @@
             <li><a onclick="showTab('about')" id="btn-about">परिचय</a></li>
             
             <li class="dropdown">
-                <a onclick="showTab('sahitya')" id="btn-sahitya">साहित्य ▾</a>
+                <a href="#sahitya" onclick="toggleSahityaMenu(event)" id="btn-sahitya">साहित्य ▾</a>
                 <ul class="dropdown-menu">
-<li><a onclick="filterSahitya('कविता (Poems)')">कविता</a></li>
-<li><a onclick="filterSahitya('गजल (Poetry)')">गजल</a></li>
-<li><a onclick="filterSahitya('कथा (Story)')">कथा</a></li>
-<li><a onclick="filterSahitya('आलेख (Article)')">आलेख</a></li>
-<li><a onclick="filterSahitya('साप्ताहिक स्तम्भ')">साप्ताहिक स्तम्भ</a></li>
-<li><a onclick="filterSahitya('उपन्यास (Novel)')">उपन्यास</a></li>
+<li><a href="#sahitya" onclick="filterSahitya('कविता (Poems)', event)">कविता</a></li>
+<li><a href="#sahitya" onclick="filterSahitya('गजल (Poetry)', event)">गजल</a></li>
+<li><a href="#sahitya" onclick="filterSahitya('कथा (Story)', event)">कथा</a></li>
+<li><a href="#sahitya" onclick="filterSahitya('आलेख (Article)', event)">आलेख</a></li>
+<li><a href="#sahitya" onclick="filterSahitya('साप्ताहिक स्तम्भ', event)">साप्ताहिक स्तम्भ</a></li>
+<li><a href="#sahitya" onclick="filterSahitya('उपन्यास (Novel)', event)">उपन्यास</a></li>
                 </ul>
             </li>
 
@@ -467,46 +581,52 @@
             <h3 class="section-title">ताजा अपडेट (Recent Updates)</h3>
             <div class="recent-posts-grid">
                 
-                <a href="#" onclick="showTab('sahitya')" class="recent-post-card">
+                <a href="#sahitya" onclick="showTab('sahitya'); return false;" class="recent-post-card">
                     <span class="cat-tag">गजल</span>
                     <h4>उपहार</h4>
                     <p>गजल रचना र जीवन भावना...</p>
                     <div class="post-date">📅 २०८३ भाद्र २०</div>
+                    <span class="see-more">पूरा हेर्नुहोस् →</span>
                 </a>
 
-                <a href="#" onclick="showTab('sahitya')" class="recent-post-card">
+                <a href="#sahitya" onclick="showTab('sahitya'); return false;" class="recent-post-card">
                     <span class="cat-tag">यात्रा संस्मरण</span>
                     <h4>पोखराको सिरानमा</h4>
                     <p>यात्रा र प्राकृतिक दृश्यको बयान...</p>
                     <div class="post-date">📅 २०८३ भाद्र १५</div>
+                    <span class="see-more">पूरा हेर्नुहोस् →</span>
                 </a>
 
-                <a href="#" onclick="showTab('share')" class="recent-post-card">
+                <a href="#share" onclick="showTab('share'); return false;" class="recent-post-card">
                     <span class="cat-tag">शेयर बजार</span>
                     <h4>बजारको वर्तमान दिशा</h4>
                     <p>शेयर बजार र लगानी रणनीति...</p>
                     <div class="post-date">📅 २०८३ भाद्र १०</div>
+                    <span class="see-more">पूरा हेर्नुहोस् →</span>
                 </a>
 
-                <a href="#" onclick="showTab('kala')" class="recent-post-card">
+                <a href="#kala" onclick="showTab('kala'); return false;" class="recent-post-card">
                     <span class="cat-tag">कला</span>
                     <h4>डिजिटल सिर्जनाहरू</h4>
                     <p>कला र रचनात्मक प्रस्तुति...</p>
                     <div class="post-date">📅 २०८३ भाद्र ०५</div>
+                    <span class="see-more">पूरा हेर्नुहोस् →</span>
                 </a>
 
-                <a href="#" onclick="showTab('sahitya')" class="recent-post-card">
+                <a href="#sahitya" onclick="showTab('sahitya'); return false;" class="recent-post-card">
                     <span class="cat-tag">समीक्षा</span>
                     <h4>समसामयिक साहित्य समीक्षा</h4>
                     <p>पुस्तक तथा रचना माथिको दृष्टि...</p>
                     <div class="post-date">📅 २०८३ भाद्र ०१</div>
+                    <span class="see-more">पूरा हेर्नुहोस् →</span>
                 </a>
 
-                <a href="#" onclick="showTab('professional')" class="recent-post-card">
+                <a href="#professional" onclick="showTab('professional'); return false;" class="recent-post-card">
                     <span class="cat-tag">व्यावसायिक</span>
                     <h4>सामाजिक उत्तरदायित्व</h4>
                     <p>८२ औं रक्तदान अनुभव र विचार...</p>
                     <div class="post-date">📅 २०८३ साउन २५</div>
+                    <span class="see-more">पूरा हेर्नुहोस् →</span>
                 </a>
 
             </div>
@@ -640,17 +760,41 @@
     <!-- ४. कला -->
     <div id="kala" class="tab-content">
         <h2>कला तथा सिर्जना</h2>
-        <p>विभिन्न कलात्मक डिजिटल प्रस्तुति तथा सिर्जनाहरू।</p>
+        <p>हरेक बाकसमा फोटो छान्नुहोस् र त्यसको तल विवरण लेख्नुहोस्। फोटो preview यहीँ देखिन्छ।</p>
+        <div class="art-grid">
+            <div class="art-card"><label>कला १</label><img class="art-preview" alt="फोटो preview"><input type="file" accept="image/*" onchange="previewArt(this)"><textarea placeholder="फोटोको विवरण लेख्नुहोस्..."></textarea></div>
+            <div class="art-card"><label>कला २</label><img class="art-preview" alt="फोटो preview"><input type="file" accept="image/*" onchange="previewArt(this)"><textarea placeholder="फोटोको विवरण लेख्नुहोस्..."></textarea></div>
+            <div class="art-card"><label>कला ३</label><img class="art-preview" alt="फोटो preview"><input type="file" accept="image/*" onchange="previewArt(this)"><textarea placeholder="फोटोको विवरण लेख्नुहोस्..."></textarea></div>
+            <div class="art-card"><label>कला ४</label><img class="art-preview" alt="फोटो preview"><input type="file" accept="image/*" onchange="previewArt(this)"><textarea placeholder="फोटोको विवरण लेख्नुहोस्..."></textarea></div>
+            <div class="art-card"><label>कला ५</label><img class="art-preview" alt="फोटो preview"><input type="file" accept="image/*" onchange="previewArt(this)"><textarea placeholder="फोटोको विवरण लेख्नुहोस्..."></textarea></div>
+            <div class="art-card"><label>कला ६</label><img class="art-preview" alt="फोटो preview"><input type="file" accept="image/*" onchange="previewArt(this)"><textarea placeholder="फोटोको विवरण लेख्नुहोस्..."></textarea></div>
+            <div class="art-card"><label>कला ७</label><img class="art-preview" alt="फोटो preview"><input type="file" accept="image/*" onchange="previewArt(this)"><textarea placeholder="फोटोको विवरण लेख्नुहोस्..."></textarea></div>
+            <div class="art-card"><label>कला ८</label><img class="art-preview" alt="फोटो preview"><input type="file" accept="image/*" onchange="previewArt(this)"><textarea placeholder="फोटोको विवरण लेख्नुहोस्..."></textarea></div>
+            <div class="art-card"><label>कला ९</label><img class="art-preview" alt="फोटो preview"><input type="file" accept="image/*" onchange="previewArt(this)"><textarea placeholder="फोटोको विवरण लेख्नुहोस्..."></textarea></div>
+            <div class="art-card"><label>कला १०</label><img class="art-preview" alt="फोटो preview"><input type="file" accept="image/*" onchange="previewArt(this)"><textarea placeholder="फोटोको विवरण लेख्नुहोस्..."></textarea></div>
+            <div class="art-card"><label>कला ११</label><img class="art-preview" alt="फोटो preview"><input type="file" accept="image/*" onchange="previewArt(this)"><textarea placeholder="फोटोको विवरण लेख्नुहोस्..."></textarea></div>
+            <div class="art-card"><label>कला १२</label><img class="art-preview" alt="फोटो preview"><input type="file" accept="image/*" onchange="previewArt(this)"><textarea placeholder="फोटोको विवरण लेख्नुहोस्..."></textarea></div>
+        </div>
     </div>
 
       <!-- ५. व्यावसायिक (Professional Tab) -->
     <div id="professional" class="tab-content">
         <h2>व्यावसायिक यात्रा</h2>
-        <div style="background: #ffffff; padding: 25px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-            <h3 style="color: #0b3c5d;">FMCG Commercial & Sales Leader</h3>
-            <p><strong>Unilever Nepal मा ३० वर्ष भन्दा बढीको बहुराष्ट्रिय अनुभव:</strong> Territory Sales Officer, Procurement Supervisor, Production In-charge, HR In-charge, र Logistics In-charge को रूपमा सफल नेतृत्व।</p>
-            <p>हाल <strong>Rashmi Signatures</strong> मा General Manager को रूपमा कार्यरत।</p>
-            <p><a href="https://linkedin.com" target="_blank" style="color: #0077b5; font-weight: bold; text-decoration: none;">LinkedIn मा जोडिनुहोस् ↗</a></p>
+        <div class="profession-card">
+            <h3>FMCG Commercial &amp; Sales Leader</h3>
+            <p><strong>Unilever Nepal मा ३० वर्षभन्दा बढीको बहुराष्ट्रिय अनुभव</strong> सहित बिक्री, खरिद, उत्पादन, मानव संसाधन र logistics क्षेत्रमा नेतृत्व गर्नुभएको छ।</p>
+            <h4>सम्हालेका प्रमुख जिम्मेवारीहरू</h4>
+            <ul>
+                <li>Territory Sales Officer</li>
+                <li>Procurement Supervisor</li>
+                <li>Production In-charge</li>
+                <li>HR In-charge</li>
+                <li>Logistics In-charge</li>
+            </ul>
+            <h4>हालको जिम्मेवारी</h4>
+            <p><strong>Rashmi Signatures</strong> मा General Manager को रूपमा कार्यरत।</p>
+            <h4>व्यावसायिक योगदान</h4>
+            <p>विक्री व्यवस्थापन, supply chain, procurement, उत्पादन सञ्चालन, कर्मचारी व्यवस्थापन र logistics coordination मा लामो अनुभव। Unilever Nepal मा १५ वर्ष तथा ३० वर्षको Good Service Award सहित विभिन्न संस्थागत सम्मान प्राप्त।</p>
         </div>
     </div>
 
@@ -658,19 +802,17 @@
     <div id="bhraman" class="tab-content">
         <h2>भ्रमण संस्मरण</h2>
         <p>मेरा केही अविस्मरणीय वैदेशिक भ्रमणहरू:</p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 10px 0;">
-            <div style="background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.04);">
-                <h4 style="margin: 0 0 5px 0; color: #1a365d;">Visit Bangladesh (Dhaka)</h4>
-                <p style="margin: 0; font-size: 0.9em; color: #4a5568;">संसद् भवन तथा मोतीझिल क्षेत्रको भ्रमण (जुन २०१६)</p>
-            </div>
-            <div style="background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.04);">
-                <h4 style="margin: 0 0 5px 0; color: #1a365d;">Visit UAE (Dubai)</h4>
-                <p style="margin: 0; font-size: 0.9em; color: #4a5568;">बुर्ज खलिफा तथा दुबई बीच भ्रमण (जनवरी २०२०)</p>
-            </div>
-            <div style="background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.04);">
-                <h4 style="margin: 0 0 5px 0; color: #1a365d;">Visit Maldives & India</h4>
-                <p style="margin: 0; font-size: 0.9em; color: #4a5568;">माफुसी पोर्ट माल्दिभ्स (२०२४) र लखनऊ भारत (२०२३) को यात्रा</p>
-            </div>
+        <div class="travel-grid">
+            <article class="travel-card"><img src="image/bangladeshparliamentdhaka201606.jpg" alt="Bangladesh Parliament" onerror="this.style.display='none'"><h4>Bangladesh १</h4><p>बंगलादेश संसद् भवनको भ्रमण।</p><span class="travel-date">📅 जुन २०१६</span></article>
+            <article class="travel-card"><img src="image/motijheeldhaka03062026.jpg" alt="Motijheel Dhaka" onerror="this.style.display='none'"><h4>Bangladesh २</h4><p>मोतीझिल, ढाका क्षेत्रको भ्रमण।</p><span class="travel-date">📅 जुन २०१६</span></article>
+            <article class="travel-card"><img src="image/brujkhalifa.jpg" alt="Burj Khalifa Dubai" onerror="this.style.display='none'"><h4>Dubai १</h4><p>बुर्ज खलिफा, दुबईको अविस्मरणीय दृश्य।</p><span class="travel-date">📅 जनवरी २०२०</span></article>
+            <article class="travel-card"><img src="image/dubaibeach20200105.jpg" alt="Dubai Beach" onerror="this.style.display='none'"><h4>Dubai २</h4><p>दुबई बीच भ्रमणको स्मरण।</p><span class="travel-date">📅 जनवरी २०२०</span></article>
+            <article class="travel-card"><img src="image/lakhnawone01012023.jpg" alt="Lucknow photo 1" onerror="this.style.display='none'"><h4>Lucknow १</h4><p>लखनऊ भ्रमणको ऐतिहासिक स्मरण।</p><span class="travel-date">📅 २०२३</span></article>
+            <article class="travel-card"><img src="image/lakhnawtwo01012023.jpg" alt="Lucknow photo 2" onerror="this.style.display='none'"><h4>Lucknow २</h4><p>लखनऊका ऐतिहासिक स्थलहरूको यात्रा।</p><span class="travel-date">📅 २०२३</span></article>
+            <article class="travel-card"><img src="image/maldives04052024.jpg" alt="Maldives photo 1" onerror="this.style.display='none'"><h4>Maldives १</h4><p>माल्दिभ्सको समुद्री यात्राको दृश्य।</p><span class="travel-date">📅 २०२४</span></article>
+            <article class="travel-card"><img src="image/maldives2024.jpg" alt="Maldives photo 2" onerror="this.style.display='none'"><h4>Maldives २</h4><p>माफुसी पोर्ट, माल्दिभ्सको भ्रमण।</p><span class="travel-date">📅 २०२४</span></article>
+            <article class="travel-card"><img src="image/cgtemple21102023.jpg" alt="CG Temple" onerror="this.style.display='none'"><h4>CG Temple</h4><p>CG Temple को अविस्मरणीय भ्रमण।</p><span class="travel-date">📅 २१ अक्टोबर २०२३</span></article>
+            <article class="travel-card"><img src="image/patale20220408.jpg" alt="Patale" onerror="this.style.display='none'"><h4>Patale</h4><p>Patale भ्रमणको स्मरणीय दृश्य।</p><span class="travel-date">📅 ०८ अप्रिल २०२२</span></article>
         </div>
     </div>
 
@@ -700,13 +842,29 @@
                 <div class="contact-icon">📧</div>
                 <div><strong>इमेल</strong><span style="font-size: 0.85em; color: #64748b;">info@mdhungana.com.np</span></div>
             </a>
-            <a href="https://linkedin.com" target="_blank" class="contact-card">
+            <a href="https://www.linkedin.com/in/manoj-dhungana-886b2920/" target="_blank" rel="noopener" class="contact-card">
                 <div class="contact-icon">💼</div>
                 <div><strong>LinkedIn Profile</strong><span style="font-size: 0.85em; color: #64748b;">Manoj Dhungana</span></div>
             </a>
-            <a href="https://facebook.com" target="_blank" class="contact-card">
+            <a href="https://www.facebook.com/manoj.dhungana/" target="_blank" rel="noopener" class="contact-card">
                 <div class="contact-icon">📘</div>
-                <div><strong>Facebook Profile</strong><span style="font-size: 0.85em; color: #64748b;">@manoj.dhungana</span></div>
+                <div><strong>Facebook Profile</strong><span style="font-size: 0.85em; color: #64748b;">Manoj Dhungana</span></div>
+            </a>
+            <a href="https://x.com/mdhungana" target="_blank" rel="noopener" class="contact-card">
+                <div class="contact-icon">𝕏</div>
+                <div><strong>Twitter / X</strong><span style="font-size: 0.85em; color: #64748b;">Manoj Dhungana</span></div>
+            </a>
+            <a href="https://www.facebook.com/volunteer.mdhungana" target="_blank" rel="noopener" class="contact-card">
+                <div class="contact-icon">📘</div>
+                <div><strong>Volunteer Manoj Dhungana</strong><span style="font-size: 0.85em; color: #64748b;">Facebook</span></div>
+            </a>
+            <a href="https://www.facebook.com/NariSangharsh/" target="_blank" rel="noopener" class="contact-card">
+                <div class="contact-icon">📘</div>
+                <div><strong>नारी संघर्ष</strong><span style="font-size: 0.85em; color: #64748b;">Facebook</span></div>
+            </a>
+            <a href="https://www.facebook.com/MaRaKathamandau/" target="_blank" rel="noopener" class="contact-card">
+                <div class="contact-icon">📘</div>
+                <div><strong>म र काठमाडौँ</strong><span style="font-size: 0.85em; color: #64748b;">Facebook</span></div>
             </a>
         </div>
     </div>
@@ -732,6 +890,23 @@
 <script>
 let sahityaLoaded = false;
 
+function toggleSahityaMenu(event) {
+    if (event) event.preventDefault();
+
+    const dropdown = document.querySelector('.nav-menu .dropdown');
+    const wasOpen = dropdown && dropdown.classList.contains('open');
+
+    document.querySelectorAll('.nav-menu .dropdown').forEach(item => {
+        item.classList.remove('open');
+    });
+
+    showTab('sahitya');
+
+    if (dropdown && !wasOpen) {
+        dropdown.classList.add('open');
+    }
+}
+
 function showTab(tabId) {
 
     const contents = document.querySelectorAll('.tab-content');
@@ -750,6 +925,12 @@ function showTab(tabId) {
 
     if (selectedButton) {
         selectedButton.classList.add('active');
+    }
+
+    if (tabId !== 'sahitya') {
+        document.querySelectorAll('.nav-menu .dropdown').forEach(item => {
+            item.classList.remove('open');
+        });
     }
 
     // साहित्य यही page मा load गर्ने
@@ -827,90 +1008,70 @@ async function loadSahitya() {
    साहित्य CATEGORY FILTER
 ========================= */
 
-function filterSahitya(category) {
+function applySahityaFilter(category) {
+    const content = document.getElementById('sahitya-content');
+    if (!content) return false;
+
+    const cards = content.querySelectorAll('#postsContainer .card');
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category') || '';
+
+        if (cardCategory.trim() === category.trim()) {
+            card.style.display = 'flex';
+            visibleCount++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    const stats = content.querySelector('#postStats');
+    if (stats) {
+        stats.textContent = `देखाइएको रचना: ${visibleCount}`;
+    }
+
+    return true;
+}
+
+function filterSahitya(category, event) {
+    if (event) event.preventDefault();
 
     showTab('sahitya');
+
+    document.querySelectorAll('.nav-menu .dropdown').forEach(item => {
+        item.classList.remove('open');
+    });
+
+    if (sahityaLoaded) {
+        applySahityaFilter(category);
+        return;
+    }
 
     const waitForSahitya = setInterval(function () {
-
-        if (!sahityaLoaded) return;
-
-        clearInterval(waitForSahitya);
-
-        const content =
-            document.getElementById('sahitya-content');
-
-        if (!content) return;
-
-        const cards =
-            content.querySelectorAll('#postsContainer .card');
-
-        cards.forEach(card => {
-
-            const cardCategory =
-                card.getAttribute('data-category') || '';
-
-            if (cardCategory.trim() === category.trim()) {
-
-                card.style.display = 'flex';
-
-            } else {
-
-                card.style.display = 'none';
-
-            }
-
-        });
-
-    }, 100);
-}
-
-    // साहित्य section खोल्ने
-    showTab('sahitya');
-
-    // साहित्य load भएपछि category filter गर्ने
-    setTimeout(function() {
-
-        const content =
-            document.getElementById('sahitya-content');
-
-        if (!content) return;
-
-        const cards =
-            content.querySelectorAll('#postsContainer .card');
-
-        let visibleCount = 0;
-
-        cards.forEach(card => {
-
-            const cardCategory =
-                card.getAttribute('data-category') || '';
-
-            if (
-                cardCategory.trim() === category.trim()
-            ) {
-
-                card.style.display = 'flex';
-                visibleCount++;
-
-            } else {
-
-                card.style.display = 'none';
-
-            }
-
-        });
-
-        const stats =
-            content.querySelector('#postStats');
-
-        if (stats) {
-            stats.textContent =
-                `देखाइएको रचना: ${visibleCount}`;
+        if (sahityaLoaded && applySahityaFilter(category)) {
+            clearInterval(waitForSahitya);
         }
+    }, 100);
 
-    }, 500);
+    setTimeout(function() {
+        clearInterval(waitForSahitya);
+    }, 10000);
 }
+
+function previewArt(input) {
+    const file = input.files && input.files[0];
+    const preview = input.parentElement.querySelector('.art-preview');
+
+    if (!file || !preview) return;
+
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        preview.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+}
+
     function updateClock() {
         const now = new Date();
         document.getElementById('live-clock').textContent = now.toLocaleTimeString('en-US');
