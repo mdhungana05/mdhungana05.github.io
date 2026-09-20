@@ -764,7 +764,6 @@ function showTab(tabId) {
     });
 }
 
-
 async function loadSahitya() {
 
     const loading = document.getElementById('sahitya-loading');
@@ -783,56 +782,32 @@ async function loadSahitya() {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
 
-        // Category buttons भएको section
-
-        // सबै साहित्यिक cards भएको section
         const posts = doc.querySelector('#postsContainer');
 
         if (!posts) {
             throw new Error('postsContainer not found.');
         }
 
-        // Category buttons राख्ने
-     const posts = doc.querySelector('#postsContainer');
-
-if (!posts) {
-    throw new Error('postsContainer not found.');
-}
-
-const postsClone = posts.cloneNode(true);
-content.appendChild(postsClone);
-
-        // साहित्यिक रचनाहरू राख्ने
         const postsClone = posts.cloneNode(true);
 
+        content.innerHTML = '';
         content.appendChild(postsClone);
 
-
-        // पुरानो 280px limitation हटाउने
-        const cards =
-            content.querySelectorAll('.card');
+        const cards = content.querySelectorAll('.card');
 
         cards.forEach(card => {
-
             card.style.maxHeight = 'none';
             card.style.overflow = 'visible';
-
         });
 
-
-        const cardBodies =
-            content.querySelectorAll('.card-body');
+        const cardBodies = content.querySelectorAll('.card-body');
 
         cardBodies.forEach(body => {
-
             body.style.maxHeight = 'none';
             body.style.overflow = 'visible';
             body.style.whiteSpace = 'pre-line';
-
         });
 
-
-        // Loading message हटाउने
         if (loading) {
             loading.style.display = 'none';
         }
@@ -842,17 +817,13 @@ content.appendChild(postsClone);
     } catch (error) {
 
         if (loading) {
-
             loading.innerHTML =
                 'साहित्यिक रचनाहरू लोड गर्न समस्या भयो। कृपया पुनः प्रयास गर्नुहोस्।';
-
         }
 
         console.error(error);
     }
 }
-
-
 /* =========================
    साहित्य CATEGORY FILTER
 ========================= */
