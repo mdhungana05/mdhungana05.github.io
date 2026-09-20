@@ -827,63 +827,43 @@ async function loadSahitya() {
    साहित्य CATEGORY FILTER
 ========================= */
 
-function filterSahityaCategory(category, clickedButton) {
-
-    const content =
-        document.getElementById('sahitya-content');
-
-    if (!content) return;
-
-    const cards =
-        content.querySelectorAll('#postsContainer .card');
-
-    const buttons =
-        content.querySelectorAll('.filter-btn');
-
-    buttons.forEach(button => {
-        button.classList.remove('active');
-    });
-
-    if (clickedButton) {
-        clickedButton.classList.add('active');
-    }
-
-    let visibleCount = 0;
-
-    cards.forEach(card => {
-
-        const cardCategory =
-            card.getAttribute('data-category') || '';
-
-        const show =
-            category === 'all' ||
-            cardCategory.includes(category);
-
-        if (show) {
-
-            card.style.display = 'flex';
-            visibleCount++;
-
-        } else {
-
-            card.style.display = 'none';
-
-        }
-
-    });
-
-
-    const stats =
-        content.querySelector('#postStats');
-
-    if (stats) {
-
-        stats.textContent =
-            `देखाइएको रचना: ${visibleCount}`;
-    }
-
-}
 function filterSahitya(category) {
+
+    showTab('sahitya');
+
+    const waitForSahitya = setInterval(function () {
+
+        if (!sahityaLoaded) return;
+
+        clearInterval(waitForSahitya);
+
+        const content =
+            document.getElementById('sahitya-content');
+
+        if (!content) return;
+
+        const cards =
+            content.querySelectorAll('#postsContainer .card');
+
+        cards.forEach(card => {
+
+            const cardCategory =
+                card.getAttribute('data-category') || '';
+
+            if (cardCategory.trim() === category.trim()) {
+
+                card.style.display = 'flex';
+
+            } else {
+
+                card.style.display = 'none';
+
+            }
+
+        });
+
+    }, 100);
+}
 
     // साहित्य section खोल्ने
     showTab('sahitya');
