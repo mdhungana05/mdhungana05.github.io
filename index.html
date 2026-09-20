@@ -623,12 +623,12 @@
             <li class="dropdown">
                 <a href="#sahitya" onclick="toggleSahityaMenu(event)" id="btn-sahitya">साहित्य ▾</a>
                 <ul class="dropdown-menu">
-<li><a href="#sahitya" data-category="कविता (Poems)" onclick="filterSahitya('कविता (Poems)', event)">कविता</a></li>
-<li><a href="#sahitya" data-category="गजल (Poetry)" onclick="filterSahitya('गजल (Poetry)', event)">गजल</a></li>
-<li><a href="#sahitya" data-category="कथा (Story)" onclick="filterSahitya('कथा (Story)', event)">कथा</a></li>
-<li><a href="#sahitya" data-category="आलेख (Article)" onclick="filterSahitya('आलेख (Article)', event)">आलेख</a></li>
-<li><a href="#sahitya" data-category="साप्ताहिक स्तम्भ" onclick="filterSahitya('साप्ताहिक स्तम्भ', event)">साप्ताहिक स्तम्भ</a></li>
-<li><a href="#sahitya" data-category="उपन्यास (Novel)" onclick="filterSahitya('उपन्यास (Novel)', event)">उपन्यास</a></li>
+<li><a href="#sahitya" data-category="कविता (Poems)" onclick="return filterSahitya('कविता (Poems)', this)">कविता</a></li>
+<li><a href="#sahitya" data-category="गजल (Poetry)" onclick="return filterSahitya('गजल (Poetry)', this)">गजल</a></li>
+<li><a href="#sahitya" data-category="कथा (Story)" onclick="return filterSahitya('कथा (Story)', this)">कथा</a></li>
+<li><a href="#sahitya" data-category="आलेख (Article)" onclick="return filterSahitya('आलेख (Article)', this)">आलेख</a></li>
+<li><a href="#sahitya" data-category="साप्ताहिक स्तम्भ" onclick="return filterSahitya('साप्ताहिक स्तम्भ', this)">साप्ताहिक स्तम्भ</a></li>
+<li><a href="#sahitya" data-category="उपन्यास (Novel)" onclick="return filterSahitya('उपन्यास (Novel)', this)">उपन्यास</a></li>
                 </ul>
             </li>
 
@@ -1287,18 +1287,21 @@ function applySahityaFilter(category) {
     return true;
 }
 
-function filterSahitya(category, event) {
-    if (event) event.preventDefault();
+function filterSahitya(category, source) {
+    if (source && typeof source.preventDefault === 'function') {
+        source.preventDefault();
+    }
 
     showTab('sahitya');
 
-    document.querySelectorAll('.nav-menu .dropdown').forEach(item => {
-        item.classList.remove('open');
-    });
+    const dropdown = document.querySelector('.nav-menu .dropdown');
+    if (dropdown) {
+        dropdown.classList.add('open');
+    }
 
     if (sahityaLoaded) {
         applySahityaFilter(category);
-        return;
+        return false;
     }
 
     const waitForSahitya = setInterval(function () {
@@ -1310,6 +1313,8 @@ function filterSahitya(category, event) {
     setTimeout(function() {
         clearInterval(waitForSahitya);
     }, 10000);
+
+    return false;
 }
 
 function previewArt(input) {
