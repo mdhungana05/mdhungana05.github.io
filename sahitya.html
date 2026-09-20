@@ -668,28 +668,8 @@
         <p>&copy; मनोज ढुङ्गाना | सर्वाधिकार सुरक्षित | mdhungana.com.np</p>
     </footer>
 
-    <script>
-        function filterCategory(category) {
-            const cards = document.querySelectorAll('.card');
-            const buttons = document.querySelectorAll('.filter-btn');
-            let visibleCount = 0;
 
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            cards.forEach(card => {
-                const cardCat = card.getAttribute('data-category');
-                if (category === 'all' || cardCat.includes(category)) {
-                    card.style.display = 'flex';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            document.getElementById('postStats').innerText = `देखाइएको रचना: ${visibleCount}`;
-        }
-    </script>
+    
 </body>
 </html>
 </file>
@@ -784,23 +764,6 @@
         <p>&copy; 2026 मनोज ढुङ्गाना । सर्वाधिकार सुरक्षित।</p>
     </footer>
 
-    <script>
-        filterSelection("all");
-        function filterSelection(c) {
-            var x, i;
-            x = document.getElementsByClassName("work-item");
-            if (c == "all") c = "";
-            for (i = 0; i < x.length; i++) {
-                x[i].classList.remove("show");
-                if (x[i].className.indexOf(c) > -1) x[i].classList.add("show");
-            }
-            var btns = document.getElementsByClassName("filter-btn");
-            for (i = 0; i < btns.length; i++) {
-                btns[i].classList.remove("active");
-            }
-            evt = window.event || arguments.callee.caller.arguments[0];
-            if(evt) evt.target.classList.add("active");
-        }
-    </script>
+    
 </body>
 </html>
