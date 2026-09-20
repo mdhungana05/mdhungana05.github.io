@@ -166,6 +166,13 @@
             color: #d97706;
         }
 
+        .dropdown-menu a.category-active {
+            background: #fff7ed;
+            color: #b45309;
+            font-weight: 800;
+            border-left: 3px solid #d97706;
+        }
+
         /* Layout Container & Tab Background Colors */
         .container {
             max-width: 980px;
@@ -416,6 +423,78 @@
     margin-bottom: 15px !important;
 }
 
+        .sahitya-empty-state {
+            background: #ffffff;
+            border: 1px dashed #c4b5fd;
+            border-radius: 12px;
+            padding: 28px 20px;
+            text-align: center;
+            color: #6d28d9;
+            font-weight: 700;
+        }
+
+        .article-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 1px solid #eee7d8;
+        }
+
+        .article-action-button {
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            background: #ffffff;
+            color: #7f1d1d;
+            padding: 8px 13px;
+            font: inherit;
+            font-size: 0.9em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .article-action-button:hover,
+        .article-action-button.active {
+            background: #fff7ed;
+            border-color: #d97706;
+        }
+
+        .share-status {
+            color: #166534;
+            font-size: 0.86em;
+            align-self: center;
+        }
+
+        .article-comments {
+            display: none;
+            margin-top: 16px;
+            padding: 16px;
+            border-radius: 9px;
+            background: #fffdf8;
+            border: 1px solid #e0d8c3;
+        }
+
+        .article-comments.open {
+            display: block;
+        }
+
+        .article-comments h4 {
+            margin: 0 0 5px;
+            color: #4a0e17;
+        }
+
+        .article-comments p {
+            margin: 0 0 12px;
+            color: #666;
+            font-size: 0.86em;
+        }
+
+        .disqus-frame {
+            min-height: 80px;
+        }
+
         /* Kala upload grid */
         .art-grid,
         .travel-grid {
@@ -544,12 +623,12 @@
             <li class="dropdown">
                 <a href="#sahitya" onclick="toggleSahityaMenu(event)" id="btn-sahitya">साहित्य ▾</a>
                 <ul class="dropdown-menu">
-<li><a href="#sahitya" onclick="filterSahitya('कविता (Poems)', event)">कविता</a></li>
-<li><a href="#sahitya" onclick="filterSahitya('गजल (Poetry)', event)">गजल</a></li>
-<li><a href="#sahitya" onclick="filterSahitya('कथा (Story)', event)">कथा</a></li>
-<li><a href="#sahitya" onclick="filterSahitya('आलेख (Article)', event)">आलेख</a></li>
-<li><a href="#sahitya" onclick="filterSahitya('साप्ताहिक स्तम्भ', event)">साप्ताहिक स्तम्भ</a></li>
-<li><a href="#sahitya" onclick="filterSahitya('उपन्यास (Novel)', event)">उपन्यास</a></li>
+<li><a href="#sahitya" data-category="कविता (Poems)" onclick="filterSahitya('कविता (Poems)', event)">कविता</a></li>
+<li><a href="#sahitya" data-category="गजल (Poetry)" onclick="filterSahitya('गजल (Poetry)', event)">गजल</a></li>
+<li><a href="#sahitya" data-category="कथा (Story)" onclick="filterSahitya('कथा (Story)', event)">कथा</a></li>
+<li><a href="#sahitya" data-category="आलेख (Article)" onclick="filterSahitya('आलेख (Article)', event)">आलेख</a></li>
+<li><a href="#sahitya" data-category="साप्ताहिक स्तम्भ" onclick="filterSahitya('साप्ताहिक स्तम्भ', event)">साप्ताहिक स्तम्भ</a></li>
+<li><a href="#sahitya" data-category="उपन्यास (Novel)" onclick="filterSahitya('उपन्यास (Novel)', event)">उपन्यास</a></li>
                 </ul>
             </li>
 
@@ -754,6 +833,10 @@
         साहित्यिक रचनाहरू लोड हुँदैछ...
     </div>
 
+    <div id="sahitya-empty-state" class="sahitya-empty-state">
+        माथिको <strong>साहित्य</strong> dropdown बाट कविता, गजल, कथा, आलेख, साप्ताहिक स्तम्भ वा उपन्यास छान्नुहोस्।
+    </div>
+
     <div id="sahitya-content"></div>
 
 </div>
@@ -889,6 +972,9 @@
 
 <script>
 let sahityaLoaded = false;
+let sahityaLoading = false;
+let disqusLoaded = false;
+let activeDisqusCard = null;
 
 function toggleSahityaMenu(event) {
     if (event) event.preventDefault();
@@ -934,7 +1020,7 @@ function showTab(tabId) {
     }
 
     // साहित्य यही page मा load गर्ने
-    if (tabId === 'sahitya' && !sahityaLoaded) {
+    if (tabId === 'sahitya' && !sahityaLoaded && !sahityaLoading) {
         loadSahitya();
     }
 
@@ -945,6 +1031,7 @@ function showTab(tabId) {
 }
 
 async function loadSahitya() {
+    sahityaLoading = true;
 
     const loading = document.getElementById('sahitya-loading');
     const content = document.getElementById('sahitya-content');
@@ -988,8 +1075,19 @@ async function loadSahitya() {
             body.style.whiteSpace = 'pre-line';
         });
 
+        prepareArticleCards(cards);
+
+        cards.forEach(card => {
+            card.style.display = 'none';
+        });
+
         if (loading) {
             loading.style.display = 'none';
+        }
+
+        const emptyState = document.getElementById('sahitya-empty-state');
+        if (emptyState) {
+            emptyState.style.display = 'block';
         }
 
         sahityaLoaded = true;
@@ -1002,17 +1100,160 @@ async function loadSahitya() {
         }
 
         console.error(error);
+    } finally {
+        sahityaLoading = false;
     }
 }
 /* =========================
    साहित्य CATEGORY FILTER
 ========================= */
 
+function prepareArticleCards(cards) {
+    cards.forEach((card, index) => {
+        const titleElement = card.querySelector('.card-title');
+        const title = titleElement
+            ? titleElement.textContent.trim()
+            : `साहित्यिक रचना ${index + 1}`;
+        const articleId = `sahitya-${index + 1}`;
+
+        card.id = articleId;
+        card.dataset.commentTerm = `${articleId} - ${title}`;
+
+        const actions = document.createElement('div');
+        actions.className = 'article-actions';
+        actions.innerHTML = `
+            <button type="button" class="article-action-button" onclick="shareArticle(this)">↗ शेयर गर्नुहोस्</button>
+            <button type="button" class="article-action-button" onclick="toggleArticleComments(this)">💬 टिप्पणी गर्नुहोस्</button>
+            <span class="share-status" aria-live="polite"></span>
+        `;
+        card.appendChild(actions);
+
+        const comments = document.createElement('div');
+        comments.className = 'article-comments';
+        comments.innerHTML = `
+            <h4>पाठकहरूको टिप्पणी</h4>
+            <p>टिप्पणी गर्न Google/Gmail account सहित Disqus मा sign in गर्न सकिन्छ।</p>
+            <div class="disqus-frame"></div>
+        `;
+        card.appendChild(comments);
+    });
+}
+
+function shareArticle(button) {
+    const card = button.closest('.card');
+    if (!card) return;
+
+    const titleElement = card.querySelector('.card-title');
+    const title = titleElement
+        ? titleElement.textContent.trim()
+        : 'मनोज ढुङ्गानाको साहित्यिक रचना';
+    const shareUrl = new URL(window.location.href);
+    shareUrl.hash = card.id;
+
+    const copiedMessage = () => {
+        const status = card.querySelector('.share-status');
+        if (status) {
+            status.textContent = 'लिंक copy भयो ✓';
+            setTimeout(() => { status.textContent = ''; }, 3000);
+        }
+    };
+
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            text: `${title} — मनोज ढुङ्गाना`,
+            url: shareUrl.toString()
+        }).catch(() => {});
+        return;
+    }
+
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(shareUrl.toString())
+            .then(copiedMessage)
+            .catch(() => {});
+    }
+}
+
+function toggleArticleComments(button) {
+    const card = button.closest('.card');
+    if (!card) return;
+
+    const comments = card.querySelector('.article-comments');
+    const container = card.querySelector('.disqus-frame');
+    if (!comments || !container) return;
+
+    const isOpen = comments.classList.toggle('open');
+    button.classList.toggle('active', isOpen);
+    button.textContent = isOpen ? '💬 टिप्पणी बन्द गर्नुहोस्' : '💬 टिप्पणी गर्नुहोस्';
+
+    if (!isOpen) return;
+
+    document.querySelectorAll('.article-comments.open').forEach(otherComments => {
+        if (otherComments !== comments) {
+            otherComments.classList.remove('open');
+            const otherButton = otherComments.parentElement.querySelector(
+                '.article-action-button[onclick^="toggleArticleComments"]'
+            );
+            if (otherButton) {
+                otherButton.classList.remove('active');
+                otherButton.textContent = '💬 टिप्पणी गर्नुहोस्';
+            }
+        }
+    });
+
+    loadDisqusForArticle(card, container);
+}
+
+function loadDisqusForArticle(card, container) {
+    document.querySelectorAll('#disqus_thread').forEach(thread => {
+        if (thread.parentElement !== container) {
+            thread.removeAttribute('id');
+        }
+    });
+
+    const thread = document.createElement('div');
+    thread.id = 'disqus_thread';
+    container.replaceChildren(thread);
+
+    const titleElement = card.querySelector('.card-title');
+    const title = titleElement
+        ? titleElement.textContent.trim()
+        : 'मनोज ढुङ्गानाको साहित्यिक रचना';
+    const articleUrl = `${window.location.origin}${window.location.pathname}#${card.id}`;
+
+    window.disqus_config = function() {
+        this.page.url = articleUrl;
+        this.page.identifier = card.dataset.commentTerm;
+        this.page.title = title;
+    };
+
+    if (window.DISQUS) {
+        window.DISQUS.reset({
+            reload: true,
+            config: window.disqus_config
+        });
+        activeDisqusCard = card;
+        return;
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://mdhungana-com-np.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', String(Date.now()));
+    script.async = true;
+    script.onload = function() {
+        disqusLoaded = true;
+        activeDisqusCard = card;
+    };
+    document.body.appendChild(script);
+}
+
 function applySahityaFilter(category) {
     const content = document.getElementById('sahitya-content');
     if (!content) return false;
 
-    const cards = content.querySelectorAll('#postsContainer .card');
+    const cards = content.querySelectorAll('.card');
+    if (!cards.length) return false;
+
     let visibleCount = 0;
 
     cards.forEach(card => {
@@ -1024,6 +1265,18 @@ function applySahityaFilter(category) {
         } else {
             card.style.display = 'none';
         }
+    });
+
+    const emptyState = document.getElementById('sahitya-empty-state');
+    if (emptyState) {
+        emptyState.style.display = visibleCount ? 'none' : 'block';
+    }
+
+    document.querySelectorAll('.dropdown-menu a[data-category]').forEach(link => {
+        link.classList.toggle(
+            'category-active',
+            link.getAttribute('data-category').trim() === category.trim()
+        );
     });
 
     const stats = content.querySelector('#postStats');
