@@ -607,12 +607,26 @@
     <div class="decorative-name-np">मनोज ढुङ्गाना</div>
     <div class="decorative-name-en">Manoj Dhungana</div>
     
-    <div class="date-time-bar">
-        <div class="date-box">📅 <strong>B.S.:</strong> <span id="bs-date">"Live-date"</span></div>
-        <div class="date-box">🗓️ <strong>A.D.:</strong> <span id="ad-date">"Live-date"</span></div>
-        <div class="date-box">⏰ <span id="live-clock">--:--:--</span></div>
-    </div>
+  <div class="date-time-bar">
+    <div class="date-box">📅 <strong>B.S.:</strong> <span id="bs-date">लोड हुँदैछ...</span></div>
+    <div class="date-box">🗓️ <strong>A.D.:</strong> <span id="ad-date">लोड हुँदैछ...</span></div>
+    <div class="date-box">⏰ <span id="live-clock">--:--:--</span></div>
 </div>
+
+<script src="https://jsdelivr.net"></script>
+<script>
+    setInterval(() => {
+        const now = new Date();
+        // १. अंग्रेजी मिति लाइभ
+        document.getElementById('ad-date').innerText = now.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', weekday: 'short' });
+        // २. घडी टिक-टिक लाइभ
+        document.getElementById('live-clock').innerText = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+        // ३. नेपाली मिति लाइभ स्वतः आउने
+        if (typeof NepaliDate !== 'undefined') {
+            document.getElementById('bs-date').innerText = new NepaliDate(now).format('YYYY MMMM DD, dddd', 'np');
+        }
+    }, 1000);
+</script>
 
 <!-- Dynamic Navigation Tabs -->
 <header>
