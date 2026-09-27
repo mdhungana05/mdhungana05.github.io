@@ -598,6 +598,7 @@
 
         /* Mobile - single column */
     </style>
+    <script src="https://jsdelivr.net"></script>
 </head>
 <body>
 
@@ -1344,7 +1345,32 @@ function previewArt(input) {
         localStorage.setItem('site_visits', visits);
         document.getElementById('visitor-count').textContent = baseCount + visits - 1;
     })();
-    
+    <script>
+    function runLiveDateTime() {
+        const now = new Date();
+
+        // १. अंग्रेजी मिति (A.D.) डिस्प्ले गराउने
+        const adOptions = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'short' };
+        document.getElementById('ad-date').innerText = now.toLocaleDateString('en-US', adOptions);
+
+        // २. नेपाली मिति (B.S.) डिस्प्ले गराउने
+        try {
+            const nepaliDate = new NepaliDate(now);
+            document.getElementById('bs-date').innerText = nepaliDate.format('YYYY MMMM DD, dddd', 'np');
+        } catch (e) {
+            document.getElementById('bs-date').innerText = "Error";
+        }
+
+        // ३. लाइभ घडी (Clock) चलाउने
+        const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+        document.getElementById('live-clock').innerText = now.toLocaleTimeString('en-US', timeOptions);
+    }
+
+    // प्रत्येक १ सेकेन्डमा स्वतः अपडेट गर्न
+    setInterval(runLiveDateTime, 1000);
+
+    // पेज लोड हुने बित्तिकै सुरु गर्न
+    runLiveDateTime();
 </script>
 </body>
 </html>
