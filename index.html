@@ -404,6 +404,14 @@
     overflow: visible !important;
 }
 
+#sahitya-content .card.sahitya-hidden {
+    display: none !important;
+}
+
+#sahitya-content .card.sahitya-visible {
+    display: flex !important;
+}
+
 #sahitya-content .card-body {
     display: block !important;
     width: 100% !important;
@@ -598,7 +606,6 @@
 
         /* Mobile - single column */
     </style>
-    <script src="https://jsdelivr.net"></script>
 </head>
 <body>
 
@@ -607,68 +614,12 @@
     <div class="decorative-name-np">मनोज ढुङ्गाना</div>
     <div class="decorative-name-en">Manoj Dhungana</div>
     
-<div class="date-time-bar">
-    <div class="date-box">📅 <strong>B.S.:</strong> <span id="bs-date">लोड हुँदैछ...</span></div>
-    <div class="date-box">🗓️ <strong>A.D.:</strong> <span id="ad-date">लोड हुँदैछ...</span></div>
-    <div class="date-box">⏰ <span id="live-clock">--:--:--</span></div>
+    <div class="date-time-bar">
+        <div class="date-box">📅 <strong>B.S.:</strong> <span id="bs-date">लोड हुँदैछ...</span></div>
+        <div class="date-box">🗓️ <strong>A.D.:</strong> <span id="ad-date">लोड हुँदैछ...</span></div>
+        <div class="date-box">⏰ <span id="live-clock">--:--:--</span></div>
+    </div>
 </div>
-
-<script>
-    // १. इन्टरनेट वा बाहिरी लाइब्रेरी बिना नै नेपाली मिति निकाल्ने सुरक्षित फङ्सन
-    function getNepaliDateSimple(adDate) {
-        // सन् २०२६ सेप्टेम्बर २७ को आधारमा वि.सं. २०८३ असोज ११ गणना गरिएको एलाइनमेन्ट
-        const refAD = new Date("2026-09-27");
-        const refBSYear = 2083, refBSMonth = 6, refBSDay = 11; // असोज ११, २०८३
-        
-        const diffTime = adDate.getTime() - refAD.getTime();
-        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-        
-        let targetDay = refBSDay + diffDays;
-        let targetMonth = refBSMonth;
-        let targetYear = refBSYear;
-
-        // महिनाको दिन अनुसार गते मिलाउने साधारण क्याल्कुलेसन
-        const nepaliMonths = ["वैशाख", "जेठ", "असार", "साउन", "भदौ", "असोज", "कात्तिक", "मंसिर", "पुस", "माघ", "फागुन", "चैत"];
-        const daysInMonths =; // २०८३ को अनुमानित दिन
-
-        if (targetDay > daysInMonths[targetMonth - 1]) {
-            targetDay -= daysInMonths[targetMonth - 1];
-            targetMonth++;
-            if (targetMonth > 12) { targetMonth = 1; targetYear++; }
-        } else if (targetDay <= 0) {
-            targetMonth--;
-            if (targetMonth <= 0) { targetMonth = 12; targetYear--; }
-            targetDay += daysInMonths[targetMonth - 1];
-        }
-
-        const nepaliDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
-        const toNepaliNum = (num) => num.toString().split('').map(d => nepaliDigits[parseInt(d)] || d).join('');
-        const nepaliWeekdays = ["आइतवार", "सोमवार", "मङ्गलवार", "बुधवार", "बिहीवार", "शुक्रवार", "शनिवार"];
-
-        return `${toNepaliNum(targetYear)} ${nepaliMonths[targetMonth - 1]} ${toNepaliNum(targetDay)}, ${nepaliWeekdays[adDate.getDay()]}`;
-    }
-
-    // २. लाइभ अपडेट गर्ने मुख्य घडी (यसले अरू कुनै कोड बिगार्दैन)
-    setInterval(() => {
-        try {
-            const now = new Date();
-            
-            // क) अंग्रेजी मिति अपडेट
-            const adEl = document.getElementById('ad-date');
-            if(adEl) adEl.innerText = now.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', weekday: 'short' });
-            
-            // ख) घडी लाइवे अपडेट
-            const clockEl = document.getElementById('live-clock');
-            if(clockEl) clockEl.innerText = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-            
-            // ग) नेपाली मिति इन्डिपेन्डेन्ट अपडेट
-            const bsEl = document.getElementById('bs-date');
-            if(bsEl) bsEl.innerText = getNepaliDateSimple(now);
-        } catch (err) {
-            console.log("Clock error bypassed.");
-        }
-    }, 1000);
-</script>
 
 <!-- Dynamic Navigation Tabs -->
 <header>
@@ -1027,6 +978,7 @@
     </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@sbmdkl/nepali-date-converter"></script>
 <script>
 let sahityaLoaded = false;
 let sahityaLoading = false;
@@ -1135,7 +1087,8 @@ async function loadSahitya() {
         prepareArticleCards(cards);
 
         cards.forEach(card => {
-            card.style.display = 'none';
+            card.classList.remove('sahitya-visible');
+            card.classList.add('sahitya-hidden');
         });
 
         if (loading) {
@@ -1317,10 +1270,12 @@ function applySahityaFilter(category) {
         const cardCategory = card.getAttribute('data-category') || '';
 
         if (cardCategory.trim() === category.trim()) {
-            card.style.display = 'flex';
+            card.classList.remove('sahitya-hidden');
+            card.classList.add('sahitya-visible');
             visibleCount++;
         } else {
-            card.style.display = 'none';
+            card.classList.remove('sahitya-visible');
+            card.classList.add('sahitya-hidden');
         }
     });
 
@@ -1387,11 +1342,66 @@ function previewArt(input) {
     reader.readAsDataURL(file);
 }
 
+function toNepaliDigits(value) {
+    return String(value).replace(/[0-9]/g, digit => '०१२३४५६७८९'[digit]);
+}
+
+function getNepalDateParts() {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'Asia/Kathmandu',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    }).formatToParts(new Date());
+
+    return parts.reduce((result, part) => {
+        if (part.type !== 'literal') result[part.type] = part.value;
+        return result;
+    }, {});
+}
+
+function updateDateBar() {
+    const dateParts = getNepalDateParts();
+    const isoDate = `${dateParts.year}-${dateParts.month}-${dateParts.day}`;
+    const adDate = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Asia/Kathmandu',
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+    }).format(new Date());
+
+    const adElement = document.getElementById('ad-date');
+    if (adElement) adElement.textContent = adDate;
+
+    const converter = window['@sbmdkl/nepali-date-converter'];
+    const bsElement = document.getElementById('bs-date');
+
+    if (converter && typeof converter.adToBs === 'function' && bsElement) {
+        const bsParts = converter.adToBs(isoDate).split('-');
+        const bsMonths = [
+            '', 'बैशाख', 'जेठ', 'असार', 'साउन', 'भदौ',
+            'असोज', 'कात्तिक', 'मंसिर', 'पुस', 'माघ', 'फागुन', 'चैत'
+        ];
+        bsElement.textContent =
+            `${toNepaliDigits(bsParts[0])} ${bsMonths[Number(bsParts[1])]} ${toNepaliDigits(bsParts[2])}`;
+    }
+}
+
     function updateClock() {
-        const now = new Date();
-        document.getElementById('live-clock').textContent = now.toLocaleTimeString('en-US');
+        const clock = document.getElementById('live-clock');
+        if (!clock) return;
+
+        clock.textContent = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Asia/Kathmandu',
+            hour: 'numeric',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+        }).format(new Date());
     }
     setInterval(updateClock, 1000);
+    setInterval(updateDateBar, 60000);
+    updateDateBar();
     updateClock();
 
     (function() {
@@ -1401,5 +1411,7 @@ function previewArt(input) {
         localStorage.setItem('site_visits', visits);
         document.getElementById('visitor-count').textContent = baseCount + visits - 1;
     })();
+    
+</script>
 </body>
 </html>
