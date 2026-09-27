@@ -607,23 +607,65 @@
     <div class="decorative-name-np">मनोज ढुङ्गाना</div>
     <div class="decorative-name-en">Manoj Dhungana</div>
     
-  <div class="date-time-bar">
+<div class="date-time-bar">
     <div class="date-box">📅 <strong>B.S.:</strong> <span id="bs-date">लोड हुँदैछ...</span></div>
     <div class="date-box">🗓️ <strong>A.D.:</strong> <span id="ad-date">लोड हुँदैछ...</span></div>
     <div class="date-box">⏰ <span id="live-clock">--:--:--</span></div>
 </div>
 
-<script src="https://jsdelivr.net"></script>
 <script>
+    // १. इन्टरनेट वा बाहिरी लाइब्रेरी बिना नै नेपाली मिति निकाल्ने सुरक्षित फङ्सन
+    function getNepaliDateSimple(adDate) {
+        // सन् २०२६ सेप्टेम्बर २७ को आधारमा वि.सं. २०८३ असोज ११ गणना गरिएको एलाइनमेन्ट
+        const refAD = new Date("2026-09-27");
+        const refBSYear = 2083, refBSMonth = 6, refBSDay = 11; // असोज ११, २०८३
+        
+        const diffTime = adDate.getTime() - refAD.getTime();
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        
+        let targetDay = refBSDay + diffDays;
+        let targetMonth = refBSMonth;
+        let targetYear = refBSYear;
+
+        // महिनाको दिन अनुसार गते मिलाउने साधारण क्याल्कुलेसन
+        const nepaliMonths = ["वैशाख", "जेठ", "असार", "साउन", "भदौ", "असोज", "कात्तिक", "मंसिर", "पुस", "माघ", "फागुन", "चैत"];
+        const daysInMonths =; // २०८३ को अनुमानित दिन
+
+        if (targetDay > daysInMonths[targetMonth - 1]) {
+            targetDay -= daysInMonths[targetMonth - 1];
+            targetMonth++;
+            if (targetMonth > 12) { targetMonth = 1; targetYear++; }
+        } else if (targetDay <= 0) {
+            targetMonth--;
+            if (targetMonth <= 0) { targetMonth = 12; targetYear--; }
+            targetDay += daysInMonths[targetMonth - 1];
+        }
+
+        const nepaliDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+        const toNepaliNum = (num) => num.toString().split('').map(d => nepaliDigits[parseInt(d)] || d).join('');
+        const nepaliWeekdays = ["आइतवार", "सोमवार", "मङ्गलवार", "बुधवार", "बिहीवार", "शुक्रवार", "शनिवार"];
+
+        return `${toNepaliNum(targetYear)} ${nepaliMonths[targetMonth - 1]} ${toNepaliNum(targetDay)}, ${nepaliWeekdays[adDate.getDay()]}`;
+    }
+
+    // २. लाइभ अपडेट गर्ने मुख्य घडी (यसले अरू कुनै कोड बिगार्दैन)
     setInterval(() => {
-        const now = new Date();
-        // १. अंग्रेजी मिति लाइभ
-        document.getElementById('ad-date').innerText = now.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', weekday: 'short' });
-        // २. घडी टिक-टिक लाइभ
-        document.getElementById('live-clock').innerText = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-        // ३. नेपाली मिति लाइभ स्वतः आउने
-        if (typeof NepaliDate !== 'undefined') {
-            document.getElementById('bs-date').innerText = new NepaliDate(now).format('YYYY MMMM DD, dddd', 'np');
+        try {
+            const now = new Date();
+            
+            // क) अंग्रेजी मिति अपडेट
+            const adEl = document.getElementById('ad-date');
+            if(adEl) adEl.innerText = now.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', weekday: 'short' });
+            
+            // ख) घडी लाइवे अपडेट
+            const clockEl = document.getElementById('live-clock');
+            if(clockEl) clockEl.innerText = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            
+            // ग) नेपाली मिति इन्डिपेन्डेन्ट अपडेट
+            const bsEl = document.getElementById('bs-date');
+            if(bsEl) bsEl.innerText = getNepaliDateSimple(now);
+        } catch (err) {
+            console.log("Clock error bypassed.");
         }
     }, 1000);
 </script>
