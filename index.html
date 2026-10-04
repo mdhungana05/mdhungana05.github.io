@@ -181,17 +181,17 @@
             min-height: 70vh;
         }
 
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
         #home.active { background: linear-gradient(to bottom, #f0f7ff, #ffffff); border-radius: 12px; padding: 15px; }
         #about.active { background: linear-gradient(to bottom, #fdfbf7, #ffffff); border-radius: 12px; padding: 15px; }
         #sahitya.active { background: linear-gradient(to bottom, #f5f0ff, #ffffff); border-radius: 12px; padding: 15px; }
         #kala.active { background: linear-gradient(to bottom, #fff7ed, #ffffff); border-radius: 12px; padding: 15px; }
-        #professional.active { background: linear-gradient(to bottom, #f0fff4, #ffffff); border-radius: 12px; padding: 15px; }
+        #professional.active { background: #ffffff; border-radius: 12px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         #bhraman.active { background: linear-gradient(to bottom, #fff0f5, #ffffff); border-radius: 12px; padding: 15px; }
         #share.active { background: linear-gradient(to bottom, #f0fdf4, #ffffff); border-radius: 12px; padding: 15px; }
         #contact.active { background: linear-gradient(to bottom, #f0fcfd, #ffffff); border-radius: 12px; padding: 15px; }
-
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
 
         /* Welcome Section */
         .welcome-section {
@@ -365,71 +365,47 @@
             }
             .decorative-name-np { font-size: 1.9em; }
         }
-        /* =========================
-   SAHITYA SECTION
-========================= */
 
-.sahitya-section-header {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #e0d8c3;
-    margin-bottom: 20px;
-    text-align: center;
-}
+        /* Sahitya Filter Layouts */
+        .sahitya-section-header {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e0d8c3;
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
-.sahitya-section-header h2 {
-    color: #8b0000;
-    margin: 0 0 5px 0;
-}
+        .sahitya-section-header h2 { color: #8b0000; margin: 0 0 5px 0; }
+        .sahitya-section-header p { margin: 0; color: #666; }
 
-.sahitya-section-header p {
-    margin: 0;
-    color: #666;
-}
+        #sahitya-content .posts-grid {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 20px;
+        }
 
-/* Maximum 2 columns */
-#sahitya-content .posts-grid {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 20px;
-}
+        #sahitya-content .card {
+            width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            height: auto !important;
+            max-height: none !important;
+            overflow: visible !important;
+        }
 
-#sahitya-content .card {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
-}
+        #sahitya-content .card.sahitya-hidden { display: none !important; }
+        #sahitya-content .card.sahitya-visible { display: flex !important; }
 
-#sahitya-content .card.sahitya-hidden {
-    display: none !important;
-}
-
-#sahitya-content .card.sahitya-visible {
-    display: flex !important;
-}
-
-#sahitya-content .card-body {
-    display: block !important;
-    width: 100% !important;
-    max-height: none !important;
-    overflow: visible !important;
-    white-space: pre-line !important;
-    line-height: 1.9;
-    margin-top: 15px !important;
-}
-
-#sahitya-content .card h2,
-#sahitya-content .card h3,
-#sahitya-content .card h4,
-#sahitya-content .card .card-title {
-    display: block !important;
-    width: 100% !important;
-    margin-bottom: 15px !important;
-}
+        #sahitya-content .card-body {
+            display: block !important;
+            width: 100% !important;
+            max-height: none !important;
+            overflow: visible !important;
+            white-space: pre-line !important;
+            line-height: 1.9;
+            margin-top: 15px !important;
+        }
 
         .sahitya-empty-state {
             background: #ffffff;
@@ -441,124 +417,19 @@
             font-weight: 700;
         }
 
-        .article-actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 18px;
-            padding-top: 14px;
-            border-top: 1px solid #eee7d8;
-        }
-
-        .article-action-button {
-            border: 1px solid #cbd5e1;
-            border-radius: 7px;
-            background: #ffffff;
-            color: #7f1d1d;
-            padding: 8px 13px;
-            font: inherit;
-            font-size: 0.9em;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.2s ease, border-color 0.2s ease;
-        }
-
-        .article-action-button:hover,
-        .article-action-button.active {
-            background: #fff7ed;
-            border-color: #d97706;
-        }
-
-        .share-status {
-            color: #166534;
-            font-size: 0.86em;
-            align-self: center;
-        }
-
-        .article-comments {
-            display: none;
-            margin-top: 16px;
-            padding: 16px;
-            border-radius: 9px;
-            background: #fffdf8;
-            border: 1px solid #e0d8c3;
-        }
-
-        .article-comments.open {
-            display: block;
-        }
-
-        .article-comments h4 {
-            margin: 0 0 5px;
-            color: #4a0e17;
-        }
-
-        .article-comments p {
-            margin: 0 0 12px;
-            color: #666;
-            font-size: 0.86em;
-        }
-
-        .disqus-frame {
-            min-height: 80px;
-        }
-
-        /* Kala upload grid */
-        .art-grid,
-        .travel-grid {
+        .art-grid, .travel-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 18px;
             margin-top: 18px;
         }
 
-        .art-card,
-        .travel-card,
-        .profession-card {
+        .art-card, .travel-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
             padding: 15px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-        }
-
-        .art-card label {
-            display: block;
-            font-weight: 800;
-            color: #9a3412;
-            margin-bottom: 8px;
-        }
-
-        .art-card input[type="file"] {
-            display: block;
-            width: 100%;
-            padding: 8px;
-            border: 1px dashed #cbd5e1;
-            border-radius: 8px;
-            background: #fff7ed;
-            font-family: inherit;
-        }
-
-        .art-preview {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-        }
-
-        .art-card textarea {
-            display: block;
-            width: 100%;
-            min-height: 80px;
-            margin-top: 10px;
-            padding: 10px;
-            resize: vertical;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            font: inherit;
         }
 
         .travel-card img {
@@ -570,46 +441,46 @@
             background: #f1f5f9;
         }
 
-        .travel-card h4 {
-            margin: 12px 0 4px;
-            color: #1a365d;
-        }
-
-        .travel-card p {
-            margin: 0;
-            color: #4a5568;
-        }
-
-        .travel-date {
-            display: block;
-            margin-top: 8px;
-            color: #64748b;
-            font-size: 0.88em;
-            font-weight: 700;
-        }
-
-        .profession-card h3,
-        .profession-card h4 {
-            color: #0b3c5d;
-        }
-
-        .profession-card li {
-            margin-bottom: 7px;
-        }
-
         @media (max-width: 650px) {
-            .art-grid,
-            .travel-grid {
-                grid-template-columns: 1fr;
-            }
+            .art-grid, .travel-grid { grid-template-columns: 1fr; }
         }
 
-        /* Mobile - single column */
+        /* ====================================================================
+           ISOLATED CANVA STYLE CV PROTECTED FOR THE PROFESSIONAL TAB
+        ==================================================================== */
+        .cv-canva-wrapper { display: flex; justify-content: center; background-color: #ffffff; padding: 10px 0; width: 100%; box-sizing: border-box; }
+        .cv-canva-container { width: 100%; display: flex; background: #ffffff; text-align: left; box-sizing: border-box; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
+        .cv-canva-left-sidebar { width: 32%; background-color: #f1f3f5 !important; padding: 30px 15px; color: #333333; border-right: 1px solid #e2e8f0; box-sizing: border-box; }
+        .cv-canva-photo-holder { width: 130px; height: 130px; border-radius: 50%; border: 4px solid #0A2540; overflow: hidden; margin: 0 auto 25px auto; display: flex; align-items: center; justify-content: center; background: #cbd5e1; }
+        .cv-canva-photo-holder img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .cv-canva-side-block { margin-bottom: 25px; box-sizing: border-box; }
+        .cv-canva-side-heading { font-size: 14px; color: #0A2540; font-weight: 700; border-bottom: 2px solid #0A2540; padding-bottom: 4px; margin-bottom: 12px; letter-spacing: 0.5px; text-transform: uppercase; }
+        .cv-canva-side-list { font-size: 12px; line-height: 1.6; list-style: none; padding: 0; margin: 0; }
+        .cv-canva-side-list li { margin-bottom: 8px; color: #333; }
+        
+        .cv-canva-main-content { width: 68%; padding: 30px 25px; color: #333333; box-sizing: border-box; }
+        .cv-canva-blue-header { background-color: #0A2540 !important; color: #ffffff !important; padding: 25px 20px; margin-bottom: 25px; border-radius: 4px; }
+        .cv-canva-blue-header h1 { font-size: 28px; font-weight: 700; color: #ffffff !important; margin: 0 0 5px 0; line-height: 1.2; text-shadow: none; letter-spacing: 1px; }
+        .cv-canva-blue-header p { font-size: 12px; color: #94a3b8 !important; font-weight: 600; text-transform: uppercase; margin: 0; letter-spacing: 0.5px; }
+        
+        .cv-canva-content-block { margin-bottom: 22px; }
+        .cv-canva-content-heading { font-size: 14px; color: #0A2540; font-weight: 700; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px; margin-bottom: 12px; text-transform: uppercase; }
+        .cv-canva-summary { font-size: 12px; line-height: 1.6; text-align: justify; color: #475569; margin: 0; }
+        
+        .cv-canva-experience-item { margin-bottom: 18px; }
+        .cv-canva-exp-header { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; color: #0A2540; }
+        .cv-canva-exp-company { font-size: 11.5px; font-style: italic; color: #64748b; margin-bottom: 5px; font-weight: 600; }
+        .cv-canva-exp-bullets { font-size: 11.5px; line-height: 1.5; padding-left: 15px; color: #334155; margin: 0; }
+        .cv-canva-exp-bullets li { margin-bottom: 4px; }
+
+        @media (max-width: 768px) {
+            .cv-canva-container { flex-direction: column; }
+            .cv-canva-left-sidebar, .cv-canva-main-content { width: 100%; border-right: none; }
+        }
     </style>
 </head>
 <body>
 
-<!-- Top Hero Header -->
 <div class="top-hero-header">
     <div class="decorative-name-np">मनोज ढुङ्गाना</div>
     <div class="decorative-name-en">Manoj Dhungana</div>
@@ -621,25 +492,22 @@
     </div>
 </div>
 
-<!-- Dynamic Navigation Tabs -->
 <header>
     <div class="nav-container">
         <ul class="nav-menu">
             <li><a onclick="showTab('home')" id="btn-home" class="active">गृहपृष्ठ</a></li>
             <li><a onclick="showTab('about')" id="btn-about">परिचय</a></li>
-            
             <li class="dropdown">
                 <a href="#sahitya" onclick="toggleSahityaMenu(event)" id="btn-sahitya">साहित्य ▾</a>
                 <ul class="dropdown-menu">
-<li><a href="#sahitya" data-category="कविता (Poems)" onclick="return filterSahitya('कविता (Poems)', this)">कविता</a></li>
-<li><a href="#sahitya" data-category="गजल (Poetry)" onclick="return filterSahitya('गजल (Poetry)', this)">गजल</a></li>
-<li><a href="#sahitya" data-category="कथा (Story)" onclick="return filterSahitya('कथा (Story)', this)">कथा</a></li>
-<li><a href="#sahitya" data-category="आलेख (Article)" onclick="return filterSahitya('आलेख (Article)', this)">आलेख</a></li>
-<li><a href="#sahitya" data-category="साप्ताहिक स्तम्भ" onclick="return filterSahitya('साप्ताहिक स्तम्भ', this)">साप्ताहिक स्तम्भ</a></li>
-<li><a href="#sahitya" data-category="उपन्यास (Novel)" onclick="return filterSahitya('उपन्यास (Novel)', this)">उपन्यास</a></li>
+                    <li><a href="#sahitya" data-category="कविता (Poems)" onclick="return filterSahitya('कविता (Poems)', this)">कविता</a></li>
+                    <li><a href="#sahitya" data-category="गजल (Poetry)" onclick="return filterSahitya('गजल (Poetry)', this)">गजल</a></li>
+                    <li><a href="#sahitya" data-category="कथा (Story)" onclick="return filterSahitya('कथा (Story)', this)">कथा</a></li>
+                    <li><a href="#sahitya" data-category="आलेख (Article)" onclick="return filterSahitya('आलेख (Article)', this)">आलेख</a></li>
+                    <li><a href="#sahitya" data-category="साप्ताहिक स्तम्भ" onclick="return filterSahitya('साप्ताहिक स्तम्भ', this)">साप्ताहिक स्तम्भ</a></li>
+                    <li><a href="#sahitya" data-category="उपन्यास (Novel)" onclick="return filterSahitya('उपन्यास (Novel)', this)">उपन्यास</a></li>
                 </ul>
             </li>
-
             <li><a onclick="showTab('kala')" id="btn-kala">कला</a></li>
             <li><a onclick="showTab('professional')" id="btn-professional">Profession</a></li>
             <li><a onclick="showTab('bhraman')" id="btn-bhraman">भ्रमण</a></li>
@@ -656,1106 +524,262 @@
         <div class="welcome-section">
             <div class="welcome-text">
                 <h2>यहाँलाई मेरो वेबसाइटमा हार्दिक स्वागत छ !</h2>
-                <p>
-                    नमस्ते ! म मनोज ढुङ्गाना । मेरो व्यक्तिगत डिजिटल चौतारीमा स्वागत छ। यहाँ मेरा साहित्यिक सिर्जनाहरू, कला, शेयर बजार, व्यावसायिक अनुभव, यात्रा तथा जीवनका विविध पक्षहरू समेटेको छु, पढेर प्रतिकृया दिनुहोला ।                 </p>
+                <p>नमस्ते ! म मनोज ढुङ्गाना । मेरो व्यक्तिगत डिजिटल चौतारीमा स्वागत छ। यहाँ मेरा साहित्यिक सिर्जनाहरू, कला, शेयर बजार, व्यावसायिक अनुभव, यात्रा तथा जीवनका विविध पक्षहरू समेटेको छु।</p>
             </div>
             <div class="welcome-photo">
-                <img src="profile.jpg" alt="Manoj Dhungana" onerror="this.src='https://api.iconify.design/noto:folded-hands.svg?width=120'; this.style.padding='25px';">
+                <img src="profile.jpg" alt="Manoj Dhungana" onerror="this.src='https://api.iconify.design/noto:folded-hands.svg?width=120';">
             </div>
         </div>
+    </div>
 
-        <div class="section-card">
-            <h3 class="section-title">ताजा अपडेट (Recent Updates)</h3>
-            <div class="recent-posts-grid">
+    <!-- २. परिचय (About Tab) -->
+    <div id="about" class="tab-content">
+        <div style="display: grid; grid-template-columns: 1fr 320px; gap: 30px; align-items: start;">
+            <div>
+                <h2>व्यक्तिगत परिचय</h2>
+                <p><strong>नाम:</strong> मनोज ढुंगाना</p>
+                <p><strong>ठेगाना:</strong> हेटौँडा-४, मकवानपुर</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ३. साहित्य (Sahitya Tab) -->
+    <div id="sahitya" class="tab-content">
+        <div id="sahitya-loading" style="text-align:center; padding:30px;">साहित्यिक रचनाहरू लोड हुँदैछ...</div>
+        <div id="sahitya-empty-state" class="sahitya-empty-state">साहित्य dropdown बाट विधा छान्नुहोस्।</div>
+        <div id="sahitya-content"></div>
+    </div>
+
+    <!-- ४. कला (Kala Tab) -->
+    <div id="kala" class="tab-content">
+        <style>
+            .art-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 15px 0; }
+            .art-card { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+            .art-preview-large { width: 100%; height: 450px; object-fit: cover; border-radius: 6px; }
+        </style>
+        <h2>मेरो कला तथा सिर्जना</h2>
+        <div class="art-grid">
+            <div class="art-card"><label>कला १</label><img class="art-preview-large" src="image/logo_and_badge_designed_for_makawanpur_lions_club_july2009.jpg"><textarea>मकवानपुर लायन्स क्लबको लोगो (जुलाई २००९)</textarea></div>
+            <div class="art-card"><label>कला २</label><img class="art-preview-large" src="image/Souvenir_cover_makawanpur_lions_club_july2009.jpg"><textarea>स्मारिका कभर डिजाइन (जुलाई २००९)</textarea></div>
+        </div>
+    </div>
+
+    <!-- ५. व्यावसायिक (Professional Tab - NEW ISOLATED DESIGN) -->
+    <div id="professional" class="tab-content">
+        <div class="cv-canva-wrapper">
+            <div class="cv-canva-container">
+                <!-- LEFT SIDEBAR -->
+                <div class="cv-canva-left-sidebar">
+                    <div class="cv-canva-photo-holder">
+                        <img src="profile.jpg" alt="Manoj Dhungana" onerror="this.src='https://api.iconify.design/noto:folded-hands.svg?width=120';">
+                    </div>
+                    
+                    <div class="cv-canva-side-block">
+                        <div class="cv-canva-side-heading">Contact</div>
+                        <ul class="cv-canva-side-list">
+                            <li>📍 Hetauda, Makawanpur, Nepal</li>
+                            <li>📞 +977-9855068554</li>
+                            <li>✉️ info@mdhungana.com.np</li>
+                            <li>🌐 www.mdhungana.com.np</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cv-canva-side-block">
+                        <div class="cv-canva-side-heading">Core Competencies</div>
+                        <ul class="cv-canva-side-list" style="list-style-type: square; padding-left: 15px;">
+                            <li>Territory Distribution & Sales</li>
+                            <li>End-to-End Procurement</li>
+                            <li>LC & Customs Clearance</li>
+                            <li>TPM & Process Safety</li>
+                            <li>Shop Floor Efficiency</li>
+                            <li>Project Management</li>
+                            <li>Inventory Management</li>
+                            <li>Vendor & Workforce Admin</li>
+                            <li>Executive MIS Reporting</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-canva-side-block">
+                        <div class="cv-canva-side-heading">Education</div>
+                        <div class="cv-canva-side-list" style="margin-bottom: 12px;">
+                            <strong style="color:#0A2540;">Bachelor's in Commerce</strong><br>
+                            Tribhuvan University (2001 - 2004)
+                        </div>
+                        <div class="cv-canva-side-list" style="margin-bottom: 12px;">
+                            <strong style="color:#0A2540;">I.Com (PCL Level)</strong><br>
+                            Tribhuvan University (1994 - 1998)
+                        </div>
+                        <div class="cv-canva-side-list">
+                            <strong style="color:#0A2540;">SLC</strong><br>
+                            Adhunik Rastriya Ma. Vi. (1994)
+                        </div>
+                    </div>
+                    
+                    <div class="cv-canva-side-block">
+                        <div class="cv-canva-side-heading">Languages</div>
+                        <ul class="cv-canva-side-list">
+                            <li>• Nepali (Native)</li>
+                            <li>• English (Professional)</li>
+                        </ul>
+                    </div>
+                </div>
                 
-                <a href="#sahitya" onclick="showTab('sahitya'); return false;" class="recent-post-card">
-                    <span class="cat-tag">गजल</span>
-                    <h4>उपहार</h4>
-                    <p>गजल रचना र जीवन भावना...</p>
-                    <div class="post-date">📅 २०८३ भाद्र २०</div>
-                    <span class="see-more">पूरा हेर्नुहोस् →</span>
-                </a>
+                <!-- RIGHT MAIN CONTENT -->
+                <div class="cv-canva-main-content">
+                    <div class="cv-canva-blue-header">
+                        <h1>MANOJ DHUNGANA</h1>
+                        <p>Senior Sales & Operations Professional</p>
+                    </div>
+                    
+                    <div class="cv-canva-content-block">
+                        <div class="cv-canva-content-heading">Professional Summary</div>
+                        <p class="cv-canva-summary">
+                            An accomplished and versatile Senior Sales & Operations professional with a distinguished 30-year career of continuous growth at Unilever Nepal. Offers a rare, comprehensive background that connects front-end Customer Development (Sales & Trade Marketing) with back-end Supply Chain, Factory Operations, Procurement, and TPM (Total Productive Maintenance). Proven track record of penetrating challenging territories and optimizing operational pipelines.
+                        </p>
+                    </div>
+                    
+                    <div class="cv-canva-content-block">
+                        <div class="cv-canva-content-heading">Work Experience</div>
+                        
+                        <div class="cv-canva-experience-item">
+                            <div class="cv-canva-exp-header"><span>Commercial & Operational Head</span><span>July 2026 – Present</span></div>
+                            <div class="cv-canva-exp-company">Rashmi Signatures, Nepal</div>
+                            <ul class="cv-canva-exp-bullets">
+                                <li>Provide strategic leadership across commercial operations, sales, and business development.</li>
+                                <li>Develop digital marketing and execute growth strategies to strengthen market presence.</li>
+                            </ul>
+                        </div>
 
-                <a href="#sahitya" onclick="showTab('sahitya'); return false;" class="recent-post-card">
-                    <span class="cat-tag">यात्रा संस्मरण</span>
-                    <h4>पोखराको सिरानमा</h4>
-                    <p>यात्रा र प्राकृतिक दृश्यको बयान...</p>
-                    <div class="post-date">📅 २०८३ भाद्र १५</div>
-                    <span class="see-more">पूरा हेर्नुहोस् →</span>
-                </a>
+                        <div class="cv-canva-experience-item">
+                            <div class="cv-canva-exp-header"><span>Territory Sales Officer (Customer Development)</span><span>April 2017 – June 2026</span></div>
+                            <div class="cv-canva-exp-company">UNILEVER NEPAL LIMITED (Total Tenure: 30 Years 3 Months)</div>
+                            <ul class="cv-canva-exp-bullets">
+                                <li>Managed regional sales, trade marketing, and penetration across diverse zones.</li>
+                                <li><strong>Project Shakti (2026):</strong> Launched feeder distribution networks in Jumla and Dailekh hill terrains.</li>
+                                <li>Optimized routes across Sagarmatha, Eastern Terai, Central Terai, and critical BP Highway corridors.</li>
+                            </ul>
+                        </div>
 
-                <a href="#share" onclick="showTab('share'); return false;" class="recent-post-card">
-                    <span class="cat-tag">शेयर बजार</span>
-                    <h4>बजारको वर्तमान दिशा</h4>
-                    <p>शेयर बजार र लगानी रणनीति...</p>
-                    <div class="post-date">📅 २०८३ भाद्र १०</div>
-                    <span class="see-more">पूरा हेर्नुहोस् →</span>
-                </a>
+                        <div class="cv-canva-experience-item">
+                            <div class="cv-canva-exp-header"><span>Procurement Supervisor (Supply Chain)</span><span>September 2013 – March 2017</span></div>
+                            <div class="cv-canva-exp-company">UNILEVER NEPAL LIMITED</div>
+                            <ul class="cv-canva-exp-bullets">
+                                <li>Managed raw material procurement, Letter of Credit (LC) documentation, and trade compliance.</li>
+                                <li>Negotiated transit contracts and managed cross-border customs clearance chains.</li>
+                            </ul>
+                        </div>
 
-                <a href="#kala" onclick="showTab('kala'); return false;" class="recent-post-card">
-                    <span class="cat-tag">कला</span>
-                    <h4>डिजिटल सिर्जनाहरू</h4>
-                    <p>कला र रचनात्मक प्रस्तुति...</p>
-                    <div class="post-date">📅 २०८३ भाद्र ०५</div>
-                    <span class="see-more">पूरा हेर्नुहोस् →</span>
-                </a>
+                        <div class="cv-canva-experience-item">
+                            <div class="cv-canva-exp-header"><span>Functional In-Charge (Operations & TPM)</span><span>January 2007 – August 2013</span></div>
+                            <div class="cv-canva-exp-company">UNILEVER NEPAL LIMITED</div>
+                            <ul class="cv-canva-exp-bullets">
+                                <li>Championed TPM frameworks, established robust SOPs, and monitored weekly line efficiency.</li>
+                            </ul>
+                        </div>
 
-                <a href="#sahitya" onclick="showTab('sahitya'); return false;" class="recent-post-card">
-                    <span class="cat-tag">समीक्षा</span>
-                    <h4>समसामयिक साहित्य समीक्षा</h4>
-                    <p>पुस्तक तथा रचना माथिको दृष्टि...</p>
-                    <div class="post-date">📅 २०८३ भाद्र ०१</div>
-                    <span class="see-more">पूरा हेर्नुहोस् →</span>
-                </a>
+                        <div class="cv-canva-experience-item">
+                            <div class="cv-canva-exp-header"><span>Production / H.R. In-Charge</span><span>January 2003 – December 2006</span></div>
+                            <div class="cv-canva-exp-company">UNILEVER NEPAL LIMITED</div>
+                            <ul class="cv-canva-exp-bullets">
+                                <li>Managed daily production tracking, capacity planning, shift scheduling, and plant payroll.</li>
+                            </ul>
+                        </div>
 
-                <a href="#professional" onclick="showTab('professional'); return false;" class="recent-post-card">
-                    <span class="cat-tag">व्यावसायिक</span>
-                    <h4>सामाजिक उत्तरदायित्व</h4>
-                    <p>८२ औं रक्तदान अनुभव र विचार...</p>
-                    <div class="post-date">📅 २०८३ साउन २५</div>
-                    <span class="see-more">पूरा हेर्नुहोस् →</span>
-                </a>
+                        <div class="cv-canva-experience-item">
+                            <div class="cv-canva-exp-header"><span>Engineering Store / Project In-Charge</span><span>April 1996 – December 2002</span></div>
+                            <div class="cv-canva-exp-company">UNILEVER NEPAL LIMITED</div>
+                            <ul class="cv-canva-exp-bullets">
+                                <li>Managed engineering spare-parts store under strict lean budget with zero-stock-out record.</li>
+                            </ul>
+                        </div>
 
+                        <div class="cv-canva-experience-item">
+                            <div class="cv-canva-exp-header"><span>Assistant Accountant / Office Assistant</span><span>April 1993 – March 1996</span></div>
+                            <div class="cv-canva-exp-company">HAMRO KASTH UDYOG, Hetauda</div>
+                            <ul class="cv-canva-exp-bullets">
+                                <li>Handled commercial sales calculations, invoicing, ledger bookkeeping, and worker payroll.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="cv-canva-content-block">
+                        <div class="cv-canva-content-heading">Honors, Awards & Community Leadership</div>
+                        <ul class="cv-canva-exp-bullets" style="list-style-type: square;">
+                            <li><strong>30 & 15 Years Good Service Award</strong> | Unilever Nepal Limited</li>
+                            <li><strong>International Leadership Award Medal</strong> | Lions Clubs International</li>
+                            <li><strong>Highest Blood Donation Honor (83 Times)</strong> | Nepal Red Cross Society</li>
+                            <li><strong>Ideal Couple Award</strong> | Ministry of Local Development</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-<!-- २. परिचय -->
-<div id="about" class="tab-content">
-
-    <!-- व्यक्तिगत परिचय + Family Photo -->
-    <div style="display: grid; grid-template-columns: 1fr 320px; gap: 30px; align-items: start;">
-
-        <!-- बाँया भाग : व्यक्तिगत परिचय -->
-        <div>
-            <h2>व्यक्तिगत परिचय</h2>
-
-            <p><strong>नाम:</strong> मनोज ढुंगाना</p>
-            <p><strong>उपनाम:</strong> पागल विश्वास</p>
-            <p><strong>ठेगाना:</strong> हेटौँडा-४, मकवानपुर</p>
-        </div>
-
-        <!-- दायाँ भाग : Family Photo -->
-        <div style="border: 2px solid #d6b36a; border-radius: 12px; padding: 10px; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.10); text-align: center;">
-
-            <img src="image/family.jpeg"
-                 alt="मनोज ढुङ्गाना परिवार"
-                 style="width: 100%; height: 220px; object-fit: cover; border-radius: 8px; display: block;">
-
-            <div style="margin-top: 8px; font-size: 16px; font-weight: 600; color: #1a365d;">
-                मेरो परिवार
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- Personal Biography Section -->
-    <section class="biography-section" style="font-family: 'Mukta', sans-serif; color: #333; line-height: 1.8; max-width: 900px; margin: 0 auto; padding: 20px;">
-
-        <!-- Basic Information Grid -->
-        <div class="bio-card" style="background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.04);">
-
-            <h2 style="color: #1a365d; border-bottom: 2px solid #3182ce; padding-bottom: 8px; margin-top: 0;">
-                व्यक्तिगत विवरण
-            </h2>
-
-            <div style="display: grid; grid-template-columns: repeat(2, minmax(280px, 1fr)); gap: 12px;">
-
-                <li><strong>जन्म :</strong> वि.सं. २०३१ बैशाख २६ गते (ई.सं. ९ मई १९७४ बिहिबार)</li>
-                <li><strong>जन्म स्थान :</strong> हेटौडा, मकवानपुर</li>
-                <li><strong>बसोबास :</strong> “मनोरस वाटिका” श्रद्दानगर, बासुदेव मार्ग, हेटौडा-४, मकवानपुर</li>
-                <li><strong>अर्धाङ्गिनी :</strong> रश्मि ढुङ्गाना</li>
-                <li><strong>पिता :</strong> स्व. कृष्णप्रसाद ढुङ्गाना</li>
-                <li><strong>छोरिहरु :</strong> माशुमी र महिमा</li>
-                <li><strong>माता :</strong> स्व. राधादेवी ढुङ्गाना</li>
-                <li><strong>पेशा / सेवा :</strong> नोकरी</li>
-
-            </div>
-        </div>
-
-    </section>
-
-    <!-- Literary Publications -->
-    <div class="bio-card" style="background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.04);">
-
-        <h2 style="color: #1a365d; border-bottom: 2px solid #3182ce; padding-bottom: 8px; margin-top: 0;">
-            प्रकाशित कृति तथा रचनाहरू
-        </h2>
-
-        <h3 style="color: #2b6cb0; margin-bottom: 8px;">प्रकाशित पुस्तकहरू</h3>
-
-        <ul style="padding-left: 20px; margin-bottom: 20px;">
-            <li><strong>'नारी संघर्ष' (उपन्यास) :</strong> प्रकाशक: प्रतिमा उपाध्याय (२०५०) | पहिलो संस्करण: १००० थान | मूल्य: ने.रू. २०</li>
-            <li><strong>'म र काठमाडौँ' (कथा सङ्ग्रह) :</strong> प्रकाशक: हेटौडा बजार, लायन्स क्लब (२०६९) | पहिलो संस्करण: २००० थान | मूल्य: ने.रू. १५०</li>
-            <li><strong>"हैसियत ३" (संयुक्त गजल सङ्ग्रह) :</strong> प्रकाशक: हाम्रो मझेरी साहित्य प्रतिष्ठान, चितवन (२०७३)</li>
-        </ul>
-
-        <h3 style="color: #2b6cb0; margin-bottom: 8px;">रचना तथा स्तम्भहरू</h3>
-
-        <ul style="padding-left: 20px;">
-            <li><strong>प्रथम प्रकाशित रचना :</strong> २०५१ सालदेखि स्थानीय पत्रिका <em>नमस्कार दैनिक</em> मा "पागलपनको विश्लेषण" नामक साप्ताहिक स्तम्भ। (स्तम्भको लोकप्रियतासँगै राजनैतिक धारमा लेख्न आग्रह, प्रस्ताव अस्वीकार गरिएकाले स्तम्भ बन्द)।</li>
-            <li><strong>नियमित स्तम्भ :</strong> <em>समृद्ध समाज राष्ट्रिय दैनिक</em> मा २०६९ माघदेखि २०७२ माघसम्म “फ्राइडे कर्नर” स्तम्भकार।</li>
-            <li><strong>अन्य रचना :</strong> स्थानीय तथा राष्ट्रिय पत्रिकामा नियमित प्रकाशित।</li>
-        </ul>
-
-    </div>
-
-    <!-- Editing / Editorial Experience -->
-    <div class="bio-card" style="background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.04);">
-
-        <h2 style="color: #1a365d; border-bottom: 2px solid #3182ce; padding-bottom: 8px; margin-top: 0;">
-            सम्पादन
-        </h2>
-
-        <ul style="padding-left: 20px;">
-            <li><em>स्पन्दन त्रैमासिक</em> साहित्यिक पत्रिका (६ अंक, २०६३-२०६५)</li>
-            <li>मकवानपुरका लायन्स क्लबहरुको वार्षिक स्मारिका (२०६६-२०७२)</li>
-            <li>"पदमा-बोध" (राजेश्वरी काफ्ले, सर्लाहीको स्मृति खण्ड काव्य, २०७२)</li>
-            <li>"कागलाई बेल" (राजन ढकाल, हाँडीखाला मकवानपुरको कविता संग्रह, २०७२)</li>
-        </ul>
-
-    </div>
-```
-    <!-- Awards & Recognitions -->
-    <div class="bio-card" style="background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.04);">
-        <h2 style="color: #1a365d; border-bottom: 2px solid #3182ce; padding-bottom: 8px; margin-top: 0;">पुरस्कार / सम्मान / पदक</h2>
-        
-        <h3 style="color: #2b6cb0; margin-bottom: 8px;">राष्ट्रिय तथा स्थानीय सम्मान</h3>
-        <ul style="padding-left: 20px; margin-bottom: 20px;">
-            <li>बिद्यालय स्तरिय साहित्य गोष्ठी (कविता) मा प्रथम (२०४९)</li>
-            <li>जि.वि.स. मकवानपुरबाट 'आदर्श दम्पत्ती सम्मान' (२०६४)</li>
-            <li>हेटौडा जेसीजको अन्तर जेसिज वक्तृत्वकलामा प्रथम (२०६६ / ई.सं. २००९)</li>
-            <li>युनिलिभर नेपाल लि., 15 Years Good Service Award (२०६८ / ई.सं. २०११)</li>
-            <li>सिनर्जी अवार्ड २०१२–१३, लायन्स क्लब्स इन्टरनेशनल, ३२५ बि२, नेपाल</li>
-            <li>आउट स्ट्यान्डींग प्रेसिडेन्ट अवार्ड २०१२–१३, लायन्स क्लब्स इन्टरनेशनल, ३२५बि२, नेपाल</li>
-            <li>आउट स्ट्यान्डींग चिफ कोर्डिनेटर अवार्ड २०१३–१४, लायन्स क्लब्स इन्टरनेशनल, ३२५बि२, नेपाल</li>
-            <li>आउट स्ट्यान्डींग जोन चेयरपर्सन अवार्ड २०१४–१५, लायन्स क्लब्स इन्टरनेशनल, ३२५बि२, नेपाल</li>
-            <li>आउट स्ट्यान्डींग लियो एडभाइजर अवार्ड २०१४–१५, लियो क्लब इन्टरनेशनल, ३२५बि२, नेपाल</li>
-            <li>उद्योगका आन्तरिक कार्यक्रमहरुमा सुरक्षा, चित्रकला, खेलकुद आदिमा धेरै पटक पुरस्कृत।</li>
-            <li>युनिलिभर नेपाल लि., 30 Years Good Service Award (२०८३ / ई.सं. २०२६)</li>
-        </ul>
-
-        <h3 style="color: #2b6cb0; margin-bottom: 8px;">अन्तर्राष्ट्रिय सम्मान</h3>
-        <ul style="padding-left: 20px;">
-            <li>मेम्बरशिप ग्रोथ पिन बाट सम्मान (२०१०–११) - लायन्स क्लब्स इन्टरनेशनल, USA</li>
-            <li>लायन्स क्लब एक्सटेन्सन अवार्ड (२०१२) - लायन्स क्लब्स इन्टरनेशनल, USA</li>
-            <li>क्लब पे्रसिडेन्ट एक्सिलेन्स अवार्ड (२०१२–१३) - लायन्स क्लब्स इन्टरनेशनल, USA</li>
-            <li>लियो क्लब एक्सटेन्सन अवार्ड (२०१४) - लायन्स क्लब्स इन्टरनेशनल, USA</li>
-            <li>इन्टरनेशनल लिडरशिप अवार्ड (२०१५) - लायन्स क्लब्स इन्टरनेशनल, USA</li>
-            <li>बंगलादेश नेपाल फ्रेन्डशिप सोसाइटी, बंगलादेशबाट सम्मानित (२०१६)</li>
-        </ul>
-    </div>
-
-    <!-- Affiliations & Associations -->
-    <div class="bio-card" style="background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.04);">
-        <h2 style="color: #1a365d; border-bottom: 2px solid #3182ce; padding-bottom: 8px; margin-top: 0;">संलग्नता एवं सामाजिक सेवा</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px;">
-            <div>• हेटौडा बजार लायन्स क्लब (संस्थापक अध्यक्ष)</div>
-            <div>• हेटौडा बजार लियो क्लब (सल्लाहकार)</div>
-            <div>• मकवानपुर हेटौंडा लायन्स क्लब (संस्थापक सदस्य)</div>
-            <div>• नेपाल अर्बुद रोग निवारण संस्था, मकवानपुर (आजीवन सदस्य)</div>
-            <div>• मातृभूमि साहित्य समाज, हेटौंडा मकवानपुर (आजीवन सदस्य)</div>
-            <div>• नेपाल स्रष्टा समाज, काठमाण्डौ (आजीवन सदस्य)</div>
-            <div>• नेपाल रेडक्रस सोसाइटी, हेटौंडा-४ (आजीवन सदस्य)</div>
-            <div>• सामुदायिक सेवा समिति, हेटौंडा-९ (आजीवन सदस्य)</div>
-            <div>• सहिद स्मारक बिकास समिति, हेटौडा-११ (आजीवन सदस्य)</div>
-            <div>• नेपाल भारत मैत्री संघ, मकवानपुर (आजीवन सदस्य)</div>
-            <div>• नेपाल लायन्स फौण्डेसन, काठमाण्डौ (आजीवन सदस्य)</div>
-            <div>• हाम्रो मझेरी साहित्य प्रतिष्ठान, चितवन (आजीवन सदस्य)</div>
-        </div>
-    </div>
-
-    <!-- Other Activities -->
-    <div class="bio-card" style="background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.04);">
-        <h2 style="color: #1a365d; border-bottom: 2px solid #3182ce; padding-bottom: 8px; margin-top: 0;">अन्य विविध रुचि तथा योगदान</h2>
-        <ul style="padding-left: 20px;">
-            <li>थुप्रै साहित्यिक तथा सामाजिक पुस्तकहरुको आवरण चित्र (Cover Design) तथा प्रतिक चिन्ह (Logo) सिर्जना।</li>
-            <li><strong>रक्तदान :</strong> नियमित रक्तदाता-हालसम्म (२ जुलाई २०२६ सम्म) ८२ औँ पटक  रक्तदान सम्पन्न ।</li>
-        </ul>
-    </div>
-
-</section>
-
-    </div>
-<!-- ३. साहित्य -->
-<div id="sahitya" class="tab-content">
-
-    <div id="sahitya-loading" style="text-align:center; padding:30px;">
-        साहित्यिक रचनाहरू लोड हुँदैछ...
-    </div>
-
-    <div id="sahitya-empty-state" class="sahitya-empty-state">
-        माथिको <strong>साहित्य</strong> dropdown बाट कविता, गजल, कथा, आलेख, साप्ताहिक स्तम्भ वा उपन्यास छान्नुहोस्।
-    </div>
-
-    <div id="sahitya-content"></div>
-
-</div>
- <!-- ४. मेरो सिर्जना -->
-<div id="kala" class="tab-content">
-    <!-- यहाँ ठीक तल यो स्टाइल पेस्ट गर्नुहोस् -->
-    <style>
-        .art-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 15px 0;
-        }
-        .art-card {
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-        }
-        .art-card label {
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #c0392b;
-            font-size: 1.1rem;
-        }
-        .art-preview-large {
-            width: 100%;
-            height: 450px;         
-            object-fit: cover;     
-            border-radius: 6px;
-            margin-bottom: 15px;
-            background-color: #f9f9f9;
-        }
-        .art-card textarea {
-            width: 100%;
-            min-height: 60px;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: vertical;
-            font-family: inherit;
-        }
-    </style>
-    <!-- स्टाइल कोड यहाँ सकिन्छ -->
-
-    <h2>मेरो कला तथा सिर्जना</h2>
-    <div class="art-grid">
-        <!-- कला १: जुलाई २००९ -->
-        <div class="art-card">
-            <label>कला १</label>
-            <img class="art-preview-large" src="image/logo_and_badge_designed_for_makawanpur_lions_club_july2009.jpg" alt="लोगो र ब्याच डिजाइन">
-            <textarea placeholder="विवरण...">मकवानपुर लायन्स क्लबको लागि डिजाइन गरिएको लोगो र ब्याज (जुलाई २००९)</textarea>
-        </div>
-
-        <!-- कला २: जुलाई २००९ -->
-        <div class="art-card">
-            <label>कला २</label>
-            <img class="art-preview-large" src="image/Souvenir_cover_makawanpur_lions_club_july2009.jpg" alt="स्मारिका कभर डिजाइन">
-            <textarea placeholder="विवरण...">मकवानपुर लायन्स क्लबको स्मारिका कभर डिजाइन (जुलाई २००९)</textarea>
-        </div>
-
-        <!-- कला ३: जुलाई २०११ -->
-        <div class="art-card">
-            <label>कला ३</label>
-            <img class="art-preview-large" src="image/Joint_Souvenier-cover_for_Makawanpur_area_Lions_Club_July%202011.jpg" alt="संयुक्त स्मारिका कभर">
-            <textarea placeholder="विवरण...">मकवानपुर क्षेत्र लायन्स क्लबको संयुक्त स्मारिका कभर (जुलाई २०११)</textarea>
-        </div>
-
-        <!-- कला ४: जुलाई २०१२ -->
-        <div class="art-card">
-            <label>कला ४</label>
-            <img class="art-preview-large" src="image/Souvenir_cover_hetauda_bazar_lions_july2012.jpg" alt="हेटौँडा बजार लायन्स स्मारिका">
-            <textarea placeholder="विवरण...">हेटौँडा बजार लायन्स क्लबको स्मारिका कभर (जुलाई २०१२)</textarea>
-        </div>
-
-        <!-- कला ५: जुलाई २०१२ -->
-        <div class="art-card">
-            <label>कला ५</label>
-            <img class="art-preview-large" src="image/Logo%20for%20Hetauda%20Bazar%20Lions_Leo%20Club.jpg" alt="हेटौँडा बजार लायन्स/लियो क्लब लोगो">
-            <textarea placeholder="विवरण...">हेटौँडा बजार लायन्स तथा लियो क्लबको लोगो डिजाइन (जुलाई २०१२)</textarea>
-        </div>
-
-        <!-- कला ६: अक्टोबर २०१२ -->
-        <div class="art-card">
-            <label>कला ६</label>
-            <img class="art-preview-large" src="image/Story_book_cover_for_self_marakathmandu_october_2012.jpg" alt="कथा सङ्ग्रह पुस्तक कभर">
-            <textarea placeholder="विवरण...">'मरणकाठमाण्डौ' कथा सङ्ग्रह पुस्तकको कभर डिजाइन (अक्टोबर २०१२)</textarea>
-        </div>
-
-        <!-- कला ७: जुलाई २०१३ -->
-        <div class="art-card">
-            <label>कला ७</label>
-            <img class="art-preview-large" src="image/Souvenir_cover_Hetauda_bazar_lions_july2013.jpg" alt="हेटौँडा बजार लायन्स स्मारिका">
-            <textarea placeholder="विवरण...">हेटौँडा बजार लायन्स क्लबको स्मारिका कभर (जुलाई २०१३)</textarea>
-        </div>
-
-        <!-- कला ८: सेप्टेम्बर २०१३ -->
-        <div class="art-card">
-            <label>कला ८</label>
-            <img class="art-preview-large" src="image/Drama_book_cover_for_madhav_pokhrel_aakhankshako_chita_september_2013.jpg" alt="नाटक पुस्तक कभर">
-            <textarea placeholder="विवरण...">माधव पोखरेलद्वारा लिखित 'आकांक्षाको चिता' नाटक पुस्तकको कभर (सेप्टेम्बर २०१३)</textarea>
-        </div>
-
-        <!-- कला ९: सेप्टेम्बर २०१३ -->
-        <div class="art-card">
-            <label>कला ९</label>
-            <img class="art-preview-large" src="image/Gajal_book_cover_for_bimala_karkil_gham_nabhayek_aakash_september_2013.jpg" alt="गजल सङ्ग्रह पुस्तक कभर">
-            <textarea placeholder="विवरण...">बिमला कार्कीद्वारा लिखित 'घाम नभएको आकाश' गजल सङ्ग्रह पुस्तकको कभर (सेप्टेम्बर २०१३)</textarea>
-        </div>
-
-        <!-- कला १०: सेप्टेम्बर २०१३ -->
-        <div class="art-card">
-            <label>कला १०</label>
-            <img class="art-preview-large" src="image/Poem_book_cover_for_Anju_dahal_samjhanaka_doveharu_september_2013.jpg" alt="कविता सङ्ग्रह पुस्तक कभर">
-            <textarea placeholder="विवरण...">अन्जु दाहालद्वारा लिखित 'सम्झनाका डोबहरू' कविता सङ्ग्रह पुस्तकको कभर (सेप्टेम्बर २०१३)</textarea>
-        </div>
-
-        <!-- कला ११: सेप्टेम्बर २०१३ -->
-        <div class="art-card">
-            <label>कला ११</label>
-            <img class="art-preview-large" src="image/Poem_book_cover_for_madhav_pokhrel_rittiyeko_gaun_september_2013.jpg" alt="कविता पुस्तक कभर">
-            <textarea placeholder="विवरण...">माधव पोखरेलद्वारा लिखित 'रित्तिएको गाउँ' कविता पुस्तकको कभर (सेप्टेम्बर २०१३)</textarea>
-        </div>
-
-        <!-- कला १२: सेप्टेम्बर २०१३ -->
-        <div class="art-card">
-            <label>कला १२</label>
-            <img class="art-preview-large" src="image/Song_book_cover_for_manju_kharal_samarpan_september_2013.jpg" alt="गीत सङ्ग्रह पुस्तक कभर">
-            <textarea placeholder="विवरण...">मञ्जु खरेलद्वारा लिखित 'समर्पण' गीत सङ्ग्रह पुस्तकको कभर (सेप्टेम्बर २०१३)</textarea>
-        </div>
-
-        <!-- कला १३: जुलाई २०१४ -->
-        <div class="art-card">
-            <label>कला १३</label>
-            <img class="art-preview-large" src="image/Joint_Souvenier-cover_for_Makawanpur_area_Lions_Club_July%202014.jpg" alt="संयुक्त स्मारिका कभर">
-            <textarea placeholder="विवरण...">मकवानपुर क्षेत्र लायन्स क्लबको संयुक्त स्मारिका कभर (जुलाई २०१४)</textarea>
-        </div>
-
-        <!-- कला १४: मे २०२२ -->
-        <div class="art-card">
-            <label>कला १४</label>
-            <img class="art-preview-large" src="image/Book_cover_for_Madhav_Pokhrel_May2022.jpg" alt="पुस्तक कभर डिजाइन">
-            <textarea placeholder="विवरण...">माधव पोखरेलको पुस्तक कभर डिजाइन (मे २०२२)</textarea>
-        </div>
-    </div>
-</div>
-
-        <!-- ५. व्यावसायिक (Professional Tab) -->
-    <meta charset="UTF-8">
-    <title>Manoj Dhungana - Professional CV (Canva Blue & Gray Style)</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-        body { background-color: #525659; padding: 40px 0; display: flex; justify-content: center; }
-        
-        /* CANVA A4 EXACT LOOK */
-        .cv-card { width: 820px; min-height: 1150px; background: #ffffff; display: flex; box-shadow: 0 0 20px rgba(0,0,0,0.4); position: relative; }
-        
-        /* LEFT COLUMN (Canva Gray Sidebar) */
-        .left-sidebar { width: 32%; background-color: #f1f3f5; padding: 40px 20px; color: #333333; border-right: 1px solid #e2e8f0; }
-        .photo-holder { width: 140px; height: 140px; border-radius: 50%; border: 4px solid #0A2540; overflow: hidden; margin: 0 auto 30px auto; background: #cbd5e1; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #666; font-weight: bold; }
-        .photo-holder img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .side-block { margin-bottom: 30px; }
-        .side-heading { font-size: 13px; color: #0A2540; font-weight: 700; border-bottom: 2px solid #0A2540; padding-bottom: 5px; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; }
-        .side-list { font-size: 11.5px; line-height: 1.6; list-style: none; }
-        .side-list li { margin-bottom: 10px; }
-        
-        /* RIGHT COLUMN (Main Content Area) */
-        .main-content { width: 68%; padding: 40px 35px; color: #333333; }
-        
-        /* CANVA BLUE HEADER */
-        .blue-header { background-color: #0A2540; color: #ffffff; padding: 30px 25px; margin-bottom: 30px; border-radius: 4px; }
-        .blue-header h1 { font-size: 34px; font-weight: 700; letter-spacing: 1px; margin-bottom: 5px; }
-        .blue-header p { font-size: 13px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .content-block { margin-bottom: 25px; }
-        .content-heading { font-size: 14px; color: #0A2540; font-weight: 700; border-bottom: 2px solid #cbd5e1; padding-bottom: 5px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .summary { font-size: 12px; line-height: 1.6; text-align: justify; color: #475569; }
-        
-        /* WORK EXPERIENCE STYLING */
-        .experience-item { margin-bottom: 20px; }
-        .exp-header { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; color: #0A2540; }
-        .exp-company { font-size: 11.5px; font-style: italic; color: #64748b; margin-bottom: 6px; font-weight: 600; }
-        .exp-bullets { font-size: 11.5px; line-height: 1.6; padding-left: 16px; color: #334155; }
-        .exp-bullets li { margin-bottom: 4px; }
-        
-        @media print {
-            body { padding: 0; background: none; }
-            .cv-card { box-shadow: none; width: 100%; }
-        }
-    </style>
-</head>
-<body>
-
-<div class="cv-card">
-    <!-- LEFT SIDEBAR -->
-    <div class="left-sidebar">
-        <div class="photo-holder">
-            <!-- ब्राउजरमा खोल्दा यहाँ फोटो राख्न मिल्ने फ्रेम देखिनेछ -->
-            तपाईंको फोटो FRAME
-        <img src="profile.jpg" alt="Manoj Dhungana" onerror="this.src='https://api.iconify.design/noto:folded-hands.svg?width=120'; this.style.padding='25px';">
-        </div>
-        
-        <div class="side-block">
-            <div class="side-heading">Contact</div>
-            <ul class="side-list">
-                <li>📍 Hetauda, Makawanpur, Nepal</li>
-                <li>📞 +977-9855068554</li>
-                <li>✉️ info@mdhungana.com.np</li>
-                <li>🌐 ://mdhungana.com.np</li>
-            </ul>
-        </div>
-        
-        <div class="side-block">
-            <div class="side-heading">Core Competencies</div>
-            <ul class="side-list" style="list-style-type: square; padding-left: 15px;">
-                <li>Territory Distribution & Sales</li>
-                <li>End-to-End Procurement</li>
-                <li>LC & Customs Clearance</li>
-                <li>TPM & Process Safety</li>
-                <li>Shop Floor Efficiency</li>
-                <li>Project Management</li>
-                <li>Inventory Management</li>
-                <li>Vendor & Workforce Admin</li>
-                <li>Executive MIS Reporting</li>
-            </ul>
-        </div>
-
-        <div class="side-block">
-            <div class="side-heading">Education</div>
-            <div class="side-list" style="margin-bottom: 12px;">
-                <strong style="color:#0A2540;">Bachelor's in Commerce</strong><br>
-                Tribhuvan University (2004)
-            </div>
-            <div class="side-list" style="margin-bottom: 12px;">
-                <strong style="color:#0A2540;">I.Com (PCL Level)</strong><br>
-                Tribhuvan University (1998)
-            </div>
-            <div class="side-list">
-                <strong style="color:#0A2540;">SLC</strong><br>
-                Adhunik Rastriya Ma. Vi. (1994)
-            </div>
-        </div>
-        
-        <div class="side-block">
-            <div class="side-heading">Languages</div>
-            <ul class="side-list">
-                <li>• Nepali (Native)</li>
-                <li>• English (Professional)</li>
-            </ul>
-        </div>
-    </div>
-    
-    <!-- RIGHT MAIN CONTENT -->
-    <div class="main-content">
-        <div class="blue-header">
-            <h1>MANOJ DHUNGANA</h1>
-            <p>Senior Sales & Operations Professional</p>
-        </div>
-        
-        <div class="content-block">
-            <div class="content-heading">Professional Summary</div>
-            <p class="summary">
-                An accomplished and versatile Senior Sales & Operations professional with a distinguished 30-year career of continuous growth at Unilever Nepal. Offers a rare, comprehensive background that connects front-end Customer Development (Sales & Trade Marketing) with back-end Supply Chain, Factory Operations, Procurement, and TPM (Total Productive Maintenance). Proven track record of penetrating challenging territories and optimizing operational pipelines.
-            </p>
-        </div>
-        
-        <div class="content-block">
-            <div class="content-heading">Work Experience</div>
-            
-            <div class="experience-item">
-                <div class="exp-header"><span>Commercial & Operational Head</span><span>July 2026 – Present</span></div>
-                <div class="exp-company">Rashmi Signatures, Nepal</div>
-                <ul class="exp-bullets">
-                    <li>Provide strategic leadership across commercial operations, sales, and business development.</li>
-                    <li>Develop digital marketing and execute growth strategies to strengthen market presence.</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="exp-header"><span>Territory Sales Officer (Customer Development)</span><span>April 2017 – June 2026</span></div>
-                <div class="exp-company">UNILEVER NEPAL LIMITED (Total Tenure: 30 Years 3 Months)</div>
-                <ul class="exp-bullets">
-                    <li>Managed regional sales, trade marketing, and penetration across diverse zones.</li>
-                    <li><strong>Project Shakti (2026):</strong> Launched feeder distribution networks in Jumla and Dailekh hill terrains.</li>
-                    <li>Optimized routes across Sagarmatha, Eastern Terai, Central Terai, and critical BP Highway corridors.</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="exp-header"><span>Procurement Supervisor (Supply Chain)</span><span>September 2013 – March 2017</span></div>
-                <div class="exp-company">UNILEVER NEPAL LIMITED</div>
-                <ul class="exp-bullets">
-                    <li>Managed raw material procurement, Letter of Credit (LC) documentation, and trade compliance.</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="exp-header"><span>Functional In-Charge (Operations & TPM)</span><span>January 2007 – August 2013</span></div>
-                <div class="exp-company">UNILEVER NEPAL LIMITED</div>
-                <ul class="exp-bullets">
-                    <li>Championed TPM frameworks, established robust SOPs, and monitored weekly line efficiency.</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="exp-header"><span>Production / H.R. In-Charge</span><span>January 2003 – December 2006</span></div>
-                <div class="exp-company">UNILEVER NEPAL LIMITED</div>
-                <ul class="exp-bullets">
-                    <li>Managed daily production tracking, capacity planning, shift scheduling, and plant payroll.</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="exp-header"><span>Engineering Store / Project In-Charge</span><span>April 1996 – December 2002</span></div>
-                <div class="exp-company">UNILEVER NEPAL LIMITED</div>
-                <ul class="exp-bullets">
-                    <li>Managed engineering spare-parts store under strict lean budget with zero-stock-out record.</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="exp-header"><span>Assistant Accountant / Office Assistant</span><span>April 1993 – March 1996</span></div>
-                <div class="exp-company">HAMRO KASTH UDYOG, Hetauda</div>
-                <ul class="exp-bullets">
-                    <li>Handled commercial sales calculations, invoicing, ledger bookkeeping, and worker payroll.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="content-block">
-            <div class="content-heading">Honors & Awards</div>
-            <ul class="exp-bullets" style="list-style-type: square;">
-                <li><strong>15 & 30 Years Good Service Award</strong> | Unilever Nepal Limited</li>
-                <li><strong>International Leadership Award Medal</strong> | Lions Clubs International</li>
-                <li><strong>Highest Blood Donation Honor (83 Times)</strong> | Nepal Red Cross Society</li>
-            </ul>
-        </div>
-    </div>
-</div>
 
     <!-- ६. भ्रमण (Travel Tab) -->
     <div id="bhraman" class="tab-content">
         <h2>भ्रमण संस्मरण</h2>
-        <p>मेरा केही अविस्मरणीय वैदेशिक भ्रमणहरू:</p>
         <div class="travel-grid">
-            <article class="travel-card"><img src="image/bangladeshparliamentdhaka201606.jpg" alt="Bangladesh Parliament" onerror="this.style.display='none'"><h4>Bangladesh १</h4><p>बंगलादेश संसद् भवनको भ्रमण।</p><span class="travel-date">📅 जुन २०१६</span></article>
-            <article class="travel-card"><img src="image/motijheeldhaka03062026.jpg" alt="Motijheel Dhaka" onerror="this.style.display='none'"><h4>Bangladesh २</h4><p>मोतीझिल, ढाका क्षेत्रको भ्रमण।</p><span class="travel-date">📅 जुन २०१६</span></article>
-            <article class="travel-card"><img src="image/brujkhalifa.jpg" alt="Burj Khalifa Dubai" onerror="this.style.display='none'"><h4>Dubai १</h4><p>बुर्ज खलिफा, दुबईको अविस्मरणीय दृश्य।</p><span class="travel-date">📅 जनवरी २०२०</span></article>
-            <article class="travel-card"><img src="image/dubaibeach20200105.jpg" alt="Dubai Beach" onerror="this.style.display='none'"><h4>Dubai २</h4><p>दुबई बीच भ्रमणको स्मरण।</p><span class="travel-date">📅 जनवरी २०२०</span></article>
-            <article class="travel-card"><img src="image/lakhnawone01012023.jpg" alt="Lucknow photo 1" onerror="this.style.display='none'"><h4>Lucknow १</h4><p>लखनऊ भ्रमणको ऐतिहासिक स्मरण।</p><span class="travel-date">📅 २०२३</span></article>
-            <article class="travel-card"><img src="image/lakhnawtwo01012023.jpg" alt="Lucknow photo 2" onerror="this.style.display='none'"><h4>Lucknow २</h4><p>लखनऊका ऐतिहासिक स्थलहरूको यात्रा।</p><span class="travel-date">📅 २०२३</span></article>
-            <article class="travel-card"><img src="image/maldives04052024.jpg" alt="Maldives photo 1" onerror="this.style.display='none'"><h4>Maldives १</h4><p>माल्दिभ्सको समुद्री यात्राको दृश्य।</p><span class="travel-date">📅 २०२४</span></article>
-            <article class="travel-card"><img src="image/maldives2024.jpg" alt="Maldives photo 2" onerror="this.style.display='none'"><h4>Maldives २</h4><p>माफुसी पोर्ट, माल्दिभ्सको भ्रमण।</p><span class="travel-date">📅 २०२४</span></article>
-            <article class="travel-card"><img src="image/cgtemple21102023.jpg" alt="CG Temple" onerror="this.style.display='none'"><h4>CG Temple</h4><p>CG Temple को अविस्मरणीय भ्रमण।</p><span class="travel-date">📅 २१ अक्टोबर २०२३</span></article>
-            <article class="travel-card"><img src="image/patale20220408.jpg" alt="Patale" onerror="this.style.display='none'"><h4>Patale</h4><p>Patale भ्रमणको स्मरणीय दृश्य।</p><span class="travel-date">📅 ०८ अप्रिल २०२२</span></article>
+            <article class="travel-card"><img src="image/bangladeshparliamentdhaka201606.jpg"><h4>Bangladesh</h4></article>
         </div>
     </div>
 
     <!-- ७. शेयर बजार (Stock Market Tab) -->
     <div id="share" class="tab-content">
-        <h2>नेपाल स्टक एक्सचेञ्ज (NEPSE) - लाइभ बजार</h2>
-        <p>नेपाली शेयर बजार, NEPSE सूचकाङ्क तथा लाइभ अपडेट हेर्न तल दिइएको बटन प्रयोग गर्नुहोस्:</p>
-        <div style="background: #ffffff; padding: 25px; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.03); margin-top: 15px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-                <div>
-                    <h3 style="margin: 0 0 5px 0; color: #0f172a;">📈 NEPSE Official Live Portal</h3>
-                    <p style="margin: 0; color: #64748b; font-size: 0.95em;">कारोबार समय: आइतबार - बिहीबार (११:०० AM - ३:०० PM)</p>
-                </div>
-                <a href="https://nepalstock.com" target="_blank" style="background: linear-gradient(135deg, #0f172a, #1e293b); color: #fff; padding: 12px 22px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1em; box-shadow: 0 3px 8px rgba(0,0,0,0.15);">
-                    NEPSE वेबसाइट खोल्नुहोस् ↗
-                </a>
-            </div>
-        </div>
+        <h2>नेपाल स्टक एक्सचेञ्ज (NEPSE)</h2>
     </div>
 
     <!-- ८. सम्पर्क (Contact Tab) -->
     <div id="contact" class="tab-content">
-        <h2>सम्पर्क तथा सामाजिक सञ्जाल</h2>
-        <p>म सँग जोडिनका लागि तलका माध्यमहरू प्रयोग गर्न सक्नुहुन्छ:</p>
-        <div class="contact-grid">
-            <a href="mailto:info@mdhungana.com.np" class="contact-card">
-                <div class="contact-icon">📧</div>
-                <div><strong>इमेल</strong><span style="font-size: 0.85em; color: #64748b;">info@mdhungana.com.np</span></div>
-            </a>
-            <a href="https://www.linkedin.com/in/manoj-dhungana-886b2920/" target="_blank" rel="noopener" class="contact-card">
-                <div class="contact-icon">💼</div>
-                <div><strong>LinkedIn Profile</strong><span style="font-size: 0.85em; color: #64748b;">Manoj Dhungana</span></div>
-            </a>
-            <a href="https://www.facebook.com/manoj.dhungana/" target="_blank" rel="noopener" class="contact-card">
-                <div class="contact-icon">📘</div>
-                <div><strong>Facebook Profile</strong><span style="font-size: 0.85em; color: #64748b;">Manoj Dhungana</span></div>
-            </a>
-            <a href="https://x.com/mdhungana" target="_blank" rel="noopener" class="contact-card">
-                <div class="contact-icon">𝕏</div>
-                <div><strong>Twitter / X</strong><span style="font-size: 0.85em; color: #64748b;">Manoj Dhungana</span></div>
-            </a>
-            <a href="https://www.facebook.com/volunteer.mdhungana" target="_blank" rel="noopener" class="contact-card">
-                <div class="contact-icon">📘</div>
-                <div><strong>Volunteer Manoj Dhungana</strong><span style="font-size: 0.85em; color: #64748b;">Facebook</span></div>
-            </a>
-            <a href="https://www.facebook.com/NariSangharsh/" target="_blank" rel="noopener" class="contact-card">
-                <div class="contact-icon">📘</div>
-                <div><strong>नारी संघर्ष</strong><span style="font-size: 0.85em; color: #64748b;">Facebook</span></div>
-            </a>
-            <a href="https://www.facebook.com/MaRaKathamandau/" target="_blank" rel="noopener" class="contact-card">
-                <div class="contact-icon">📘</div>
-                <div><strong>म र काठमाडौँ</strong><span style="font-size: 0.85em; color: #64748b;">Facebook</span></div>
-            </a>
-        </div>
+        <h2>सम्पर्क</h2>
     </div>
 
 </div> <!-- Container Closing -->
 
-<!-- Footer -->
 <footer>
     <div class="footer-container">
-        <div>
-            <strong>मनोज ढुङ्गाना</strong>
-            <p style="font-size: 0.85em; color: #a0aec0; margin: 0;">mdhungana.com.np</p>
-        </div>
-        <div>
-            👁️ Visitors: <span id="visitor-count" style="color: #3fb950; font-weight: bold;">36009</span>
-        </div>
+        <div><strong>मनोज ढुङ्गाना</strong><p>mdhungana.com.np</p></div>
+        <div>👁️ Visitors: <span id="visitor-count" style="color: #3fb950; font-weight: bold;">36009</span></div>
     </div>
-    <div class="footer-bottom">
-        &copy; 2026 mdhungana.com.np | All Rights Reserved
-    </div>
+    <div class="footer-bottom">&copy; 2026 mdhungana.com.np | All Rights Reserved</div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@sbmdkl/nepali-date-converter"></script>
 <script>
-let sahityaLoaded = false;
-let sahityaLoading = false;
-let disqusLoaded = false;
-let activeDisqusCard = null;
-
-function toggleSahityaMenu(event) {
-    if (event) event.preventDefault();
-
-    const dropdown = document.querySelector('.nav-menu .dropdown');
-    const wasOpen = dropdown && dropdown.classList.contains('open');
-
-    document.querySelectorAll('.nav-menu .dropdown').forEach(item => {
-        item.classList.remove('open');
-    });
-
-    showTab('sahitya');
-
-    if (dropdown && !wasOpen) {
-        dropdown.classList.add('open');
+    let sahityaLoaded = false; let sahityaLoading = false;
+    function showTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(l => l.classList.remove('active'));
+        const selectedTab = document.getElementById(tabId);
+        if (selectedTab) selectedTab.classList.add('active');
+        const selectedButton = document.getElementById('btn-' + tabId);
+        if (selectedButton) selectedButton.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-}
-
-function showTab(tabId) {
-
-    const contents = document.querySelectorAll('.tab-content');
-    contents.forEach(c => c.classList.remove('active'));
-
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    navLinks.forEach(l => l.classList.remove('active'));
-
-    const selectedTab = document.getElementById(tabId);
-
-    if (selectedTab) {
-        selectedTab.classList.add('active');
+    function toNepaliDigits(value) { return String(value).replace(/[0-9]/g, digit => '०१२३४५६७८९'[digit]); }
+    function getNepalDateParts() {
+        const parts = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Kathmandu', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
+        return parts.reduce((result, part) => { if (part.type !== 'literal') result[part.type] = part.value; return result; }, {});
     }
-
-    const selectedButton = document.getElementById('btn-' + tabId);
-
-    if (selectedButton) {
-        selectedButton.classList.add('active');
-    }
-
-    if (tabId !== 'sahitya') {
-        document.querySelectorAll('.nav-menu .dropdown').forEach(item => {
-            item.classList.remove('open');
-        });
-    }
-
-    // साहित्य यही page मा load गर्ने
-    if (tabId === 'sahitya' && !sahityaLoaded && !sahityaLoading) {
-        loadSahitya();
-    }
-
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
-
-async function loadSahitya() {
-    sahityaLoading = true;
-
-    const loading = document.getElementById('sahitya-loading');
-    const content = document.getElementById('sahitya-content');
-
-    try {
-
-        const response = await fetch('sahitya.html');
-
-        if (!response.ok) {
-            throw new Error('Sahitya page could not be loaded.');
+    function updateDateBar() {
+        const dateParts = getNepalDateParts();
+        const isoDate = `${dateParts.year}-${dateParts.month}-${dateParts.day}`;
+        const adDate = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Kathmandu', month: 'short', day: 'numeric', year: 'numeric' }).format(new Date());
+        if(document.getElementById('ad-date')) document.getElementById('ad-date').textContent = adDate;
+        const converter = window['@sbmdkl/nepali-date-converter'];
+        if (converter && document.getElementById('bs-date')) {
+            const bsParts = converter.adToBs(isoDate).split('-');
+            const bsMonths = ['', 'बैशाख', 'जेठ', 'असार', 'साउन', 'भदौ', 'असोज', 'कात्तिक', 'मंसिर', 'पुस', 'माघ', 'फागुन', 'चैत'];
+            document.getElementById('bs-date').textContent = `${toNepaliDigits(bsParts[0])} ${bsMonths[Number(bsParts[1])]} ${toNepaliDigits(bsParts[2])}`;
         }
-
-        const html = await response.text();
-
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-
-        const posts = doc.querySelector('#postsContainer');
-
-        if (!posts) {
-            throw new Error('postsContainer not found.');
-        }
-
-        const postsClone = posts.cloneNode(true);
-
-        content.innerHTML = '';
-        content.appendChild(postsClone);
-
-        const cards = content.querySelectorAll('.card');
-
-        cards.forEach(card => {
-            card.style.maxHeight = 'none';
-            card.style.overflow = 'visible';
-        });
-
-        const cardBodies = content.querySelectorAll('.card-body');
-
-        cardBodies.forEach(body => {
-            body.style.maxHeight = 'none';
-            body.style.overflow = 'visible';
-            body.style.whiteSpace = 'pre-line';
-        });
-
-        prepareArticleCards(cards);
-
-        cards.forEach(card => {
-            card.classList.remove('sahitya-visible');
-            card.classList.add('sahitya-hidden');
-        });
-
-        if (loading) {
-            loading.style.display = 'none';
-        }
-
-        const emptyState = document.getElementById('sahitya-empty-state');
-        if (emptyState) {
-            emptyState.style.display = 'block';
-        }
-
-        sahityaLoaded = true;
-
-    } catch (error) {
-
-        if (loading) {
-            loading.innerHTML =
-                'साहित्यिक रचनाहरू लोड गर्न समस्या भयो। कृपया पुनः प्रयास गर्नुहोस्।';
-        }
-
-        console.error(error);
-    } finally {
-        sahityaLoading = false;
     }
-}
-/* =========================
-   साहित्य CATEGORY FILTER
-========================= */
-
-function prepareArticleCards(cards) {
-    cards.forEach((card, index) => {
-        const titleElement = card.querySelector('.card-title');
-        const title = titleElement
-            ? titleElement.textContent.trim()
-            : `साहित्यिक रचना ${index + 1}`;
-        const articleId = `sahitya-${index + 1}`;
-
-        card.id = articleId;
-        card.dataset.commentTerm = `${articleId} - ${title}`;
-
-        const actions = document.createElement('div');
-        actions.className = 'article-actions';
-        actions.innerHTML = `
-            <button type="button" class="article-action-button" onclick="shareArticle(this)">↗ शेयर गर्नुहोस्</button>
-            <button type="button" class="article-action-button" onclick="toggleArticleComments(this)">💬 टिप्पणी गर्नुहोस्</button>
-            <span class="share-status" aria-live="polite"></span>
-        `;
-        card.appendChild(actions);
-
-        const comments = document.createElement('div');
-        comments.className = 'article-comments';
-        comments.innerHTML = `
-            <h4>पाठकहरूको टिप्पणी</h4>
-            <p>टिप्पणी गर्न Google/Gmail account सहित Disqus मा sign in गर्न सकिन्छ।</p>
-            <div class="disqus-frame"></div>
-        `;
-        card.appendChild(comments);
-    });
-}
-
-function shareArticle(button) {
-    const card = button.closest('.card');
-    if (!card) return;
-
-    const titleElement = card.querySelector('.card-title');
-    const title = titleElement
-        ? titleElement.textContent.trim()
-        : 'मनोज ढुङ्गानाको साहित्यिक रचना';
-    const shareUrl = new URL(window.location.href);
-    shareUrl.hash = card.id;
-
-    const copiedMessage = () => {
-        const status = card.querySelector('.share-status');
-        if (status) {
-            status.textContent = 'लिंक copy भयो ✓';
-            setTimeout(() => { status.textContent = ''; }, 3000);
-        }
-    };
-
-    if (navigator.share) {
-        navigator.share({
-            title: title,
-            text: `${title} — मनोज ढुङ्गाना`,
-            url: shareUrl.toString()
-        }).catch(() => {});
-        return;
-    }
-
-    if (navigator.clipboard) {
-        navigator.clipboard.writeText(shareUrl.toString())
-            .then(copiedMessage)
-            .catch(() => {});
-    }
-}
-
-function toggleArticleComments(button) {
-    const card = button.closest('.card');
-    if (!card) return;
-
-    const comments = card.querySelector('.article-comments');
-    const container = card.querySelector('.disqus-frame');
-    if (!comments || !container) return;
-
-    const isOpen = comments.classList.toggle('open');
-    button.classList.toggle('active', isOpen);
-    button.textContent = isOpen ? '💬 टिप्पणी बन्द गर्नुहोस्' : '💬 टिप्पणी गर्नुहोस्';
-
-    if (!isOpen) return;
-
-    document.querySelectorAll('.article-comments.open').forEach(otherComments => {
-        if (otherComments !== comments) {
-            otherComments.classList.remove('open');
-            const otherButton = otherComments.parentElement.querySelector(
-                '.article-action-button[onclick^="toggleArticleComments"]'
-            );
-            if (otherButton) {
-                otherButton.classList.remove('active');
-                otherButton.textContent = '💬 टिप्पणी गर्नुहोस्';
-            }
-        }
-    });
-
-    loadDisqusForArticle(card, container);
-}
-
-function loadDisqusForArticle(card, container) {
-    document.querySelectorAll('#disqus_thread').forEach(thread => {
-        if (thread.parentElement !== container) {
-            thread.removeAttribute('id');
-        }
-    });
-
-    const thread = document.createElement('div');
-    thread.id = 'disqus_thread';
-    container.replaceChildren(thread);
-
-    const titleElement = card.querySelector('.card-title');
-    const title = titleElement
-        ? titleElement.textContent.trim()
-        : 'मनोज ढुङ्गानाको साहित्यिक रचना';
-    const articleUrl = `${window.location.origin}${window.location.pathname}#${card.id}`;
-
-    window.disqus_config = function() {
-        this.page.url = articleUrl;
-        this.page.identifier = card.dataset.commentTerm;
-        this.page.title = title;
-    };
-
-    if (window.DISQUS) {
-        window.DISQUS.reset({
-            reload: true,
-            config: window.disqus_config
-        });
-        activeDisqusCard = card;
-        return;
-    }
-
-    const script = document.createElement('script');
-    script.src = 'https://mdhungana-com-np.disqus.com/embed.js';
-    script.setAttribute('data-timestamp', String(Date.now()));
-    script.async = true;
-    script.onload = function() {
-        disqusLoaded = true;
-        activeDisqusCard = card;
-    };
-    document.body.appendChild(script);
-}
-
-function applySahityaFilter(category) {
-    const content = document.getElementById('sahitya-content');
-    if (!content) return false;
-
-    const cards = content.querySelectorAll('.card');
-    if (!cards.length) return false;
-
-    let visibleCount = 0;
-
-    cards.forEach(card => {
-        const cardCategory = card.getAttribute('data-category') || '';
-
-        if (cardCategory.trim() === category.trim()) {
-            card.classList.remove('sahitya-hidden');
-            card.classList.add('sahitya-visible');
-            visibleCount++;
-        } else {
-            card.classList.remove('sahitya-visible');
-            card.classList.add('sahitya-hidden');
-        }
-    });
-
-    const emptyState = document.getElementById('sahitya-empty-state');
-    if (emptyState) {
-        emptyState.style.display = visibleCount ? 'none' : 'block';
-    }
-
-    document.querySelectorAll('.dropdown-menu a[data-category]').forEach(link => {
-        link.classList.toggle(
-            'category-active',
-            link.getAttribute('data-category').trim() === category.trim()
-        );
-    });
-
-    const stats = content.querySelector('#postStats');
-    if (stats) {
-        stats.textContent = `देखाइएको रचना: ${visibleCount}`;
-    }
-
-    return true;
-}
-
-function filterSahitya(category, source) {
-    if (source && typeof source.preventDefault === 'function') {
-        source.preventDefault();
-    }
-
-    showTab('sahitya');
-
-    const dropdown = document.querySelector('.nav-menu .dropdown');
-    if (dropdown) {
-        dropdown.classList.add('open');
-    }
-
-    if (sahityaLoaded) {
-        applySahityaFilter(category);
-        return false;
-    }
-
-    const waitForSahitya = setInterval(function () {
-        if (sahityaLoaded && applySahityaFilter(category)) {
-            clearInterval(waitForSahitya);
-        }
-    }, 100);
-
-    setTimeout(function() {
-        clearInterval(waitForSahitya);
-    }, 10000);
-
-    return false;
-}
-
-function previewArt(input) {
-    const file = input.files && input.files[0];
-    const preview = input.parentElement.querySelector('.art-preview');
-
-    if (!file || !preview) return;
-
-    const reader = new FileReader();
-    reader.onload = function(event) {
-        preview.src = event.target.result;
-    };
-    reader.readAsDataURL(file);
-}
-
-function toNepaliDigits(value) {
-    return String(value).replace(/[0-9]/g, digit => '०१२३४५६७८९'[digit]);
-}
-
-function getNepalDateParts() {
-    const parts = new Intl.DateTimeFormat('en-CA', {
-        timeZone: 'Asia/Kathmandu',
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
-    }).formatToParts(new Date());
-
-    return parts.reduce((result, part) => {
-        if (part.type !== 'literal') result[part.type] = part.value;
-        return result;
-    }, {});
-}
-
-function updateDateBar() {
-    const dateParts = getNepalDateParts();
-    const isoDate = `${dateParts.year}-${dateParts.month}-${dateParts.day}`;
-    const adDate = new Intl.DateTimeFormat('en-US', {
-        timeZone: 'Asia/Kathmandu',
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric'
-    }).format(new Date());
-
-    const adElement = document.getElementById('ad-date');
-    if (adElement) adElement.textContent = adDate;
-
-    const converter = window['@sbmdkl/nepali-date-converter'];
-    const bsElement = document.getElementById('bs-date');
-
-    if (converter && typeof converter.adToBs === 'function' && bsElement) {
-        const bsParts = converter.adToBs(isoDate).split('-');
-        const bsMonths = [
-            '', 'बैशाख', 'जेठ', 'असार', 'साउन', 'भदौ',
-            'असोज', 'कात्तिक', 'मंसिर', 'पुस', 'माघ', 'फागुन', 'चैत'
-        ];
-        bsElement.textContent =
-            `${toNepaliDigits(bsParts[0])} ${bsMonths[Number(bsParts[1])]} ${toNepaliDigits(bsParts[2])}`;
-    }
-}
-
     function updateClock() {
         const clock = document.getElementById('live-clock');
-        if (!clock) return;
-
-        clock.textContent = new Intl.DateTimeFormat('en-US', {
-            timeZone: 'Asia/Kathmandu',
-            hour: 'numeric',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: true
-        }).format(new Date());
+        if (clock) clock.textContent = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Kathmandu', hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true }).format(new Date());
     }
-    setInterval(updateClock, 1000);
-    setInterval(updateDateBar, 60000);
-    updateDateBar();
-    updateClock();
-
-    (function() {
-        const baseCount = 36009;
-        let visits = localStorage.getItem('site_visits') || 0;
-        visits = parseInt(visits) + 1;
-        localStorage.setItem('site_visits', visits);
-        document.getElementById('visitor-count').textContent = baseCount + visits - 1;
-    })();
-    
+    setInterval(updateClock, 1000); updateClock(); updateDateBar();
 </script>
 </body>
 </html>
