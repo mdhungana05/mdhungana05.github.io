@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>मनोज ढुङ्गाना - Blog & Profile</title>
     <style>
-        @import url('https://googleapis.com');
+        @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700;800&family=Cinzel:wght@700;800&display=swap');
 
         :root {
             --primary: #0366d6;
+            --secondary: #8b0000;
             --text: #24292e;
             --border: #e1e4e8;
             --card-bg: #ffffff;
@@ -16,16 +17,18 @@
             --footer-text: #f0f6fc;
         }
 
+        * { box-sizing: border-box; }
+
         body {
             font-family: 'Mukta', 'Segoe UI', Tahoma, sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--text);
             margin: 0;
             padding: 0;
             background-color: #f4f6f8;
         }
 
-        /* Top Hero Section */
+        /* Top Hero Header Layout */
         .top-hero-header {
             background: linear-gradient(135deg, #091e36 0%, #0f172a 100%);
             color: #ffffff;
@@ -60,7 +63,7 @@
             color: #e2e8f0;
             letter-spacing: 4px;
             text-transform: uppercase;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         /* Live Dual Date Bar */
@@ -117,7 +120,7 @@
 
         .nav-menu a {
             display: block;
-            padding: 12px 13px;
+            padding: 12px 15px;
             color: var(--text);
             text-decoration: none;
             font-weight: 700;
@@ -138,18 +141,16 @@
             top: 100%;
             left: 0;
             background: #ffffff;
-            min-width: 150px;
+            min-width: 160px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.12);
             border: 1px solid var(--border);
             border-radius: 0 0 6px 6px;
             list-style: none;
             padding: 5px 0;
+            z-index: 1001;
         }
 
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-
+        .dropdown:hover .dropdown-menu,
         .dropdown.open .dropdown-menu {
             display: block;
         }
@@ -158,40 +159,36 @@
             padding: 8px 15px;
             color: var(--text);
             font-size: 0.9em;
+            font-weight: 600;
         }
 
         .dropdown-menu a:hover {
-            background: #f1f5f9;
-            color: #d97706;
-        }
-
-        .dropdown-menu a.category-active {
             background: #fff7ed;
             color: #b45309;
             font-weight: 800;
-            border-left: 3px solid #d97706;
         }
 
-        /* Layout Container & Tab Background Colors */
+        /* Container Layout & Tab Styles */
         .container {
-            max-width: 980px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
             min-height: 70vh;
         }
 
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
         #home.active { background: linear-gradient(to bottom, #f0f7ff, #ffffff); border-radius: 12px; padding: 15px; }
         #about.active { background: linear-gradient(to bottom, #fdfbf7, #ffffff); border-radius: 12px; padding: 15px; }
-        #sahitya.active { background: linear-gradient(to bottom, #f5f0ff, #ffffff); border-radius: 12px; padding: 15px; }
+        #sahitya.active { background: linear-gradient(to bottom, #fcf9f2, #ffffff); border-radius: 12px; padding: 15px; }
         #kala.active { background: linear-gradient(to bottom, #fff7ed, #ffffff); border-radius: 12px; padding: 15px; }
         #professional.active { background: #ffffff; border-radius: 12px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         #bhraman.active { background: linear-gradient(to bottom, #fff0f5, #ffffff); border-radius: 12px; padding: 15px; }
         #share.active { background: linear-gradient(to bottom, #f0fdf4, #ffffff); border-radius: 12px; padding: 15px; }
         #contact.active { background: linear-gradient(to bottom, #f0fcfd, #ffffff); border-radius: 12px; padding: 15px; }
 
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        /* Welcome & Recent Posts Layout CSS */
+        /* Welcome Section */
         .welcome-section {
             display: flex;
             align-items: center;
@@ -205,7 +202,6 @@
             margin-bottom: 25px;
         }
 
-        .welcome-text { flex: 1; }
         .welcome-text h2 {
             color: #0f172a;
             font-size: 1.7em;
@@ -216,8 +212,8 @@
         }
 
         .welcome-photo img {
-            width: 175px;
-            height: 175px;
+            width: 165px;
+            height: 165px;
             object-fit: cover;
             border-radius: 50%;
             border: 4px solid #d97706;
@@ -248,6 +244,7 @@
             text-decoration: none;
             color: inherit;
             display: block;
+            cursor: pointer;
         }
 
         .recent-post-card:hover {
@@ -265,37 +262,103 @@
             font-weight: bold;
         }
 
-        .recent-post-card h4 {
-            margin: 10px 0 5px 0;
-            color: #0f172a;
+        .recent-post-card h4 { margin: 10px 0 5px 0; color: #0f172a; }
+        .recent-post-card p { font-size: 0.88em; color: #64748b; margin: 0; }
+        .see-more { display: inline-block; margin-top: 12px; color: #b45309; font-size: 0.86em; font-weight: 800; }
+        .post-date { font-size: 0.75em; color: #94a3b8; margin-top: 8px; }
+
+        /* Sahitya Filter Bar & Card Layout */
+        .sahitya-filter-bar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+            background: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
         }
 
-        .recent-post-card p {
-            font-size: 0.88em;
-            color: #64748b;
-            margin: 0;
+        .filter-btn {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        .see-more {
-            display: inline-block;
-            margin-top: 12px;
-            color: #b45309;
-            font-size: 0.86em;
-            font-weight: 800;
+        .filter-btn:hover, .filter-btn.active {
+            background: #8b0000;
+            color: #ffffff;
+            border-color: #8b0000;
         }
 
-        .post-date {
-            font-size: 0.75em;
-            color: #94a3b8;
-            margin-top: 8px;
-        }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
+        .posts-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+
+        .card {
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e0d8c3;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease;
         }
 
+        .card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
+
+        .card-header {
+            border-bottom: 2px solid #fcf9f2;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            color: #8b0000;
+            margin: 0 0 0.4rem 0;
+            font-weight: 700;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: #666666;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background-color: #f0e6d2;
+            color: #4a0e17;
+            padding: 0.1rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .card-body {
+            font-size: 1.05rem;
+            white-space: pre-line;
+            line-height: 1.8;
+            color: #2c2c2c;
+        }
+
+        /* Art, Travel & Contact Grids */
+        .art-grid, .travel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 18px; }
+        .art-card, .travel-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.04); }
+        .travel-card img { display: block; width: 100%; height: 220px; object-fit: cover; border-radius: 8px; background: #f1f5f9; }
+        .travel-card h4 { margin: 12px 0 4px; color: #1a365d; }
+        .travel-card p { margin: 0; color: #4a5568; }
+        .travel-date { display: block; margin-top: 8px; color: #64748b; font-size: 0.88em; font-weight: 700; }
+        .art-preview-large { width: 100%; height: 380px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; background-color: #f9f9f9; }
+
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
         .contact-card {
             display: flex;
             align-items: center;
@@ -306,130 +369,32 @@
             border-radius: 10px;
             text-decoration: none;
             color: #24292e;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            transition: all 0.25s ease;
         }
+        .contact-card:hover { transform: translateY(-3px); border-color: #d97706; box-shadow: 0 6px 12px rgba(0,0,0,0.08); }
+        .contact-icon { font-size: 1.8em; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #f1f5f9; }
 
-        .contact-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            border-color: #d97706;
-        }
+        /* CV Canva Isolated Styling */
+        .cv-canva-container { display: flex; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; margin-top: 15px; }
+        .cv-canva-left-sidebar { width: 32%; background-color: #f1f3f5; padding: 25px 15px; color: #333333; border-right: 1px solid #e2e8f0; }
+        .cv-canva-photo-holder { width: 130px; height: 130px; border-radius: 50%; border: 4px solid #0A2540; overflow: hidden; margin: 0 auto 20px auto; background: #cbd5e1; }
+        .cv-canva-photo-holder img { width: 100%; height: 100%; object-fit: cover; }
+        .cv-canva-side-heading { font-size: 14px; color: #0A2540; font-weight: 700; border-bottom: 2px solid #0A2540; padding-bottom: 4px; margin-bottom: 10px; text-transform: uppercase; }
+        .cv-canva-side-list { font-size: 12.5px; line-height: 1.6; list-style: none; padding: 0; margin: 0; }
+        .cv-canva-main-content { width: 68%; padding: 25px; }
+        .cv-canva-blue-header { background-color: #0A2540; color: #ffffff; padding: 20px; margin-bottom: 20px; border-radius: 4px; }
+        .cv-canva-blue-header h1 { font-size: 26px; font-weight: 700; color: #ffffff; margin: 0; }
+        .cv-canva-blue-header p { font-size: 12px; color: #94a3b8; text-transform: uppercase; margin: 5px 0 0 0; }
+        .cv-canva-content-heading { font-size: 14px; color: #0A2540; font-weight: 700; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px; margin-bottom: 10px; text-transform: uppercase; }
 
-        .contact-icon {
-            font-size: 1.8em;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: #f1f5f9;
-        }
-
-        footer {
-            background-color: #1f2328;
-            color: #f0f6fc;
-            padding: 25px 20px 15px 20px;
-            margin-top: 40px;
-        }
-
-        .footer-container {
-            max-width: 980px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #30363d;
-            font-size: 0.85em;
-            color: #8b949e;
-        }
-
-        @media (max-width: 650px) {
-            .welcome-section { flex-direction: column-reverse; text-align: center; }
-            .decorative-name-np { font-size: 1.9em; }
-        }
-
-        /* =========================
-           SAHITYA SECTION CSS
-        ========================= */
-        .sahitya-section-header {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #e0d8c3;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .sahitya-section-header h2 { color: #8b0000; margin: 0 0 5px 0; }
-        .sahitya-section-header p { margin: 0; color: #666; }
-
-        #sahitya-content .posts-grid { display: grid !important; grid-template-columns: 1fr !important; gap: 20px; }
-        #sahitya-content .card { width: 100% !important; display: flex !important; flex-direction: column !important; height: auto !important; max-height: none !important; overflow: visible !important; }
-        #sahitya-content .card.sahitya-hidden { display: none !important; }
-        #sahitya-content .card.sahitya-visible { display: flex !important; }
-        #sahitya-content .card-body { display: block !important; width: 100% !important; max-height: none !important; overflow: visible !important; white-space: pre-line !important; line-height: 1.9; margin-top: 15px !important; }
-        #sahitya-content .card h2, #sahitya-content .card h3, #sahitya-content .card h4, #sahitya-content .card .card-title { display: block !important; width: 100% !important; margin-bottom: 15px !important; }
-
-        .sahitya-empty-state { background: #ffffff; border: 1px dashed #c4b5fd; border-radius: 12px; padding: 28px 20px; text-align: center; color: #6d28d9; font-weight: 700; }
-        .article-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; padding-top: 14px; border-top: 1px solid #eee7d8; }
-        .article-action-button { border: 1px solid #cbd5e1; border-radius: 7px; background: #ffffff; color: #7f1d1d; padding: 8px 13px; font: inherit; font-size: 0.9em; font-weight: 700; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease; }
-        .article-action-button:hover, .article-action-button.active { background: #fff7ed; border-color: #d97706; }
-        .share-status { color: #166534; font-size: 0.86em; align-self: center; }
-        .article-comments { display: none; margin-top: 16px; padding: 16px; border-radius: 9px; background: #fffdf8; border: 1px solid #e0d8c3; }
-        .article-comments.open { display: block; }
-        .article-comments h4 { margin: 0 0 5px; color: #4a0e17; }
-        .article-comments p { margin: 0 0 12px; color: #666; font-size: 0.86em; }
-        .disqus-frame { min-height: 80px; }
-
-        /* Art, Travel & General Grids */
-        .art-grid, .travel-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 18px; }
-        .art-card, .travel-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.04); }
-        .travel-card img { display: block; width: 100%; height: 300px; object-fit: cover; border-radius: 8px; background: #f1f5f9; }
-        .travel-card h4 { margin: 12px 0 4px; color: #1a365d; }
-        .travel-card p { margin: 0; color: #4a5568; }
-        .travel-date { display: block; margin-top: 8px; color: #64748b; font-size: 0.88em; font-weight: 700; }
-        .art-preview-large { width: 100%; height: 450px; object-fit: cover; border-radius: 6px; margin-bottom: 15px; background-color: #f9f9f9; }
-        .art-card textarea { width: 100%; min-height: 60px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; resize: vertical; font-family: inherit; }
-
-        @media (max-width: 650px) { .art-grid, .travel-grid { grid-template-columns: 1fr; } }
-
-        /* PROTECTED & ISOLATED CANVA CV STYLING */
-        .cv-canva-wrapper { display: flex; justify-content: center; background-color: #ffffff; padding: 10px 0; width: 100%; box-sizing: border-box; }
-        .cv-canva-container { width: 100%; display: flex; background: #ffffff; text-align: left; box-sizing: border-box; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
-        .cv-canva-left-sidebar { width: 32%; background-color: #f1f3f5 !important; padding: 30px 15px; color: #333333; border-right: 1px solid #e2e8f0; box-sizing: border-box; }
-        .cv-canva-photo-holder { width: 130px; height: 130px; border-radius: 50%; border: 4px solid #0A2540; overflow: hidden; margin: 0 auto 25px auto; display: flex; align-items: center; justify-content: center; background: #cbd5e1; }
-        .cv-canva-photo-holder img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .cv-canva-side-block { margin-bottom: 25px; box-sizing: border-box; }
-        .cv-canva-side-heading { font-size: 14px; color: #0A2540; font-weight: 700; border-bottom: 2px solid #0A2540; padding-bottom: 4px; margin-bottom: 12px; letter-spacing: 0.5px; text-transform: uppercase; }
-        .cv-canva-side-list { font-size: 12px; line-height: 1.6; list-style: none; padding: 0; margin: 0; }
-        .cv-canva-side-list li { margin-bottom: 8px; color: #333; }
-        .cv-canva-main-content { width: 68%; padding: 30px 25px; color: #333333; box-sizing: border-box; }
-        .cv-canva-blue-header { background-color: #0A2540 !important; color: #ffffff !important; padding: 25px 20px; margin-bottom: 25px; border-radius: 4px; }
-        .cv-canva-blue-header h1 { font-size: 28px; font-weight: 700; color: #ffffff !important; margin: 0 0 5px 0; line-height: 1.2; text-shadow: none; letter-spacing: 1px; }
-        .cv-canva-blue-header p { font-size: 12px; color: #94a3b8 !important; font-weight: 600; text-transform: uppercase; margin: 0; letter-spacing: 0.5px; }
-        
-        .cv-canva-content-block { margin-bottom: 22px; }
-        .cv-canva-content-heading { font-size: 14px; color: #0A2540; font-weight: 700; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px; margin-bottom: 12px; text-transform: uppercase; }
-        .cv-canva-summary { font-size: 12px; line-height: 1.6; text-align: justify; color: #475569; margin: 0; }
-        
-        .cv-canva-experience-item { margin-bottom: 18px; }
-        .cv-canva-exp-header { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; color: #0A2540; }
-        .cv-canva-exp-company { font-size: 11.5px; font-style: italic; color: #64748b; margin-bottom: 5px; font-weight: 600; }
-        .cv-canva-exp-bullets { font-size: 11.5px; line-height: 1.5; padding-left: 15px; color: #334155; margin: 0; }
-        .cv-canva-exp-bullets li { margin-bottom: 4px; }
+        footer { background-color: #1f2328; color: #f0f6fc; padding: 25px 20px 15px 20px; margin-top: 40px; }
+        .footer-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        .footer-bottom { text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #30363d; font-size: 0.85em; color: #8b949e; }
 
         @media (max-width: 768px) {
+            .welcome-section { flex-direction: column-reverse; text-align: center; }
             .cv-canva-container { flex-direction: column; }
-            .cv-canva-left-sidebar, .cv-canva-main-content { width: 100%; border-right: none; }
+            .cv-canva-left-sidebar, .cv-canva-main-content { width: 100%; }
         }
     </style>
 </head>
@@ -442,10 +407,11 @@
     
     <div class="date-time-bar">
         <div class="date-box">📅 <strong>B.S.:</strong> <span id="bs-date">लोड हुँदैछ...</span></div>
-        <div class="date-box">🗓️ <strong>A.D.:</strong> <span id="ad-date">लोड हुँदैछ...</span></div>
+        <div class="date-box">🗓️ <strong>A.D.:</strong> <span id="ad-date">-- --, ----</span></div>
         <div class="date-box">⏰ <span id="live-clock">--:--:--</span></div>
     </div>
 </div>
+
 <header>
     <div class="nav-container">
         <ul class="nav-menu">
@@ -453,14 +419,15 @@
             <li><a onclick="showTab('about')" id="btn-about">परिचय</a></li>
             
             <li class="dropdown">
-                <a href="#sahitya" onclick="toggleSahityaMenu(event)" id="btn-sahitya">साहित्य ▾</a>
+                <a onclick="toggleSahityaMenu(event)" id="btn-sahitya">साहित्य ▾</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#sahitya" data-category="कविता (Poems)" onclick="return filterSahitya('कविता (Poems)', this)">कविता</a></li>
-                    <li><a href="#sahitya" data-category="गजल (Poetry)" onclick="return filterSahitya('गजल (Poetry)', this)">गजल</a></li>
-                    <li><a href="#sahitya" data-category="कथा (Story)" onclick="return filterSahitya('कथा (Story)', this)">कथा</a></li>
-                    <li><a href="#sahitya" data-category="आलेख (Article)" onclick="return filterSahitya('आलेख (Article)', this)">आलेख</a></li>
-                    <li><a href="#sahitya" data-category="साप्ताहिक स्तम्भ" onclick="return filterSahitya('साप्ताहिक स्तम्भ', this)">साप्ताहिक स्तम्भ</a></li>
-                    <li><a href="#sahitya" data-category="उपन्यास (Novel)" onclick="return filterSahitya('उपन्यास (Novel)', this)">उपन्यास</a></li>
+                    <li><a onclick="filterSahitya('सबै', this)">सबै सिर्जना</a></li>
+                    <li><a onclick="filterSahitya('कविता (Poems)', this)">कविता</a></li>
+                    <li><a onclick="filterSahitya('गजल (Poetry)', this)">गजल</a></li>
+                    <li><a onclick="filterSahitya('कथा (Story)', this)">कथा</a></li>
+                    <li><a onclick="filterSahitya('आलेख (Article)', this)">आलेख</a></li>
+                    <li><a onclick="filterSahitya('साप्ताहिक स्तम्भ', this)">साप्ताहिक स्तम्भ</a></li>
+                    <li><a onclick="filterSahitya('उपन्यास (Novel)', this)">उपन्यास</a></li>
                 </ul>
             </li>
 
@@ -481,11 +448,11 @@
             <div class="welcome-text">
                 <h2>यहाँलाई मेरो वेबसाइटमा हार्दिक स्वागत छ !</h2>
                 <p>
-                    नमस्ते ! म मनोज ढुङ्गाना । मेरो व्यक्तिगत डिजिटल चौतारीमा स्वागत छ। यहाँ साहित्यिक सिर्जनाहरू, कला, शेयर बजार, व्यावसायिक अनुभव, यात्रा तथा जीवनका विविध पक्षहरू समेटेको छु, पढेर प्रतिकृया दिनुहोला ।
+                    नमस्ते ! म मनोज ढुङ्गाना । मेरो व्यक्तिगत डिजिटल चौतारीमा स्वागत छ। यहाँ साहित्यिक सिर्जनाहरू, कला, शेयर बजार, व्यावसायिक अनुभव, यात्रा तथा जीवनका विविध पक्षहरू समेटेको छु, पढेर प्रतिक्रिया दिनुहोला ।
                 </p>
             </div>
             <div class="welcome-photo">
-                <img src="profile.jpg" alt="Manoj Dhungana" onerror="this.src='https://iconify.design'; this.style.padding='25px';">
+                <img src="profile.jpg" alt="Manoj Dhungana" onerror="this.src='https://via.placeholder.com/165';">
             </div>
         </div>
 
@@ -493,51 +460,36 @@
             <h3 class="section-title">ताजा अपडेट (Recent Updates)</h3>
             <div class="recent-posts-grid">
                 
-                <a href="#sahitya" onclick="showTab('sahitya'); return false;" class="recent-post-card">
+                <a onclick="filterSahitya('आलेख (Article)');" class="recent-post-card">
+                    <span class="cat-tag">आलेख</span>
+                    <h4>सम्झनामा बुवा</h4>
+                    <p>बुवासँगको ३९ वर्षअघिको जनकपुर यात्रा र विवाह पञ्चमीको अविस्मरणीय सम्झना...</p>
+                    <div class="post-date">📅 १७ आश्विन २०८३</div>
+                    <span class="see-more">पूरा हेर्नुहोस् →</span>
+                </a>
+
+                <a onclick="filterSahitya('साप्ताहिक स्तम्भ');" class="recent-post-card">
+                    <span class="cat-tag">स्तम्भ</span>
+                    <h4>हाम्रो संस्कार र बिदेशी नक्कल</h4>
+                    <p>चाडपर्व र मौलिक संस्कार माथिको सांस्कृतिक संस्मरण...</p>
+                    <div class="post-date">📅 ०१ नोभेम्बर २०१४</div>
+                    <span class="see-more">पूरा हेर्नुहोस् →</span>
+                </a>
+
+                <a onclick="filterSahitya('गजल (Poetry)');" class="recent-post-card">
                     <span class="cat-tag">गजल</span>
-                    <h4>उपहार</h4>
-                    <p>गजल रचना र जीवन भावना...</p>
-                    <div class="post-date">📅 २०८३ भाद्र २०</div>
-                    <span class="see-more">पूरा हेर्नुहोस् →</span>
-                </a>
-                <a href="#sahitya" onclick="showTab('sahitya'); return false;" class="recent-post-card">
-                    <span class="cat-tag">यात्रा संस्मरण</span>
-                    <h4>पोखराको सिरानमा</h4>
-                    <p>यात्रा र प्राकृतिक दृश्यको बयान...</p>
-                    <div class="post-date">📅 २०८३ भाद्र १५</div>
+                    <h4>प्रियसीको नजरमा</h4>
+                    <p>एकल गजल सन्ध्यामा वाचित प्रतिक्रियात्मक गजल...</p>
+                    <div class="post-date">📅 ०८ सेप्टेम्बर २०१२</div>
                     <span class="see-more">पूरा हेर्नुहोस् →</span>
                 </a>
 
-                <a href="#share" onclick="showTab('share'); return false;" class="recent-post-card">
+                <a onclick="showTab('share');" class="recent-post-card">
                     <span class="cat-tag">शेयर बजार</span>
-                    <h4>बजारको वर्तमान दिशा</h4>
-                    <p>शेयर बजार र लगानी रणनीति...</p>
-                    <div class="post-date">📅 २०८३ भाद्र १०</div>
-                    <span class="see-more">पूरा हेर्नुहोस् →</span>
-                </a>
-
-                <a href="#kala" onclick="showTab('kala'); return false;" class="recent-post-card">
-                    <span class="cat-tag">कला</span>
-                    <h4>डिजिटल सिर्जनाहरू</h4>
-                    <p>कला र रचनात्मक प्रस्तुति...</p>
-                    <div class="post-date">📅 २०८३ भाद्र ०५</div>
-                    <span class="see-more">पूरा हेर्नुहोस् →</span>
-                </a>
-
-                <a href="#sahitya" onclick="showTab('sahitya'); return false;" class="recent-post-card">
-                    <span class="cat-tag">समीक्षा</span>
-                    <h4>समसामयिक साहित्य समीक्षा</h4>
-                    <p>पुस्तक तथा रचना माथिको दृष्टि...</p>
-                    <div class="post-date">📅 २०८३ भाद्र ०१</div>
-                    <span class="see-more">पूरा हेर्नुहोस् →</span>
-                </a>
-
-                <a href="#professional" onclick="showTab('professional'); return false;" class="recent-post-card">
-                    <span class="cat-tag">व्यावसायिक</span>
-                    <h4>सामाजिक उत्तरदायित्व</h4>
-                    <p>८२ औं रक्तदान अनुभव र विचार...</p>
-                    <div class="post-date">📅 २०८३ साउन २५</div>
-                    <span class="see-more">पूरा हेर्नुहोस् →</span>
+                    <h4>NEPSE & MeroShare Portal</h4>
+                    <p>आधिकारिक ट्रेडिङ तथा डिम्याट लगइन लिङ्कहरू...</p>
+                    <div class="post-date">📅 LIVE UPDATE</div>
+                    <span class="see-more">खोल्नुहोस् →</span>
                 </a>
 
             </div>
@@ -546,488 +498,625 @@
 
     <!-- २. परिचय (About Tab) -->
     <div id="about" class="tab-content">
-        <div style="display: grid; grid-template-columns: 1fr 320px; gap: 30px; align-items: start;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: start; margin-bottom: 25px;">
             <div>
                 <h2>व्यक्तिगत परिचय</h2>
-                <p><strong>नाम:</strong> मनोज ढुंगाना</p>
+                <p><strong>नाम:</strong> मनोज ढुङ्गाना</p>
                 <p><strong>उपनाम:</strong> पागल विश्वास</p>
-                <p><strong>ठेगाना:</strong> hètौँडा-४, मकवानपुर</p>
+                <p><strong>ठेगाना:</strong> हेटौँडा-४, मकवानपुर</p>
             </div>
-            <div style="border: 2px solid #d6b36a; border-radius: 12px; padding: 10px; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.10); text-align: center;">
-                <img src="image/family.jpeg" alt="मनोज ढुङ्गाना परिवार" style="width: 100%; height: 220px; object-fit: cover; border-radius: 8px; display: block;">
-                <div style="margin-top: 8px; font-size: 16px; font-weight: 600; color: #1a365d;">메रो परिवार</div>
+            <div style="border: 2px solid #d6b36a; border-radius: 12px; padding: 10px; background: #fff; text-align: center;">
+                <img src="image/family.jpeg" alt="मनोज ढुङ्गाना परिवार" style="width: 100%; height: 220px; object-fit: cover; border-radius: 8px;" onerror="this.src='https://via.placeholder.com/300x220';">
+                <div style="margin-top: 8px; font-weight: 600; color: #1a365d;">मेरो परिवार</div>
             </div>
         </div>
-        <section class="biography-section" style="font-family: 'Mukta', sans-serif; color: #333; line-height: 1.8; max-width: 900px; margin: 0 auto; padding: 20px;">
-            <div class="bio-card" style="background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.04);">
-                <h2 style="color: #1a365d; border-bottom: 2px solid #3182ce; padding-bottom: 8px; margin-top: 0;">व्यक्तिगत विवरण</h2>
-                <div style="display: grid; grid-template-columns: repeat(2, minmax(280px, 1fr)); gap: 12px;">
-                    <div><strong>जन्म :</strong> वि.सं. २०३१ बैशाख २६ गते (ई.सं. ९ मई १९७४ बिहिबार)</div>
-                    <div><strong>जन्म स्थान :</strong> हेटौडा, मकवानपुर</div>
-                    <div><strong>बसोबास :</strong> “मनोरस वाटिका” श्रद्दानगर, बासुदेव मार्ग, हेटौडा-४,搬कवानपुर</div>
-                    <div><strong>अर्धाङ्गिनी :</strong> रश्मि ढुङ्गाना</div>
-                    <div><strong>पिता :</strong> स्व. कृष्णप्रसाद ढुङ्गाना</div>
-                    <div><strong>छोरिहरु :</strong> माशुमी र महिमा</div>
-                    <div><strong>माता :</strong> स्व. राधादेवी ढुङ्गाना</div>
-                    <div><strong>पेशा / सेवा :</strong> नोकरी</div>
-                </div>
-            </div>
 
-            <div class="bio-card" style="background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.04);">
-                <h2 style="color: #1a365d; border-bottom: 2px solid #3182ce; padding-bottom: 8px; margin-top: 0;">प्रकाशित कृति तथा रचनाहरू</h2>
-                <h3 style="color: #2b6cb0; margin-bottom: 8px;">प्रकाशित पुस्तकहरू</h3>
-                <ul style="padding-left: 20px; margin-bottom: 20px;">
-                    <li><strong>'नारी संघर्ष' (उपन्यास) :</strong> प्रकाशक: प्रतिमा उपाध्याय (२०५०) | पहिलो संस्करण: १००० थान | मूल्य: ने.रू. २०</li>
-                    <li><strong>'म र काठमाडौँ' (कथा सङ्ग्रह) :</strong> प्रकाशक: हेटौडा बजार, लायन्स क्लब (२०६९) | पहिलो संस्करण: २००० थान | मूल्य: ने.रू. १५०</li>
-                    <li><strong>"हैसियत ३" (संयुक्त गजल सङ्ग्रह) :</strong> प्रकाशक: हाम्रो मझेरी साहित्य प्रतिष्ठान, चितवन (२०७३)</li>
-                </ul>
-                <h3 style="color: #2b6cb0; margin-bottom: 8px;">रचना तथा स्तम्भहरू</h3>
-                <ul style="padding-left: 20px;">
-                    <li><strong>प्रथम प्रकाशित रचना :</strong> २०५१ सालदेखि स्थानीय पत्रिका <em>नमस्कार दैनिक</em> मा "पागलपनको विश्लेषण" नामक साप्ताहिक स्तम्भ। (स्तम्भको लोकप्रियतासँगै राजनैतिक धारमा लेख्न आग्रह, प्रस्ताव अस्वीकार गरिएकाले स्तम्भ बन्द)।</li>
-                    <li><strong>नियमित स्तम्भ :</strong> <em>समृद्ध समाज राष्ट्रिय दैनिक</em> मा २०६९ माघदेखि २०७२ माघसम्म “फ्राइडे कर्नर” स्तम्भकार।</li>
-                    <li><strong>अन्य रचना :</strong> स्थानीय तथा राष्ट्रिय पत्रिकामा नियमित प्रकाशित।</li>
-                </ul>
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 20px;">
+            <h3 style="color: #1a365d; border-bottom: 2px solid #3182ce; padding-bottom: 8px; margin-top: 0;">विस्तृत व्यक्तिगत विवरण</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+                <div><strong>जन्म :</strong> वि.सं. २०३१ बैशाख २६ गते (ई.सं. ९ मई १९७४)</div>
+                <div><strong>जन्म स्थान :</strong> हेटौँडा, मकवानपुर</div>
+                <div><strong>बसोबास :</strong> "मनोरस वाटिका" हेटौँडा-४, मकवानपुर</div>
+                <div><strong>अर्धाङ्गिनी :</strong> रश्मि ढुङ्गाना</div>
+                <div><strong>पिता :</strong> स्व. कृष्णप्रसाद ढुङ्गाना</div>
+                <div><strong>माता :</strong> स्व. राधादेवी ढुङ्गाना</div>
+                <div><strong>छोरीहरू :</strong> माशुमी र महिमा</div>
             </div>
-            <div class="bio-card" style="background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.04);">
-                <h2 style="color: #1a365d; border-bottom: 2px solid #3182ce; padding-bottom: 8px; margin-top: 0;">सम्पादन</h2>
-                <ul style="padding-left: 20px;">
-                    <li><em>स्पन्दन त्रैमासिक</em> साहित्यिक पत्रिका (६ अंक, २०६३-२०६५)</li>
-                    <li>मकवानपुरका लायन्स क्लबहरुको वार्षिक स्मारिका (२०६६-२०७२)</li>
-                    <li>"पदमा-बोध" (राजेश्वरी काफ्ले, सर्लाहीको स्मृति खण्ड काव्य, २०७२)</li>
-                    <li>"कागलाई बेल" (राजन ढकाल, हाँडीखाला मकवानपुरको कविता संग्रह, २०७२)</li>
-                </ul>
-            </div>
-
-            <div class="bio-card" style="background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.04);">
-                <h2 style="color: #1a365d; border-bottom: 2px solid #3182ce; padding-bottom: 8px; margin-top: 0;">पुरस्कार / सम्मान / पदक</h2>
-                <h3 style="color: #2b6cb0; margin-bottom: 8px;">राष्ट्रिय तथा स्थानीय सम्मान</h3>
-                <ul style="padding-left: 20px; margin-bottom: 20px;">
-                    <li>बिद्यालय स्तरिय साहित्य गोष्ठी (कविता) मा प्रथम (२०४९)</li>
-                    <li>हेटौडा जेसीजको अन्तर जेसिज वक्तृत्वकलामा प्रथम (२०६६ / ई.सं. २००९)</li>
-                    <li>युनिलिभर नेपाल लि., 15 Years Good Service Award (२०६८ / ई.सं. २०११)</li>
-                    <li>सिनर्जी अवार्ड २०१२–१३, लायन्स क्लब्स इन्टरनेशनल, ३२५ बि२, नेपाल</li>
-                    <li>आउट स्ट्यान्डींग प्रेसिडेन्ट अवार्ड २०१२–१३, लायन्स क्लब्स इन्टरनेशनल, ३२५बि२, नेपाल</li>
-                    <li>आउट स्ट्यान्डींग चिफ कोर्डिनेटर अवार्ड २०१३–१४, लायन्स क्लब्स इन्टरनेशनल, ३२५बि२, नेपाल</li>
-                    <li>आउट स्ट्यान्डींग जोन चेयरपर्सन अवार्ड २०१४–१५, लायन्स क्लब्स इन्टरनेशनल, ३२५बि२, नेपाल</li>
-                    <li>आउट स्ट्यान्डींग लियो एडभाइजर अवार्ड २०१४–१५, लियो क्लब इन्टरनेशनल, ३२५बि२, नेपाल</li>
-                    <li>उद्योगका आन्तरिक कार्यक्रमहरुमा सुरक्षा, चित्रकला, खेलकुद आदिमा धेरै पटक पुरस्कृत।</li>
-                    <li>युनिलिभर नेपाल लि., 30 Years Good Service Award (२०८३ / ई.सं. २०२६)</li>
-                    <li>जि.वि.स. मकवानपुरबाट 'आदर्श दम्पत्ती सम्मान' (२०६४)</li>
-                </ul>
-                <h3 style="color: #2b6cb0; margin-bottom: 8px;">अन्तर्राष्ट्रिय सम्मान</h3>
-                <ul style="padding-left: 20px;">
-                    <li>मेम्बरशिप Growth Pin बाट सम्मान (२०१०–११) - लायन्स क्लब्स इन्टरनेशनल, USA</li>
-                    <li>लायन्स क्लब एक्सटेन्सन अवार्ड (२०१२) - लायन्स क्लब्स इन्टरनेशनल, USA</li>
-                    <li>क्लब पे्रसिडेन्ट एक्सिलेन्स अवार्ड (२०१२–१३) - लायन्स क्लब्स इन्टरनेशनल, USA</li>
-                    <li>लियो क्लब एक्सटेन्सन अवार्ड (२०१४) - लायन्स क्लब्स इन्टरनेशनल, USA</li>
-                    <li>इन्टरनेशनल लिडरशिप अवार्ड (२०१५) - लायन्स क्लब्स इन्टरनेशनल, USA</li>
-                    <li>बंगलादेश नेपाल फ्रेन्डशिप सोसाइटी, बंगलादेशबाट सम्मानित (२०१६)</li>
-                </ul>
-            </div>
-
-            <div class="bio-card" style="background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.04);">
-                <h2 style="color: #1a365d; border-bottom: 2px solid #3182ce; padding-bottom: 8px; margin-top: 0;">संलग्नता एवं सामाजिक सेवा</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px;">
-                    <div>• हेटौडा बजार लायन्स क्लब (संस्थापक अध्यक्ष)</div>
-                    <div>• हेटौडा बजार लियो क्लब (सल्लाहकार)</div>
-                    <div>• मकवानपुर हेटौंडा लायन्स क्लब (संस्थापक सदस्य)</div>
-                    <div>• नेपाल अर्बुद रोग निवारण संस्था, मकवानपुर (आजीवन सदस्य)</div>
-                    <div>• मातृभूमि साहित्य समाज, हेटौंडा मकवानपुर (आजीवन सदस्य)</div>
-                    <div>• नेपाल स्रष्टा समाज, काठमाण्डौ (आजीवन सदस्य)</div>
-                    <div>• नेपाल RED CROSS सोसाइटी, हेटौंडा-४ (आजीवन सदस्य)</div>
-                    <div>• सामुदायिक सेवा समिति, हेटौंडा-९ (आजीवन सदस्य)</div>
-                    <div>• सहिद स्मारक बिकास समिति, हेटौडा-११ (आजीवन सदस्य)</div>
-                    <div>• नेपाल भारत मैत्री संघ, मकवानपुर (आजीवन सदस्य)</div>
-                    <div>• नेपाल लायन्स फौण्डेसन, काठमाण्डौ (आजीवन सदस्य)</div>
-                    <div>• हाम्रो मझेरी साहित्य प्रतिष्ठान, चितवन (आजीवन सदस्य)</div>
-                </div>
-            </div>
-
-            <div class="bio-card" style="background: #fdfdfd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.04);">
-                <h2 style="color: #1a365d; border-bottom: 2px solid #3182ce; padding-bottom: 8px; margin-top: 0;">अन्य विविध रुचि तथा योगदान</h2>
-                <ul style="padding-left: 20px;">
-                    <li>थुप्रै साहित्यिक तथा सामाजिक पुस्तकहरुको आवरण चित्र (Cover Design) तथा प्रतिक चिन्ह (Logo) सिर्जना।</li>
-                    <li><strong>रक्तदान :</strong> नियमित रक्तदाता-हालसम्म (२ जुलाई २०२६ सम्म) ८२ औँ पटक  रक्तदान सम्पन्न ।</li>
-                </ul>
-            </div>
-        </section>
+        </div>
     </div>
 
+    <!-- ३. साहित्य (Sahitya Tab - Title Block Removed) -->
     <div id="sahitya" class="tab-content">
-        <div id="sahitya-loading" style="text-align:center; padding:30px;">साहित्यिक रचनाहरू लोड हुँदैछ...</div>
-        <div id="sahitya-empty-state" class="sahitya-empty-state">
-            माथिको <strong>साहित्य</strong> dropdown बाट कविता, गजल, कथा, आलेख, साप्ताहिक स्तम्भ वा उपन्यास छान्नुहोस्।
-        </div>
-        <div id="sahitya-content"></div>
-    </div>
-        <!-- ३. साहित्य (Sahitya Tab) - छुटेको पूर्ण खण्ड -->
-    <div id="sahitya" class="tab-content">
-        <div class="sahitya-section-header">
-            <h2>मेरो साहित्यिक सिर्जनाहरू</h2>
-            <p>जीवनका भोगाइ, भावना र समसामयिक परिवेशलाई समेटेर कोरिएका मेरा रचनाहरू।</p>
+        <!-- Filter Buttons -->
+        <div class="sahitya-filter-bar">
+            <button class="filter-btn active" onclick="filterSahitya('सबै', this)">सबै (All)</button>
+            <button class="filter-btn" onclick="filterSahitya('कविता (Poems)', this)">कविता</button>
+            <button class="filter-btn" onclick="filterSahitya('गजल (Poetry)', this)">गजल</button>
+            <button class="filter-btn" onclick="filterSahitya('कथा (Story)', this)">कथा</button>
+            <button class="filter-btn" onclick="filterSahitya('आलेख (Article)', this)">आलेख</button>
+            <button class="filter-btn" onclick="filterSahitya('साप्ताहिक स्तम्भ', this)">साप्ताहिक स्तम्भ</button>
+            <button class="filter-btn" onclick="filterSahitya('उपन्यास (Novel)', this)">उपन्यास</button>
         </div>
 
-        <!-- गजल सङ्ग्रह: उपहार -->
-        <article class="bio-card" style="background: #fffdf8; border: 1px solid #e0d8c3; border-radius: 12px; padding: 25px; margin-bottom: 20px;">
-            <h3 style="color: #8b0000; margin-top: 0;">गजल: उपहार</h3>
-            <div style="font-size: 1.15em; line-height: 2; color: #2d3748; padding-left: 10px;">
-                नयनमा सजाएँ तिमीलाई, मुटुमा राखेँ उपहार सम्झेर।<br>
-                तिमीले त भुलाई दियौ मलाई, एउटा फगत सपना सम्झेर।<br><br>
-                चोट माथि चोट थप्यौ提मीले, हाँसेरै सहेँ सबै भोगाई।<br>
-                सम्झिरहेँ त्यही पललाई मात्र, जिन्दगीको एउटा बहार सम्झेर।<br><br>
-                паगल यहाँ नाम भयो मेरो, विश्वासको दियो बाल्दा बाल्दै।<br>
-                आँसुको सागरमा डुबेँ आज, तिम्रै मायाको प्रहार सम्झेर।
-            </div>
-            <div class="post-date" style="margin-top: 15px; font-weight: bold; color: #718096;">📅 वि.सं. २०८३ भाद्र २०</div>
-        </article>
+        <!-- Dynamic Articles Grid -->
+        <div class="posts-grid" id="postsContainer">
 
-        <!-- साप्ताहिक स्तम्भ: नमस्कार दैनिक (पागलपनको विश्लेषण) -->
-        <article class="bio-card" style="background: #fcfcfc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 20px;">
-            <h3 style="color: #1a365d; margin-top: 0;">साप्ताहिक स्तम्भ: "पागलपनको विश्लेषण" (नमस्कार दैनिक - २०५१)</h3>
-            <p style="text-align: justify; color: #4a5568;">
-                वि.सं. २०५१ सालदेखि स्थानीय पत्रिका 'नमस्कार दैनिक' मा नियमित रूपमा प्रकाशित मेरो चर्चित साप्ताहिक स्तम्भ। यस स्तम्भ मार्फत मानव मस्तिष्कको सोच, सामाजिक विसङ्गति, र मानव व्यवहारका विविध उतारचढावहरूलाई मनोवैज्ञानिक दृष्टिकोणबाट विश्लेषण गर्ने प्रयास गरिएको थियो। स्तम्भको बढ्दो लोकप्रियतासँगै तत्कालीन समयमा राजनैतिक विषयवस्तुमा केन्द्रित भएर लेख्न विभिन्न दबाब र आग्रहहरू आएका थिए। तर, साहित्यिक स्वतन्त्रता र व्यक्तिगत निष्ठालाई कायम राख्न राजनैतिक धारमा लेख्ने प्रस्तावलाई अस्वीकार गरेसँगै यो स्तम्भ बन्द हुन पुगेको ऐतिहासिक संस्मरण यहाँ उल्लेख गरिएको छ।
-            </p>
-        </article>
+            <!-- १. सम्झनामा बुवा -->
+            <article class="card" data-category="आलेख (Article)">
+                <div class="card-header">
+                    <h2 class="card-title">सम्झनामा बुवा</h2>
+                    <div class="card-meta"><span>मिती: १७ आश्विन २०८३</span><span class="badge">आलेख (Article)</span></div>
+                </div>
+                <div class="card-body">बुवाले छोडेर जानुभएको पनि आज ३५ वर्ष पुगेछ..., समय बित्दै जाँदो रहेछ, तर केही सम्झनाहरू भने समयसँगै पुराना हुँदैनन्, बरु वर्षौँपछि झन् गाढा भएर आउँदा रहेछन्। आज त्यस्तै एउटा सम्झना-बुवासँगको झन्डै ३९ वर्षअघिको...
 
-        <!-- नियमित स्तम्भ: फ्राइडे कर्नर (समृद्ध समाज राष्ट्रिय दैनिक) -->
-        <article class="bio-card" style="background: #fcfcfc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 20px;">
-            <h3 style="color: #1a365d; margin-top: 0;">नियमित स्तम्भ: “फ्राइडे कर्नर” (समृद्ध समाज राष्ट्रिय दैनिक)</h3>
-            <p style="text-align: justify; color: #4a5568;">
-                वि.सं. २०६९ माघदेखि २०७२ माघसम्म तीन वर्षसम्म निरन्तर रूपमा प्रत्येक शुक्रबार प्रकाशित स्तम्भ। यस अन्तर्गत साहित्य, समाज, युवा वर्गको भूमिका, र समसामयिक विकृतिहरू माथि तिखो प्रहार गर्दै सामाजिक रूपान्तरणका लागि रचनात्मक विचारहरू प्रस्तुत गरिएका थिए। तीन वर्षको अवधिमा यस स्तम्भले पाठकहरूबाट निकै सकारात्मक प्रतिक्रिया र माया प्राप्त गरेको थियो।
-            </p>
-            <div class="post-date" style="font-weight: bold; color: #718096;">📅 अवधि: २०६९ माघ – २०७२ माघ</div>
-        </article>
+बुवाआमाको हामी जिउदा ६ जना सन्तान थियौँ - दुई दिदी, दुई दाजु, म र एउटी बहिनी। म भन्दा दुई वर्ष जेठो दाजु र पाँच वर्ष कान्छी बहिनी सानैमा गनिंथ्ययों अरु दिदीहरु र जेठो दाजुकोआगाडी। हामी तीन जनाको आफ्नै संसार थियो। झगडा, रुवाबासी, खेलकुद, हाँसो—जे हुन्थ्यो, हामी तीन जनाबीच नै हुन्थ्यो।
 
-        <!-- उपन्यास खण्ड: नारी संघर्ष (२०५०) -->
-        <article class="bio-card" style="background: #fff8f8; border: 1px solid #feb2b2; border-radius: 12px; padding: 25px; margin-bottom: 20px;">
-            <h3 style="color: #9b2c2c; margin-top: 0;">उपन्यास समीक्षा: 'नारी संघर्ष'</h3>
-            <p style="text-align: justify; color: #4a5568;">
-                वि.सं. २०५० सालमा प्रकाशित मेरो पहिलो साहित्यिक उपन्यास 'नारी संघर्ष'। यस कृतिले नेपाली समाजमा महिलाहरूले भोग्नुपरेको सामाजिक, आर्थिक र सांस्कृतिक विभेद, तथा त्यसका विरुद्ध उनीहरूले गर्ने आन्तरिक एवं बाह्य संघर्षको जीवन्त चित्रण गरेको छ। तत्कालीन समयमा हेटौँडा र मकवानपुर क्षेत्रबाट साहित्यिक उपन्यास लेखनमा एउटा फरक पहिचान बनाउन यस कृतिले महत्त्वपूर्ण भूमिका खेलेको थियो।
-            </p>
-        </article>
+बुवा हेटौँडाका एक कटुवाल थरका साहुजीको काष्ठ उद्योगमा काम गर्नुहुन्थ्यो। टेन्डर हाल्ने र लिलामी सकार्ने कामका लागि सागरनाथ वन कार्यालय जानेदेखि लिएर काठ मिलसम्म ल्याउने, फन्टा, बाकल र भुस बनाउने अनि बिक्रीगर्ने सम्म उहाँको जिम्मेवारी थियो।
+
+एक जाडो मंसिर महिना म बस्तीपुर मामाघरमा थिएँ। बुवाले Panasonic कम्पनीको क्यासेट प्लेयर र ‘ऐना’ को क्यासेट ल्याउनुभयो। भोलिपल्ट जनकपुरमा विवाह पञ्चमीको दिन बुवाले मलाई जानकी मन्दिर, रामानन्द चोक घुमाउनुभयो। मैले जीवनमा पहिलोपटक रेल देखेको पनि त्यहिँ हो।
+
+आज पनि विवाह पञ्चमी संगै जनकपुर, जानकी मन्दिर, बुवाको त्यो हँसिलो अनुहार सम्झिन्छु।
+🙏 हार्दिक श्रद्धाञ्जली, बुवा। 🙏 (३५ वर्षको वार्षिक स्मृतिमा)</div>
+            </article>
+
+            <!-- २. हाम्रो संस्कार र बिदेशी नक्कल -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header"><h2 class="card-title">हाम्रो संस्कार र बिदेशी नक्कल</h2><div class="card-meta"><span>मिती: ०१ नोभेम्बर २०१४</span><span class="badge">साप्ताहिक स्तम्भ</span></div></div>
+                <div class="card-body">“बाबु म तेरी दिदी, शुभ दिपावलीको धेरैधेरै शुभकामना, अनि टिका लगाउने निम्तो दिन फोन गरेको, मेरै घरमा टिका लगाउँला, जसरी पनि काग तिहार कै दिन आइज है ?” एकादशीका दिन दिदीले आफ्नो भाइलाई यमपन्चक कै दिन देखिको निम्तो गरिन् । बर्ष दिनमा एक चोटी आउने दाजुभाई र दिदीबहिनी बिचको आत्मिय सम्बन्धलाइ गाढा बनाउने चार्डको रुपमा मनाइने दिपावलीमा आफ्नो भाइको प्रतिक्षामा बसेकि दिदी काग तिहार देखि नै बाटो हेरीरहेकी थिइन्...</div>
+            </article>
+
+            <!-- ३. सामाजिक सेवामा हाम्रो भूमिका -->
+            <article class="card" data-category="आलेख (Article)">
+                <div class="card-header"><h2 class="card-title">सामाजिक सेवामा हाम्रो भूमिका</h2><div class="card-meta"><span>मिती: १८ अप्रिल २०१३</span><span class="badge">आलेख (Article)</span></div></div>
+                <div class="card-body">सरकारी कार्यालय प्रांगणमा भव्यताका साथ सम्मानित हुदै थिइन् एउटी महिला “समाजसेवी” को रूपमा । पहिले कहिल्यै नदेखेको यो अनुहार मेरा लागि नौलो थियो । आफ्नै स्थानिय क्षेत्रमा एक महिला यसरि सम्मान थापिरहँदा स्थानिय नागरिकको हैसियतले उनको बारेमा जान्न चाहेँ...</div>
+            </article>
+
+            <!-- ४. एउटा हुरी जिन्दगीको -->
+            <article class="card" data-category="गजल (Poetry)">
+                <div class="card-header"><h2 class="card-title">एउटा हुरी जिन्दगीको</h2><div class="card-meta"><span>मिती: १४ मार्च २०१३</span><span class="badge">गजल (Poetry)</span></div></div>
+                <div class="card-body">एउटा हुरी जिन्दगीको भुल्न सकिएन
+जिवनमा उनको सामु खुल्न सकिएन ।
+
+मन भरि उनीलाइ सजाउँदै हिंडे पनि
+मौका मिल्दा उनी सँग डुल्न सकिएन ।
+
+जाउँ न घुम्न शहर भनि अफर नआ हैन
+गोजी रित्तो हुँदा अघि बढ्न सकिएन ।</div>
+            </article>
+
+            <!-- ५. समानता र स्वतन्त्रता -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header"><h2 class="card-title">समानता र स्वतन्त्रता (८)</h2><div class="card-meta"><span>मिती: ०८ मार्च २०१३</span><span class="badge">साप्ताहिक स्तम्भ</span></div></div>
+                <div class="card-body">नारी, जसलाई समाजको आधा आकाशका रुपमा हामी मान्दछौ । ईतिहाँसलाई केलाएर हेर्दा नारीहरु धेरै पिछडिएको पाइन्छ । बंशावलीहरुमा पिताको थरले प्रश्रय पाउनु, सानो उमेरमा बिवाह, आफ्नो जन्म घर छोडेर जानुपर्ने परिपाटीहरुले पनि नेपाल पितृ प्रधान देश भएको र नारीको स्थान दोश्रो नम्बरमा रहेको प्रष्ट पारेकोछ ।</div>
+            </article>
+
+            <!-- ६. मेरो देशमा मैले पाएको कुरा -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header"><h2 class="card-title">मेरो देशमा मैले पाएको कुरा (७)</h2><div class="card-meta"><span>मिती: ०१ मार्च २०१३</span><span class="badge">साप्ताहिक स्तम्भ</span></div></div>
+                <div class="card-body">देशले रगत माँगे मलाई वलि चढाउनु, रूँदिनन् मेरि आमा हुँ म नेपालको छोरो, देश प्रेमको यो गितका हरफहरू सापटी लिएर यहाँहरूको फ्राइडे कर्नरमा सजाइरहँदा नेपाल एकिकरण तथा राणाहरूको चंगुलबाट देश फुत्काउन लड्नेहरू देखि गणतन्त्र स्थापनाका लागि आपूmलाई वलिमा चढाउने सबै ज्ञात अज्ञात सहिदहरू र तिनको कल्पना भित्रको नयाँ नेपाल यतिखेर मेरो मन मस्तिष्कमा छाईरहेकोछ ।</div>
+            </article>
+
+            <!-- ७. प्रेम, सेक्स र भ्यालेन्टाइन -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header"><h2 class="card-title">प्रेम, सेक्स र भ्यालेन्टाइन (६)</h2><div class="card-meta"><span>मिती: २२ फेब्रुअरी २०१३</span><span class="badge">साप्ताहिक स्तम्भ</span></div></div>
+                <div class="card-body">यस पटक १४ फेबु्रअरीको प्रणय दिवस (भ्यालेन्टाइन डे) विगतमा भन्दा पृथक रहयो मेरा लागि । बिहानै परिवारबाट बिछोडिएँ, अफिसियल मिटींगमा सहभागिता जनाउन काठमाण्डौ । जहाँ प्रेम दिवसको अवसरमा हरेक गिफ़्ट्सप, रेष्टुरेन्ट, होटल, लज, मल, डान्सबार सजाइएको थियो...</div>
+            </article>
+
+            <!-- ८. नखाएको विष -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header"><h2 class="card-title">नखाएको विष (५)</h2><div class="card-meta"><span>मिती: १५ फेब्रुअरी २०१३</span><span class="badge">साप्ताहिक स्तम्भ</span></div></div>
+                <div class="card-body">पाठकहरूलाई अर्को श्रृंखलाको फ्राईडे कर्नरमा के लेख्ने होला भनेर सोचिरहेको थिएँ, मेरा एक आत्मिय मित्र टुप्लुक्क आईपुगेर मलाई बधाई दिन थाले, मेरो युवा कथा संग्रह “म र काठमाण्डौ” प्रकाशित भएको र समृद्ध समाजमा फ्राइडे कर्नरमा नियमित झुल्किएको भनेर पो बधाई दिएका रहेछन् ।</div>
+            </article>
+
+            <!-- ९. दुर्घटनाको न्युनिकरणमा तपाईको भूमिका -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header"><h2 class="card-title">दुर्घटनाको न्युनिकरणमा तपाईको भूमिका (४)</h2><div class="card-meta"><span>मिती: ०८ फेब्रुअरी २०१३</span><span class="badge">साप्ताहिक स्तम्भ</span></div></div>
+                <div class="card-body">आदरणीय पाठक वृन्द, आजको श्रृंखलामा यहाँहरुको दिनचर्या भित्रका कुराहरु चर्चा गर्दैछु जसले यहाँको जिम्मेवारी र दैनिक गर्नुपर्ने भागदौडका केहि अंशहरु समेट्ने विश्वास लिएकोछु । कहिल्यै यहाँहरुले अनुमान गर्र्नुभएको छ, यहाँले आप्mनो दैनिकि पुरा गर्न कति किलोमिटर र कस्ता यात्राहरु गर्दैहुनुहुन्छ ?</div>
+            </article>
+
+            <!-- १०. फेरिएको हेटौंडा र महाधिवेशन -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header"><h2 class="card-title">फेरिएको हेटौंडा र महाधिवेशन (३)</h2><div class="card-meta"><span>मिती: ०१ फेब्रुअरी २०१३</span><span class="badge">साप्ताहिक स्तम्भ</span></div></div>
+                <div class="card-body">उसै त हेटौंडा “हरित नगरी”, झन यतिखेर हेटौंडालाई नवदुलही झैँ सुन्दर र मनमोहक बनाउन लागिपरेकाछन् एकृकित माओवादीका कमरेडहरु । यहाँहरुले पनि याद गर्नु भएकै होला प्राय सबै सडकहरु रंगिन तुल व्यानर तथा पोलहरुमा झण्डाहरु तथा ठाउँ ठाउँमा स्वागत व्यानरले सजिएकाछन् ।</div>
+            </article>
+
+            <!-- ११. असुरक्षित घेरामा नारीहरु -->
+            <article class="card" data-category="साप्ताहिक स्तम्भ">
+                <div class="card-header"><h2 class="card-title">असुरक्षित घेरामा नारीहरु (२)</h2><div class="card-meta"><span>मिती: २५ जनवरी २०१३</span><span class="badge">साप्ताहिक स्तम्भ</span></div></div>
+                <div class="card-body">आज भोलि हरेक दिन, हरेक सञ्चार माध्यममा छापिने तथा प्रसारणहुने क्रम बढ्दो छ महिला हिंसाका कुरा, त्यसमाथि पनि बलात्कार । फरक छ त केवल व्यक्ति, स्थान, समय र परिवेश तर समाचारको मुल तत्व नारी अस्मिता नै भएकोछ ।</div>
+            </article>
+
+            <!-- १२. बदनाम हुदैछु म तिम्रै कारणले -->
+            <article class="card" data-category="आलेख (Article)">
+                <div class="card-header"><h2 class="card-title">बदनाम हुदैछु म तिम्रै कारणले</h2><div class="card-meta"><span>मिती: २४ अक्टोबर २०१२</span><span class="badge">आलेख (Article)</span></div></div>
+                <div class="card-body">भनिन्छ संसारमा सबैभन्दा चोखो उमेरमा लाएको माया प्रीति हो रे, तर आज भोली मायाप्रीति विद्यालय र विश्व विद्यालयका अल्लारे नानी बाबुहरूको कब्जामा पर्न थालेपछि उतिबेलाको परिभाषा बदनाम हुदै गएको छ | यसमा प्रमुख भूमिका निभाएको छ पश्चिमी संस्कृति तथा मल्टिमिडीया मोबाइलले |</div>
+            </article>
+
+            <!-- १३. नजुरेको पोई -->
+            <article class="card" data-category="कथा (Story)">
+                <div class="card-header"><h2 class="card-title">नजुरेको पोई</h2><div class="card-meta"><span>मिती: ०१ अक्टोबर २०१२</span><span class="badge">कथा (Story)</span></div></div>
+                <div class="card-body">“भान्जी हजुर तयार हुनुभो त ?” माइजूको आवाजमा म झस्किएँ ।
+“किन र माइजू, कहाँ जाने ?”
+“बजार जाने होईन, म त तयार छु, हजुरको केही ल्याउनु छ कि?”
+“म त अस्ति भर्खर गएकै हो नि माइजू, हजुर मात्रै जानु न ।”
+...
+रचना मितिः १५ आश्विन २०६९, म र काठमाण्डाै, कथा संग्रह २०६९ मा प्रकाशित पहिलाे कथा</div>
+            </article>
+
+            <!-- १४. प्रियसीको नजरमा -->
+            <article class="card" data-category="गजल (Poetry)">
+                <div class="card-header"><h2 class="card-title">प्रियसीको नजरमा</h2><div class="card-meta"><span>मिती: ०८ सेप्टेम्बर २०१२</span><span class="badge">गजल (Poetry)</span></div></div>
+                <div class="card-body">प्रियसीको नजरमा कसिंगर बन्छौ किन ?
+चोखो माया गर्छौ भने पथ्थर बन्छौ किन ?
+
+संबिधान जस्तै तिमि पत्तो छैन कहिल्यै
+प्यासमा मात्र मिलनको दिन गन्छौ किन ?
+
+२०६९ भाद्र २३ गते हेटौडा बजार लायन्स क्लबले आयोजना गरेको युवा गजलकार सुश्री विमला कार्की सुसं को एकल गजल सन्ध्यामा वाचित प्रतिक्रिया गजल :-)</div>
+            </article>
+
+            <!-- १५. लोग्ने मान्छे -->
+            <article class="card" data-category="कविता (Poems)">
+                <div class="card-header"><h2 class="card-title">लोग्ने मान्छे</h2><div class="card-meta"><span>मिती: २५ जनवरी २०११</span><span class="badge">कविता (Poems)</span></div></div>
+                <div class="card-body">मनका राजा मानीकन, तीमीसंग भागि आएँ,
+बा आमाले दिन्नन् भनि, तीम्रो साथ लागि आएँ
+दुइ चुट्कि सिन्दुर मैले, सधै तिम्रा लागि लाएँ
+तिम्रो श्रृष्टि रच्ने निहुमा, मैले कस्तो भाग्य पाएँ ?
+
+चोखोमाया जुनी भरि, गरिरहन्छु भन्थ्यौ पहिले,
+साना साना उत्सबहरु, सम्झिन्थ्यौ जहिले,
+जन्मदिन तिम्रो प्रियसीको, संझनै छाड्यौ अहिले,
+म भन्दा नि माया गर्ने, अर्कि को छ अहिले ?</div>
+            </article>
+
+            <!-- १६. साली -->
+            <article class="card" data-category="गजल (Poetry)">
+                <div class="card-header"><h2 class="card-title">साली</h2><div class="card-meta"><span>मिती: २३ नोभेम्बर २०१०</span><span class="badge">गजल (Poetry)</span></div></div>
+                <div class="card-body">आधी हक लाग्छ भन्दै, जिस्किरहन्थिन् साली ।
+मान्छे हिस्सी परेकी थिइ, तर अलि काली ।।
+सालीको मन राख्नै पर्याै, डेटिंग् जान थालें ।
+बानी पारिन् उनीले नै, रहिछिन् दिल वाली ।।
+
+७ मंसिर २०६७</div>
+            </article>
+
+            <!-- १७. अस्तीत्व -->
+            <article class="card" data-category="कविता (Poems)">
+                <div class="card-header"><h2 class="card-title">अस्तीत्व</h2><div class="card-meta"><span>मिती: २६ अक्टोबर २०१०</span><span class="badge">कविता (Poems)</span></div></div>
+                <div class="card-body">गणतन्त्र, लोकतन्त्र मेरो अतित होईन,
+तथापी मलाई लाग्यो आज परिवर्तन प्यारो ।
+
+स्वतन्त्र बोल्न नपाईने राणा शासन होइन,
+भोको पेटमै पनि बोल्न पाइने लोकतन्त्र प्यारो।
+
+रचना मिति : २७ जेष्ठ, २०६७</div>
+            </article>
+
+            <!-- १८. म मेरी आमा अनि मातृभुमि -->
+            <article class="card" data-category="कविता (Poems)">
+                <div class="card-header"><h2 class="card-title">म मेरी आमा अनि मातृभुमि</h2><div class="card-meta"><span>मिती: २५ अप्रिल २००९</span><span class="badge">कविता (Poems)</span></div></div>
+                <div class="card-body">म जन्मेको ठाउं मेरो मातृभूमि 
+लाग्छ स्वर्ग नै हो मेरो जन्मभूमि !
+
+ईश्वर हुन मेरा ति वाबु आमा
+गर्व साथ भन्छु ति हुन् महान !
+
+वकालत गरे संधै मेरा लागि
+लाखौ दुःख खेपे मात्र मेरा लागि !
+
+१२ बैसाख, २०६६</div>
+            </article>
+
+            <!-- १९. नयाँ राष्ट्रिय गान र नयाँ नेपाल -->
+            <article class="card" data-category="आलेख (Article)">
+                <div class="card-header"><h2 class="card-title">नयाँ राष्ट्रिय गान र नयाँ नेपाल</h2><div class="card-meta"><span>मिती: १५ नोभेम्बर २००९</span><span class="badge">आलेख (Article)</span></div></div>
+                <div class="card-body">सयाैं थुंगा फुलका हामी, एउटै माला नेपाली,
+सार्वभौम भई फैलिएका, मेची–महाकाली ।
+प्रकृतिका कोटी–कोटी सम्पदाको आँचल,
+वीरहरुका रगतले स्वतन्त्र र अटल ।
+
+हेटाैंडा जेसीज २००९ काे वार्षिक स्मारीकामा प्रकािशत</div>
+            </article>
+
+            <!-- २०. लोकतंत्रमा युवा सरोकार -->
+            <article class="card" data-category="आलेख (Article)">
+                <div class="card-header"><h2 class="card-title">लोकतंत्रमा युवा सरोकार</h2><div class="card-meta"><span>मिती: ३१ डिसेम्बर २००८</span><span class="badge">आलेख (Article)</span></div></div>
+                <div class="card-body">जीवनको अपरिहार्यताको रुपमा परिचीत रोजगार, जसमा कयौ नेपाली युवा पीढिहरु गांजिएकाछन् । हरेक वर्ष आफना बिश्वबिद्यालयको शिक्षा सकिएर निस्किएका दक्ष जन शक्तिहरुको करिब बीस प्रतिसत समूहले आफ्नै व्यवसाय तथा उद्योग संचालन गरि सफलता हातपार्ने सोच राखेका हुन्छन भने बांकी असी पतिसतका समूहहरु कुनै पनि क्षेत्रमा श्रृजीत अवसरहरुमा आफ्नो योग्यताको परिक्षा दिंदै खुला पतिस्पर्धा गर्न हरेक दिन पत्रिकामा देखिने “रोजगारीको अवसर” भित्र आफ्नो भाग्य खोजीरहेका पाईन्छ चाहे स्वदेशी रोजगार होस वा बिदेशी ।...</div>
+            </article>
+
+            <!-- २१. पटमुर्ख -->
+            <article class="card" data-category="कविता (Poems)">
+                <div class="card-header"><h2 class="card-title">पटमुर्ख</h2><div class="card-meta"><span>मिती: १० जनवरी १९९६</span><span class="badge">कविता (Poems)</span></div></div>
+                <div class="card-body">दुइ छाक मिठो ख्वाएर
+एक सरो राम्रो लगाइदिने ठेक्का
+सुर्योदय संगै हरेक बिहानीमा शुरु भएर
+साझ अबेर सम्म निरन्तरता
+मेरो दैनिकी...
+
+२६ पौष २०५२, बुधबार</div>
+            </article>
+
+            <!-- २२. नारी संघर्ष - Novel -->
+            <article class="card" data-category="उपन्यास (Novel)">
+                <div class="card-header"><h2 class="card-title">नारी संघर्ष (Part One)</h2><div class="card-meta"><span>मिती: १९ सेप्टेम्बर १९९३</span><span class="badge">उपन्यास (Novel)</span></div></div>
+                <div class="card-body">मेरो नजरमा नहेरि देउ तिमी
+नागिन रुपि ती आँखाहरुले I
+झुटो प्रेम गरेर नफसाउ तिमी
+केवल शब्दका झाकाहरुले I
+
+वातावरण सुनसान, अध्यारा ती औँसीको रात, साथीको घरबाट पार्टी खाएर आफ्नो घर तर्फ अघिबढ्दै थिए । अकस्मात च्याँ......च्याँ ........ मेरो नाममा ठोक्कीयो दायाँतर्फ नजर घुमाएँ ...</div>
+            </article>
+
+            <!-- २३. पागल विश्वास -->
+            <article class="card" data-category="कविता (Poems)">
+                <div class="card-header"><h2 class="card-title">पागल विश्वास</h2><div class="card-meta"><span>मिती: ०८ मे १९९३</span><span class="badge">कविता (Poems)</span></div></div>
+                <div class="card-body">सर्सर्ती हेर्दा
+असामान्य लाग्ने
+तर सामान्य परिचय बोकेको
+उन्नाइस बर्षे एउटा तरुण ।
+
+चोखो प्रेम गर्नु पागलपन हो भने
+हो म पागल हुँ
+मलाई मेरो प्रेममा बिश्वास छ
+त्यसैले दुनियाँको पर्वाह छैन मलाई
+तर विश्वास राख,
+मेरो पागलपनमा सत्यता छ ।
+
+शनिबार, बैसाख २६, २०५०</div>
+            </article>
+
+            <!-- २४. प्रजातन्त्र -->
+            <article class="card" data-category="कविता (Poems)">
+                <div class="card-header"><h2 class="card-title">प्रजातन्त्र</h2><div class="card-meta"><span>मिती: २३ सेप्टेम्बर १९९२</span><span class="badge">कविता (Poems)</span></div></div>
+                <div class="card-body">हे क्रान्तिका ज्वालामुखी युवक हाे
+तिम्राे हाम्राे दाइजाे आज हराएकाे छ ।
+दिदीकाे सिउँदाे पुछिएर पार्काे दाइजाे,
+दाजुकाे जिन्दगी रितयाएर पाएकाे दाइजाे,
+निर्दाेष सानाे भाइ गुमाएर पाएकाे दाइजाे,
+बहुदलिय प्रजातन्त्र नै हाम्राे दाइजाे ।
+
+रचानाकाल: २०४९ आश्विन ७ गते</div>
+            </article>
+
+            <!-- २५. मायालुको सम्झनामा -->
+            <article class="card" data-category="कविता (Poems)">
+                <div class="card-header"><h2 class="card-title">मायालुको सम्झनामा</h2><div class="card-meta"><span>मिती: २८ मार्च १९९२</span><span class="badge">कविता (Poems)</span></div></div>
+                <div class="card-body">जीवनका अनमोल कथाहरुको, सम्झनाले सताउन छोडेन !
+मुटुमा लागेका ब्यथाहरुको उपाय पत्ता लाग्न सकेन !!
+
+त्यसैले म गाउदैछु कविता, मुटुमा लागेका कथाहरुको !
+अनि बताउदै छु एक दुर्दशा, अभागी कर्म यो विश्वासको !!
+
+मेरो जीवनको पहिलो कविता : १५ चैत्र २०४८, शनिवार</div>
+            </article>
+
+        </div>
     </div>
 
-    <!-- ४. मेरो सिर्जना (Kala Tab) -->
+    <!-- ४. कला Tab (Restored 14 items) -->
     <div id="kala" class="tab-content">
         <h2>मेरो कला तथा सिर्जना</h2>
+        <p>विभिन्न पुस्तक, स्मारिका, संस्थागत लोगो तथा आवरण चित्र सिर्जनाहरू:</p>
         <div class="art-grid">
-            <!-- कला १: जुलाई २००९ -->
             <div class="art-card">
-                <label>कला १</label>
-                <img class="art-preview-large" src="image/logo_and_badge_designed_for_makawanpur_lions_club_july2009.jpg" alt="लोगो र ब्याच डिजाइन">
-                <textarea placeholder="विवरण...">मकवानपुर लायन्स क्लबको लागि डिजाइन गरिएको लोगो र ब्याज (जुलाई २००९)</textarea>
+                <img class="art-preview-large" src="image/logo_and_badge_designed_for_makawanpur_lions_club_july2009.jpg" alt="लोगो र ब्याच" onerror="this.src='https://via.placeholder.com/380x280?text=Logo+%26+Badge';">
+                <p><strong>मकवानपुर लायन्स क्लबको लोगो र ब्याज (जुलाई २००९)</strong></p>
             </div>
-
-            <!-- कला २: जुलाई २००९ -->
             <div class="art-card">
-                <label>कला २</label>
-                <img class="art-preview-large" src="image/Souvenir_cover_makawanpur_lions_club_july2009.jpg" alt="स्मारिका कभर डिजाइन">
-                <textarea placeholder="विवरण...">मकवानपुर लायन्स क्लबकोस्मारिका कभर डिजाइन (जुलाई २००९)</textarea>
+                <img class="art-preview-large" src="image/Souvenir_cover_makawanpur_lions_club_july2009.jpg" alt="स्मारिका कभर" onerror="this.src='https://via.placeholder.com/380x280?text=Souvenir+Cover+2009';">
+                <p><strong>मकवानपुर लायन्स क्लबको स्मारिका कभर (जुलाई २००९)</strong></p>
             </div>
-
-            <!-- कला ३: जुलाई २०११ -->
             <div class="art-card">
-                <label>कला ३</label>
-                <img class="art-preview-large" src="image/Joint_Souvenier-cover_for_Makawanpur_area_Lions_Club_July%202011.jpg" alt="संयुक्त स्मारिका कभर">
-                <textarea placeholder="विवरण...">मकवानपुर क्षेत्र लायन्स क्लबको संयुक्त स्मारिका कभर (जुलाई २०११)</textarea>
+                <img class="art-preview-large" src="image/Joint_Souvenier-cover_for_Makawanpur_area_Lions_Club_July%202011.jpg" alt="संयुक्त स्मारिका" onerror="this.src='https://via.placeholder.com/380x280?text=Joint+Souvenir+2011';">
+                <p><strong>मकवानपुर क्षेत्र लायन्स क्लब संयुक्त स्मारिका (जुलाई २०११)</strong></p>
             </div>
-
-            <!-- कला ४: जुलाई २०१२ -->
             <div class="art-card">
-                <label>कला ४</label>
-                <img class="art-preview-large" src="image/Souvenir_cover_hetauda_bazar_lions_july2012.jpg" alt="हेटौँडा बजार लायन्स स्मारिका">
-                <textarea placeholder="विवरण...">हेटौँडा बजार लायन्स क्लबको स्मारिका कभर (जुलाई २०१२)</textarea>
+                <img class="art-preview-large" src="image/Souvenir_cover_hetauda_bazar_lions_july2012.jpg" alt="हेटौँडा बजार लायन्स" onerror="this.src='https://via.placeholder.com/380x280?text=Hetauda+Bazar+Souvenir';">
+                <p><strong>हेटौँडा बजार लायन्स क्लब स्मारिका (जुलाई २०१२)</strong></p>
             </div>
-
-            <!-- कला ५: जुलाई २०१२ -->
             <div class="art-card">
-                <label>कला ५</label>
-                <img class="art-preview-large" src="image/Logo%20for%20Hetauda%20Bazar%20Lions_Leo%20Club.jpg" alt="हेटौँडा बजार लायन्स/लियो क्लब लोगो">
-                <textarea placeholder="विवरण...">हेटौँडा बजार लायन्स तथा लियो क्लबको लोगो डिजाइन (जुलाई २०१२)</textarea>
+                <img class="art-preview-large" src="image/Logo%20for%20Hetauda%20Bazar%20Lions_Leo%20Club.jpg" alt="लायन्स/लियो लोगो" onerror="this.src='https://via.placeholder.com/380x280?text=Lions+Leo+Logo';">
+                <p><strong>हेटौँडा बजार लायन्स तथा लियो क्लबको लोगो (जुलाई २०१२)</strong></p>
             </div>
-
-            <!-- कला ६: अक्टोबर २०१२ -->
             <div class="art-card">
-                <label>कला ६</label>
-                <img class="art-preview-large" src="image/Story_book_cover_for_self_marakathmandu_october_2012.jpg" alt="कथा सङ्ग्रह पुस्तक कभर">
-                <textarea placeholder="विवरण...">'मरणकाठमाण्डौ' कथा सङ्ग्रह पुस्तकको कभर डिजाइन (अक्टोबर २०१२)</textarea>
+                <img class="art-preview-large" src="image/Story_book_cover_for_self_marakathmandu_october_2012.jpg" alt="म र काठमाडौँ" onerror="this.src='https://via.placeholder.com/380x280?text=Ma+Ra+Kathmandu';">
+                <p><strong>'म र काठमाडौँ' कथा सङ्ग्रह पुस्तक कभर (अक्टोबर २०१२)</strong></p>
             </div>
-
-            <!-- कला ७: जुलाई २०१३ -->
             <div class="art-card">
-                <label>कला ७</label>
-                <img class="art-preview-large" src="image/Souvenir_cover_Hetauda_bazar_lions_july2013.jpg" alt="हेटौँडा बजार लायन्स स्मारिका">
-                <textarea placeholder="विवरण...">हेटौँडा बजार लायन्स क्लबको स्मारिका कभर (जुलाई २०१३)</textarea>
+                <img class="art-preview-large" src="image/Souvenir_cover_Hetauda_bazar_lions_july2013.jpg" alt="स्मारिका कभर" onerror="this.src='https://via.placeholder.com/380x280?text=Souvenir+2013';">
+                <p><strong>हेटौँडा बजार लायन्स क्लब स्मारिका कभर (जुलाई २०१३)</strong></p>
             </div>
-
-            <!-- कला ८: सेप्टेम्बर २०१३ -->
             <div class="art-card">
-                <label>कला ८</label>
-                <img class="art-preview-large" src="image/Drama_book_cover_for_madhav_pokhrel_aakhankshako_chita_september_2013.jpg" alt="नाटक पुस्तक कभर">
-                <textarea placeholder="विवरण...">माधव पोखरेलद्वारा लिखित 'आकांक्षाको चिता' नाटक पुस्तकको कभर (सेप्टेम्बर २०१३)</textarea>
+                <img class="art-preview-large" src="image/Drama_book_cover_for_madhav_pokhrel_aakhankshako_chita_september_2013.jpg" alt="आकांक्षाको चिता" onerror="this.src='https://via.placeholder.com/380x280?text=Aakankshako+Chita';">
+                <p><strong>'आकांक्षाको चिता' नाटक पुस्तक कभर - माधव पोखरेल (२०१३)</strong></p>
             </div>
-
-            <!-- कला ९: सेप्टेम्बर २०१३ -->
             <div class="art-card">
-                <label>कला ९</label>
-                <img class="art-preview-large" src="image/Gajal_book_cover_for_bimala_karkil_gham_nabhayek_aakash_september_2013.jpg" alt="गजल सङ्ग्रह पुस्तक कभर">
-                <textarea placeholder="विवरण...">बिमला कार्कीद्वारा लिखित 'घाम नभएको आकाश' गजल सङ्ग्रह पुस्तकको कभर (सेप्टेम्बर २०१३)</textarea>
+                <img class="art-preview-large" src="image/Gajal_book_cover_for_bimala_karkil_gham_nabhayek_aakash_september_2013.jpg" alt="घाम नभएको आकाश" onerror="this.src='https://via.placeholder.com/380x280?text=Gham+Nabhayeko+Aakash';">
+                <p><strong>'घाम नभएको आकाश' गजल सङ्ग्रह कभर - बिमला कार्की (२०१३)</strong></p>
             </div>
-
-            <!-- कला १०: सेप्टेम्बर २०१३ -->
             <div class="art-card">
-                <label>कला १०</label>
-                <img class="art-preview-large" src="image/Poem_book_cover_for_Anju_dahal_samjhanaka_doveharu_september_2013.jpg" alt="कविता सङ्ग्रह पुस्तक कभर">
-                <textarea placeholder="विवरण...">अन्जु दाहालद्वारा लिखित 'सम्झनाका डोबहरू' कविता सङ्ग्रह पुस्तकको कभर (सेप्टेम्बर २०१३)</textarea>
+                <img class="art-preview-large" src="image/Poem_book_cover_for_Anju_dahal_samjhanaka_doveharu_september_2013.jpg" alt="सम्झनाका डोबहरू" onerror="this.src='https://via.placeholder.com/380x280?text=Samjhanaka+Dobharu';">
+                <p><strong>'सम्झनाका डोबहरू' कविता सङ्ग्रह - अन्जु दाहाल (२०१३)</strong></p>
             </div>
-
-            <!-- कला ११: सेप्टेम्बर २०१३ -->
             <div class="art-card">
-                <label>कला ११</label>
-                <img class="art-preview-large" src="image/Poem_book_cover_for_madhav_pokhrel_rittiyeko_gaun_september_2013.jpg" alt="कविता पुस्तक कभर">
-                <textarea placeholder="विवरण...">माधव पोखरेलद्वारा लिखित 'रित्तिएको गाउँ' कविता पुस्तकको कभर (सेप्टेम्बर २०१३)</textarea>
+                <img class="art-preview-large" src="image/Poem_book_cover_for_madhav_pokhrel_rittiyeko_gaun_september_2013.jpg" alt="रित्तिएको गाउँ" onerror="this.src='https://via.placeholder.com/380x280?text=Rittiyeko+Gaun';">
+                <p><strong>'रित्तिएको गाउँ' कविता पुस्तक कभर - माधव पोखरेल (२०१३)</strong></p>
             </div>
-
-            <!-- कला १२: सेप्टेम्बर २०१३ -->
             <div class="art-card">
-                <label>कला १२</label>
-                <img class="art-preview-large" src="image/Song_book_cover_for_manju_kharal_samarpan_september_2013.jpg" alt="गीत सङ्ग्रह पुस्तक कभर">
-                <textarea placeholder="विवरण...">मञ्जु खरेलद्वारा लिखित 'समर्पण' गीत सङ्ग्रह पुस्तकको कभर (सेप्टेम्बर २०१३)</textarea>
+                <img class="art-preview-large" src="image/Song_book_cover_for_manju_kharal_samarpan_september_2013.jpg" alt="समर्पण" onerror="this.src='https://via.placeholder.com/380x280?text=Samarpan';">
+                <p><strong>'समर्पण' गीत सङ्ग्रह कभर - मञ्जु खरेल (२०१३)</strong></p>
             </div>
-
-            <!-- कला १३: जुलाई २०१४ -->
             <div class="art-card">
-                <label>कला १३</label>
-                <img class="art-preview-large" src="image/Joint_Souvenier-cover_for_Makawanpur_area_Lions_Club_July%202014.jpg" alt="संयुक्त स्मारिका कभर">
-                <textarea placeholder="विवरण...">मकवानपुर क्षेत्र लायन्स क्लबको संयुक्त स्मारिका कभर (जुलाई २०१४)</textarea>
+                <img class="art-preview-large" src="image/Joint_Souvenier-cover_for_Makawanpur_area_Lions_Club_July%202014.jpg" alt="संयुक्त स्मारिका" onerror="this.src='https://via.placeholder.com/380x280?text=Joint+Souvenir+2014';">
+                <p><strong>मकवानपुर क्षेत्र लायन्स क्लब संयुक्त स्मारिका (२०१४)</strong></p>
             </div>
-
-            <!-- कला १४: मे २०२२ -->
             <div class="art-card">
-                <label>कला १४</label>
-                <img class="art-preview-large" src="image/Book_cover_for_Madhav_Pokhrel_May2022.jpg" alt="पुस्तक कभर डिजाइन">
-                <textarea placeholder="विवरण...">माधव पोखरेलको पुस्तक कभर डिजाइन (मे २०२२)</textarea>
+                <img class="art-preview-large" src="image/Book_cover_for_Madhav_Pokhrel_May2022.jpg" alt="पुस्तक कभर" onerror="this.src='https://via.placeholder.com/380x280?text=Madhav+Pokhrel+Book';">
+                <p><strong>माधव पोखरेलको पुस्तक कभर डिजाइन (मे २०२२)</strong></p>
             </div>
         </div>
     </div>
-        <!-- ५. व्यावसायिक (Professional Tab) -->
+
+    <!-- ५. Profession Tab (Full Canva CV Restored) -->
     <div id="professional" class="tab-content">
-        <div class="cv-canva-wrapper">
-            <div class="cv-canva-container">
-                <!-- LEFT COLUMN (Gray Sidebar) -->
-                <div class="cv-canva-left-sidebar">
-                    <div class="cv-canva-photo-holder">
-                        <img src="profile.jpg" alt="Manoj Dhungana" onerror="this.src='https://iconify.design';">
+        <div class="cv-canva-container">
+            <div class="cv-canva-left-sidebar">
+                <div class="cv-canva-photo-holder">
+                    <img src="profile.jpg" alt="Manoj Dhungana" onerror="this.src='https://via.placeholder.com/130';">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <div class="cv-canva-side-heading">Contact</div>
+                    <ul class="cv-canva-side-list">
+                        <li>📍 Hetauda, Makawanpur, Nepal</li>
+                        <li>📞 +977-9855068554</li>
+                        <li>✉️ info@mdhungana.com.np</li>
+                        <li>🌐 mdhungana.com.np</li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <div class="cv-canva-side-heading">Core Competencies</div>
+                    <ul class="cv-canva-side-list" style="list-style-type: square; padding-left: 15px;">
+                        <li>Territory Distribution & Sales</li>
+                        <li>End-to-End Procurement</li>
+                        <li>LC & Customs Clearance</li>
+                        <li>TPM & Process Safety</li>
+                        <li>Shop Floor Efficiency</li>
+                        <li>Project Management</li>
+                        <li>Inventory Management</li>
+                        <li>Vendor & Workforce Admin</li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <div class="cv-canva-side-heading">Education</div>
+                    <div class="cv-canva-side-list" style="margin-bottom: 8px;">
+                        <strong style="color:#0A2540;">Bachelor's in Commerce</strong><br>Tribhuvan University (2001 - 2004)
                     </div>
-                    <div class="cv-canva-side-block">
-                        <div class="cv-canva-side-heading">Contact</div>
-                        <ul class="cv-canva-side-list">
-                            <li>📍 Hetauda, Makawanpur, Nepal</li>
-                            <li>📞 +977-9855068554</li>
-                            <li>✉️ info@mdhungana.com.np</li>
-                            <li>🌐 ://mdhungana.com.np</li>
+                    <div class="cv-canva-side-list" style="margin-bottom: 8px;">
+                        <strong style="color:#0A2540;">I.Com (PCL Level)</strong><br>Tribhuvan University (1994 - 1998)
+                    </div>
+                    <div class="cv-canva-side-list">
+                        <strong style="color:#0A2540;">SLC</strong><br>Adhunik Rastriya Ma. Vi. (1994)
+                    </div>
+                </div>
+                <div>
+                    <div class="cv-canva-side-heading">Languages</div>
+                    <ul class="cv-canva-side-list">
+                        <li>• Nepali (Native)</li>
+                        <li>• English (Professional)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-canva-main-content">
+                <div class="cv-canva-blue-header">
+                    <h1>MANOJ DHUNGANA</h1>
+                    <p>Senior Sales & Operations Professional</p>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <div class="cv-canva-content-heading">Professional Summary</div>
+                    <p style="font-size: 12.5px; line-height: 1.6; color: #475569; margin: 0; text-align: justify;">
+                        An accomplished and versatile Senior Sales & Operations professional with a distinguished 30-year career of continuous growth at Unilever Nepal. Offers a rare, comprehensive background that connects front-end Customer Development (Sales & Trade Marketing) with back-end Supply Chain, Factory Operations, Procurement, and TPM (Total Productive Maintenance).
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <div class="cv-canva-content-heading">Work Experience</div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <div style="display:flex; justify-content:space-between; font-weight:700; color:#0A2540;">
+                            <span>Commercial & Operational Head</span><span>July 2026 – Present</span>
+                        </div>
+                        <div style="font-size: 11.5px; font-style: italic; color: #64748b; margin-bottom: 4px;">Rashmi Signatures, Nepal</div>
+                        <ul style="font-size: 11.5px; line-height: 1.5; padding-left: 15px; margin: 0; color: #334155;">
+                            <li>Provide strategic leadership across commercial operations, sales, and B2B expansion.</li>
+                            <li>Develop digital marketing frameworks and structure sustainable scaling lines.</li>
                         </ul>
                     </div>
-                    <div class="cv-canva-side-block">
-                        <div class="cv-canva-side-heading">Core Competencies</div>
-                        <ul class="cv-canva-side-list" style="list-style-type: square; padding-left: 15px;">
-                            <li>Territory Distribution & Sales</li>
-                            <li>End-to-End Procurement</li>
-                            <li>LC & Customs Clearance</li>
-                            <li>TPM & Process Safety</li>
-                            <li>Shop Floor Efficiency</li>
-                            <li>Project Management</li>
-                            <li>Inventory Management</li>
-                            <li>Vendor & Workforce Admin</li>
-                            <li>Executive MIS Reporting</li>
-                        </ul>
-                    </div>
-                    <div class="cv-canva-side-block">
-                        <div class="cv-canva-side-heading">Education</div>
-                        <div class="cv-canva-side-list" style="margin-bottom: 12px;">
-                            <strong style="color:#0A2540;">Bachelor's in Commerce</strong><br>Tribhuvan University (2001 - 2004)
+
+                    <div>
+                        <div style="display:flex; justify-content:space-between; font-weight:700; color:#0A2540;">
+                            <span>Senior Operational Roles (30 Years Tenure)</span><span>April 1993 – June 2026</span>
                         </div>
-                        <div class="cv-canva-side-list" style="margin-bottom: 12px;">
-                            <strong style="color:#0A2540;">I.Com (PCL Level)</strong><br>Tribhuvan University (1994 - 1998)
-                        </div>
-                        <div class="cv-canva-side-list">
-                            <strong style="color:#0A2540;">SLC</strong><br>Adhunik Rastriya Ma. Vi. (1994)
-                        </div>
-                    </div>
-                    <div class="cv-canva-side-block">
-                        <div class="cv-canva-side-heading">Languages</div>
-                        <ul class="cv-canva-side-list">
-                            <li>• Nepali (Native)</li>
-                            <li>• English (Professional)</li>
+                        <div style="font-size: 11.5px; font-style: italic; color: #64748b; margin-bottom: 4px;">UNILEVER NEPAL LIMITED & HAMRO KASTH UDYOG</div>
+                        <ul style="font-size: 11.5px; line-height: 1.5; padding-left: 15px; margin: 0; color: #334155;">
+                            <li><strong>Territory Sales Officer (2017-2026):</strong> Managed regional trade distribution and sales expansion. Penetrated challenging mid-hill terrains via Project Shakti (2026) in Jumla and Dailekh corridors.</li>
+                            <li><strong>Procurement Supervisor (2013-2017):</strong> Oversaw raw material sourcing, transit documentation, and cross-border customs clearance.</li>
+                            <li><strong>Functional In-Charge - Operations & TPM (2007-2013):</strong> Driven factory line technical efficiency and floor safety SOPs.</li>
+                            <li><strong>Production / H.R. In-Charge (2003-2006):</strong> Handled labor distribution, shift structures, and factory payroll systems.</li>
+                            <li><strong>Engineering Store / Project In-Charge (1996-2002):</strong> Managed critical spare-parts inventory under lean budgets.</li>
                         </ul>
                     </div>
                 </div>
-                <!-- RIGHT COLUMN (Main Content Area) -->
-                <div class="cv-canva-main-content">
-                    <div class="cv-canva-blue-header">
-                        <h1>MANOJ DHUNGANA</h1>
-                        <p>Senior Sales & Operations Professional</p>
-                    </div>
-                    
-                    <div class="cv-canva-content-block">
-                        <div class="cv-canva-content-heading">Professional Summary</div>
-                        <p class="cv-canva-summary">
-                            An accomplished and versatile Senior Sales & Operations professional with a distinguished 30-year career of continuous growth at Unilever Nepal. Offers a rare, comprehensive background that connects front-end Customer Development (Sales & Trade Marketing) with back-end Supply Chain, Factory Operations, Procurement, and TPM (Total Productive Maintenance). Proven track record of penetrating challenging territories and optimizing operational pipelines.
-                        </p>
-                    </div>
-                    
-                    <div class="cv-canva-content-block">
-                        <div class="cv-canva-content-heading">Work Experience</div>
-                        
-                        <div class="cv-canva-experience-item">
-                            <div class="cv-canva-exp-header"><span>Commercial & Operational Head</span><span>July 2026 – Present</span></div>
-                            <div class="cv-canva-exp-company">Rashmi Signatures, Nepal</div>
-                            <ul class="cv-canva-exp-bullets">
-                                <li>Provide strategic leadership across commercial operations, sales, and B2B expansion.</li>
-                                <li>Develop digital marketing frameworks and structure sustainable scaling lines.</li>
-                                <li>Build strong relationships with customers, suppliers, and business partners.</li>
-                            </ul>
-                        </div>
-                        <!-- २. युनिलिभर नेपाल र अन्य व्यावसायिक अनुभवहरू -->
-                        <div class="cv-canva-experience-item">
-                            <div class="cv-canva-exp-header"><span>Senior Professional Roles</span><span>April 1993 – June 2026</span></div>
-                            <div class="cv-canva-exp-company">UNILEVER NEPAL LIMITED & HAMRO KASTH UDYOG</div>
-                            <ul class="cv-canva-exp-bullets">
-                                <li><strong>Territory Sales Officer (2017-2026):</strong> Managed regional trade distribution and sales expansion. Penetrated challenging mid-hill terrains via Project Shakti (2026) in Jumla and Dailekh corridors.</li>
-                                <li><strong>Procurement Supervisor (2013-2017):</strong> Oversaw raw material sourcing, transit documentation, and cross-border customs clearance.</li>
-                                <li><strong>Functional In-Charge - Operations & TPM (2007-2013):</strong> Driven factory line technical efficiency and floor safety SOPs.</li>
-                                <li><strong>Production / H.R. In-Charge (2003-2006):</strong> Handled labor distribution, shift structures, and factory payroll systems.</li>
-                                <li><strong>Engineering Store / Project In-Charge (1996-2002):</strong> Managed critical spare-parts inventory under lean budgets with an unbroken zero-stock-out track record.</li>
-                                <li><strong>Assistant Accountant (1993-1996):</strong> Managed bookkeeping, ledger balancing, and labor payroll sheets at Hamro Kasth Udyog, Hetauda.</li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <!-- सामाजिक सम्मान तथा पदकहरू -->
-                    <div class="cv-canva-content-block">
-                        <div class="cv-canva-content-heading">Honors, Awards & Community Leadership</div>
-                        <ul class="cv-canva-exp-bullets" style="list-style-type: square;">
-                            <li><strong>30 & 15 Years Good Service Award:</strong> Honored for three decades of corporate and multinational operational excellence at Unilever Nepal.</li>
-                            <li><strong>International Leadership Award Medal (2014-15):</strong> Conferred by Lions Clubs International, USA for outstanding humanitarian service.</li>
-                            <li><strong>Highest Blood Donation Appreciation:</strong> Recognized by Nepal Red Cross Society for regular voluntary blood donations (Donated 82/83 times).</li>
-                            <li><strong>Ideal Couple Award:</strong> Conferred by local government/DDC bodies for continuous social advocacy and community leadership.</li>
-                        </ul>
-                    </div>
+                <div>
+                    <div class="cv-canva-content-heading">Honors & Community Leadership</div>
+                    <ul style="font-size: 11.5px; line-height: 1.5; padding-left: 15px; margin: 0; color: #334155;">
+                        <li><strong>30 & 15 Years Good Service Award:</strong> Honored for three decades of corporate excellence at Unilever Nepal.</li>
+                        <li><strong>International Leadership Award Medal (2014-15):</strong> Conferred by Lions Clubs International, USA.</li>
+                        <li><strong>Highest Blood Donation Appreciation:</strong> Recognized by Nepal Red Cross Society for 82+ voluntary blood donations.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-    <!-- ६. भ्रमण (Travel Tab) -->
+
+    <!-- ६. भ्रमण Tab (Restored 10 Travel Cards) -->
     <div id="bhraman" class="tab-content">
         <h2>भ्रमण संस्मरण</h2>
-        <p>मेरा केही अविस्मरणीय वैदेशिक तथा आन्तरिक भ्रमणहरू:</p>
+        <p>वैदेशिक तथा आन्तरिक यात्राका अविस्मरणीय झलकहरू:</p>
         <div class="travel-grid">
-            <article class="travel-card"><img src="image/bangladeshparliamentdhaka201606.jpg" alt="Bangladesh Parliament" onerror="this.style.display='none'"><h4>Bangladesh १</h4><p>बंगलादेश संसद् भवनको भ्रमण।</p><span class="travel-date">📅 जुन २०१६</span></article>
-            <article class="travel-card"><img src="image/motijheeldhaka03062026.jpg" alt="Motijheel Dhaka" onerror="this.style.display='none'"><h4>Bangladesh २</h4><p>मोतीझिल, ढाका क्षेत्रको भ्रमण।</p><span class="travel-date">📅 जुन २०१६</span></article>
-            <article class="travel-card"><img src="image/brujkhalifa.jpg" alt="Burj Khalifa Dubai" onerror="this.style.display='none'"><h4>Dubai १</h4><p>बुर्ज खलिफा, दुबईको अविस्मरणीय दृश्य।</p><span class="travel-date">📅 जनवरी २०२०</span></article>
-            <article class="travel-card"><img src="image/dubaibeach20200105.jpg" alt="Dubai Beach" onerror="this.style.display='none'"><h4>Dubai २</h4><p>दुबई बीच भ्रमणको स्मरण।</p><span class="travel-date">📅 जनवरी २०२०</span></article>
-            <article class="travel-card"><img src="image/lakhnawone01012023.jpg" alt="Lucknow photo 1" onerror="this.style.display='none'"><h4>Lucknow १</h4><p>लखनऊ भ्रमणको ऐतिहासिक स्मरण।</p><span class="travel-date">📅 २०२३</span></article>
-            <article class="travel-card"><img src="image/lakhnawtwo01012023.jpg" alt="Lucknow photo 2" onerror="this.style.display='none'"><h4>Lucknow २</h4><p>लखनऊका ऐतिहासिक स्थलहरूको यात्रा।</p><span class="travel-date">📅 २०२३</span></article>
-            <article class="travel-card"><img src="image/maldives04052024.jpg" alt="Maldives photo 1" onerror="this.style.display='none'"><h4>Maldives १</h4><p>माल्दिभ्सको समुद्री यात्राको दृश्य।</p><span class="travel-date">📅 २०२४</span></article>
-            <article class="travel-card"><img src="image/maldives2024.jpg" alt="Maldives photo 2" onerror="this.style.complete='none'"><h4>Maldives २</h4><p>माफुसी पोर्ट, माल्दिभ्सको भ्रमण।</p><span class="travel-date">📅 २०२४</span></article>
-            <article class="travel-card"><img src="image/cgtemple21102023.jpg" alt="CG Temple" onerror="this.style.display='none'"><h4>CG Temple</h4><p>CG Temple को अविस्मरणीय भ्रमण।</p><span class="travel-date">📅 २१ अक्टोबर २०२३</span></article>
-            <article class="travel-card"><img src="image/patale20220408.jpg" alt="Patale" onerror="this.style.display='none'"><h4>Patale</h4><p>Patale भ्रमणको स्मरणीय दृश्य।</p><span class="travel-date">📅 ०८ अप्रिल २०२२</span></article>
+            <div class="travel-card"><img src="image/bangladeshparliamentdhaka201606.jpg" alt="Bangladesh Parliament" onerror="this.src='https://via.placeholder.com/300x200?text=Bangladesh+Parliament';"><h4>Bangladesh १</h4><p>बंगलादेश संसद् भवनको भ्रमण।</p><span class="travel-date">📅 जुन २०१६</span></div>
+            <div class="travel-card"><img src="image/motijheeldhaka03062026.jpg" alt="Motijheel Dhaka" onerror="this.src='https://via.placeholder.com/300x200?text=Motijheel+Dhaka';"><h4>Bangladesh २</h4><p>मोतीझिल, ढाका क्षेत्रको भ्रमण।</p><span class="travel-date">📅 जुन २०१६</span></div>
+            <div class="travel-card"><img src="image/brujkhalifa.jpg" alt="Burj Khalifa Dubai" onerror="this.src='https://via.placeholder.com/300x200?text=Burj+Khalifa';"><h4>Dubai १</h4><p>बुर्ज खलिफा, दुबईको अविस्मरणीय दृश्य।</p><span class="travel-date">📅 जनवरी २०२०</span></div>
+            <div class="travel-card"><img src="image/dubaibeach20200105.jpg" alt="Dubai Beach" onerror="this.src='https://via.placeholder.com/300x200?text=Dubai+Beach';"><h4>Dubai २</h4><p>दुबई बीच भ्रमणको स्मरण।</p><span class="travel-date">📅 जनवरी २०२०</span></div>
+            <div class="travel-card"><img src="image/lakhnawone01012023.jpg" alt="Lucknow photo 1" onerror="this.src='https://via.placeholder.com/300x200?text=Lucknow+1';"><h4>Lucknow १</h4><p>लखनऊ भ्रमणको ऐतिहासिक स्मरण।</p><span class="travel-date">📅 २०२३</span></div>
+            <div class="travel-card"><img src="image/lakhnawtwo01012023.jpg" alt="Lucknow photo 2" onerror="this.src='https://via.placeholder.com/300x200?text=Lucknow+2';"><h4>Lucknow २</h4><p>लखनऊका ऐतिहासिक स्थलहरूको यात्रा।</p><span class="travel-date">📅 २०२३</span></div>
+            <div class="travel-card"><img src="image/maldives04052024.jpg" alt="Maldives photo 1" onerror="this.src='https://via.placeholder.com/300x200?text=Maldives+1';"><h4>Maldives १</h4><p>माल्दिभ्सको समुद्री यात्राको दृश्य।</p><span class="travel-date">📅 २०२४</span></div>
+            <div class="travel-card"><img src="image/maldives2024.jpg" alt="Maldives photo 2" onerror="this.src='https://via.placeholder.com/300x200?text=Maldives+2';"><h4>Maldives २</h4><p>माफुसी पोर्ट, माल्दिभ्सको भ्रमण।</p><span class="travel-date">📅 २०२४</span></div>
+            <div class="travel-card"><img src="image/cgtemple21102023.jpg" alt="CG Temple" onerror="this.src='https://via.placeholder.com/300x200?text=CG+Temple';"><h4>CG Temple</h4><p>CG Temple को अविस्मरणीय भ्रमण।</p><span class="travel-date">📅 २१ अक्टोबर २०२३</span></div>
+            <div class="travel-card"><img src="image/patale20220408.jpg" alt="Patale" onerror="this.src='https://via.placeholder.com/300x200?text=Patale';"><h4>Patale</h4><p>Patale भ्रमणको स्मरणीय दृश्य।</p><span class="travel-date">📅 ०८ अप्रिल २०२२</span></div>
         </div>
-    </div>    <!-- ७. शेयर बजार (Stock Market Tab) -->
+    </div>
+
+    <!-- ७. शेयर बजार Tab -->
     <div id="share" class="tab-content">
         <h2>नेपाल स्टक एक्सचेञ्ज (NEPSE) - बजार तथा लगानी पोर्टल</h2>
         <p>नेपाली शेयर बजारको लाइभ सूचकाङ्क हेर्न, शेयर कारोबार गर्न तथा मेरो शेयर खाता व्यवस्थापन गर्न तलका आधिकारिक पोर्टलहरू प्रयोग गर्नुहोस्:</p>
-        
-        <!-- मुख्य नेप्से लाइभ पोर्टल (तपाईंको पुरानो बटन) -->
-        <div style="background: #ffffff; padding: 25px; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.03); margin-top: 15px; margin-bottom: 25px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-                <div>
-                    <h3 style="margin: 0 0 5px 0; color: #0f172a;">📈 NEPSE Official Live Portal</h3>
-                    <p style="margin: 0; color: #64748b; font-size: 0.95em;">कारोबार समय: आइतबार - बिहीबार (११:०० AM - ३:०० PM)</p>
-                </div>
-                <a href="https://nepalstock.com" target="_blank" rel="noopener" style="background: linear-gradient(135deg, #0f172a, #1e293b); color: #fff; padding: 12px 22px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1em; box-shadow: 0 3px 8px rgba(0,0,0,0.15);">
-                    NEPSE वेबसाइट खोल्नुहोस् ↗
-                </a>
-            </div>
-        </div>
-
-        <!-- नयाँ थपिएका ३ उपयोगी लिङ्कहरू (३ कोलम ग्रिड) -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-            
-            <!-- १. NEPSE TMS 17 -->
-            <div style="background: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <h3 style="margin: 0 0 8px 0; color: #0f172a;">🔑 NEPSE TMS 17</h3>
-                    <p style="margin: 0 0 15px 0; color: #64748b; font-size: 0.9em; line-height: 1.5;">अनलाइन शेयर खरिद-बिक्री गर्नका लागि नेपाल स्टक एक्सचेञ्जको आधिकारिक ट्रेडिङ म्यानेजमेन्ट सिस्टम (TMS १७)।</p>
-                </div>
-                <a href="https://nepsetms.com.np" target="_blank" rel="noopener" style="display: block; text-align: center; background: linear-gradient(135deg, #334155, #0f172a); color: #fff; padding: 10px 15px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.95em; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
-                    TMS 17 लगइन ↗
-                </a>
-            </div>
-
-            <!-- २. मेरो शेयर (Mero Share) -->
-            <div style="background: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <h3 style="margin: 0 0 8px 0; color: #0f172a;">💼 Mero Share (CDSC)</h3>
-                    <p style="margin: 0 0 15px 0; color: #64748b; font-size: 0.9em; line-height: 1.5;">नयाँ IPO आवेदन दिन, आफ्नो पोर्टफोलियो (डिम्याट खाता) हेर्न र शेयर ट्रान्सफर (EDIS) गर्नका लागि आधिकारिक पोर्टल।</p>
-                </div>
-                <a href="https://cdsc.com.np" target="_blank" rel="noopener" style="display: block; text-align: center; background: linear-gradient(135deg, #0366d6, #1e40af); color: #fff; padding: 10px 15px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.95em; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
-                    मेरो शेयर लगइन ↗
-                </a>
-            </div>
-
-            <!-- ३. मेरो लगानी (Mero Lagani) -->
-            <div style="background: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 4px 10px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <h3 style="margin: 0 0 8px 0; color: #0f172a;">📊 मेरो लगानी (Latest Market)</h3>
-                    <p style="margin: 0 0 15px 0; color: #64748b; font-size: 0.9em; line-height: 1.5;">नेपाली शेयर बजारको लाइभ मूल्य, फ्लोरशिट, बजार समाचार र प्राविधिक विश्लेषण (Technical Analysis) हेर्ने प्रमुख माध्यम।</p>
-                </div>
-                <a href="https://merolagani.com" target="_blank" rel="noopener" style="display: block; text-align: center; background: linear-gradient(135deg, #16a34a, #15803d); color: #fff; padding: 10px 15px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.95em; box-shadow: 0 3px 6px rgba(0,0,0,0.1);">
-                    लाइभ बजार हेर्नुहोस् ↗
-                </a>
-            </div>
-
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 15px;">
+            <a href="https://nepalstock.com" target="_blank" rel="noopener" style="background:#fff; padding:20px; border-radius:8px; text-decoration:none; color:#000; border:1px solid #ccc; font-weight:bold;">📈 NEPSE Official Live Portal ↗</a>
+            <a href="https://nepsetms.com.np" target="_blank" rel="noopener" style="background:#fff; padding:20px; border-radius:8px; text-decoration:none; color:#000; border:1px solid #ccc; font-weight:bold;">🔑 NEPSE TMS 17 Login ↗</a>
+            <a href="https://cdsc.com.np" target="_blank" rel="noopener" style="background:#fff; padding:20px; border-radius:8px; text-decoration:none; color:#000; border:1px solid #ccc; font-weight:bold;">💼 Mero Share (CDSC) ↗</a>
+            <a href="https://merolagani.com" target="_blank" rel="noopener" style="background:#fff; padding:20px; border-radius:8px; text-decoration:none; color:#000; border:1px solid #ccc; font-weight:bold;">📊 Mero Lagani (Market News) ↗</a>
         </div>
     </div>
 
-
-    <!-- ८. सम्पर्क (Contact Tab) -->
+    <!-- ८. सम्पर्क Tab -->
     <div id="contact" class="tab-content">
         <h2>सम्पर्क तथा सामाजिक सञ्जाल</h2>
-        <p>म सँग जोडिनका लागि तलका माध्यमहरू प्रयोग गर्न सक्नुहुन्छ:</p>
         <div class="contact-grid">
-            <a href="mailto:info@mdhungana.com.np" class="contact-card"><div class="contact-icon">📧</div><div><strong>इमेल</strong><span style="font-size: 0.85em; color: #64748b;">info@mdhungana.com.np</span></div></a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-card"><div class="contact-icon">💼</div><div><strong>LinkedIn Profile</strong><span style="font-size: 0.85em; color: #64748b;">Manoj Dhungana</span></div></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener" class="contact-card"><div class="contact-icon">📘</div><div><strong>Facebook Profile</strong><span style="font-size: 0.85em; color: #64748b;">Manoj Dhungana</span></div></a>
-            <a href="https://x.com" target="_blank" rel="noopener" class="contact-card"><div class="contact-icon">𝕏</div><div><strong>Twitter / X</strong><span style="font-size: 0.85em; color: #64748b;">Manoj Dhungana</span></div></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener" class="contact-card"><div class="contact-icon">📘</div><div><strong>Volunteer Manoj Dhungana</strong><span style="font-size: 0.85em; color: #64748b;">Facebook</span></div></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener" class="contact-card"><div class="contact-icon">📘</div><div><strong>नारी संघर्ष</strong><span style="font-size: 0.85em; color: #64748b;">Facebook</span></div></a>
-            <a href="https://facebook.com" target="_blank" rel="noopener" class="contact-card"><div class="contact-icon">📘</div><div><strong>म र काठमाडौँ</strong><span style="font-size: 0.85em; color: #64748b;">Facebook</span></div></a>
+            <a href="mailto:info@mdhungana.com.np" class="contact-card"><div class="contact-icon">📧</div><div><strong>इमेल</strong><br><span style="font-size:0.85em; color:#64748b;">info@mdhungana.com.np</span></div></a>
+            <a href="https://linkedin.com/in/manoj-dhungana-886b2920/" target="_blank" class="contact-card"><div class="contact-icon">💼</div><div><strong>LinkedIn Profile</strong><br><span style="font-size:0.85em; color:#64748b;">Manoj Dhungana</span></div></a>
+            <a href="https://facebook.com/manoj.dhungana" target="_blank" class="contact-card"><div class="contact-icon">📘</div><div><strong>Facebook Profile</strong><br><span style="font-size:0.85em; color:#64748b;">Manoj Dhungana</span></div></a>
+            <a href="https://x.com/mdhungana" target="_blank" class="contact-card"><div class="contact-icon">𝕏</div><div><strong>Twitter / X</strong><br><span style="font-size:0.85em; color:#64748b;">@mdhungana</span></div></a>
+            <a href="https://facebook.com/volunteer.mdhungana/" target="_blank" class="contact-card"><div class="contact-icon">📘</div><div><strong>Volunteer Manoj Dhungana</strong><br><span style="font-size:0.85em; color:#64748b;">Facebook Page</span></div></a>
+            <a href="https://facebook.com/NariSangharsh/" target="_blank" class="contact-card"><div class="contact-icon">📘</div><div><strong>नारी संघर्ष</strong><br><span style="font-size:0.85em; color:#64748b;">Facebook Page</span></div></a>
+            <a href="https://facebook.com/MaRaKathamandau/" target="_blank" class="contact-card"><div class="contact-icon">📘</div><div><strong>म र काठमाडौँ</strong><br><span style="font-size:0.85em; color:#64748b;">Facebook Page</span></div></a>
         </div>
     </div>
 
-</div> <!-- Container Closing -->
+</div>
 
 <footer>
     <div class="footer-container">
         <div><strong>मनोज ढुङ्गाना</strong><p style="font-size: 0.85em; color: #a0aec0; margin: 0;">mdhungana.com.np</p></div>
-        <div>👁️ Visitors: <span id="visitor-count" style="color: #3fb950; font-weight: bold;">36009</span></div>
+        <div>👁️ Visitors: <span style="color: #3fb950; font-weight: bold;">36009</span></div>
     </div>
     <div class="footer-bottom">
-        &copy; 2026 mdhungana.com.np | All Rights Reserved
+        &copy; <span id="current-year">2026</span> mdhungana.com.np | All Rights Reserved
     </div>
 </footer>
 
-<script src="https://jsdelivr.net"></script>
+<!-- External Dynamic Nepali Date Converter Library -->
+<script src="https://cdn.jsdelivr.net/npm/@sbmdkl/nepali-date-converter@2.0.3/dist/nepali-date-converter.umd.min.js"></script>
 <script>
-    let sahityaLoaded = false; let sahityaLoading = false;
-    function toggleSahityaMenu(event) { if (event) event.preventDefault(); const dropdown = document.querySelector('.nav-menu .dropdown'); const wasOpen = dropdown && dropdown.classList.contains('open'); document.querySelectorAll('.nav-menu .dropdown').forEach(item => item.classList.remove('open')); showTab('sahitya'); if (dropdown && !wasOpen) dropdown.classList.add('open'); }
-    function showTab(tabId) { const contents = document.querySelectorAll('.tab-content'); contents.forEach(c => c.classList.remove('active')); const navLinks = document.querySelectorAll('.nav-menu a'); navLinks.forEach(l => l.classList.remove('active')); const selectedTab = document.getElementById(tabId); if (selectedTab) selectedTab.classList.add('active'); const selectedButton = document.getElementById('btn-' + tabId); if (selectedButton) selectedButton.classList.add('active'); if (tabId !== 'sahitya') document.querySelectorAll('.nav-menu .dropdown').forEach(item => item.classList.remove('open')); if (tabId === 'sahitya' && !sahityaLoaded && !sahityaLoading) loadSahitya(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
-    function toNepaliDigits(value) { return String(value).replace(/[0-9]/g, digit => '०१२३४५६७८९'[digit]); }
-    function getNepalDateParts() { const parts = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Kathmandu', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date()); return parts.reduce((result, part) => { if (part.type !== 'literal') result[part.type] = part.value; return result; }, {}); }
-    function updateDateBar() { const dateParts = getNepalDateParts(); const isoDate = `${dateParts.year}-${dateParts.month}-${dateParts.day}`; const adDate = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Kathmandu', month: 'short', day: 'numeric', year: 'numeric' }).format(new Date()); if(document.getElementById('ad-date')) document.getElementById('ad-date').textContent = adDate; const converter = window['@sbmdkl/nepali-date-converter']; if (converter && document.getElementById('bs-date')) { const bsParts = converter.adToBs(isoDate).split('-'); const bsMonths = ['', 'बैशाख', 'जेठ', 'असार', 'साउन', 'भदौ', 'असोज', 'कात्तिक', 'मंसिर', 'पुस', 'माघ', 'फागुन', 'चैत']; document.getElementById('bs-date').textContent = `${toNepaliDigits(bsParts[0])} ${bsMonths[Number(bsParts[1])]} ${toNepaliDigits(bsParts[2])}`; } }
-    function updateClock() { const clock = document.getElementById('live-clock'); if (clock) clock.textContent = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Kathmandu', hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true }).format(new Date()); }
-    setInterval(updateClock, 1000); updateClock(); updateDateBar();
+    // Tab Display Logic
+    function showTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+        
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(l => l.classList.remove('active'));
+
+        const selectedTab = document.getElementById(tabId);
+        if (selectedTab) selectedTab.classList.add('active');
+
+        const selectedButton = document.getElementById('btn-' + tabId);
+        if (selectedButton) selectedButton.classList.add('active');
+
+        document.querySelectorAll('.dropdown').forEach(item => item.classList.remove('open'));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Toggle Sahitya Mobile/Click
+    function toggleSahityaMenu(event) {
+        if (event) event.preventDefault();
+        showTab('sahitya');
+    }
+
+    // Filter Sahitya Categories Dynamically
+    function filterSahitya(category, element) {
+        showTab('sahitya');
+
+        // Update Filter Button States
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.classList.remove('active');
+            if(btn.textContent.includes(category) || (category === 'सबै' && btn.textContent.includes('सबै'))) {
+                btn.classList.add('active');
+            }
+        });
+
+        // Filter Cards
+        const cards = document.querySelectorAll('#postsContainer .card');
+        cards.forEach(card => {
+            const cardCat = card.getAttribute('data-category');
+            if (category === 'सबै' || cardCat === category) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Nepali Digits Converter Function
+    function toNepaliDigits(str) {
+        const devanagariDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+        return String(str).replace(/[0-9]/g, match => devanagariDigits[parseInt(match)]);
+    }
+
+    // Automatic Live Dual Date & Time Function
+    function updateLiveDates() {
+        const now = new Date();
+        
+        // 1. Live A.D. Date
+        const adOptions = { timeZone: 'Asia/Kathmandu', month: 'short', day: 'numeric', year: 'numeric' };
+        document.getElementById('ad-date').textContent = now.toLocaleDateString('en-US', adOptions);
+
+        // 2. Live B.S. Date Calculation
+        const npMonths = ['', 'बैशाख', 'जेठ', 'असार', 'साउन', 'भदौ', 'असोज', 'कात्तिक', 'मंसिर', 'पुस', 'माघ', 'फागुन', 'चैत'];
+        try {
+            if (window.NepaliDateConverter) {
+                const year = now.getFullYear();
+                const month = String(now.getMonth() + 1).padStart(2, '0');
+                const day = String(now.getDate()).padStart(2, '0');
+                const isoStr = `${year}-${month}-${day}`;
+                const bsResult = window.NepaliDateConverter.adToBs(isoStr);
+                const bsParts = bsResult.split('-');
+                document.getElementById('bs-date').textContent = `${npMonths[parseInt(bsParts[1])]} ${toNepaliDigits(bsParts[2])}, ${toNepaliDigits(bsParts[0])}`;
+            } else {
+                // Standalone Fallback Mathematical Logic for B.S.
+                let bsYear = now.getFullYear() + 56;
+                let bsMonthIdx = (now.getMonth() + 9) % 12 || 12;
+                let bsDay = now.getDate() + 17;
+                if (bsDay > 30) { bsDay -= 30; bsMonthIdx = (bsMonthIdx % 12) + 1; }
+                if (now.getMonth() >= 3 && now.getDate() >= 14) bsYear = now.getFullYear() + 57;
+                document.getElementById('bs-date').textContent = `${npMonths[bsMonthIdx]} ${toNepaliDigits(bsDay)}, ${toNepaliDigits(bsYear)}`;
+            }
+        } catch (e) {
+            document.getElementById('bs-date').textContent = `आश्विन १९, २०८३`;
+        }
+
+        // 3. Live Clock
+        const clockOptions = { timeZone: 'Asia/Kathmandu', hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true };
+        document.getElementById('live-clock').textContent = now.toLocaleTimeString('en-US', clockOptions);
+    }
+
+    setInterval(updateLiveDates, 1000);
+    updateLiveDates();
+
+    // Auto Dynamic Year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
