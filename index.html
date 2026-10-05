@@ -38,7 +38,7 @@
         }
 
         .decorative-name-np {
-            font-size: 2.5em;
+            font-size: 2.2em;
             font-weight: 800;
             margin: 0;
             background: linear-gradient(90deg, #ff4e50, #f9d423, #00c9ff, #92fe9d, #ff4e50);
@@ -407,7 +407,7 @@
     
     <div class="date-time-bar">
         <div class="date-box">📅 <strong>B.S.:</strong> <span id="bs-date">लोड हुँदैछ...</span></div>
-        <div class="date-box">🗓️ <strong>A.D.:</strong> <span id="ad-date">-- --, ----</span></div>
+        <div class="date-box">🗓️️ <strong>A.D.:</strong> <span id="ad-date">-- --, ----</span></div>
         <div class="date-box">⏰ <span id="live-clock">--:--:--</span></div>
     </div>
 </div>
@@ -459,43 +459,12 @@
         <div class="section-card">
             <h3 class="section-title">ताजा अपडेट (Recent Updates)</h3>
             <div class="recent-posts-grid">
-                
-                <a onclick="filterSahitya('आलेख (Article)');" class="recent-post-card">
-                    <span class="cat-tag">आलेख</span>
-                    <h4>सम्झनामा बुवा</h4>
-                    <p>बुवासँगको ३९ वर्षअघिको जनकपुर यात्रा र विवाह पञ्चमीको अविस्मरणीय सम्झना...</p>
-                    <div class="post-date">📅 १७ आश्विन २०८३</div>
-                    <span class="see-more">पूरा हेर्नुहोस् →</span>
-                </a>
-
-                <a onclick="filterSahitya('साप्ताहिक स्तम्भ');" class="recent-post-card">
-                    <span class="cat-tag">स्तम्भ</span>
-                    <h4>हाम्रो संस्कार र बिदेशी नक्कल</h4>
-                    <p>चाडपर्व र मौलिक संस्कार माथिको सांस्कृतिक संस्मरण...</p>
-                    <div class="post-date">📅 ०१ नोभेम्बर २०१४</div>
-                    <span class="see-more">पूरा हेर्नुहोस् →</span>
-                </a>
-
-                <a onclick="filterSahitya('गजल (Poetry)');" class="recent-post-card">
-                    <span class="cat-tag">गजल</span>
-                    <h4>प्रियसीको नजरमा</h4>
-                    <p>एकल गजल सन्ध्यामा वाचित प्रतिक्रियात्मक गजल...</p>
-                    <div class="post-date">📅 ०८ सेप्टेम्बर २०१२</div>
-                    <span class="see-more">पूरा हेर्नुहोस् →</span>
-                </a>
-
-                <a onclick="showTab('share');" class="recent-post-card">
-                    <span class="cat-tag">शेयर बजार</span>
-                    <h4>NEPSE & MeroShare Portal</h4>
-                    <p>आधिकारिक ट्रेडिङ तथा डिम्याट लगइन लिङ्कहरू...</p>
-                    <div class="post-date">📅 LIVE UPDATE</div>
-                    <span class="see-more">खोल्नुहोस् →</span>
-                </a>
-
+                <!-- Live Javascript posts यहाँ अटो-लोड हुनेछन् -->
             </div>
         </div>
-    </div>
 
+    </div> <!-- Home Tab closing -->
+       
     <!-- २. परिचय (About Tab) -->
     <div id="about" class="tab-content">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: start; margin-bottom: 25px;">
@@ -525,7 +494,7 @@
         </div>
     </div>
 
-    <!-- ३. साहित्य (Sahitya Tab - Title Block Removed) -->
+    <!-- ३. साहित्य (Sahitya Tab) -->
     <div id="sahitya" class="tab-content">
         <!-- Filter Buttons -->
         <div class="sahitya-filter-bar">
@@ -631,7 +600,8 @@
                 <div class="card-header"><h2 class="card-title">बदनाम हुदैछु म तिम्रै कारणले</h2><div class="card-meta"><span>मिती: २४ अक्टोबर २०१२</span><span class="badge">आलेख (Article)</span></div></div>
                 <div class="card-body">भनिन्छ संसारमा सबैभन्दा चोखो उमेरमा लाएको माया प्रीति हो रे, तर आज भोली मायाप्रीति विद्यालय र विश्व विद्यालयका अल्लारे नानी बाबुहरूको कब्जामा पर्न थालेपछि उतिबेलाको परिभाषा बदनाम हुदै गएको छ | यसमा प्रमुख भूमिका निभाएको छ पश्चिमी संस्कृति तथा मल्टिमिडीया मोबाइलले |</div>
             </article>
-<!-- प्रसाद -->
+
+            <!-- प्रसाद -->
             <article class="card" data-category="कविता (Poems)">
                 <div class="card-header"><h2 class="card-title">प्रसाद</h2><div class="card-meta"><span>मिती: १९ श्रावण, २०७०</span><span class="badge">कविता (Poems)</span></div></div>
                 <div class="card-body">तिम्रो निमन्त्रणा
@@ -690,6 +660,7 @@
 ...
 रचना मितिः १५ आश्विन २०६९, म र काठमाण्डाै, कथा संग्रह २०६९ मा प्रकाशित पहिलाे कथा</div>
             </article>
+
             <!-- १४. प्रियसीको नजरमा -->
             <article class="card" data-category="गजल (Poetry)">
                 <div class="card-header"><h2 class="card-title">प्रियसीको नजरमा</h2><div class="card-meta"><span>मिती: ०८ सेप्टेम्बर २०१२</span><span class="badge">गजल (Poetry)</span></div></div>
@@ -876,7 +847,7 @@
 उसलाई डर देखाएर तर्साउथे, भगाउथे।
 हो म प्रत्येक दिन यहि आखामा देख्छु उसलाई
 हेर्दा उ, म जस्तै मान्छे
-तर देखिन कोहि उसको नजिक गएको
+तर देखिन कोहि उसकी नजिक गएको
 कसैले आत्मियता बाडेको
 उ मान्छे भएर समाजमा रमेको।
 बरु धर्म कमाउन धाएका भक्तालुहरुको समेत
@@ -1073,7 +1044,7 @@
         </div>
     </div>
 
-    <!-- ४. कला Tab (Restored 14 items) -->
+    <!-- ४. कला Tab -->
     <div id="kala" class="tab-content">
         <h2>मेरो कला तथा सिर्जना</h2>
         <p>विभिन्न पुस्तक, स्मारिका, संस्थागत लोगो तथा आवरण चित्र सिर्जनाहरू:</p>
@@ -1137,7 +1108,7 @@
         </div>
     </div>
 
-    <!-- ५. Profession Tab (Full Canva CV Restored) -->
+    <!-- ५. Profession Tab -->
     <div id="professional" class="tab-content">
         <div class="cv-canva-container">
             <div class="cv-canva-left-sidebar">
@@ -1241,7 +1212,7 @@
         </div>
     </div>
 
-    <!-- ६. भ्रमण Tab (Restored 10 Travel Cards) -->
+    <!-- ६. भ्रमण Tab -->
     <div id="bhraman" class="tab-content">
         <h2>भ्रमण संस्मरण</h2>
         <p>वैदेशिक तथा आन्तरिक यात्राका अविस्मरणीय झलकहरू:</p>
@@ -1349,6 +1320,51 @@
         });
     }
 
+    // Grihapristha ke 'Taja Update' me Sahitya ke new posts auto-render karne ka function
+    function renderRecentUpdates() {
+        const recentContainer = document.querySelector('.recent-posts-grid');
+        const articles = document.querySelectorAll('#postsContainer .card');
+        
+        if (!recentContainer || articles.length === 0) return;
+
+        let recentHTML = '';
+        const maxItems = Math.min(articles.length, 5);
+
+        for (let i = 0; i < maxItems; i++) {
+            const article = articles[i];
+            const title = article.querySelector('.card-title')?.innerText || '';
+            const category = article.getAttribute('data-category') || 'साहित्य';
+            const dateStr = article.querySelector('.card-meta span')?.innerText || '';
+            
+            let bodyText = article.querySelector('.card-body')?.innerText || '';
+            if (bodyText.length > 85) {
+                bodyText = bodyText.substring(0, 85) + '...';
+            }
+
+            recentHTML += `
+                <a onclick="filterSahitya('${category}');" class="recent-post-card">
+                    <span class="cat-tag">${category.split(' ')[0]}</span>
+                    <h4>${title}</h4>
+                    <p>${bodyText}</p>
+                    <div class="post-date">📅 ${dateStr}</div>
+                    <span class="see-more">पूरा हेर्नुहोस् →</span>
+                </a>
+            `;
+        }
+
+        recentHTML += `
+            <a onclick="showTab('share');" class="recent-post-card">
+                <span class="cat-tag">शेयर बजार</span>
+                <h4>NEPSE & MeroShare Portal</h4>
+                <p>आधिकारिक ट्रेडिङ तथा डिम्याट लगइन लिङ्कहरू...</p>
+                <div class="post-date">📅 LIVE UPDATE</div>
+                <span class="see-more">खोल्नुहोस् →</span>
+            </a>
+        `;
+
+        recentContainer.innerHTML = recentHTML;
+    }
+
     // Nepali Digits Converter Function
     function toNepaliDigits(str) {
         const devanagariDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
@@ -1393,7 +1409,12 @@
     }
 
     setInterval(updateLiveDates, 1000);
-    updateLiveDates();
+    
+    // Page load event listener
+    document.addEventListener('DOMContentLoaded', () => {
+        updateLiveDates();
+        renderRecentUpdates();
+    });
 
     // Auto Dynamic Year
     document.getElementById('current-year').textContent = new Date().getFullYear();
